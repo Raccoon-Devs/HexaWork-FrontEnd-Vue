@@ -46,4 +46,6 @@ También se pueden observar las <a href="https://github.com/Raccoon-Devs/HexaWor
   <tr>
     <td align="center"><img src="https://github.com/Jotarf.png?s=100" width="100px;" alt=""/><br /><sub><b><a href="https://github.com/Jotarf">José Ramírez (Jotarf)</a></b></sub><br /></td>
   </tr>
+    <td align="center"><img src="https://github.com/davidjzacarias.png?s=100" width="100px;" alt=""/><br /><sub><b><a href="https://github.com/davidjzacarias">David Zacarías (davidjzacarias)</b></a></sub><br /></td>
+    <td align="center"><img src="https://github.com/sofiarm21.png?s=100" width="100px;" alt=""/><br /><sub><b><a href="https://github.com/sofiarm21">Sofía Rodríguez (sofiarm21)</b></a></sub><br /></td>
 </table>  
