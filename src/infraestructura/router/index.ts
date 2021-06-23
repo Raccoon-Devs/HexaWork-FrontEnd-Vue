@@ -3,6 +3,8 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import CrearOferta from '../views/CrearOferta.vue'
 
+import NavegacionMenu from '../components/NavegacionMenu'
+
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
@@ -22,7 +24,16 @@ const routes: Array<RouteConfig> = [
   {
     path: '/Oferta',
     name: 'CrearOferta',
-    component: CrearOferta
+    component: NavegacionMenu,
+    props: {
+        pageName:'Ofertas de trabajo',
+    },
+    children: [
+        {
+            path: '',
+            component: CrearOferta
+        }
+    ]
   }
 ]
 
