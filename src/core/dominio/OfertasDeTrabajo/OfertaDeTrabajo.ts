@@ -1,15 +1,15 @@
 import {Entidad} from "../ClasesBase/Entidad"
-import {IDOferta} from "./IDOferta"
-import {TituloOferta} from "./TituloOferta"
-import {Direccion} from "./Direccion"
-import {TiempoLimitePostulacion} from "./TiempoLimitePostulacion"
-import {Duracion} from "./Duracion"
-import {Remuneracion} from "./Remuneracion"
-import {EstadoOfertaDeTrabajo} from "./EstadoOfertaDeTrabajo"
-import {Vacante} from "./Vacante"
-import {Cargo} from "./Cargo"
-import {Descripcion} from "./Descripcion"
-import {FechaPublicacion} from "./FechaPublicacion"
+import {IDOferta} from "./ValueObjects/IDOferta"
+import {TituloOferta} from "./ValueObjects/TituloOferta"
+import {Direccion} from "../ValueObjectsComunes/Direccion"
+import {TiempoLimitePostulacion} from "./ValueObjects/TiempoLimitePostulacion"
+import {Duracion} from "./ValueObjects/Duracion"
+import {Remuneracion} from "./ValueObjects/Remuneracion"
+import {EstadoOfertaDeTrabajo} from "./ValueObjects/EstadoOfertaDeTrabajo"
+import {Vacante} from "./ValueObjects/Vacante"
+import {Cargo} from "./ValueObjects/Cargo"
+import {Descripcion} from "./ValueObjects/Descripcion"
+import {FechaPublicacion} from "./ValueObjects/FechaPublicacion"
 
 
 interface OfertaDeTrabajoPropiedades {
@@ -47,33 +47,75 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     private constructor (propiedades: OfertaDeTrabajoPropiedades) {
         super(propiedades)
     }
+
+    obtenerTitulo(): TituloOferta{
+        return this.propiedades.titulo
+    }
     
+    ObtenerDireccion(): Direccion{
+        return this.propiedades.direccion
+    }
+
+    obtenerFechaLimite(): TiempoLimitePostulacion{
+        return this.propiedades.fechaLimite
+    }
+
+    obtenerRemuneracion(): Remuneracion{
+        return this.propiedades.remuneracion
+    }
+
+    obtenerEstadoOfertaDeTrabajo(): EstadoOfertaDeTrabajo{
+        return this.propiedades.estadoOfertaDeTrabajo
+    }
+
+    obtenerVacante(): Vacante{
+        return this.propiedades.vacante
+    }
+
+    obtenerCargo(): Cargo{
+        return this.propiedades.cargo
+    }
+
+    obtenerDescripcion(): Descripcion{
+        return this.propiedades.descripcion
+    }
+
+    obtenerFechaPublicacion(): FechaPublicacion{
+        return this.propiedades.fechaPublicacion
+    }
+
+    obtenerId(): IDOferta{
+        return this.propiedades.id
+    }
+
     public static crear(
         titulo : string,
         direccion: direccionOferta,
         fechaLimite: Date,
         duracion: number,
         remuneracion: remuneracionOferta,
-        estadoOfertaDeTrabajo: string,
+        estadoOfertaDeTrabajo: number,
         vacante: number,
         cargo: string,
         descripcion: string,
         fechaPublicacion?: Date,
-        id? : string){
+        id? : string): OfertaDeTrabajo
+        
+        {
     
         return new OfertaDeTrabajo(
             {
-                id: IDOferta.create(id),
-                titulo: TituloOferta.create(titulo),
-                direccion: Direccion.create(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.ciudad, direccion.zip),
-                fechaLimite: TiempoLimitePostulacion.create(fechaLimite),
-                duracion: Duracion.create(duracion),
-                remuneracion: Remuneracion.create(remuneracion.monto, remuneracion.frecuencia, remuneracion.divisa),
-                estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo.create(estadoOfertaDeTrabajo),
-                vacante: Vacante.create(vacante),
-                cargo: Cargo.create(cargo),
-                descripcion: Descripcion.create(descripcion),
-                fechaPublicacion: FechaPublicacion.create(fechaPublicacion)
+                id: IDOferta.crear(id),
+                titulo: TituloOferta.crear(titulo),
+                direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.ciudad, direccion.zip),
+                fechaLimite: TiempoLimitePostulacion.crear(fechaLimite),
+                duracion: Duracion.crear(duracion),
+                remuneracion: Remuneracion.crear(remuneracion.monto, remuneracion.frecuencia, remuneracion.divisa),
+                estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo.crear(estadoOfertaDeTrabajo),
+                vacante: Vacante.crear(vacante),
+                cargo: Cargo.crear(cargo),
+                descripcion: Descripcion.crear(descripcion),
+                fechaPublicacion: FechaPublicacion.crear(fechaPublicacion)
             }
         )
     }
