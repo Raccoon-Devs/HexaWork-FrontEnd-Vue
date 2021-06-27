@@ -1,4 +1,5 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
+import { ExcepcionCargoInvalido } from "../Excepciones/ExcepcionCargoInvalido"
 
 interface CargoPropiedades {
     cargo: string
@@ -17,7 +18,7 @@ export class Cargo extends ValueObject<CargoPropiedades> {
     public static crear(cargo: string): Cargo{
 
         if(cargo === "" || cargo === null || cargo === undefined){
-            console.log("El cargo no puede estar vacío")
+            throw new ExcepcionCargoInvalido<typeof cargo >(`El cargo: ${cargo} es inválido, el cargo no puede estar vacío`, cargo)
         }
 
         return new Cargo({cargo})

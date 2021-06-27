@@ -1,4 +1,5 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
+import { ExcepcionVacanteInvalida } from "../Excepciones/ExcepcionVacanteInvalida"
 
 interface VacantePropiedades {
     vacante: number
@@ -17,11 +18,12 @@ export class Vacante extends ValueObject<VacantePropiedades> {
     public static crear(vacante: number): Vacante{
 
         if(vacante === 0 || vacante === null || vacante === undefined){
+            throw new ExcepcionVacanteInvalida<typeof vacante >(`La cantidad de vacantes: ${vacante} es inválida, no puede estar vacía`, vacante)
             console.log("vacante inválida")
         }
 
         if(vacante < 0){
-            console.log("la cantidad de vacantes no puede ser negativa")
+            throw new ExcepcionVacanteInvalida<typeof vacante >(`La cantidad de vacantes: ${vacante} es inválida, debe ser mayor a cero`, vacante)
         }
 
         return new Vacante({vacante})

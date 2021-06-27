@@ -1,4 +1,5 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
+import { ExcepcionDireccionInvalida } from "../Excepciones/ExcepcionDireccionInvalida"
 
 interface DireccionOfertaPropiedades {
     calle1: string
@@ -26,7 +27,7 @@ export class Direccion extends ValueObject<DireccionOfertaPropiedades> {
         return this.propiedades.ciudad
     }
 
-    obtenerEstadao(): string{
+    obtenerEstado(): string{
         return this.propiedades.estado
     }
 
@@ -37,28 +38,23 @@ export class Direccion extends ValueObject<DireccionOfertaPropiedades> {
     public static crear(calle1: string, calle2:string, ciudad:string, estado:string, zip:string): Direccion{
 
         if(calle1 === "" || calle1 === null || calle1 === undefined){
-            console.log("calle 1 invalida")
-            //throw exception
+            throw new ExcepcionDireccionInvalida<typeof calle1 >(`La calle1: ${calle1} es inválida, no puede estar vacía`, calle1)
         }
 
         if(calle2 === "" || calle2 === null || calle2 === undefined){
-            console.log("calle 2 invalida")
-            //throw exception
+            throw new ExcepcionDireccionInvalida<typeof calle1 >(`La calle2: ${calle2} es inválida, no puede estar vacía`, calle2)
         }
 
         if(ciudad === "" || ciudad === null || ciudad === undefined){
-            console.log("ciudad invalida")
-            //throw exception
+            throw new ExcepcionDireccionInvalida<typeof ciudad >(`La ciudad: ${ciudad} es inválida, no puede estar vacía`, ciudad)
         }
 
         if(estado === "" || estado === null || estado === undefined){
-            console.log("estado invalido")
-            //throw exception
+            throw new ExcepcionDireccionInvalida<typeof estado >(`El estado: ${estado} es inválido, no puede estar vacío`, estado)
         }
 
         if(zip === "" || zip === null || zip === undefined){
-            console.log("zip invalid")
-            //throw exception
+            throw new ExcepcionDireccionInvalida<typeof zip >(`El zip: ${zip} es inválido, no puede estar vacío`, zip)
         }
 
         return new Direccion({calle1, calle2, ciudad, estado, zip})

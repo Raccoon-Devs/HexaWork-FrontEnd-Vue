@@ -1,4 +1,5 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
+import { ExcepcionEstadoInvalido } from "../Excepciones/ExcepcionEstadoInvalido"
 
 interface EstadoOfertaDeTrabajoPropiedades {
     estado: number,
@@ -17,12 +18,12 @@ export class EstadoOfertaDeTrabajo extends ValueObject<EstadoOfertaDeTrabajoProp
     public static crear(estado: number): EstadoOfertaDeTrabajo{
 
         if(estado === null || estado === undefined){
-            console.log("estado inválido")
+            throw new ExcepcionEstadoInvalido<typeof estado >(`El estado: ${estado} no puede estar vacio`, estado)
         }
 
         if(!(estado in [0, 1, 2, 3, 4, 5, 6])){
-            console.log("el estado de la oferta es debe ser: 0 (creado), 1 (publicado), 2 (postulaciones cerradas)," +
-            "3 (empleado asignado), 4 (en progreso), 5 (finalizada), 6 (cancelada)")
+            throw new ExcepcionEstadoInvalido<typeof estado >(`El estado: ${estado} de la oferta debe ser: 0 (creado), 1 (publicado), 2 (postulaciones cerradas)," +
+            "3 (empleado asignado), 4 (en progreso), 5 (finalizada), 6 (cancelada)`, estado)
         }
 
         return new EstadoOfertaDeTrabajo({estado})

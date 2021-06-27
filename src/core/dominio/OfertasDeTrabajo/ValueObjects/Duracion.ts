@@ -1,4 +1,5 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
+import { ExcepcionDuracionInvalida } from "../Excepciones/ExcepcionDuracionInvalida"
 
 interface DuracionPropiedades {
     totalHorasRequeridas: number
@@ -17,11 +18,11 @@ export class Duracion extends ValueObject<DuracionPropiedades> {
     public static crear(totalHorasRequeridas: number): Duracion{
 
         if(totalHorasRequeridas === 0 || totalHorasRequeridas === null || totalHorasRequeridas === undefined){
-            console.log("horas inválidas")
+            throw new ExcepcionDuracionInvalida<typeof totalHorasRequeridas >(`Las horas totales: ${totalHorasRequeridas} son inválidas, no pueden estar vacías`, totalHorasRequeridas)
         }
 
         if(totalHorasRequeridas <0){
-            console.log("las horas no pueden ser negativas")
+            throw new ExcepcionDuracionInvalida<typeof totalHorasRequeridas >(`Las horas totales: ${totalHorasRequeridas} no pueden ser menores a 0`, totalHorasRequeridas)
         }
 
         return new Duracion({totalHorasRequeridas})

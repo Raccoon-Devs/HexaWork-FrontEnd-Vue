@@ -45,7 +45,7 @@ type remuneracionOferta = {
 export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     
     private constructor (propiedades: OfertaDeTrabajoPropiedades) {
-        super(propiedades)
+        super(propiedades, propiedades.id)
     }
 
     obtenerTitulo(): TituloOferta{
