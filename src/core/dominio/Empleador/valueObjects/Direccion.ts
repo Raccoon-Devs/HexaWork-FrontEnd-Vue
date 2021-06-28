@@ -24,25 +24,25 @@ export class Direccion extends ValueObject<DireccionPropiedades> {
         if (calle2 === "" || calle2 === null || calle2 === undefined) {
             throw new ExcepcionDireccionInvalida<typeof calle2>(
                 `El valor calle2: ${calle2} es invalido, no pueden estar vacio`,
-                calle1
+                calle2
             )
         }
         if (ciudad === "" || ciudad === null || ciudad === undefined) {
             throw new ExcepcionDireccionInvalida<typeof ciudad>(
                 `El valor ciudad: ${ciudad} es invalido, no pueden estar vacio`,
-                calle1
+                ciudad
             )
         }
         if (estado === "" || estado === null || estado === undefined) {
             throw new ExcepcionDireccionInvalida<typeof estado>(
                 `El valor estado: ${estado} es invalido, no pueden estar vacio`,
-                calle1
+                estado
             )
         }
         if (zip === "" || zip === null || zip === undefined) {
             throw new ExcepcionDireccionInvalida<typeof zip>(
                 `El valor zip: ${zip} es invalido, no pueden estar vacio`,
-                calle1
+                zip
             )
         }
 
