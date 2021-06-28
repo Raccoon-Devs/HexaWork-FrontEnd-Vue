@@ -1,3 +1,6 @@
+import { ValueObject } from "../../ClasesBase/ValueObject"
+import { ExcepcionInfoEmpleadorInvalida } from "../excepciones/ExcepcionInfoEmpleadorInvalida"
+
 interface InfoEmpleadorPropiedades {
     nombreCompleto: string,
     cargoDeTrabajo: string,
@@ -9,36 +12,42 @@ export class InfoEmpleador extends ValueObject<InfoEmpleadorPropiedades> {
     constructor (propiedades: InfoEmpleadorPropiedades) {
         super(propiedades)
     }
-    public static create(
+    public static crear(
         nombreCompleto: string,
         cargoDeTrabajo: string,
         numeroDeTelefono: string,
         correo: string
     ){
-        if(
-            validateStringsExists([calle1, calle2, ciudad, estado, zip])
-        ){
-            console.log("Error")
+        if (nombreCompleto === "" || nombreCompleto === null || nombreCompleto === undefined ) {
+            throw new ExcepcionInfoEmpleadorInvalida<typeof nombreCompleto>(
+                `El valor nombreCompleto: ${nombreCompleto} es invalido, no pueden estar vacio`,
+                nombreCompleto
+            )
         }
+        if (cargoDeTrabajo === "" || cargoDeTrabajo === null || cargoDeTrabajo === undefined) {
+            throw new ExcepcionInfoEmpleadorInvalida<typeof cargoDeTrabajo>(
+                `El valor cargoDeTrabajo: ${cargoDeTrabajo} es invalido, no pueden estar vacio`,
+                cargoDeTrabajo
+            )
+        }
+        if (numeroDeTelefono === "" || numeroDeTelefono === null || numeroDeTelefono === undefined) {
+            throw new ExcepcionInfoEmpleadorInvalida<typeof numeroDeTelefono>(
+                `El valor numeroDeTelefono: ${numeroDeTelefono} es invalido, no pueden estar vacio`,
+                numeroDeTelefono
+            )
+        }
+        if (correo === "" || correo === null || correo === undefined) {
+            throw new ExcepcionInfoEmpleadorInvalida<typeof correo>(
+                `El valor correo: ${correo} es invalido, no pueden estar vacio`,
+                correo
+            )
+        }
+
         return new InfoEmpleador({
-            nombreCompleto: string,
-            cargoDeTrabajo: string,
-            numeroDeTelefono: string,
-            correo: string
+            nombreCompleto,
+            cargoDeTrabajo,
+            numeroDeTelefono,
+            correo
         })
-    }
-    private validateStringsExists(stringsToCompare: [string]): boolean {
-        const validStrings = stringsToCompare.map(s => {
-            if (s === "" || s === null || s === undefined) {
-                return false
-            } else{
-                return true
-            }
-        })
-        if validStrings.indexOf(false) > -1 {
-            return false
-        }else {
-            return true
-        }
     }
 }

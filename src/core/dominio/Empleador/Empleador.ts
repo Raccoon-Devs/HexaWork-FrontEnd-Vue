@@ -1,9 +1,9 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { NombreCompañia } from "./valueObjects/NombreEmpresa"
-import { Direccion } from "./valueObjects/NombreEmpresa"
-import { InfoEmpleador } from "./valueObjects/NombreEmpresa"
-import { Rol } from "./valueObjects/NombreEmpresa"
-import { IDEmpleador } from "./IDEmpleador"
+import { NombreCompañia } from "./valueObjects/NombreCompañia"
+import { Direccion } from "./valueObjects/Direccion"
+import { InfoEmpleador } from "./valueObjects/InfoEmpleador"
+import { Rol } from "./valueObjects/Rol"
+import { IDEmpleador } from "./valueObjects/IDEmpleador"
 
 interface EmpleadorPropiedades {
     IDEmpleador: IDEmpleador
@@ -13,19 +13,24 @@ interface EmpleadorPropiedades {
     rol: Rol
 }
 
-type InfoEmpleador {
+type InfoEmpleadorType = {
     nombreCompleto: string,
     cargoDeTrabajo: string,
     numeroDeTelefono: string,
     correo: string
 }
 
-type Direccion {
+type DireccionType = {
     calle1: string,
     calle2: string,
     ciudad: string,
     estado: string,
     zip: string
+}
+
+type NombreEmpresaType = {
+    nombre: string,
+    rif: string
 }
 
 export class Empleador extends Entidad<EmpleadorPropiedades> {
@@ -34,8 +39,8 @@ export class Empleador extends Entidad<EmpleadorPropiedades> {
         super(propiedades)
     }
 
-    obtenerId(): IDEmpeador {
-        return this.propiedades.IDEmpeador
+    obtenerId(): IDEmpleador {
+        return this.propiedades.IDEmpleador
     }
 
     obtenerNombreEmpresa(): NombreCompañia {
@@ -54,19 +59,19 @@ export class Empleador extends Entidad<EmpleadorPropiedades> {
         return this.propiedades.rol
     }
 
-    public static create(
+    public static crear(
+        nombreEmpresa: NombreEmpresaType,
+        direccion: DireccionType,
+        infoEmpleador: InfoEmpleadorType,
+        rol: string,
         id? : string,
-        nombreEmpresa: string,
-        direccion: Direccion,
-        infoEmpleador: InfoEmpleador,
-        rol: string
     ){
         return new Empleador({
-            id: IDOferta.create(id),
-            nombreEmpresa: NombreEmpresa.create(nombreEmpresa),
-            direccion: Direccion.create(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.ciudad, direccion.zip),
-            infoEmpleador: InfoEmpleador.create(infoEmpleador.nombreCompleto, infoEmpleador.cargoDeTrabajo, infoEmpleador.numeroDeTelefono, infoEmpleador.correo),
-            rol: Rol.create(rol)
+            IDEmpleador: IDEmpleador.crear(id),
+            nombreEmpresa: NombreCompañia.crear(nombreEmpresa.nombre, nombreEmpresa.rif),
+            direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.ciudad, direccion.zip),
+            infoEmpleador: InfoEmpleador.crear(infoEmpleador.nombreCompleto, infoEmpleador.cargoDeTrabajo, infoEmpleador.numeroDeTelefono, infoEmpleador.correo),
+            rol: Rol.crear(rol)
         })
     }
 

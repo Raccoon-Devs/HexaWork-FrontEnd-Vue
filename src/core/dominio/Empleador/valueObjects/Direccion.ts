@@ -1,3 +1,6 @@
+import { ValueObject } from "../../ClasesBase/ValueObject"
+import { ExcepcionDireccionInvalida } from "../excepciones/ExcepcionDireccionInvalida"
+
 interface DireccionPropiedades {
     calle1: string,
     calle2: string,
@@ -9,34 +12,46 @@ interface DireccionPropiedades {
 export class Direccion extends ValueObject<DireccionPropiedades> {
     constructor (propiedades: DireccionPropiedades) {
         super(propiedades)
-        //this.titulo = props.titulo
     }
-    public static create(calle1: string, calle2: string, ciudad: string, estado: string, zip: string){
-        if(
-            validateStringsExists([calle1, calle2, ciudad, estado, zip])
-        ){
-            console.log("Error")
+
+    public static crear(calle1: string, calle2: string, ciudad: string, estado: string, zip: string){
+        if (calle1 === "" || calle1 === null || calle1 === undefined) {
+            throw new ExcepcionDireccionInvalida<typeof calle1>(
+                `El valor calle1: ${calle1} es invalido, no pueden estar vacio`,
+                calle1
+            )
         }
+        if (calle2 === "" || calle2 === null || calle2 === undefined) {
+            throw new ExcepcionDireccionInvalida<typeof calle2>(
+                `El valor calle2: ${calle2} es invalido, no pueden estar vacio`,
+                calle1
+            )
+        }
+        if (ciudad === "" || ciudad === null || ciudad === undefined) {
+            throw new ExcepcionDireccionInvalida<typeof ciudad>(
+                `El valor ciudad: ${ciudad} es invalido, no pueden estar vacio`,
+                calle1
+            )
+        }
+        if (estado === "" || estado === null || estado === undefined) {
+            throw new ExcepcionDireccionInvalida<typeof estado>(
+                `El valor estado: ${estado} es invalido, no pueden estar vacio`,
+                calle1
+            )
+        }
+        if (zip === "" || zip === null || zip === undefined) {
+            throw new ExcepcionDireccionInvalida<typeof zip>(
+                `El valor zip: ${zip} es invalido, no pueden estar vacio`,
+                calle1
+            )
+        }
+
         return new Direccion({
-            calle1: string,
-            calle2: string,
-            ciudad: string,
-            estado: string,
-            zip: string
+            calle1,
+            calle2,
+            ciudad,
+            estado,
+            zip
         })
-    }
-    private validateStringsExists(stringsToCompare: [string]): boolean {
-        const validStrings = stringsToCompare.map(s => {
-            if (s === "" || s === null || s === undefined) {
-                return false
-            } else{
-                return true
-            }
-        })
-        if validStrings.indexOf(false) > -1 {
-            return false
-        }else {
-            return true
-        }
     }
 }

@@ -1,3 +1,6 @@
+import { ValueObject } from "../../ClasesBase/ValueObject"
+import { ExcepcionRolInvalido } from "../excepciones/ExcepcionRolInvalido"
+
 interface RolPropiedades {
     nombre: string
 }
@@ -6,30 +9,19 @@ export class Rol extends ValueObject<RolPropiedades> {
     constructor (propiedades: RolPropiedades) {
         super(propiedades)
     }
-    public static create(
+    public static crear(
         nombre: string
     ){
         if(
-            validateStringsExists([nombre])
+            nombre === "" || nombre === null || nombre === undefined
         ){
-            console.log("Error")
+            throw new ExcepcionRolInvalido<typeof nombre>(
+                `El valor nombre: ${nombre} es invalido, no pueden estar vacio`,
+                nombre
+            )
         }
         return new Rol({
-            nombre: string
+            nombre
         })
-    }
-    private validateStringsExists(stringsToCompare: [string]): boolean {
-        const validStrings = stringsToCompare.map(s => {
-            if (s === "" || s === null || s === undefined) {
-                return false
-            } else{
-                return true
-            }
-        })
-        if validStrings.indexOf(false) > -1 {
-            return false
-        }else {
-            return true
-        }
     }
 }

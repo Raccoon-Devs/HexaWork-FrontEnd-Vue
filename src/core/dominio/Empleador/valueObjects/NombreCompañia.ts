@@ -1,23 +1,31 @@
+import { ValueObject } from "../../ClasesBase/ValueObject"
+import { ExcepcionNombreCompañiaInvalida } from "../excepciones/ExcepcionNombreCompañiaInvalida"
+
 interface NombreCompañiaPropiedades {
     nombre: String,
     rif: String
 }
 
 export class NombreCompañia extends ValueObject<NombreCompañiaPropiedades> {
-    constructor (propiedades: TituloOfertaPropiedades) {
+    constructor (propiedades: NombreCompañiaPropiedades) {
         super(propiedades)
-        //this.titulo = props.titulo
     }
-    public static create(nombre: string, rif: string){
-        if(
-            nombre === "" || nombre === null || nombre === undefined ||
-            rif === "" || rif === null || rif === undefined ||
-        ){
-            console.log("Error")
+    public static crear(nombre: string, rif: string){
+        if (nombre === "" || nombre === null || nombre === undefined) {
+            throw new ExcepcionNombreCompañiaInvalida<typeof nombre>(
+                `El valor nombre: ${nombre} es invalido, no pueden estar vacio`,
+                nombre
+            )
         }
-        return new NombreConpañia({
-            nombre: nombre,
-            rif: rif
+        if (rif === "" || rif === null || rif === undefined) {
+            throw new ExcepcionNombreCompañiaInvalida<typeof rif>(
+                `El valor rif: ${rif} es invalido, no pueden estar vacio`,
+                rif
+            )
+        }
+        return new NombreCompañia({
+            nombre,
+            rif
         })
     }
 }
