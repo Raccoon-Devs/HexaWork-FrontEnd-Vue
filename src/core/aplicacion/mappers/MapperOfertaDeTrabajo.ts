@@ -15,6 +15,7 @@ export class MappearOfertaDeTrabajo extends Mapper{
             descripcion: oferta.obtenerDescripcion(),
             fechaPublicacion: oferta.obtenerFechaPublicacion(),
             id: oferta.obtenerId(),
+            empleador: {nombre: oferta.propiedades.empleador.propiedades.nombreEmpresa, id: oferta.propiedades.empleador.obtenerId()}
             //empleador: MappearEmpleador.paraInfraestructura(oferta.obtenerEmpleador())
         }
     }

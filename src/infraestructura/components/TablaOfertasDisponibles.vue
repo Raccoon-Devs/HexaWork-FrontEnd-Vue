@@ -1,5 +1,6 @@
 <template>
 	<v-container>
+		<v-btn @click="listarOfertas">a</v-btn>
 		<v-card class="py-4 ma-sm-9" color="#F5F5F5" elevation="4" shaped>
 			<v-card-title class="grey--text text--darken-2"> 
 					Consultar Ofertas de Trabajo 
@@ -38,6 +39,9 @@
 
 <script lang="ts">
   import Vue from 'vue'
+  import {UIPuerto} from '../../core/aplicacion/ui/UIPuerto'
+  import {MostrarOfertasDeTrabajo} from '../../core/aplicacion/servicios/MostrarOfertasDeTrabajo'
+  
 
   export default Vue.extend({
     name: 'TablaOfertasDisponibles',
@@ -45,7 +49,7 @@
     data: () => ({
 			ofertas: [
 				{
-					id: 1,
+					id: "1",
 					nombre: 'Mantenimiento de impresoras', 
 					descripcion: 'Mantenimiento de impresoras', 
 					fecha_inicio: '23/06/2021', 
@@ -53,7 +57,7 @@
 					pago: '$10 por hora'
 				},
 				{
-					id: 2,
+					id: "2",
 					nombre: 'Mantenimiento de computadoras', 
 					descripcion: 'Mantenimiento de computadoras', 
 					fecha_inicio: '24/06/2021', 
@@ -61,7 +65,7 @@
 					pago: '$20 por hora'
 				},
 				{
-					id: 3,
+					id: "3",
 					nombre: 'Mantenimiento de monitores', 
 					descripcion: 'Mantenimiento de monitores', 
 					fecha_inicio: '25/06/2021', 
@@ -120,6 +124,22 @@
 			eliminarOferta(id: number) {
 				const index = this.ofertas.findIndex(o => o.id == id)
 				this.ofertas.splice(index,1)
+			},
+			listarOfertas(){
+				let controlador: UIPuerto = new MostrarOfertasDeTrabajo()
+				let ofertasEnElRepo = controlador.listarOfertasUI()
+				//console.log(ofertasEnElRepo)
+				ofertasEnElRepo.forEach(oferta => {
+					this.ofertas.push({
+						id: oferta.id.valor,
+						nombre: oferta.titulo, 
+						descripcion: oferta.descripcion.propiedades.descripcion, 
+						fecha_inicio: oferta.fechaLimite, 
+						fecha_fin: '28/06/2021', 
+						pago: oferta.remuneracion.monto
+					})
+				})
+				
 			}
 		}
   })

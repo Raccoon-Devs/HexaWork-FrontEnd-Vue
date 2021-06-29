@@ -36,7 +36,7 @@ type NombreEmpresaType = {
 export class Empleador extends Entidad<EmpleadorPropiedades> {
 
     constructor (propiedades: EmpleadorPropiedades) {
-        super(propiedades)
+        super(propiedades, propiedades.IDEmpleador)
     }
 
     obtenerId(): IDEmpleador {

@@ -117,12 +117,11 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     ): OfertaDeTrabajo
         
         {
-    
         return new OfertaDeTrabajo(
             {
                 id: IDOferta.crear(atributos.id),
                 titulo: TituloOferta.crear(atributos.titulo),
-                empleador: Empleador.crear(atributos.empleador.nombreEmpresa, atributos.empleador.direccion, atributos.empleador.infoEmpleador, atributos.empleador.rol.nombre, atributos.empleador.IDEmpleador.aString()),
+                empleador: Empleador.crear(atributos.empleador.nombreEmpresa, atributos.empleador.direccion, atributos.empleador.infoEmpleador, atributos.empleador.rol.nombre, `${Object.values(atributos.empleador.IDEmpleador)}`),
                 direccion: Direccion.crear(atributos.direccion.calle1, atributos.direccion.calle2, atributos.direccion.ciudad, atributos.direccion.ciudad, atributos.direccion.zip),
                 fechaLimite: TiempoLimitePostulacion.crear(atributos.fechaLimite),
                 duracion: Duracion.crear(atributos.duracion),
