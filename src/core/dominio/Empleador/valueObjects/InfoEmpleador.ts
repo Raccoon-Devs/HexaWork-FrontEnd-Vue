@@ -1,7 +1,7 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
 import { ExcepcionInfoEmpleadorInvalida } from "../excepciones/ExcepcionInfoEmpleadorInvalida"
 
-interface InfoEmpleadorPropiedades {
+export interface InfoEmpleadorPropiedades {
     nombreCompleto: string,
     cargoDeTrabajo: string,
     numeroDeTelefono: string,

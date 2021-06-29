@@ -5,7 +5,7 @@ import { InfoEmpleador } from "./valueObjects/InfoEmpleador"
 import { Rol } from "./valueObjects/Rol"
 import { IDEmpleador } from "./valueObjects/IDEmpleador"
 
-interface EmpleadorPropiedades {
+export interface EmpleadorPropiedades {
     IDEmpleador: IDEmpleador
     nombreEmpresa: NombreCompañia,
     direccion: Direccion,
@@ -36,7 +36,7 @@ type NombreEmpresaType = {
 export class Empleador extends Entidad<EmpleadorPropiedades> {
 
     constructor (propiedades: EmpleadorPropiedades) {
-        super(propiedades)
+        super(propiedades, propiedades.IDEmpleador)
     }
 
     obtenerId(): IDEmpleador {

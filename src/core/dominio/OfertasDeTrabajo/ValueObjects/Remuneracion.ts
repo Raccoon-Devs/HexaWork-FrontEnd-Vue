@@ -1,7 +1,7 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
 import { ExcepcionRemuneracionInvalida } from "../Excepciones/ExcepcionRemuneracionInvalida"
 
-interface RemuneracionPropiedades {
+export interface RemuneracionPropiedades {
     monto: number,
     frecuencia: string,
     divisa: string
@@ -23,6 +23,10 @@ export class Remuneracion extends ValueObject<RemuneracionPropiedades> {
 
     obtenerDivisa(): string{
         return this.propiedades.divisa
+    }
+
+    obtenerRemuneracion(): RemuneracionPropiedades{
+        return this.propiedades
     }
 
     public static crear(monto: number, frecuencia: string, divisa:string): Remuneracion{

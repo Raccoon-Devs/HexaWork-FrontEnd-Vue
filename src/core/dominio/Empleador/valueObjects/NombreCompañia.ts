@@ -1,9 +1,9 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
 import { ExcepcionNombreCompañiaInvalida } from "../excepciones/ExcepcionNombreCompañiaInvalida"
 
-interface NombreCompañiaPropiedades {
-    nombre: String,
-    rif: String
+export interface NombreCompañiaPropiedades {
+    nombre: string,
+    rif: string
 }
 
 export class NombreCompañia extends ValueObject<NombreCompañiaPropiedades> {

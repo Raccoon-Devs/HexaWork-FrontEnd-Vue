@@ -1,4 +1,5 @@
 import {ValueObject} from "../ClasesBase/ValueObject"
+import { DireccionPropiedades } from "../Empleador/valueObjects/Direccion"
 
 interface DireccionOfertaPropiedades {
     calle1: string
@@ -14,24 +15,28 @@ export class Direccion extends ValueObject<DireccionOfertaPropiedades> {
         super(propiedades)
     }
 
-    obtenerCalle1(): string{
-        return this.propiedades.calle1
-    }
+    // obtenerCalle1(): string{
+    //     return this.propiedades.calle1
+    // }
 
-    obtenerCalle2(): string{
-        return this.propiedades.calle2
-    }
+    // obtenerCalle2(): string{
+    //     return this.propiedades.calle2
+    // }
 
-    obtenerCiudad(): string{
-        return this.propiedades.ciudad
-    }
+    // obtenerCiudad(): string{
+    //     return this.propiedades.ciudad
+    // }
 
-    obtenerEstadao(): string{
-        return this.propiedades.estado
-    }
+    // obtenerEstadao(): string{
+    //     return this.propiedades.estado
+    // }
 
-    obtenerZip(): string{
-        return this.propiedades.zip
+    // obtenerZip(): string{
+    //     return this.propiedades.zip
+    // }
+
+    obtenerDireccion(): DireccionPropiedades{
+        return this.propiedades
     }
 
     public static crear(calle1: string, calle2:string, ciudad:string, estado:string, zip:string): Direccion{
