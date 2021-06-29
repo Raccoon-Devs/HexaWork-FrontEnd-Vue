@@ -3,7 +3,7 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import CrearOferta from '../views/CrearOferta.vue'
 
-import NavegacionMenu from '../components/NavegacionMenu'
+import NavegacionMenu from '../components/NavegacionMenu.vue'
 
 Vue.use(VueRouter)
 
