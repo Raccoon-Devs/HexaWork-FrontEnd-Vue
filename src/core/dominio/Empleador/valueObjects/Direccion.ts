@@ -1,7 +1,7 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
 import { ExcepcionDireccionInvalida } from "../excepciones/ExcepcionDireccionInvalida"
 
-interface DireccionPropiedades {
+export interface DireccionPropiedades {
     calle1: string,
     calle2: string,
     ciudad: string,

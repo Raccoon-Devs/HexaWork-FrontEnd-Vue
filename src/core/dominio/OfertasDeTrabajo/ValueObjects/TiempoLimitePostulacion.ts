@@ -1,6 +1,6 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
 
-interface TiempoLimitePostulacionPropiedades {
+export interface TiempoLimitePostulacionPropiedades {
     fechaLimite: Date
 }
   

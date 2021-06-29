@@ -1,0 +1,1 @@
+{"version":3,"file":"ExcepcionCargoInvalido.js","sourceRoot":"","sources":["ExcepcionCargoInvalido.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,SAAS,EAAC,MAAM,4BAA4B,CAAA;AAEpD,MAAM,OAAO,sBAA0B,SAAQ,SAAY;IAEvD,YAAY,OAAe,EAAE,IAAO;QAClC,KAAK,CAAC,OAAO,EAAE,IAAI,CAAC,CAAC;QACrB,IAAI,CAAC,OAAO,GAAG,OAAO,CAAA;IACxB,CAAC;CACJ"}

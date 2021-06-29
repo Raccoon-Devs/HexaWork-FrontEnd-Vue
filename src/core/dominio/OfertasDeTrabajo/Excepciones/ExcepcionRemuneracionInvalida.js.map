@@ -1,0 +1,1 @@
+{"version":3,"file":"ExcepcionRemuneracionInvalida.js","sourceRoot":"","sources":["ExcepcionRemuneracionInvalida.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,SAAS,EAAC,MAAM,4BAA4B,CAAA;AAEpD,MAAM,OAAO,6BAAiC,SAAQ,SAAY;IAE9D,YAAY,OAAe,EAAE,IAAO;QAClC,KAAK,CAAC,OAAO,EAAE,IAAI,CAAC,CAAC;QACrB,IAAI,CAAC,OAAO,GAAG,OAAO,CAAA;IACxB,CAAC;CACJ"}

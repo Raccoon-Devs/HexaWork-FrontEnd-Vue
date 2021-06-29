@@ -1,0 +1,1 @@
+{"version":3,"file":"ExcepcionNombreCompañiaInvalida.js","sourceRoot":"","sources":["ExcepcionNombreCompañiaInvalida.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,4BAA4B,CAAA;AAEtD,MAAM,OAAO,+BAAmC,SAAQ,SAAY;IAEhE,YAAY,OAAe,EAAE,IAAO;QAClC,KAAK,CAAC,OAAO,EAAE,IAAI,CAAC,CAAC;QACrB,IAAI,CAAC,OAAO,GAAG,OAAO,CAAA;IACxB,CAAC;CACJ"}
