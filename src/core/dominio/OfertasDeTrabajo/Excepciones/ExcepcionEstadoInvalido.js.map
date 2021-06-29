@@ -1,1 +1,0 @@
-{"version":3,"file":"ExcepcionEstadoInvalido.js","sourceRoot":"","sources":["ExcepcionEstadoInvalido.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,SAAS,EAAC,MAAM,4BAA4B,CAAA;AAEpD,MAAM,OAAO,uBAA2B,SAAQ,SAAY;IAExD,YAAY,OAAe,EAAE,IAAO;QAClC,KAAK,CAAC,OAAO,EAAE,IAAI,CAAC,CAAC;QACrB,IAAI,CAAC,OAAO,GAAG,OAAO,CAAA;IACxB,CAAC;CACJ"}
