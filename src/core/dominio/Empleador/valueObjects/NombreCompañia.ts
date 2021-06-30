@@ -10,6 +10,11 @@ export class NombreCompañia extends ValueObject<NombreCompañiaPropiedades> {
     constructor (propiedades: NombreCompañiaPropiedades) {
         super(propiedades)
     }
+
+    public obtenerNombreEmpresa():NombreCompañiaPropiedades{
+        return this.propiedades
+    }
+
     public static crear(nombre: string, rif: string){
         if (nombre === "" || nombre === null || nombre === undefined) {
             throw new ExcepcionNombreCompañiaInvalida<typeof nombre>(

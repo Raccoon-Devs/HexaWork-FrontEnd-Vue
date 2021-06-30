@@ -9,6 +9,11 @@ export class Rol extends ValueObject<RolPropiedades> {
     constructor (propiedades: RolPropiedades) {
         super(propiedades)
     }
+
+    obtenerRol(): string {
+        return this.propiedades.nombre
+    }
+
     public static crear(
         nombre: string
     ){

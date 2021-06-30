@@ -27,7 +27,7 @@ export interface OfertaDeTrabajoPropiedades {
     vacante: Vacante
     cargo: Cargo
     descripcion: Descripcion
-    fechaPublicacion: FechaPublicacion
+    fechaPublicacion: FechaPublicacion | null
 }
 
 type direccionOferta = {
@@ -83,7 +83,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         return this.propiedades.descripcion
     }
 
-    obtenerFechaPublicacion(): FechaPublicacion{
+    obtenerFechaPublicacion(): FechaPublicacion | null{
         return this.propiedades.fechaPublicacion
     }
 
@@ -117,20 +117,21 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     ): OfertaDeTrabajo
         
         {
+        console.log(atributos.empleador.id)
         return new OfertaDeTrabajo(
             {
                 id: IDOferta.crear(atributos.id),
                 titulo: TituloOferta.crear(atributos.titulo),
-                empleador: Empleador.crear(atributos.empleador.nombreEmpresa, atributos.empleador.direccion, atributos.empleador.infoEmpleador, atributos.empleador.rol.nombre, `${Object.values(atributos.empleador.IDEmpleador)}`),
+                empleador: Empleador.crear(atributos.empleador.nombreEmpresa, atributos.empleador.direccion.propiedades, atributos.empleador.infoEmpleador.propiedades, atributos.empleador.rol.propiedades.nombre, atributos.empleador.id),
                 direccion: Direccion.crear(atributos.direccion.calle1, atributos.direccion.calle2, atributos.direccion.ciudad, atributos.direccion.ciudad, atributos.direccion.zip),
                 fechaLimite: TiempoLimitePostulacion.crear(atributos.fechaLimite),
                 duracion: Duracion.crear(atributos.duracion),
                 remuneracion: Remuneracion.crear(atributos.remuneracion.monto, atributos.remuneracion.frecuencia, atributos.remuneracion.divisa),
                 estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo.crear(atributos.estadoOfertaDeTrabajo),
                 vacante: Vacante.crear(atributos.vacante),
-                cargo: Cargo.crear(atributos.cargo),
-                descripcion: Descripcion.crear(atributos.descripcion),
-                fechaPublicacion: FechaPublicacion.crear(atributos.fechaPublicacion)
+                cargo: Cargo.crear(atributos.cargo.propiedades.cargo),
+                descripcion: Descripcion.crear(atributos.descripcion.propiedades.descripcion),
+                fechaPublicacion: atributos.fechaPublicacion? FechaPublicacion.crear(atributos.fechaPublicacion.propiedades.fechaPublicacion) : null
             }
         )
     }
