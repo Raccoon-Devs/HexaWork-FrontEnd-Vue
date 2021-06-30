@@ -1,6 +1,6 @@
 <template>
 	<v-container>
-		<v-btn @click="listarOfertas">a</v-btn>
+		<!-- <v-btn @click="listarOfertas">a</v-btn> -->
 		<v-card class="py-4 ma-sm-9" color="#F5F5F5" elevation="4" shaped>
 			<v-card-title class="grey--text text--darken-2"> 
 					Consultar Ofertas de Trabajo 
@@ -25,11 +25,20 @@
 				loading-text="Cargando datos..."
 				locale="es-VE"
 				fixed-header
-				:loading="tablaCargando"
 			>
+				<template v-slot:item.fechaPublicacion="{ item }">
+					<span class="grey--text" v-if="!item.fechaPublicacion">Sin definir</span>
+					<span v-text="item.fechaPublicacion.propiedades.fechaPublicacion" v-else></span>
+				</template>
+				<template v-slot:item.remuneracion="{ item }">
+					<span v-text="`$ ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`" v-if="item.remuneracion.divisa == 'dolar'"></span>
+					<span v-text="`€ ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`" v-else-if="item.remuneracion.divisa == 'euro'"></span>
+					<span v-text="`Bs. ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`" v-else></span>
+				</template>
 				<template v-slot:item.acciones="{ item }">
 					<v-icon dense color="primary"> mdi-pencil </v-icon>
 					<v-icon dense color="primary"> mdi-eye </v-icon>
+					<v-icon dense color="green" @click="publicarOferta(item.id)" v-if="!item.fechaPublicacion"> mdi-clipboard-check </v-icon>
 					<v-icon dense color="red" @click="eliminarOferta(item.id)"> mdi-delete </v-icon>
 				</template>
 			</v-data-table>
@@ -38,76 +47,52 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue'
-  import {UIPuerto} from '../../core/aplicacion/ui/UIPuerto'
-  import {MostrarOfertasDeTrabajo} from '../../core/aplicacion/servicios/MostrarOfertasDeTrabajo'
-  
+	import Vue from 'vue'
+	import {UIPuerto} from '../../core/aplicacion/ui/UIPuerto'
+	import { MostrarOfertasDeTrabajo } from '../../core/aplicacion/servicios/MostrarOfertasDeTrabajo'
+	import { UIPuertoPublicarOferta } from '../../core/aplicacion/ui/UIPuertoPublicarOferta'
+	import { PublicarOfertaDeTrabajo } from '../../core/aplicacion/servicios/PublicarOfertaDeTrabajo'
 
-  export default Vue.extend({
+	export default Vue.extend({
     name: 'TablaOfertasDisponibles',
 
     data: () => ({
-			ofertas: [
-				{
-					id: "1",
-					nombre: 'Mantenimiento de impresoras', 
-					descripcion: 'Mantenimiento de impresoras', 
-					fecha_inicio: '23/06/2021', 
-					fecha_fin: '28/06/2021', 
-					pago: '$10 por hora'
-				},
-				{
-					id: "2",
-					nombre: 'Mantenimiento de computadoras', 
-					descripcion: 'Mantenimiento de computadoras', 
-					fecha_inicio: '24/06/2021', 
-					fecha_fin: '29/06/2021', 
-					pago: '$20 por hora'
-				},
-				{
-					id: "3",
-					nombre: 'Mantenimiento de monitores', 
-					descripcion: 'Mantenimiento de monitores', 
-					fecha_inicio: '25/06/2021', 
-					fecha_fin: '30/06/2021', 
-					pago: '$30 por hora'
-				}
-			],
+			ofertas: [],
 			columnas_tabla: [
 				{ 
-					text: 'Nombre', 
+					text: 'Título', 
 					align: 'center',
 					sortable: true,
 					filterable: true,
-					value: 'nombre',
+					value: 'titulo',
 					class: 'primary--text font-weight-bold',
 				},
 				{
 					text: 'Descripción',
 					align: 'center',
 					sortable: false,
-					value: 'descripcion',
+					value: 'descripcion.propiedades.descripcion',
 					class: 'primary--text font-weight-bold'
 				},
 				{ 
-					text: 'Fecha de Inicio',
+					text: 'Fecha de Publicación',
 					align: 'center',
 					sortable: true,
-					value: 'fecha_inicio',
+					value: 'fechaPublicacion',
 					class: 'primary--text font-weight-bold',
 				},
 				{ 
-					text: 'Fecha Fin',
+					text: 'Fecha Límite de Postulación',
 					align: 'center',
 					sortable: true,
-					value: 'fecha_fin',
+					value: 'fechaLimite',
 					class: 'primary--text font-weight-bold'
 				},
 				{ 
 					text: 'Pago',
 					align: 'center',
 					sortable: true,
-					value: 'pago',
+					value: 'remuneracion',
 					class: 'primary--text font-weight-bold'
 				},
 				{
@@ -121,28 +106,27 @@
 			busqueda: '',
     }),
 		methods: {
-			eliminarOferta(id: number) {
-				const index = this.ofertas.findIndex(o => o.id == id)
+			publicarOferta(id: any) {
+				const oferta = this.ofertas.find((o: any) => o.id == id)
+				const puertoOferta: UIPuertoPublicarOferta = new PublicarOfertaDeTrabajo()
+				puertoOferta.publicarOfertaUI(oferta)
+				this.listarOfertas()
+			},
+			eliminarOferta(id: any) {
+				const index = this.ofertas.findIndex((o: any) => o.id == id)
 				this.ofertas.splice(index,1)
 			},
 			listarOfertas(){
 				let controlador: UIPuerto = new MostrarOfertasDeTrabajo()
 				let ofertasEnElRepo = controlador.listarOfertasUI()
-				//console.log(ofertasEnElRepo)
-			
 				this.ofertas =[]
-				ofertasEnElRepo.forEach(oferta => {
-					this.ofertas.push({
-						id: oferta.id.valor,
-						nombre: oferta.titulo, 
-						descripcion: oferta.descripcion.propiedades.descripcion, 
-						fecha_inicio: oferta.fechaLimite, 
-						fecha_fin: '28/06/2021', 
-						pago: oferta.remuneracion.monto
-					})
+				ofertasEnElRepo.forEach((oferta: any) => {
+					this.ofertas.push(oferta)
 				})
-				
 			}
+		},
+		mounted() {
+			this.listarOfertas()
 		}
   })
 </script>

@@ -1,6 +1,6 @@
 import { APIPuerto } from "../aplicacion/api/APIPuerto";
 import { OfertaParaDominio } from "../dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
-import { obtenerOfertas, crearOferta } from "./persistencia/ofertas";
+import { obtenerOfertas, crearOferta, publicarOferta } from "./persistencia/ofertas";
 
 export class AdaptadorMockOferta extends APIPuerto{
     
@@ -11,5 +11,9 @@ export class AdaptadorMockOferta extends APIPuerto{
     public crearOferta(ofertaDeTrabajo: OfertaParaDominio){
 
         crearOferta(ofertaDeTrabajo)
+    }
+
+    public publicarOferta(ofertaDeTrabajo: OfertaParaDominio){
+        publicarOferta(ofertaDeTrabajo)
     }
 }
