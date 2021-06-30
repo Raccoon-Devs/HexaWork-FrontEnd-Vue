@@ -129,6 +129,8 @@
 				let controlador: UIPuerto = new MostrarOfertasDeTrabajo()
 				let ofertasEnElRepo = controlador.listarOfertasUI()
 				//console.log(ofertasEnElRepo)
+			
+				this.ofertas =[]
 				ofertasEnElRepo.forEach(oferta => {
 					this.ofertas.push({
 						id: oferta.id.valor,

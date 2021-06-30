@@ -1,5 +1,6 @@
 import { OfertaDeTrabajo } from "@/core/dominio/OfertasDeTrabajo/OfertaDeTrabajo";
 import {Mapper} from "./Mapper"
+import { MappearEmpleador } from "./MapperEmpleador";
 export class MappearOfertaDeTrabajo extends Mapper{
 
     public paraInfraestructura(oferta: OfertaDeTrabajo){
@@ -15,8 +16,8 @@ export class MappearOfertaDeTrabajo extends Mapper{
             descripcion: oferta.obtenerDescripcion(),
             fechaPublicacion: oferta.obtenerFechaPublicacion(),
             id: oferta.obtenerId(),
-            empleador: {nombre: oferta.propiedades.empleador.propiedades.nombreEmpresa, id: oferta.propiedades.empleador.obtenerId()}
-            //empleador: MappearEmpleador.paraInfraestructura(oferta.obtenerEmpleador())
+            //empleador: {nombre: oferta.propiedades.empleador.propiedades.nombreEmpresa, id: oferta.propiedades.empleador.obtenerId()}
+            empleador: new MappearEmpleador().paraInfraestructura(oferta.obtenerEmpleador())
         }
     }
 }

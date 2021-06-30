@@ -1,8 +1,8 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { NombreCompañia } from "./valueObjects/NombreCompañia"
+import { NombreCompañia, NombreCompañiaPropiedades } from "./valueObjects/NombreCompañia"
 import { Direccion } from "./valueObjects/Direccion"
 import { InfoEmpleador } from "./valueObjects/InfoEmpleador"
-import { Rol } from "./valueObjects/Rol"
+import { Rol, RolPropiedades } from "./valueObjects/Rol"
 import { IDEmpleador } from "./valueObjects/IDEmpleador"
 
 export interface EmpleadorPropiedades {
@@ -43,19 +43,19 @@ export class Empleador extends Entidad<EmpleadorPropiedades> {
         return this.propiedades.IDEmpleador
     }
 
-    obtenerNombreEmpresa(): NombreCompañia {
-        return this.propiedades.nombreEmpresa
+    obtenerNombreEmpresa(): NombreCompañiaPropiedades {
+        return this.propiedades.nombreEmpresa.obtenerNombreEmpresa()
     }
 
-    direccion(): Direccion {
+    obtenerDireccion(): Direccion {
         return this.propiedades.direccion
     }
 
-    infoEmpleador(): InfoEmpleador {
+    obtenerInfoEmpleador(): InfoEmpleador {
         return this.propiedades.infoEmpleador
     }
 
-    rol(): Rol {
+    obtenerRol(): Rol {
         return this.propiedades.rol
     }
 

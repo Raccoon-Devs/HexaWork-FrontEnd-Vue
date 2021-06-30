@@ -14,27 +14,27 @@ export class MostrarOfertasDeTrabajo extends UIPuerto{
         
         this.listarOfertasApi()
 
-        //3 mapear
         const mapper: Mapper = new MappearOfertaDeTrabajo()
         const ofertas: OfertaParaDominio[] = []
         this.resultado.forEach((oferta : any) => {
             ofertas.push(mapper.paraInfraestructura(oferta))
         })
+      
         return ofertas
         
     }
 
     public listarOfertasApi():void{
-        //1
         const apiPuerto: APIPuerto = new AdaptadorMockOferta()
-        const ofertas = apiPuerto.listarOfertas()
+        const ofertas = JSON.parse(apiPuerto.listarOfertas())
+        // alert(ofertas[0])
+        // alert(ofertas[0].empleador.nombreEmpresa.nombre)
+        console.log(ofertas)
 
-        //2 foreach
         this.resultado=[]
         ofertas.forEach((oferta : any) => {
             this.resultado.push(ServicioListarOfertasDeTrabajo.pasarADominio(oferta))
         })
-        //this.resultado = ServicioListarOfertasDeTrabajo.pasarADominio(ofertas)
     }
     
 }
