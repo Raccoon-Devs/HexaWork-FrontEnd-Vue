@@ -46,7 +46,7 @@ type remuneracionOferta = {
 
 
 export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
-    
+
     private constructor (propiedades: OfertaDeTrabajoPropiedades) {
         super(propiedades, propiedades.id)
     }
@@ -54,7 +54,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     obtenerTitulo(): string{
         return this.propiedades.titulo.obtenerTitulo()
     }
-    
+
     obtenerDireccion(): DireccionPropiedades{
         return this.propiedades.direccion.obtenerDireccion()
     }
@@ -99,6 +99,33 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         return this.propiedades.empleador
     }
 
+    public static update(
+        ofertaDeTrabajo: OfertaDeTrabajo,
+        atributos: {
+            titulo : string,
+            direccion: direccionOferta,
+            fechaLimite: Date,
+            duracion: number,
+            remuneracion: remuneracionOferta,
+            estadoOfertaDeTrabajo: number,
+            vacante: number,
+            cargo: string,
+            descripcion: string,
+            fechaPublicacion?: Date,
+            id? : string,
+            empleador: EmpleadorParaDominio
+        }
+    ): OfertaDeTrabajo {
+        console.log('atributos Oferta de trabajo');
+        console.log(atributos);
+        console.log('ofertaDeTrabajo Oferta de trabajo');
+        console.log(ofertaDeTrabajo);
+
+        return new OfertaDeTrabajo(
+            {...ofertaDeTrabajo}
+        )
+    }
+
     public static crear(
         atributos: {
             titulo : string,
@@ -115,7 +142,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
             empleador: EmpleadorParaDominio
         }
     ): OfertaDeTrabajo
-        
+
         {
         console.log(atributos.empleador.id)
         return new OfertaDeTrabajo(
@@ -131,7 +158,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
                 vacante: Vacante.crear(atributos.vacante),
                 cargo: Cargo.crear(atributos.cargo.propiedades.cargo),
                 descripcion: Descripcion.crear(atributos.descripcion.propiedades.descripcion),
-                fechaPublicacion: atributos.fechaPublicacion? FechaPublicacion.crear(atributos.fechaPublicacion.propiedades.fechaPublicacion) : null
+                fechaPublicacion: atributos.fechaPublicacion? FechaPublicacion.crear(atributos.fechaPublicacion) : null
             }
         )
     }
