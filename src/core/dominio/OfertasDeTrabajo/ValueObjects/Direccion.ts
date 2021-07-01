@@ -35,6 +35,10 @@ export class Direccion extends ValueObject<DireccionOfertaPropiedades> {
         return this.propiedades.zip
     }
 
+    obtenerDireccion(): DireccionOfertaPropiedades{
+        return this.propiedades
+    }
+
     public static crear(calle1: string, calle2:string, ciudad:string, estado:string, zip:string): Direccion{
 
         if(calle1 === "" || calle1 === null || calle1 === undefined){

@@ -1,7 +1,7 @@
 import {Entidad} from "../ClasesBase/Entidad"
 import {IDOferta} from "./ValueObjects/IDOferta"
 import {TituloOferta} from "./ValueObjects/TituloOferta"
-import {Direccion} from "../ValueObjectsComunes/Direccion"
+import {Direccion} from "../OfertasDeTrabajo/ValueObjects/Direccion"
 import {TiempoLimitePostulacion, TiempoLimitePostulacionPropiedades} from "./ValueObjects/TiempoLimitePostulacion"
 import {Duracion} from "./ValueObjects/Duracion"
 import {Remuneracion, RemuneracionPropiedades} from "./ValueObjects/Remuneracion"
@@ -117,13 +117,12 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     ): OfertaDeTrabajo
         
         {
-        console.log(atributos.empleador.id)
         return new OfertaDeTrabajo(
             {
                 id: IDOferta.crear(atributos.id),
                 titulo: TituloOferta.crear(atributos.titulo),
                 empleador: Empleador.crear(atributos.empleador.nombreEmpresa, atributos.empleador.direccion.propiedades, atributos.empleador.infoEmpleador.propiedades, atributos.empleador.rol.propiedades.nombre, atributos.empleador.id),
-                direccion: Direccion.crear(atributos.direccion.calle1, atributos.direccion.calle2, atributos.direccion.ciudad, atributos.direccion.ciudad, atributos.direccion.zip),
+                direccion: Direccion.crear(atributos.direccion.calle1, atributos.direccion.calle2, atributos.direccion.ciudad, atributos.direccion.estado, atributos.direccion.zip),
                 fechaLimite: TiempoLimitePostulacion.crear(atributos.fechaLimite),
                 duracion: Duracion.crear(atributos.duracion),
                 remuneracion: Remuneracion.crear(atributos.remuneracion.monto, atributos.remuneracion.frecuencia, atributos.remuneracion.divisa),
