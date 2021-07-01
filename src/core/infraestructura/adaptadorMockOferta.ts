@@ -10,6 +10,6 @@ export class AdaptadorMockOferta extends APIPuerto{
 
     public crearOferta(ofertaDeTrabajo: OfertaParaDominio){
 
-        crearOferta(ofertaDeTrabajo)
+        return crearOferta(ofertaDeTrabajo)
     }
 }

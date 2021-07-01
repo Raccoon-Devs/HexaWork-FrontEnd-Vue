@@ -1,5 +1,6 @@
 import { CrearOfertaDeTrabajo } from "../../aplicacion/servicios/CrearOfertaDeTrabajo";
 import { UIPuertoCrearOferta } from "../..//aplicacion/ui/UIPuertoCrearOferta";
+import { AdaptadorTUOferta } from "../adaptadorTUOferta";
 
 
 test('Crea una oferta de trabajo', () => {
@@ -8,50 +9,62 @@ test('Crea una oferta de trabajo', () => {
     const oferta = {
         descripcion: {
             propiedades: {
-                descripcion: "descripcion"
+                descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
             }
         },
-        direccion: {calle1: "a", calle2: "a", ciudad: "a", estado:"a", zip:"a"},
-        duracion: "a",
+        direccion: {
+            calle1: "Principal",
+            calle2: "Oeste",
+            ciudad: "Caracas",
+            estado:"Distrito Capital",
+            zip:"1011"
+        },
+        duracion: "8",
         fechaLimite: "2020-05-05",
-        titulo: "a",
-        vacante: "5",
-        remuneracion: {monto: "5", divisa:"dolar", frecuencia:"hora"},
+        titulo: "Se necesita desarrollador web",
+        vacante: "1",
+        remuneracion: {
+            monto: "700",
+            divisa:"dolar",
+            frecuencia:"mes"
+        },
         cargo: {
             propiedades: {
-                cargo : "cargo"
+                cargo : "Desarrollador Web Junior"
             }
         },
         estadoOfertaDeTrabajo: 0,
         empleador: {
             id: "5",
             nombreEmpresa: {
-                nombre: "nombreEmpresa",
-                rif: "rif"
+                nombre: "Raccoon Developers",
+                rif: "J500805050"
             },
             direccion: {
                 propiedades: {
-                    calle1: "calle1",
-                    calle2: "calle2",
-                    ciudad: "ciudad",
-                    estado: "estado",
-                    zip: "zip"
+                    calle1: "Raccoon",
+                    calle2: "Oeste",
+                    ciudad: "Caracas",
+                    estado: "Distrito Capital",
+                    zip: "1011"
                 }
             } ,
             infoEmpleador: {
                 propiedades: {
-                    nombreCompleto: "string",
-                    cargoDeTrabajo: "string",
-                    numeroDeTelefono: "string",
-                    correo: "string"
+                    nombreCompleto: "Alejandro Daniel Pérez Verde",
+                    cargoDeTrabajo: "Desarrollador Senior",
+                    numeroDeTelefono: "+584141234567",
+                    correo: "alejandroperez@raccoondevelopers.com"
                 }
             },
-            rol:{ propiedades:{
-                nombre: "rolrolrolrol"
-            }}
+            rol:{ 
+                propiedades:{
+                    nombre: "Gerente"
+                }
+            }
         },
     }
-    expect(puertoOferta.crearOfertaUI(oferta)).toEqual({statusCode: 201, mensaje: "Oferta Creada Con éxito"});
+    expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTUOferta())).toEqual({statusCode: 201, mensaje: "Oferta Creada Con éxito"});
 });
 
 test('Muestra error al intentar crear una oferta de trabajo sin título', () => {
@@ -60,50 +73,62 @@ test('Muestra error al intentar crear una oferta de trabajo sin título', () => 
     const oferta = {
         descripcion: {
             propiedades: {
-                descripcion: "descripcion"
+                descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
             }
         },
-        direccion: {calle1: "a", calle2: "a", ciudad: "a", estado:"a", zip:"a"},
-        duracion: "a",
+        direccion: {
+            calle1: "Principal",
+            calle2: "Oeste", 
+            ciudad: "Caracas",
+            estado:"Distrito Capital",
+            zip:"1011"
+        },
+        duracion: "8",
         fechaLimite: "2020-05-05",
         titulo: "",
-        vacante: "5",
-        remuneracion: {monto: "5", divisa:"dolar", frecuencia:"hora"},
+        vacante: "1",
+        remuneracion: {
+            monto: "700",
+            divisa:"dolar",
+            frecuencia:"mes"
+        },
         cargo: {
             propiedades: {
-                cargo : "cargo"
+                cargo : "Desarrollador Web Junior"
             }
         },
         estadoOfertaDeTrabajo: 0,
         empleador: {
             id: "5",
             nombreEmpresa: {
-                nombre: "nombreEmpresa",
-                rif: "rif"
+                nombre: "Raccoon Developers",
+                rif: "J500805050"
             },
             direccion: {
                 propiedades: {
-                    calle1: "calle1",
-                    calle2: "calle2",
-                    ciudad: "ciudad",
-                    estado: "estado",
-                    zip: "zip"
+                    calle1: "Raccoon",
+                    calle2: "Oeste",
+                    ciudad: "Caracas",
+                    estado: "Distrito Capital",
+                    zip: "1011"
                 }
             } ,
             infoEmpleador: {
                 propiedades: {
-                    nombreCompleto: "string",
-                    cargoDeTrabajo: "string",
-                    numeroDeTelefono: "string",
-                    correo: "string"
+                    nombreCompleto: "Alejandro Daniel Pérez Verde",
+                    cargoDeTrabajo: "Desarrollador Senior",
+                    numeroDeTelefono: "+584141234567",
+                    correo: "alejandroperez@raccoondevelopers.com"
                 }
             },
-            rol:{ propiedades:{
-                nombre: "rolrolrolrol"
-            }}
+            rol:{ 
+                propiedades:{
+                    nombre: "Gerente"
+                }
+            }
         },
     }
-    expect(puertoOferta.crearOfertaUI(oferta)).toEqual({statusCode: 422, mensaje: "El titulo: \"\" es inválido, el título no puede estar vacío"});
+    expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTUOferta())).toEqual({statusCode: 422, mensaje: "El titulo: \"\" es inválido, el título no puede estar vacío"});
 });
 
 test('Muestra error al intentar crear una oferta de trabajo con un monto de remuneración negativo', () => {
@@ -112,49 +137,125 @@ test('Muestra error al intentar crear una oferta de trabajo con un monto de remu
     const oferta = {
         descripcion: {
             propiedades: {
-                descripcion: "descripcion"
+                descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
             }
         },
-        direccion: {calle1: "Principal", calle2: "Oeste", ciudad: "Caracas", estado:"Distrito Capital", zip:"1011"},
-        duracion: "a",
+        direccion: {
+            calle1: "Principal",
+            calle2: "Oeste", 
+            ciudad: "Caracas",
+            estado:"Distrito Capital",
+            zip:"1011"
+        },
+        duracion: "8",
         fechaLimite: "2020-05-05",
-        titulo: "Desarrollador de Software",
-        vacante: "5",
-        remuneracion: {monto: "-500", divisa:"dolar", frecuencia:"hora"},
+        titulo: "Desarrollador web",
+        vacante: "1",
+        remuneracion: {
+            monto: "-700",
+            divisa:"dolar",
+            frecuencia:"mes"
+        },
         cargo: {
             propiedades: {
-                cargo : "cargo"
+                cargo : "Desarrollador Web Junior"
             }
         },
         estadoOfertaDeTrabajo: 0,
         empleador: {
             id: "5",
             nombreEmpresa: {
-                nombre: "nombreEmpresa",
-                rif: "rif"
+                nombre: "Raccoon Developers",
+                rif: "J500805050"
             },
             direccion: {
                 propiedades: {
-                    calle1: "calle1",
-                    calle2: "calle2",
-                    ciudad: "ciudad",
-                    estado: "estado",
-                    zip: "zip"
+                    calle1: "Raccoon",
+                    calle2: "Oeste",
+                    ciudad: "Caracas",
+                    estado: "Distrito Capital",
+                    zip: "1011"
                 }
             } ,
             infoEmpleador: {
                 propiedades: {
-                    nombreCompleto: "string",
-                    cargoDeTrabajo: "string",
-                    numeroDeTelefono: "string",
-                    correo: "string"
+                    nombreCompleto: "Alejandro Daniel Pérez Verde",
+                    cargoDeTrabajo: "Desarrollador Senior",
+                    numeroDeTelefono: "+584141234567",
+                    correo: "alejandroperez@raccoondevelopers.com"
                 }
             },
-            rol:{ propiedades:{
-                nombre: "rolrolrolrol"
-            }}
+            rol:{ 
+                propiedades:{
+                    nombre: "Gerente"
+                }
+            }
         },
     }
-    expect(puertoOferta.crearOfertaUI(oferta)).toEqual({statusCode: 422, mensaje: "El monto: -500 es inválido, no puede ser negativo"});
+    expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTUOferta())).toEqual({statusCode: 422, mensaje: "El monto: -700 es inválido, no puede ser negativo"});
+});
+
+test('Muestra error al intentar crear una oferta de trabajo con un cargo vacío', () => {
+
+    const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
+    const oferta = {
+        descripcion: {
+            propiedades: {
+                descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
+            }
+        },
+        direccion: {
+            calle1: "Principal",
+            calle2: "Oeste", 
+            ciudad: "Caracas",
+            estado:"Distrito Capital",
+            zip:"1011"
+        },
+        duracion: "8",
+        fechaLimite: "2020-05-05",
+        titulo: "Desarrollador web",
+        vacante: "1",
+        remuneracion: {
+            monto: "700",
+            divisa:"dolar",
+            frecuencia:"mes"
+        },
+        cargo: {
+            propiedades: {
+                cargo : ""
+            }
+        },
+        estadoOfertaDeTrabajo: 0,
+        empleador: {
+            id: "5",
+            nombreEmpresa: {
+                nombre: "Raccoon Developers",
+                rif: "J500805050"
+            },
+            direccion: {
+                propiedades: {
+                    calle1: "Raccoon",
+                    calle2: "Oeste",
+                    ciudad: "Caracas",
+                    estado: "Distrito Capital",
+                    zip: "1011"
+                }
+            } ,
+            infoEmpleador: {
+                propiedades: {
+                    nombreCompleto: "Alejandro Daniel Pérez Verde",
+                    cargoDeTrabajo: "Desarrollador Senior",
+                    numeroDeTelefono: "+584141234567",
+                    correo: "alejandroperez@raccoondevelopers.com"
+                }
+            },
+            rol:{ 
+                propiedades:{
+                    nombre: "Gerente"
+                }
+            }
+        },
+    }
+    expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTUOferta())).toEqual({statusCode: 422, mensaje: "El cargo: \"\" es inválido, el cargo no puede estar vacío"});
 });
 

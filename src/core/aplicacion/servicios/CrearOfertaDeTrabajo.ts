@@ -12,7 +12,7 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
 
     private resultado:any
 
-    public crearOfertaUI(oferta: OfertaParaDominio){
+    public crearOfertaUI(oferta: OfertaParaDominio, apiPuerto: APIPuerto){
 
         try{
             const ofertaDominio = ServicioCrearOfertaDeTrabajo.pasarADominio(oferta)
@@ -20,13 +20,14 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
             const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
             
             /*Para los tests unitarios*/ 
-            return this.crearOfertaApi(new AdaptadorTUOferta(), ofertaApi)
+            //return this.crearOfertaApi(new AdaptadorTUOferta(), ofertaApi)
 
             /*Para los tests de integración*/
             //return this.crearOfertaApi(new AdaptadorTIOferta(), ofertaApi)
 
-            /*Para los tests de aceptació*/ 
+            /*Para los tests de aceptación*/ 
             //return this.crearOfertaApi(new AdaptadorMockOferta(), ofertaApi)
+            return this.crearOfertaApi(apiPuerto, ofertaApi)
 
             
             
