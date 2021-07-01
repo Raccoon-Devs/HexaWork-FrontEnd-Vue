@@ -383,7 +383,7 @@
             },
         }
         let respuesta = puertoOferta.crearOfertaUI(this.ofertaDeTrabajo, new AdaptadorMockOferta())
-        this.ofertaCreada.mostrar = true,
+        this.ofertaCreada.mostrar = true
         this.ofertaCreada.mensaje = respuesta.mensaje
 
         this.cambiarEstadoCrearOfertaDialog()

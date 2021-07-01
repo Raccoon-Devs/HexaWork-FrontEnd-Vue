@@ -11,11 +11,16 @@ export function crearOferta(dato: any): any{
     
     let variableLocal = JSON.parse(almacenamiento.getItem("oferta")!)
     if (variableLocal == null){
-        variableLocal = [dato]
+        almacenamiento.setItem("idOferta", "2")
+        variableLocal = []
+        dato.id.valor = "1"
     }
-    else{
-        variableLocal.push(dato)
+    else{   
+        dato.id.valor = almacenamiento.getItem("idOferta")!
+        almacenamiento.setItem("idOferta", (+(dato.id.valor)+1).toString())
+        
     }
+    variableLocal.push(dato)
     
 
     almacenamiento.setItem(
