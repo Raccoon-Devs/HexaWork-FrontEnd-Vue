@@ -1,6 +1,5 @@
 import { OfertaParaDominio } from "@/core/dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
 import { OfertaDeTrabajo } from "@/core/dominio/OfertasDeTrabajo/OfertaDeTrabajo";
-import { ServicioCrearOfertaDeTrabajo } from "@/core/dominio/servicios/ServicioCrearOfertaDeTrabajo";
 import { ServicioPublicarOfertaDeTrabajo } from "@/core/dominio/servicios/ServicioPublicarOfertaDeTrabajo";
 import { AdaptadorMockOferta } from "@/core/infraestructura/adaptadorMockOferta";
 import { APIPuerto } from "../api/APIPuerto";
