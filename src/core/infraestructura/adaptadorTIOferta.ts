@@ -1,15 +1,14 @@
 import { APIPuerto } from "../aplicacion/api/APIPuerto";
 import { OfertaParaDominio } from "../dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
-import { obtenerOfertas, crearOferta } from "./persistencia/ofertas";
+import { obtenerOfertas, crearOferta } from "./persistencia/ofertasTI";
 
-export class AdaptadorMockOferta extends APIPuerto{
+export class AdaptadorTIOferta extends APIPuerto{
     
     public listarOfertas():any{
-       return JSON.parse(obtenerOfertas()!)
+       return obtenerOfertas()
     }
 
     public crearOferta(ofertaDeTrabajo: OfertaParaDominio){
-
         return crearOferta(ofertaDeTrabajo)
     }
 }

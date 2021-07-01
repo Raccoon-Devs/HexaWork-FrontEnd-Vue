@@ -41,6 +41,7 @@
   import Vue from 'vue'
   import {UIPuerto} from '../../core/aplicacion/ui/UIPuerto'
   import {MostrarOfertasDeTrabajo} from '../../core/aplicacion/servicios/MostrarOfertasDeTrabajo'
+  import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
   
 
   export default Vue.extend({
@@ -127,7 +128,7 @@
 			},
 			listarOfertas(){
 				let controlador: UIPuerto = new MostrarOfertasDeTrabajo()
-				let ofertasEnElRepo = controlador.listarOfertasUI()
+				let ofertasEnElRepo = controlador.listarOfertasUI(new AdaptadorMockOferta())
 				//console.log(ofertasEnElRepo)
 			
 				this.ofertas =[]

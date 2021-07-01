@@ -18,7 +18,7 @@ export class Cargo extends ValueObject<CargoPropiedades> {
     public static crear(cargo: string): Cargo{
 
         if(cargo === "" || cargo === null || cargo === undefined){
-            throw new ExcepcionCargoInvalido<typeof cargo >(`El cargo: ${cargo} es inválido, el cargo no puede estar vacío`, cargo)
+            throw new ExcepcionCargoInvalido<typeof cargo >(`El cargo: "${cargo}" es inválido, el cargo no puede estar vacío`, cargo)
         }
 
         return new Cargo({cargo})

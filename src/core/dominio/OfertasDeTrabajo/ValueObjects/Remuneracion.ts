@@ -39,11 +39,11 @@ export class Remuneracion extends ValueObject<RemuneracionPropiedades> {
             throw new ExcepcionRemuneracionInvalida<typeof monto >(`El monto: ${monto} es inválido, no puede ser negativo`, monto)
         }
 
-        if(frecuencia === "" || frecuencia === null || frecuencia === undefined){
+        if(frecuencia.trim() === "" || frecuencia.trim() === null || frecuencia.trim() === undefined){
             throw new ExcepcionRemuneracionInvalida<typeof frecuencia >(`La frecuencia de pago: ${frecuencia} es inválida, no puede estar vacía`, frecuencia)
         }
 
-        if(frecuencia !== "hora" && frecuencia !== "mes" && frecuencia !== "semana" && frecuencia !== "total"){
+        if(frecuencia.trim() !== "hora" && frecuencia.trim() !== "mes" && frecuencia.trim() !== "semana" && frecuencia.trim() !== "total"){
             throw new ExcepcionRemuneracionInvalida<typeof frecuencia >(`La frecuencia de pago: ${frecuencia} es inválida, debe ser por hora, mes o semana`, frecuencia)
         }
 

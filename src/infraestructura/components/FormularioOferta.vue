@@ -1,5 +1,22 @@
 <template>
   <v-container>
+    <v-snackbar
+        v-model="ofertaCreada.mostrar"
+        top
+    >
+        {{ ofertaCreada.mensaje }}
+
+        <template v-slot:action="{ attrs }">
+        <v-btn
+            color="indigo lighten-3"
+            text
+            v-bind="attrs"
+            @click="ofertaCreada = false"
+        >
+            Cerrar
+        </v-btn>
+        </template>
+    </v-snackbar>
     <v-dialog v-model="crearOfertaDialog" width="1000" class="mb-2">
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="indigo darken-4" v-bind="attrs"
@@ -211,6 +228,7 @@
   import {Component, Prop} from "vue-property-decorator"
   import {UIPuertoCrearOferta} from '../../core/aplicacion/ui/UIPuertoCrearOferta'
   import {CrearOfertaDeTrabajo} from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
+  import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
 
   export default Vue.extend({
     name: 'FormularioOferta',
@@ -271,6 +289,10 @@
         },
         vacantes: "",
         fechaLimite: ""
+      },
+      ofertaCreada: {
+          mostrar: false,
+          mensaje: ""
       }
 
     }),
@@ -360,7 +382,9 @@
                 }}
             },
         }
-        puertoOferta.crearOfertaUI(this.ofertaDeTrabajo)
+        let respuesta = puertoOferta.crearOfertaUI(this.ofertaDeTrabajo, new AdaptadorMockOferta())
+        this.ofertaCreada.mostrar = true
+        this.ofertaCreada.mensaje = respuesta.mensaje
 
         this.cambiarEstadoCrearOfertaDialog()
       }

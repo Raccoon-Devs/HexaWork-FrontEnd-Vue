@@ -17,8 +17,8 @@ export class TituloOferta extends ValueObject<TituloOfertaPropiedades> {
 
     public static crear(titulo: string): TituloOferta{
 
-        if(titulo === "" || titulo === null || titulo === undefined){
-            throw new ExcepcionTituloInvalido<typeof titulo >(`El titulo: ${titulo} es inválido, el título no puede estar vacío`, titulo)
+        if(titulo.trim() === "" || titulo === null || titulo === undefined){
+            throw new ExcepcionTituloInvalido<typeof titulo >(`El titulo: "${titulo}" es inválido, el título no puede estar vacío`, titulo)
         }
 
         return new TituloOferta({titulo: titulo})
