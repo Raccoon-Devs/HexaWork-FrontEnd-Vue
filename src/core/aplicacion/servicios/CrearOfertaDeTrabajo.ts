@@ -1,7 +1,8 @@
 import { OfertaParaDominio } from "@/core/dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
 import { OfertaDeTrabajo } from "@/core/dominio/OfertasDeTrabajo/OfertaDeTrabajo";
-import { ServicioCrearOfertaDeTrabajo } from "@/core/dominio/servicios/ServicioCrearOfertaDeTrabajo";
-import { AdaptadorMockOferta } from "@/core/infraestructura/adaptadorMockOferta";
+import { AdaptadorTUOferta } from "../../infraestructura/adaptadorTUOferta";
+import { ServicioCrearOfertaDeTrabajo } from "../../dominio/servicios/ServicioCrearOfertaDeTrabajo";
+import { AdaptadorMockOferta } from "../../infraestructura/adaptadorMockOferta";
 import { APIPuerto } from "../api/APIPuerto";
 import { Mapper } from "../mappers/Mapper";
 import { MappearOfertaDeTrabajo } from "../mappers/MapperOfertaDeTrabajo";
@@ -13,18 +14,27 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
 
     public crearOfertaUI(oferta: OfertaParaDominio){
 
-        //alert(oferta.empleador.rol.nombre)
-        //1 llamar a dominio
-        const ofertaDominio = ServicioCrearOfertaDeTrabajo.pasarADominio(oferta)
-        // alert(ofertaDominio.obtenerTitulo())
-        // alert(ofertaDominio.propiedades.empleador.propiedades.rol.propiedades.nombre)
-        //2 mappear a la api
-        console.log(ofertaDominio.obtenerEmpleador)
-        const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
-        
-        //3 llamar a la api
+        try{
+            const ofertaDominio = ServicioCrearOfertaDeTrabajo.pasarADominio(oferta)
 
-        this.crearOfertaApi(new AdaptadorMockOferta(), ofertaApi)
+            const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
+            
+            /*Para los tests unitarios*/ 
+            return this.crearOfertaApi(new AdaptadorTUOferta(), ofertaApi)
+
+            /*Para los tests de integración*/
+            //return this.crearOfertaApi(new AdaptadorTIOferta(), ofertaApi)
+
+            /*Para los tests de aceptació*/ 
+            //return this.crearOfertaApi(new AdaptadorMockOferta(), ofertaApi)
+
+            
+            
+        }
+        catch(error){
+            return {statusCode:422, mensaje:error.mensaje}
+        }
+
     }
 
     private mappearAInfraestructura(mapper: Mapper, oferta: OfertaDeTrabajo){
@@ -34,7 +44,7 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
 
     public crearOfertaApi(apiPuerto: APIPuerto, ofertaDeTrabajo: OfertaParaDominio):void{
 
-        const ofertas = apiPuerto.crearOferta(ofertaDeTrabajo)
+        return apiPuerto.crearOferta(ofertaDeTrabajo)
     }
     
 }
