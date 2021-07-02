@@ -34,7 +34,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "geckodriver": "^2.0.1",
-    "jest": "^27.0.6",
+    "jest": "^26.6.3",
     "nightwatch": "^1.7.7",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
