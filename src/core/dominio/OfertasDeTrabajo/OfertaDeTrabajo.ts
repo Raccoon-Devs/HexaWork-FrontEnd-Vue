@@ -1,7 +1,7 @@
 import {Entidad} from "../ClasesBase/Entidad"
 import {IDOferta} from "./ValueObjects/IDOferta"
 import {TituloOferta} from "./ValueObjects/TituloOferta"
-import {Direccion} from "../ValueObjectsComunes/Direccion"
+import {Direccion} from "../OfertasDeTrabajo/ValueObjects/Direccion"
 import {TiempoLimitePostulacion, TiempoLimitePostulacionPropiedades} from "./ValueObjects/TiempoLimitePostulacion"
 import {Duracion} from "./ValueObjects/Duracion"
 import {Remuneracion, RemuneracionPropiedades} from "./ValueObjects/Remuneracion"
@@ -46,7 +46,7 @@ type remuneracionOferta = {
 
 
 export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
-    
+
     private constructor (propiedades: OfertaDeTrabajoPropiedades) {
         super(propiedades, propiedades.id)
     }
@@ -54,7 +54,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     obtenerTitulo(): string{
         return this.propiedades.titulo.obtenerTitulo()
     }
-    
+
     obtenerDireccion(): DireccionPropiedades{
         return this.propiedades.direccion.obtenerDireccion()
     }
@@ -99,6 +99,33 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         return this.propiedades.empleador
     }
 
+    public static update(
+        ofertaDeTrabajo: OfertaDeTrabajo,
+        atributos: {
+            titulo : string,
+            direccion: direccionOferta,
+            fechaLimite: Date,
+            duracion: number,
+            remuneracion: remuneracionOferta,
+            estadoOfertaDeTrabajo: number,
+            vacante: number,
+            cargo: string,
+            descripcion: string,
+            fechaPublicacion?: Date,
+            id? : string,
+            empleador: EmpleadorParaDominio
+        }
+    ): OfertaDeTrabajo {
+        console.log('atributos Oferta de trabajo');
+        console.log(atributos);
+        console.log('ofertaDeTrabajo Oferta de trabajo');
+        console.log(ofertaDeTrabajo);
+
+        return new OfertaDeTrabajo(
+            {...ofertaDeTrabajo}
+        )
+    }
+
     public static crear(
         atributos: {
             titulo : string,
@@ -115,15 +142,14 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
             empleador: EmpleadorParaDominio
         }
     ): OfertaDeTrabajo
-        
+
         {
-        console.log(atributos.empleador.id)
         return new OfertaDeTrabajo(
             {
                 id: IDOferta.crear(atributos.id),
                 titulo: TituloOferta.crear(atributos.titulo),
                 empleador: Empleador.crear(atributos.empleador.nombreEmpresa, atributos.empleador.direccion.propiedades, atributos.empleador.infoEmpleador.propiedades, atributos.empleador.rol.propiedades.nombre, atributos.empleador.id),
-                direccion: Direccion.crear(atributos.direccion.calle1, atributos.direccion.calle2, atributos.direccion.ciudad, atributos.direccion.ciudad, atributos.direccion.zip),
+                direccion: Direccion.crear(atributos.direccion.calle1, atributos.direccion.calle2, atributos.direccion.ciudad, atributos.direccion.estado, atributos.direccion.zip),
                 fechaLimite: TiempoLimitePostulacion.crear(atributos.fechaLimite),
                 duracion: Duracion.crear(atributos.duracion),
                 remuneracion: Remuneracion.crear(atributos.remuneracion.monto, atributos.remuneracion.frecuencia, atributos.remuneracion.divisa),
@@ -131,7 +157,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
                 vacante: Vacante.crear(atributos.vacante),
                 cargo: Cargo.crear(atributos.cargo.propiedades.cargo),
                 descripcion: Descripcion.crear(atributos.descripcion.propiedades.descripcion),
-                fechaPublicacion: atributos.fechaPublicacion? FechaPublicacion.crear(atributos.fechaPublicacion.propiedades.fechaPublicacion) : null
+                fechaPublicacion: atributos.fechaPublicacion? FechaPublicacion.crear(atributos.fechaPublicacion) : null
             }
         )
     }
