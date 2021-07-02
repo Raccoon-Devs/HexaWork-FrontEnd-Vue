@@ -19,7 +19,6 @@ export class Vacante extends ValueObject<VacantePropiedades> {
 
         if(vacante === 0 || vacante === null || vacante === undefined){
             throw new ExcepcionVacanteInvalida<typeof vacante >(`La cantidad de vacantes: ${vacante} es inválida, no puede estar vacía`, vacante)
-            console.log("vacante inválida")
         }
 
         if(vacante < 0){

@@ -22,8 +22,7 @@ export class EstadoOfertaDeTrabajo extends ValueObject<EstadoOfertaDeTrabajoProp
         }
 
         if(!(estado in [0, 1, 2, 3, 4, 5, 6])){
-            throw new ExcepcionEstadoInvalido<typeof estado >(`El estado: ${estado} de la oferta debe ser: 0 (creado), 1 (publicado), 2 (postulaciones cerradas)," +
-            "3 (empleado asignado), 4 (en progreso), 5 (finalizada), 6 (cancelada)`, estado)
+            throw new ExcepcionEstadoInvalido<typeof estado >(`El estado: ${estado} de la oferta debe ser: 0 (creado), 1 (publicado), 2 (postulaciones cerradas), 3 (empleado asignado), 4 (en progreso), 5 (finalizada), 6 (cancelada)`, estado)
         }
 
         return new EstadoOfertaDeTrabajo({estado})
