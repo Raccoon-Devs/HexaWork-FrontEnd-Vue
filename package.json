@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "jest"
+    "test:unit": "jest ./src/core/infraestructura/tests/unitarios",
+    "test:int": "jest ./src/core/infraestructura/tests/integracion",
+    "test:aceptacion": "node_modules/.bin/nightwatch"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.14.5",
@@ -19,6 +21,7 @@
     "vuetify": "^2.4.0"
   },
   "devDependencies": {
+    "@types/nightwatch": "^1.3.3",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -27,9 +30,12 @@
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "chromedriver": "^91.0.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "geckodriver": "^2.0.1",
     "jest": "^27.0.6",
+    "nightwatch": "^1.7.7",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
     "typescript": "~4.1.5",
