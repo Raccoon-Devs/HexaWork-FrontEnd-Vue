@@ -26,7 +26,7 @@ export class MostrarOfertasDeTrabajo extends UIPuerto{
             return {statusCode: 500, mensaje:error.mensaje}
         }
 
-        
+
     }
 
     public listarOfertasApi(apiPuerto: APIPuerto):void{
@@ -40,5 +40,5 @@ export class MostrarOfertasDeTrabajo extends UIPuerto{
             this.resultado.push(ServicioListarOfertasDeTrabajo.pasarADominio(oferta))
         })
     }
-    
+
 }

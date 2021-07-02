@@ -3,5 +3,6 @@ import { OfertaParaDominio } from "@/core/dominio/OfertasDeTrabajo/DTOOfertaDeTr
 export abstract class APIPuerto{
     abstract listarOfertas() : any;
     abstract crearOferta(dato: OfertaParaDominio) : any
+    abstract actualizarOferta(dato: OfertaDeDominio) : any
 
 }
