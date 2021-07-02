@@ -29,15 +29,16 @@
         <v-card-title class="headline ml-2 pt-6 pb-0">
           Crear Oferta
         </v-card-title>
-        <v-card-subtitle class="title ml-2 mt-2 pb-1">
-          Datos Básicos
+        <v-card-subtitle id="tituloDatos" class="title ml-2 mt-2 pb-1">
+          Datos de la oferta
         </v-card-subtitle>
         <v-card-text>
           <v-row class="mt-2 ml-0">
             <v-col cols="12">
                <v-text-field
                 v-model ="ofertaDeTrabajo.titulo"
-                type="cargo"
+                id="titulo"
+                type="titulo"
                 label="Título de la oferta" placeholder="Título de la oferta de trabajo"
                 class="mt-0 pt-0" prepend-icon="mdi-star-check"
               >
@@ -47,9 +48,10 @@
             <v-row class="pt-0 mt-0 ml-1">
                     <v-col cols="12" class="pt-0 mt-0">
                         <v-textarea
+                        id="descripcion"
                         v-model="ofertaDeTrabajo.descripcion"
-                        name="input-7-1"
                         label="Descripción"
+                        name="descripcion"
                         placeholder="Ingresa la descripción del cargo."
                         ></v-textarea>
                     </v-col>
@@ -61,6 +63,7 @@
                 <v-col cols="6">
                     <v-text-field
                         v-model="ofertaDeTrabajo.cargo"
+                        id= "cargo"
                         type="cargo"
                         label="Cargo" placeholder="Cargo de la oferta de trabajo"
                         class="mt-0 pt-0" prepend-icon="mdi-briefcase"
@@ -69,6 +72,7 @@
                 </v-col>
                 <v-col cols="6">
                     <v-text-field
+                        id="vacantes"
                         type="vacantes"
                         v-model="ofertaDeTrabajo.vacante"
                         label="Cantidad De Vacantes" placeholder="5"
@@ -80,6 +84,7 @@
           <v-row class="mt-0 pt-0 ml-0">
             <v-col cols="6">
               <v-menu
+                id="menuFechaLimite"
                 ref="menuFechaLimite"
                 v-model="menuFechaLimite"
                 :close-on-content-click="false"
@@ -89,10 +94,11 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
+                    id="fechaPostulacion"
                     v-model="ofertaDeTrabajo.fechaLimite"
                     label="Fecha Límite de Postulación"
                     prepend-icon="mdi-calendar"
-                    readonly
+                    type="fechaPostulacion"
                     v-bind="attrs"
                     v-on="on"
                   ></v-text-field>
@@ -108,12 +114,13 @@
             </v-col>
             <v-col cols="6 mt-4">
                 <v-text-field
-                        type="vacantes"
-                        v-model="ofertaDeTrabajo.duracion"
-                        label="Cantidad De Horas Requeridas" placeholder="5"
-                        class="mt-0 pt-0" prepend-icon="mdi-clock-time-five"
-                    >
-                    </v-text-field>
+                id="duracion"
+                    type="duracion"
+                    v-model="ofertaDeTrabajo.duracion"
+                    label="Cantidad De Horas Requeridas" placeholder="5"
+                    class="mt-0 pt-0" prepend-icon="mdi-clock-time-five"
+                >
+                </v-text-field>
             </v-col>
           </v-row>
             <v-card-subtitle class="indigo--text subtitle-1 mt-2 pb-1">
@@ -122,7 +129,9 @@
            <v-row class="mt-2 ml-0">
             <v-col cols="6" class="mt-0 pt-0">
               <v-select
+                id="remuneracionFrecuencia"
                 v-model="ofertaDeTrabajo.remuneracion.frecuencia"
+                type="frecuencia"
                 :items="opciones"
                 item-text="nombre"
                 item-value="valor"
@@ -133,7 +142,8 @@
             </v-col>
             <v-col cols="3">
               <v-text-field
-                type="money"
+                id="monto"
+                type="monto"
                 v-model="ofertaDeTrabajo.remuneracion.monto"
                 label="Monto" placeholder="Monto a pagar"
                 class="mt-0 pt-0"
@@ -143,7 +153,9 @@
             </v-col>
             <v-col cols="3" class="mt-0 pt-0">
               <v-select
+                id="divisa"
                 v-model="ofertaDeTrabajo.remuneracion.divisa"
+                type="divisa"
                 class = "mt-0"
                 :items="divisas"
                 item-text="nombre"
@@ -161,7 +173,8 @@
             <v-col cols="6">
                 <v-text-field
                     v-model="ofertaDeTrabajo.direccion.calle1"
-                    type="cargo"
+                    id="calle1"
+                    type="calle1"
                     label="Calle1" placeholder="Calle1"
                     class="mt-0 pt-0" prepend-icon="mdi-sign-direction"
                 >
@@ -169,7 +182,8 @@
                 </v-col>
             <v-col cols="6">
                 <v-text-field
-                    type="vacantes"
+                    id="calle2"
+                    type="calle2"
                     v-model="ofertaDeTrabajo.direccion.calle2"
                     label="Calle2" placeholder="Calle2"
                     class="mt-0 pt-0" prepend-icon="mdi-sign-direction"
@@ -180,8 +194,9 @@
           <v-row class="mt-2 ml-0">
             <v-col cols="6">
                 <v-text-field
+                    id="ciudad"
                     v-model="ofertaDeTrabajo.direccion.ciudad"
-                    type="cargo"
+                    type="ciudad"
                     label="Ciudad" placeholder="Ciudad"
                     class="mt-0 pt-0" prepend-icon="mdi-city"
                 >
@@ -189,7 +204,8 @@
                 </v-col>
             <v-col cols="6">
                 <v-text-field
-                    type="vacantes"
+                    id="estado"
+                    type="estado"
                     v-model="ofertaDeTrabajo.direccion.estado"
                     label="Estado" placeholder="Estado"
                     class="mt-0 pt-0" prepend-icon="mdi-google-maps"
@@ -200,7 +216,8 @@
           <v-row class="mt-2 ml-0">
               <v-col cols="6">
                 <v-text-field
-                    type="vacantes"
+                    id="zip"
+                    type="zip"
                     v-model="ofertaDeTrabajo.direccion.zip"
                     label="Zip" placeholder="Zip"
                     class="mt-0 pt-0" prepend-icon="mdi-barcode"
@@ -213,7 +230,7 @@
           <v-btn class="mr-4" color="indigo darken-4" text v-bind="attrs" v-on="on" @click="cambiarEstadoCrearOfertaDialog">
             Cancelar
           </v-btn>
-          <v-btn class="indigo darken-4" v-bind="attrs" v-on="on" dark @click="crearOferta">
+          <v-btn id="crearOferta" class="indigo darken-4" v-bind="attrs" v-on="on" dark @click="crearOferta">
             <v-icon left>mdi-plus</v-icon>
             Crear Oferta
           </v-btn>

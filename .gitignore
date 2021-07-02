@@ -24,3 +24,8 @@ pnpm-debug.log*
 
 # compiled typescript files
 src/**/*.js
+
+# tests
+tests_output
+chromedriver.log
+geckodriver.log
