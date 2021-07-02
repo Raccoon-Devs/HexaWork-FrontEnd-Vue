@@ -11,36 +11,30 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
 
     private resultado:any
 
-    public publicarOfertaUI(oferta: OfertaParaDominio){
+    public publicarOfertaUI(oferta: OfertaParaDominio, apiPuerto: APIPuerto){
+        try {
+            //1. get ofertas
+            //const ofertas = JSON.parse(apiPuerto.listarOfertas())
+            const ofertas = apiPuerto.listarOfertas()
+            const resultado: OfertaParaDominio = null
+            ofertas.forEach((ofertaAPI : any) => {
+                if (ofertaAPI.titulo == oferta.nombre && ofertaAPI.descripcion.propiedades.descripcion == oferta.descripcion) {
+                    this.resultado = ofertaAPI
+                }
+            })
+            this.resultado.estadoOfertaDeTrabajo = 1
+            this.resultado.fechaPublicacion = new Date()
+            //1 llamar a dominio
+            const ofertaDominio = ServicioPublicarOfertaDeTrabajo.pasarADominio(this.resultado)
+            //2 mappear a la api
+            // const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
+            //3 llamar a la api
+            this.actualizarOfertaApi(apiPuerto, ofertaDominio)
+            return ofertas
 
-        //1. get ofertas
-        const apiPuerto: APIPuerto = new AdaptadorMockOferta()
-        const ofertas = JSON.parse(apiPuerto.listarOfertas())
-        const resultado: OfertaParaDominio = null
-        ofertas.forEach((ofertaAPI : any) => {
-            if (ofertaAPI.titulo == oferta.nombre && ofertaAPI.descripcion.propiedades.descripcion == oferta.descripcion) {
-                this.resultado = ofertaAPI
-            }
-        })
-
-        this.resultado.estadoOfertaDeTrabajo = 1
-        this.resultado.fechaPublicacion = new Date()
-
-        //alert(oferta.empleador.rol.nombre)
-        //1 llamar a dominio
-        const ofertaDominio = ServicioPublicarOfertaDeTrabajo.pasarADominio(this.resultado)
-        // alert(ofertaDominio.obtenerTitulo())
-        // alert(ofertaDominio.propiedades.empleador.propiedades.rol.propiedades.nombre)
-        //2 mappear a la api
-        // const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
-        // console.log('ofertaApi');
-        // console.log(ofertaApi);
-
-
-        //3 llamar a la api
-
-        this.actualizarOfertaApi(new AdaptadorMockOferta(), ofertaDominio)
-        return ofertas
+        } catch (error) {
+            return {statusCode: 500, mensaje:error.mensaje}
+        }
     }
 
     private mappearAInfraestructura(mapper: Mapper, oferta: OfertaDeTrabajo){
@@ -50,5 +44,6 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
     public actualizarOfertaApi(apiPuerto: APIPuerto, ofertaDeTrabajo: OfertaParaDominio):void {
         const ofertas = apiPuerto.actualizarOferta(ofertaDeTrabajo)
     }
+
 
 }

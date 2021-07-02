@@ -154,7 +154,7 @@ export default Vue.extend({
 			},
 			publicarOferta(oferta: any) {
 				let controlador: UIPuertoPublicarOferta = new PublicarOfertaDeTrabajo()
-				controlador.publicarOfertaUI(oferta)
+				controlador.publicarOfertaUI(oferta, new AdaptadorMockOferta())
 			}
 		}
   })
