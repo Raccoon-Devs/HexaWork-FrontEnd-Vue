@@ -1,6 +1,6 @@
 module.exports = {
     'Creación de oferta': function (browser) {
-        browser.url("http://localhost:8080/oferta")
+        browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div:nth-child(1) > button")
         .setValue("#titulo", "Desarrollador")
         .setValue("#descripcion","Se requiere de un desarrollador para realizar aplicaciones móviles")
@@ -27,7 +27,7 @@ module.exports = {
     },
 
     'Mensaje de error al crear la oferta sin título': function (browser) {
-        browser.url("http://localhost:8080/oferta")
+        browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div:nth-child(1) > button")
         .setValue("#titulo", "")
         .setValue("#descripcion","Se requiere de un desarrollador para realizar aplicaciones móviles")
