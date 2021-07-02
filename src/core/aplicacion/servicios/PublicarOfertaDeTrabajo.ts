@@ -5,9 +5,9 @@ import { AdaptadorMockOferta } from "@/core/infraestructura/adaptadorMockOferta"
 import { APIPuerto } from "../api/APIPuerto";
 import { Mapper } from "../mappers/Mapper";
 import { MappearOfertaDeTrabajo } from "../mappers/MapperOfertaDeTrabajo";
-import { UIPuertoCrearOferta } from "../ui/UIPuertoCrearOferta";
+import { UIPuertoPublicarOferta } from "../ui/UIPuertoPublicarOferta";
 
-export class PublicarOfertaDeTrabajo extends UIPuertoCrearOferta{
+export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
 
     private resultado:any
 

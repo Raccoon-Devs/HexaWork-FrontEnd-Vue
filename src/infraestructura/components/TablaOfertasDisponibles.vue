@@ -35,6 +35,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import {UIPuerto} from '../../core/aplicacion/ui/UIPuerto'
+import {UIPuertoPublicarOferta} from '../../core/aplicacion/ui/UIPuertoPublicarOferta'
 import {MostrarOfertasDeTrabajo} from '../../core/aplicacion/servicios/MostrarOfertasDeTrabajo'
 import {PublicarOfertaDeTrabajo} from '../../core/aplicacion/servicios/PublicarOfertaDeTrabajo'
 
@@ -149,7 +150,7 @@ export default Vue.extend({
 				})
 			},
 			publicarOferta(oferta: any) {
-				let controlador: UIPuerto = new PublicarOfertaDeTrabajo()
+				let controlador: UIPuertoPublicarOferta = new PublicarOfertaDeTrabajo()
 				controlador.publicarOfertaUI(oferta)
 			}
 		}
