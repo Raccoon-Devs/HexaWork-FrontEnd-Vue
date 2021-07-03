@@ -3,9 +3,9 @@ import { OfertaParaDominio } from "../dominio/OfertasDeTrabajo/DTOOfertaDeTrabaj
 
 
 export class AdaptadorTUOferta extends APIPuerto{
-    
+
     public listarOfertas():any{
-       return {
+       return [{
         //...this.ofertaDeTrabajo,
         descripcion: {
             propiedades: {
@@ -51,11 +51,15 @@ export class AdaptadorTUOferta extends APIPuerto{
                 nombre: "rolrolrolrol"
             }}
         },
-    }
+    }]
     }
 
     public crearOferta(ofertaDeTrabajo: OfertaParaDominio){
-
         return {statusCode: 201, mensaje: "Oferta Creada Con éxito"}
     }
+
+    public actualizarOferta(ofertaDeTrabajo: OfertaParaDominio) {
+        return {statusCode: 201, mensaje: "Oferta Actualizada Con éxito"}
+    }
+
 }

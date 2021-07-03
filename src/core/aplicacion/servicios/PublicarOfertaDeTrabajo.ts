@@ -1,6 +1,7 @@
 import { OfertaParaDominio } from "@/core/dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
 import { OfertaDeTrabajo } from "@/core/dominio/OfertasDeTrabajo/OfertaDeTrabajo";
-import { ServicioPublicarOfertaDeTrabajo } from "@/core/dominio/servicios/ServicioPublicarOfertaDeTrabajo";
+import { ServicioPublicarOfertaDeTrabajo } from "../../dominio/servicios/ServicioPublicarOfertaDeTrabajo";
+
 import { AdaptadorMockOferta } from "@/core/infraestructura/adaptadorMockOferta";
 import { APIPuerto } from "../api/APIPuerto";
 import { Mapper } from "../mappers/Mapper";
@@ -29,8 +30,9 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
             //2 mappear a la api
             // const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
             //3 llamar a la api
-            this.actualizarOfertaApi(apiPuerto, ofertaDominio)
-            return ofertas
+            const ofertasAPI = this.actualizarOfertaApi(apiPuerto, ofertaDominio)
+            //return ofertas
+            return apiPuerto.actualizarOferta(ofertasAPI)
 
         } catch (error) {
             return {statusCode: 500, mensaje:error.mensaje}
@@ -43,6 +45,7 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
 
     public actualizarOfertaApi(apiPuerto: APIPuerto, ofertaDeTrabajo: OfertaParaDominio):void {
         const ofertas = apiPuerto.actualizarOferta(ofertaDeTrabajo)
+        return ofertas
     }
 
 
