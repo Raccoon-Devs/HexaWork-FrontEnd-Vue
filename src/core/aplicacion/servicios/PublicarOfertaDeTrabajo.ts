@@ -30,10 +30,9 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
             //2 mappear a la api
             // const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
             //3 llamar a la api
-            const ofertasAPI = this.actualizarOfertaApi(apiPuerto, ofertaDominio)
+            return this.actualizarOfertaApi(apiPuerto, ofertaDominio)
             //return ofertas
-            return apiPuerto.actualizarOferta(ofertasAPI)
-
+            //return apiPuerto.actualizarOferta(ofertasAPI)
         } catch (error) {
             return {statusCode: 500, mensaje:error.mensaje}
         }

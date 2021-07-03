@@ -12,10 +12,10 @@ test('publicar una oferta de trabajo', () => {
 
     const puertoPublicarOferta: UIPuertoPublicarOferta = new PublicarOfertaDeTrabajo()
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
+    const hoy = new Date()
+    const dd = String(hoy.getDate()).padStart(2, '0')
+    const mm = String(hoy.getMonth() + 1).padStart(2, '0')
+    const yyyy = hoy.getFullYear()
 
     const ofertaDesdeUI = {
         descripcion: "descripcion",
