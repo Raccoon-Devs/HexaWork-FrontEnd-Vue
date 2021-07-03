@@ -15,22 +15,26 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
         try {
             //1. get ofertas
             //const ofertas = JSON.parse(apiPuerto.listarOfertas())
-            const ofertas = apiPuerto.listarOfertas()
-            const resultado: OfertaParaDominio = null
-            ofertas.forEach((ofertaAPI : any) => {
-                if (ofertaAPI.titulo == oferta.nombre && ofertaAPI.descripcion.propiedades.descripcion == oferta.descripcion) {
-                    this.resultado = ofertaAPI
-                }
-            })
-            this.resultado.estadoOfertaDeTrabajo = 1
-            this.resultado.fechaPublicacion = new Date()
+            // const ofertas = apiPuerto.listarOfertas()
+            
+            // const resultado: OfertaParaDominio = null
+            // ofertas.forEach((ofertaAPI : any) => {
+            //     if (ofertaAPI.id.valor.valor == oferta.id.valor) {
+            //         this.resultado = ofertaAPI
+            //     }
+            // })
+            
+            oferta.estadoOfertaDeTrabajo = 1
+            oferta.fechaPublicacion = new Date().toISOString().slice(0, 10)
+            console.log(oferta);
+            
             //1 llamar a dominio
-            const ofertaDominio = ServicioPublicarOfertaDeTrabajo.pasarADominio(this.resultado)
+            const ofertaDominio = ServicioPublicarOfertaDeTrabajo.pasarADominio(oferta)
             //2 mappear a la api
             // const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
             //3 llamar a la api
             this.actualizarOfertaApi(apiPuerto, ofertaDominio)
-            return ofertas
+            // return ofertas
 
         } catch (error) {
             return {statusCode: 500, mensaje:error.mensaje}

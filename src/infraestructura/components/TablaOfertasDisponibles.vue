@@ -10,6 +10,11 @@
 					prepend-icon="mdi-magnify" type="text" v-model="busqueda" name="busqueda"> </v-text-field>
 				</v-col>
 			</v-row>
+			<v-row class="d-none d-md-flex">
+				<v-col cols="12" class="text-right">
+					<formulario-oferta @ofertaCreada="listarOfertas()"/>
+				</v-col>
+			</v-row>
 			<v-data-table class="mt-5 mx-5" :headers="columnas_tabla" :items="ofertas" :search="busqueda"
 				no-data-text="No hay ofertas disponibles."
 				no-results-text="No hay ofertas para esta búsqueda."
@@ -27,10 +32,10 @@
 					<span v-else v-text="`Bs. ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`"></span>
 				</template>
 				<template v-slot:item.acciones="{ item }">
-					<v-icon dense color="primary"> mdi-pencil </v-icon>
-					<v-icon dense color="primary"> mdi-eye </v-icon>
+					<!-- <v-icon dense color="primary"> mdi-pencil </v-icon>
+					<v-icon dense color="primary"> mdi-eye </v-icon> -->
 					<v-icon dense color="green" @click="publicarOferta(item)" v-if="!item.fechaPublicacion"> mdi-clipboard-check </v-icon>
-					<v-icon dense color="red" @click="eliminarOferta(item.id)"> mdi-delete </v-icon>
+					<!-- <v-icon dense color="red" @click="eliminarOferta(item.id)"> mdi-delete </v-icon> -->
 				</template>
 			</v-data-table>
 		</v-card>
@@ -45,9 +50,14 @@ import {MostrarOfertasDeTrabajo} from '../../core/aplicacion/servicios/MostrarOf
 import {PublicarOfertaDeTrabajo} from '../../core/aplicacion/servicios/PublicarOfertaDeTrabajo'
 import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
 import { IDOferta } from '@/core/dominio/OfertasDeTrabajo/ValueObjects/IDOferta'
+import FormularioOferta  from '../components/FormularioOferta.vue'
 
 export default Vue.extend({
 	name: 'TablaOfertasDisponibles',
+
+	components: {
+		FormularioOferta
+	}, 
 
 	data: () => ({
 		ofertas: [],
@@ -89,7 +99,7 @@ export default Vue.extend({
 				class: 'primary--text font-weight-bold'
 			},
 			{
-				text: 'Acciones',
+				text: 'Publicar',
 				align: 'center',
 				sortable: false,
 				value: 'acciones',

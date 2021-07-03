@@ -21,7 +21,7 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="indigo darken-4" v-bind="attrs"
           v-on="on" dark>
-          <v-icon left>mdi-plus</v-icon>
+          <v-icon left>mdi-plus-circle</v-icon>
           Crear Oferta
         </v-btn>
       </template>
@@ -402,7 +402,7 @@
         let respuesta = puertoOferta.crearOfertaUI(this.ofertaDeTrabajo, new AdaptadorMockOferta())
         this.ofertaCreada.mostrar = true
         this.ofertaCreada.mensaje = respuesta.mensaje
-
+        this.$emit('ofertaCreada');
         this.cambiarEstadoCrearOfertaDialog()
       }
     },
