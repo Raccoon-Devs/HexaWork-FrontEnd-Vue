@@ -9,47 +9,59 @@ export class AdaptadorTUOferta extends APIPuerto{
         //...this.ofertaDeTrabajo,
         descripcion: {
             propiedades: {
-                descripcion: "descripcion"
+                descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
             }
         },
-        direccion: {calle1: "a", calle2: "a", ciudad: "a", estado:"a", zip:"a"},
-        duracion: "a",
+        direccion: {
+            calle1: "Principal",
+            calle2: "Oeste",
+            ciudad: "Caracas",
+            estado:"Distrito Capital",
+            zip:"1011"
+        },
+        duracion: "8",
         fechaLimite: "2020-05-05",
-        titulo: "a",
-        vacante: "5",
-        remuneracion: {monto: "5", divisa:"dolar", frecuencia:"hora"},
+        titulo: "Se necesita desarrollador web",
+        vacante: "1",
+        remuneracion: {
+            monto: "700",
+            divisa:"dolar",
+            frecuencia:"mes"
+        },
         cargo: {
             propiedades: {
-                cargo : "cargo"
+                cargo : "Desarrollador Web Junior"
             }
         },
         estadoOfertaDeTrabajo: 0,
         empleador: {
             id: "5",
             nombreEmpresa: {
-                nombre: "nombreEmpresa",
-                rif: "rif"
+                nombre: "Raccoon Developers",
+                rif: "J500805050"
             },
             direccion: {
                 propiedades: {
-                    calle1: "calle1",
-                    calle2: "calle2",
-                    ciudad: "ciudad",
-                    estado: "estado",
-                    zip: "zip"
+                    calle1: "Raccoon",
+                    calle2: "Oeste",
+                    ciudad: "Caracas",
+                    estado: "Distrito Capital",
+                    zip: "1011"
                 }
             } ,
             infoEmpleador: {
                 propiedades: {
-                    nombreCompleto: "string",
-                    cargoDeTrabajo: "string",
-                    numeroDeTelefono: "string",
-                    correo: "string"
+                    nombreCompleto: "Alejandro Daniel Pérez Verde",
+                    cargoDeTrabajo: "Desarrollador Senior",
+                    numeroDeTelefono: "+584141234567",
+                    correo: "alejandroperez@raccoondevelopers.com"
                 }
             },
-            rol:{ propiedades:{
-                nombre: "rolrolrolrol"
-            }}
+            rol:{
+                propiedades:{
+                    nombre: "Gerente"
+                }
+            }
         },
     }]
     }
