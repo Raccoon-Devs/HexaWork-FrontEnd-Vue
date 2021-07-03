@@ -116,13 +116,9 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
             empleador: EmpleadorParaDominio
         }
     ): OfertaDeTrabajo {
-        console.log('atributos Oferta de trabajo');
-        console.log(atributos);
-        console.log('ofertaDeTrabajo Oferta de trabajo');
-        console.log(ofertaDeTrabajo);
 
         return new OfertaDeTrabajo(
-            {...ofertaDeTrabajo}
+            <unknown>{...ofertaDeTrabajo} as OfertaDeTrabajoPropiedades
         )
     }
 
@@ -135,11 +131,11 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
             remuneracion: remuneracionOferta,
             estadoOfertaDeTrabajo: number,
             vacante: number,
-            cargo: string,
-            descripcion: string,
+            cargo: Cargo,
+            descripcion: Descripcion,
             fechaPublicacion?: Date,
             id? : string,
-            empleador: EmpleadorParaDominio
+            empleador: any
         }
     ): OfertaDeTrabajo
 

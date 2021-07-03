@@ -8,10 +8,10 @@ import { IDEmpleador } from "./valueObjects/IDEmpleador"
 
 type EmpleadorParaDominioMap<Type> = {
     [Property in keyof Type]: 
-    Type[Property] extends Direccion? DireccionPropiedades 
-    : Type[Property] extends NombreCompañia? NombreCompañiaPropiedades
-    : Type[Property] extends InfoEmpleador? InfoEmpleadorPropiedades
-    : Type[Property] extends Rol? RolPropiedades: IDEmpleador;
+    Type[Property] extends Direccion? Direccion 
+    : Type[Property] extends NombreCompañia? NombreCompañia
+    : Type[Property] extends InfoEmpleador? InfoEmpleador
+    : Type[Property] extends Rol? Rol: IDEmpleador;
 }
 
 export type EmpleadorParaDominio= EmpleadorParaDominioMap<EmpleadorPropiedades>
