@@ -26,7 +26,6 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
             
             oferta.estadoOfertaDeTrabajo = 1
             oferta.fechaPublicacion = new Date().toISOString().slice(0, 10)
-            console.log(oferta);
             
             //1 llamar a dominio
             const ofertaDominio = ServicioPublicarOfertaDeTrabajo.pasarADominio(oferta)
