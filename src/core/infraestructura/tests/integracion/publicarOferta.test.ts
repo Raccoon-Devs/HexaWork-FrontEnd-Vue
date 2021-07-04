@@ -1,12 +1,20 @@
-import { APIPuerto } from "../aplicacion/api/APIPuerto";
-import { OfertaParaDominio } from "../dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
+import { CrearOfertaDeTrabajo } from "../../../aplicacion/servicios/CrearOfertaDeTrabajo";
+import { UIPuertoCrearOferta } from "../../../aplicacion/ui/UIPuertoCrearOferta";
+import { AdaptadorTIOferta } from "../../adaptadorTIOferta";
+import { UIPuerto } from "../../../aplicacion/ui/UIPuerto";
+import { MostrarOfertasDeTrabajo } from "../../../aplicacion/servicios/MostrarOfertasDeTrabajo";
+
+import { PublicarOfertaDeTrabajo } from "../../../aplicacion/servicios/PublicarOfertaDeTrabajo";
+import { UIPuertoPublicarOferta } from "../../../aplicacion/ui/UIPuertoPublicarOferta";
 
 
-export class AdaptadorTUOferta extends APIPuerto{
+test('Publicar una oferta de trabajo', () => {
 
-    public listarOfertas():any{
-       return [{
-        //...this.ofertaDeTrabajo,
+    const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
+    const puertoPublicarOferta: UIPuertoPublicarOferta = new PublicarOfertaDeTrabajo()
+    const puertoConsultarOferta: UIPuerto = new MostrarOfertasDeTrabajo()
+
+    const oferta = {
         descripcion: {
             propiedades: {
                 descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
@@ -63,15 +71,21 @@ export class AdaptadorTUOferta extends APIPuerto{
                 }
             }
         },
-    }]
     }
 
-    public crearOferta(ofertaDeTrabajo: OfertaParaDominio){
-        return {statusCode: 201, mensaje: "Oferta Creada Con éxito"}
-    }
+    const hoy = new Date()
+    const dd = String(hoy.getDate()).padStart(2, '0')
+    const mm = String(hoy.getMonth() + 1).padStart(2, '0')
+    const yyyy = hoy.getFullYear()
 
-    public actualizarOferta(ofertaDeTrabajo: OfertaParaDominio) {
-        return {statusCode: 201, mensaje: "Oferta Actualizada Con éxito"}
+    const ofertaDesdeUI = {
+        descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles",
+        estado: "Draft",
+        fechaLimite: "05/05/2020",
+        fechaPublicacion:  dd + '/' + mm + '/' + yyyy,
+        nombre:"Se necesita desarrollador web",
+        pago: "700"
     }
-
-}
+    expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual({statusCode: 201, mensaje: "Oferta Creada Con éxito"});
+    expect(puertoPublicarOferta.publicarOfertaUI(ofertaDesdeUI, new AdaptadorTIOferta())).toEqual({statusCode: 201, mensaje: "Oferta Actualizada Con éxito"});
+});
