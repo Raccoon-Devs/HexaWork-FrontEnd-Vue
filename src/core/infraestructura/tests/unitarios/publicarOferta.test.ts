@@ -20,8 +20,8 @@ test('publicar una oferta de trabajo', () => {
     const ofertaDesdeUI = {
         descripcion: "descripcion",
         estado: "Draft",
-        fecha_fin: "05/05/2020",
-        fecha_inicio:  dd + '/' + mm + '/' + yyyy,
+        fechaLimite: "05/05/2020",
+        fechaPublicacion:  dd + '/' + mm + '/' + yyyy,
         nombre:"a",
         pago: "5"
     }

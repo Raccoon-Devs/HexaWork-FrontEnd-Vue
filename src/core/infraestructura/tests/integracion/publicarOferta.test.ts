@@ -82,8 +82,8 @@ test('Publicar una oferta de trabajo', () => {
     const ofertaDesdeUI = {
         descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles",
         estado: "Draft",
-        fecha_fin: "05/05/2020",
-        fecha_inicio:  dd + '/' + mm + '/' + yyyy,
+        fechaLimite: "05/05/2020",
+        fechaPublicacion:  dd + '/' + mm + '/' + yyyy,
         nombre:"Se necesita desarrollador web",
         pago: "700"
     }
