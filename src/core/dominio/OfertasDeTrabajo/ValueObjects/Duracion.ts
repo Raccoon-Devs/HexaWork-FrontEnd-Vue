@@ -17,7 +17,7 @@ export class Duracion extends ValueObject<DuracionPropiedades> {
 
     public static crear(totalHorasRequeridas: number): Duracion{
 
-        if(totalHorasRequeridas === 0 || totalHorasRequeridas === null || totalHorasRequeridas === undefined){
+        if(totalHorasRequeridas === 0 || totalHorasRequeridas === null || totalHorasRequeridas === undefined || totalHorasRequeridas.toString() === ""){
             throw new ExcepcionDuracionInvalida<typeof totalHorasRequeridas >(`Las horas totales son inválidas, no pueden estar vacías`, totalHorasRequeridas)
         }
 

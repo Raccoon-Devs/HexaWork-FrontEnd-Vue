@@ -31,7 +31,7 @@ export class Remuneracion extends ValueObject<RemuneracionPropiedades> {
 
     public static crear(monto: number, frecuencia: string, divisa:string): Remuneracion{
 
-        if(monto === 0 || monto === null || monto === undefined){
+        if(monto === 0 || monto === null || monto === undefined || monto.toString() === ""){
             throw new ExcepcionRemuneracionInvalida<typeof monto >(`El monto: ${monto} es inválido, no puede estar vacío`, monto)
         }
 

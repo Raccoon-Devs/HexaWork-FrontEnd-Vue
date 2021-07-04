@@ -17,7 +17,7 @@ export class Vacante extends ValueObject<VacantePropiedades> {
 
     public static crear(vacante: number): Vacante{
 
-        if(vacante === 0 || vacante === null || vacante === undefined){
+        if(vacante === 0 || vacante === null || vacante === undefined || vacante.toString() === ""){
             throw new ExcepcionVacanteInvalida<typeof vacante >(`La cantidad de vacantes: ${vacante} es inválida, no puede estar vacía`, vacante)
         }
 
