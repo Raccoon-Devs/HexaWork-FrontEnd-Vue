@@ -5,8 +5,8 @@ import { UIPuerto } from "../../../aplicacion/ui/UIPuerto";
 import { MostrarOfertasDeTrabajo } from "../../../aplicacion/servicios/MostrarOfertasDeTrabajo";
 
 import { PublicarOfertaDeTrabajo } from "../../../aplicacion/servicios/PublicarOfertaDeTrabajo";
-import { UIPuertopublicarOferta } from "../../../aplicacion/ui/UIPuertopublicarOferta";
-import { PublicarOfertasDeTrabajo } from "../../../aplicacion/servicios/PublicarOfertasDeTrabajo";
+import { UIPuertoPublicarOferta } from "../../../aplicacion/ui/UIPuertopublicarOferta";
+//import { PublicarOfertasDeTrabajo } from "../../../aplicacion/servicios/PublicarOfertasDeTrabajo";
 
 
 test('Publicar una oferta de trabajo', () => {

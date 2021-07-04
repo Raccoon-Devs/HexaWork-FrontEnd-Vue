@@ -6,7 +6,6 @@ export class AdaptadorTUOferta extends APIPuerto{
 
     public listarOfertas():any{
        return [{
-        //...this.ofertaDeTrabajo,
         descripcion: {
             propiedades: {
                 descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"

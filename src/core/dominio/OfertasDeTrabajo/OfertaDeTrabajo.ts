@@ -100,21 +100,8 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     }
 
     public static update(
-        ofertaDeTrabajo: OfertaDeTrabajo,
-        atributos: {
-            titulo : string,
-            direccion: direccionOferta,
-            fechaLimite: Date,
-            duracion: number,
-            remuneracion: remuneracionOferta,
-            estadoOfertaDeTrabajo: number,
-            vacante: number,
-            cargo: string,
-            descripcion: string,
-            fechaPublicacion?: Date,
-            id? : string,
-            empleador: EmpleadorParaDominio
-        }
+        ofertaDeTrabajo: any,
+        
     ): OfertaDeTrabajo {
 
         return new OfertaDeTrabajo(
@@ -123,20 +110,21 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     }
 
     public static crear(
-        atributos: {
-            titulo : string,
-            direccion: direccionOferta,
-            fechaLimite: Date,
-            duracion: number,
-            remuneracion: remuneracionOferta,
-            estadoOfertaDeTrabajo: number,
-            vacante: number,
-            cargo: Cargo,
-            descripcion: Descripcion,
-            fechaPublicacion?: Date,
-            id? : string,
-            empleador: any
-        }
+        // atributos: {
+        //     titulo : string,
+        //     direccion: direccionOferta,
+        //     fechaLimite: Date,
+        //     duracion: number,
+        //     remuneracion: remuneracionOferta,
+        //     estadoOfertaDeTrabajo: number,
+        //     vacante: number,
+        //     cargo: Cargo,
+        //     descripcion: Descripcion,
+        //     fechaPublicacion?: Date,
+        //     id? : string,
+        //     empleador: any
+        // }
+        atributos:any
     ): OfertaDeTrabajo
 
         {

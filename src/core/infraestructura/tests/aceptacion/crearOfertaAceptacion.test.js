@@ -27,7 +27,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "El titulo: \"\" es inválido, el título no puede estar vacío")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta sin descripción': function (browser) {
@@ -58,7 +58,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "La descripcion: es inválida, la descripcion no puede estar vacía")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta sin cargo': function (browser) {
@@ -89,7 +89,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "El cargo: \"\" es inválido, el cargo no puede estar vacío")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta sin vacante': function (browser) {
@@ -119,8 +119,8 @@ module.exports = {
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
         .click("#crearOferta")
         .assert.title("hexawork-vue")
-        .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "La cantidad de vacantes: undefined es inválida, no puede estar vacía")
-        .pause(4000)
+        .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "La cantidad de vacantes: es inválida, no puede estar vacía")
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta con vacante negativa': function (browser) {
@@ -151,7 +151,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "La cantidad de vacantes: -1 es inválida, debe ser mayor a cero")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta con duración negativa': function (browser) {
@@ -182,7 +182,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "Las horas totales: -8 no pueden ser menores a 0")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta sin frecuencia de remuneración': function (browser) {
@@ -209,7 +209,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "La frecuencia de pago: es inválida, no puede estar vacía")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta con monto de remuneración negativo': function (browser) {
@@ -240,7 +240,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "El monto: -700 es inválido, no puede ser negativo")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta sin divisa de remuneración': function (browser) {
@@ -267,7 +267,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "La divisa del pago: es inválida, no puede estar vacía")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta con dirección sin calle 1': function (browser) {
@@ -298,7 +298,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "La calle1: es inválida, no puede estar vacía")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta con dirección sin calle 2': function (browser) {
@@ -329,7 +329,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "La calle2: es inválida, no puede estar vacía")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta con dirección sin ciudad': function (browser) {
@@ -360,7 +360,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "La ciudad: es inválida, no puede estar vacía")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta con dirección sin estado': function (browser) {
@@ -391,7 +391,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "El estado: es inválido, no puede estar vacío")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Mensaje de error al crear la oferta con dirección sin zip': function (browser) {
@@ -422,7 +422,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "El zip: es inválido, no puede estar vacío")
-        .pause(4000)     
+        .pause(2000)     
     },
     'Creación de oferta': function (browser) {
         browser.url("http://localhost:8087/oferta")
@@ -452,7 +452,7 @@ module.exports = {
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "Oferta Creada Con éxito")
-        .pause(4000)
+        .pause(2000)
     },
 
     'Consultar Ofertas': function(browser){
