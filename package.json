@@ -2,12 +2,13 @@
   "name": "hexawork-vue",
   "version": "0.1.0",
   "engines": {
-      "node": "12.3.1"
+    "node": "12.3.1"
   },
   "private": true,
   "scripts": {
+    "start": "node server.js",
     "serve": "vue-cli-service serve --port 8087 --open",
-    "build": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "jest ./src/core/infraestructura/tests/unitarios",
     "test:int": "jest ./src/core/infraestructura/tests/integracion",
@@ -17,6 +18,8 @@
     "@babel/preset-typescript": "^7.14.5",
     "@types/jest": "^26.0.23",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
+    "serve-static": "^1.14.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^9.1.2",
