@@ -1,5 +1,22 @@
 <template>
 	<v-container>
+		<v-snackbar
+        v-model="ofertaPublicacion"
+        top
+		>
+			Oferta publicada con éxito
+
+			<template v-slot:action="{ attrs }">
+			<v-btn
+				color="indigo lighten-3"
+				text
+				v-bind="attrs"
+				@click="ofertaPublicacion = false"
+			>
+				Cerrar
+			</v-btn>
+			</template>
+		</v-snackbar>
 		<v-card class="py-4 ma-sm-9" color="#F5F5F5" elevation="4" shaped>
 			<v-card-title class="grey--text text--darken-2">
 				Consultar Ofertas de Trabajo
@@ -32,10 +49,7 @@
 					<span v-else v-text="`Bs. ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`"></span>
 				</template>
 				<template v-slot:item.acciones="{ item }">
-					<!-- <v-icon dense color="primary"> mdi-pencil </v-icon>
-					<v-icon dense color="primary"> mdi-eye </v-icon> -->
 					<v-icon dense color="green" @click="publicarOferta(item)" v-if="!item.fechaPublicacion"> mdi-clipboard-check </v-icon>
-					<!-- <v-icon dense color="red" @click="eliminarOferta(item.id)"> mdi-delete </v-icon> -->
 				</template>
 			</v-data-table>
 		</v-card>
@@ -107,6 +121,7 @@ export default Vue.extend({
 			},
 		],
 		busqueda: '',
+		ofertaPublicacion: false
 	}),
 	methods: {
 		eliminarOferta(id: IDOferta) {
@@ -117,14 +132,16 @@ export default Vue.extend({
 			let controlador: UIPuerto = new MostrarOfertasDeTrabajo()
 			let ofertasEnElRepo = controlador.listarOfertasUI(new AdaptadorMockOferta())
 			this.ofertas = []
+			
 			ofertasEnElRepo.forEach((oferta: any) => {
-				this.ofertas.push(oferta)
+				this.ofertas.push({...oferta, id:Object.values(oferta.id.valor)})
 			})
 		},
 		publicarOferta(oferta: any) {
 			let controlador: UIPuertoPublicarOferta = new PublicarOfertaDeTrabajo()
 			controlador.publicarOfertaUI(oferta, new AdaptadorMockOferta())
 			this.listarOfertas()
+			this.ofertaPublicacion = true
 		}
 	},
 	mounted() {
