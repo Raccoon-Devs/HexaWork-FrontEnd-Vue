@@ -2,5 +2,5 @@ import { OfertaParaDominio } from "@/core/dominio/OfertasDeTrabajo/DTOOfertaDeTr
 import { APIPuerto } from "../api/APIPuerto";
 
 export abstract class UIPuertoCrearOferta{
-    abstract crearOfertaUI(oferta: OfertaParaDominio, apiPuerto: APIPuerto) : any;
+    abstract crearOfertaUI(oferta: any, apiPuerto: APIPuerto) : any;
 }
