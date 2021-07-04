@@ -74,6 +74,8 @@ El proyecto se encuentra desplegado en Heroku y se puede acceder mediante el sig
  - Documentación adicional:
    - Documentación de <a href="https://jestjs.io/docs/getting-started">Jest</a> utilizada para las pruebas unitarias y de integración.
    - Documentación de <a href="https://nightwatchjs.org/">NightWatch</a>  utilizada para las pruebas de aceptación.
+   - <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a>
+   - <a href="https://www.atlassian.com/es/git/tutorials/comparing-workflows/gitflow-workflow">Flujo de trabajo de Gitflow</a>
 <a name="desarolladores"></a>
 ## Desarrolladores  
 <table>
