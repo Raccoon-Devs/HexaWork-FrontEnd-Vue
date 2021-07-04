@@ -50,7 +50,7 @@ let ofertas: any[] = [
                     correo: "alejandroperez@raccoondevelopers.com"
                 }
             },
-            rol:{ 
+            rol:{
                 propiedades:{
                     nombre: "Gerente"
                 }
@@ -62,6 +62,14 @@ let ofertas: any[] = [
     }
 ]
 
+export function actualizarOferta(oferta: any): any {
+    ofertas.map(o => {
+        if (oferta._id.valor == o.id.valor) {
+            o.estadoOfertaDeTrabajo = 1
+        }
+    })
+    return {statusCode: 201, mensaje: "Oferta Actualizada Con éxito"}
+}
 
 export function crearOferta(oferta: any): any{
 
