@@ -39,16 +39,16 @@
 				locale="es-VE"
 				fixed-header
 			>
-				<template v-slot:item.fechaPublicacion="{ item }">
+				<template v-slot:[`item.fechaPublicacion`]="{ item }">
 					<span class="grey--text" v-if="!item.fechaPublicacion">Sin Definir</span>
 					<span v-else v-text="item.fechaPublicacion.propiedades.fechaPublicacion"></span>
 				</template>
-				<template v-slot:item.remuneracion="{ item }">
+				<template v-slot:[`item.remuneracion`]="{ item }">
 					<span v-if="item.remuneracion.divisa == 'dolar'" v-text="`$ ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`"></span>
 					<span v-else-if="item.remuneracion.divisa == 'euro'" v-text="`€ ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`"></span>
 					<span v-else v-text="`Bs. ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`"></span>
 				</template>
-				<template v-slot:item.acciones="{ item }">
+				<template v-slot:[`item.acciones`]="{ item }">
 					<v-icon dense color="green" @click="publicarOferta(item)" v-if="!item.fechaPublicacion"> mdi-clipboard-check </v-icon>
 				</template>
 			</v-data-table>
@@ -74,7 +74,26 @@ export default Vue.extend({
 	}, 
 
 	data: () => ({
-		ofertas: [],
+		ofertas : [{
+			titulo: "",
+			cargo: "",
+			descripcion: "",
+			duracion: "",
+			direccion: {
+				calle1: "",
+				calle2: "",
+				ciudad: "",
+				estado: "",
+				zip: ""
+			},
+			remuneracion: {
+				monto: "",
+				divisa: "",
+				frecuencia: ""
+			},
+			vacantes: "",
+			fechaLimite: ""
+		}],
 		columnas_tabla: [
 			{
 				text: 'Título',

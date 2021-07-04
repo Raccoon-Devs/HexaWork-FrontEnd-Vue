@@ -74,7 +74,7 @@
                     <v-text-field
                         id="vacantes"
                         type="vacantes"
-                        v-model="ofertaDeTrabajo.vacante"
+                        v-model="ofertaDeTrabajo.vacantes"
                         label="Cantidad De Vacantes" placeholder="5"
                         class="mt-0 pt-0" prepend-icon="mdi-numeric-1-box-outline"
                     >
@@ -242,7 +242,6 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import {Component, Prop} from "vue-property-decorator"
   import {UIPuertoCrearOferta} from '../../core/aplicacion/ui/UIPuertoCrearOferta'
   import {CrearOfertaDeTrabajo} from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
   import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
@@ -320,7 +319,7 @@
     },
     methods: {
       guardarFechaLimite (fechaLimite: Date): void {
-        this.$refs.menuFechaLimite!.save(fechaLimite)
+        (this.$refs.menuFechaLimite! as Vue & { save: (fechaLimite:any) => string }).save(fechaLimite)
       },
       cambiarEstadoCrearOfertaDialog(): void{
         this.crearOfertaDialog = !this.crearOfertaDialog
@@ -328,6 +327,7 @@
       },
       limpiarFormulario(): void{
         this.ofertaDeTrabajo = {
+            duracion: "",
             titulo: "",
             cargo: "",
             descripcion: "",
@@ -343,17 +343,14 @@
                 divisa: "",
                 frecuencia: ""
             },
-            vacante: "",
+            vacantes: "",
             fechaLimite: ""
         }
       },
       crearOferta(){
-        console.log('OFERTA DE TRABAJO')
-        console.log(this.ofertaDeTrabajo)
         
         const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
-        this.ofertaDeTrabajo = {
-            //...this.ofertaDeTrabajo,
+        const oferta = {
             descripcion: {
                 propiedades: {
                     descripcion: this.ofertaDeTrabajo.descripcion
@@ -363,7 +360,7 @@
             duracion: this.ofertaDeTrabajo.duracion,
             fechaLimite: this.ofertaDeTrabajo.fechaLimite,
             titulo: this.ofertaDeTrabajo.titulo,
-            vacante: this.ofertaDeTrabajo.vacante,
+            vacante: this.ofertaDeTrabajo.vacantes,
             remuneracion: this.ofertaDeTrabajo.remuneracion,
             cargo: {
                 propiedades: {
@@ -374,32 +371,32 @@
             empleador: {
                 id: "5",
                 nombreEmpresa: {
-                    nombre: "nombreEmpresa",
-                    rif: "rif"
+                    nombre: "Raccoon Developer",
+                    rif: "J50584545"
                 },
                 direccion: {
                     propiedades: {
-                        calle1: "calle1",
-                        calle2: "calle2",
-                        ciudad: "ciudad",
-                        estado: "estado",
-                        zip: "zip"
+                        calle1: "Principal",
+                        calle2: "Oeste",
+                        ciudad: "Caracas",
+                        estado: "Distrito Capital",
+                        zip: "1011"
                     }
                 } ,
                 infoEmpleador: {
                     propiedades: {
-                        nombreCompleto: "string",
-                        cargoDeTrabajo: "string",
-                        numeroDeTelefono: "string",
-                        correo: "string"
+                        nombreCompleto: "Carlos Alejandro Rodríguez",
+                        cargoDeTrabajo: "Gerente",
+                        numeroDeTelefono: "+584141234578",
+                        correo: "carlosrodriguez@hexawork.com"
                     }
                 },
                 rol:{ propiedades:{
-                    nombre: "rolrolrolrol"
+                    nombre: "Gerente"
                 }}
             },
         }
-        let respuesta = puertoOferta.crearOfertaUI(this.ofertaDeTrabajo, new AdaptadorMockOferta())
+        let respuesta = puertoOferta.crearOfertaUI(oferta, new AdaptadorMockOferta())
         this.ofertaCreada.mostrar = true
         this.ofertaCreada.mensaje = respuesta.mensaje
         this.$emit('ofertaCreada');

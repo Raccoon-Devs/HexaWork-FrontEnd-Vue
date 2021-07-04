@@ -2,10 +2,7 @@
 
 
 const almacenamiento = window.localStorage
-// almacenamiento.setItem(
-//     "oferta",
-//     JSON.stringify(oferta)
-// )
+
 
 export function crearOferta(dato: any): any{
     let variableLocal = JSON.parse(almacenamiento.getItem("oferta")!)
