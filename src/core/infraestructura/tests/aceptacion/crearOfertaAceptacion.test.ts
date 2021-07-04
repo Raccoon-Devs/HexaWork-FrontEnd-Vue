@@ -1,5 +1,5 @@
 module.exports = {
-    'Mensaje de error al crear la oferta sin título': function (browser: any) {
+    'Mensaje de error al crear la oferta sin título': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "")
@@ -30,7 +30,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin descripción': function (browser: any) {
+    'Mensaje de error al crear la oferta sin descripción': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -61,7 +61,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin cargo': function (browser: any) {
+    'Mensaje de error al crear la oferta sin cargo': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -92,7 +92,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin vacante': function (browser: any) {
+    'Mensaje de error al crear la oferta sin vacante': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -123,7 +123,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con vacante negativa': function (browser: any) {
+    'Mensaje de error al crear la oferta con vacante negativa': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -154,7 +154,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con duración negativa': function (browser: any) {
+    'Mensaje de error al crear la oferta con duración negativa': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -185,7 +185,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin frecuencia de remuneración': function (browser: any) {
+    'Mensaje de error al crear la oferta sin frecuencia de remuneración': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -212,7 +212,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con monto de remuneración negativo': function (browser: any) {
+    'Mensaje de error al crear la oferta con monto de remuneración negativo': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -243,7 +243,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin divisa de remuneración': function (browser: any) {
+    'Mensaje de error al crear la oferta sin divisa de remuneración': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -270,7 +270,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin calle 1': function (browser: any) {
+    'Mensaje de error al crear la oferta con dirección sin calle 1': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -301,7 +301,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin calle 2': function (browser: any) {
+    'Mensaje de error al crear la oferta con dirección sin calle 2': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -332,7 +332,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin ciudad': function (browser: any) {
+    'Mensaje de error al crear la oferta con dirección sin ciudad': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -363,7 +363,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin estado': function (browser: any) {
+    'Mensaje de error al crear la oferta con dirección sin estado': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -394,7 +394,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin zip': function (browser: any) {
+    'Mensaje de error al crear la oferta con dirección sin zip': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -424,7 +424,7 @@ module.exports = {
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "El zip: es inválido, no puede estar vacío")
         .pause(4000)
     },
-    'Creación de oferta': function (browser: any) {
+    'Creación de oferta': function (browser) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -455,7 +455,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Consultar Ofertas': function(browser: any){
+    'Consultar Ofertas': function(browser){
         browser.url("http://localhost:8087/oferta")
         .assert.containsText("#app > div.v-application--wrap > main > div > div > div > div > div > div > div.py-4.ma-sm-9.v-card.v-sheet.v-sheet--shaped.theme--light.elevation-4 > div.v-data-table.mt-5.mx-5.v-data-table--fixed-header.v-data-table--has-bottom.theme--light > div.v-data-table__wrapper > table > tbody > tr > td:nth-child(1)", "Desarrollador")
         .assert.containsText("#app > div.v-application--wrap > main > div > div > div > div > div > div > div.py-4.ma-sm-9.v-card.v-sheet.v-sheet--shaped.theme--light.elevation-4 > div.v-data-table.mt-5.mx-5.v-data-table--fixed-header.v-data-table--has-bottom.theme--light > div.v-data-table__wrapper > table > tbody > tr > td:nth-child(2)", "Se requiere de un desarrollador para realizar aplicaciones móviles")
@@ -465,7 +465,7 @@ module.exports = {
         .pause(2000)
     },
 
-    'Publicar Oferta': function(browser: any){
+    'Publicar Oferta': function(browser){
         browser.url("http://localhost:8087/oferta")
         .click("#app > div.v-application--wrap > main > div > div > div > div > div > div > div.py-4.ma-sm-9.v-card.v-sheet.v-sheet--shaped.theme--light.elevation-4 > div.v-data-table.mt-5.mx-5.v-data-table--fixed-header.v-data-table--has-bottom.theme--light > div.v-data-table__wrapper > table > tbody > tr > td:nth-child(6) > button")
         .assert.containsText("#app > div.v-application--wrap > main > div > div > div > div > div > div > div.v-snack.v-snack--active.v-snack--has-background.v-snack--top > div > div.v-snack__content", "Oferta publicada con éxito")
