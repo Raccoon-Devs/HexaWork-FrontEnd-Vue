@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 8087 --open",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "test:unit": "jest ./src/core/infraestructura/tests/unitarios",
     "test:int": "jest ./src/core/infraestructura/tests/integracion",
