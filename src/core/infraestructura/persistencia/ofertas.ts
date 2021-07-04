@@ -28,7 +28,7 @@ export function crearOferta(dato: any): any{
     return {statusCode: 201, mensaje: "Oferta Creada Con éxito"}
 }
 
-export function actualizarOferta(dato: any): void {
+export function actualizarOferta(dato: any): any {
     const ofertasFromStorage = JSON.parse(almacenamiento.getItem('oferta')!);
     for (const oferta of ofertasFromStorage) {
 

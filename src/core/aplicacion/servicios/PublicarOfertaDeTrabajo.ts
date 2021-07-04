@@ -12,7 +12,7 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
 
     private resultado:any
 
-    public publicarOfertaUI(oferta: OfertaParaDominio, apiPuerto: APIPuerto){
+    public publicarOfertaUI(oferta: any, apiPuerto: APIPuerto){
         try {
             //1. get ofertas
             //const ofertas = JSON.parse(apiPuerto.listarOfertas())

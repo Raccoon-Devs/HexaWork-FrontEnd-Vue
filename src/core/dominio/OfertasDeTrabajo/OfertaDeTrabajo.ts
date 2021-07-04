@@ -109,20 +109,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     }
 
     public static crear(
-        atributos: {
-            titulo : string,
-            direccion: direccionOferta,
-            fechaLimite: Date,
-            duracion: number,
-            remuneracion: remuneracionOferta,
-            estadoOfertaDeTrabajo: number,
-            vacante: number,
-            cargo: Cargo,
-            descripcion: Descripcion,
-            fechaPublicacion?: Date,
-            id? : string,
-            empleador: any
-        }
+        atributos: any
     ): OfertaDeTrabajo
 
         {
