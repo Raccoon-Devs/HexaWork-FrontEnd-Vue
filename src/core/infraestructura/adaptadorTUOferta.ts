@@ -3,8 +3,10 @@ import { OfertaParaDominio } from "../dominio/OfertasDeTrabajo/DTOOfertaDeTrabaj
 
 
 export class AdaptadorTUOferta extends APIPuerto{
+
     public listarOfertas():any{
        return [{
+        //...this.ofertaDeTrabajo,
         descripcion: {
             propiedades: {
                 descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
@@ -55,7 +57,7 @@ export class AdaptadorTUOferta extends APIPuerto{
                     correo: "alejandroperez@raccoondevelopers.com"
                 }
             },
-            rol:{ 
+            rol:{
                 propiedades:{
                     nombre: "Gerente"
                 }
@@ -65,7 +67,11 @@ export class AdaptadorTUOferta extends APIPuerto{
     }
 
     public crearOferta(ofertaDeTrabajo: OfertaParaDominio){
-
         return {statusCode: 201, mensaje: "Oferta Creada Con éxito"}
     }
+
+    public actualizarOferta(ofertaDeTrabajo: OfertaParaDominio) {
+        return {statusCode: 201, mensaje: "Oferta Actualizada Con éxito"}
+    }
+
 }
