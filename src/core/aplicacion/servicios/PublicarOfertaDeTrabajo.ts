@@ -16,17 +16,17 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
             //1. get ofertas
             //const ofertas = JSON.parse(apiPuerto.listarOfertas())
             // const ofertas = apiPuerto.listarOfertas()
-            
+
             // const resultado: OfertaParaDominio = null
             // ofertas.forEach((ofertaAPI : any) => {
             //     if (ofertaAPI.id.valor.valor == oferta.id.valor) {
             //         this.resultado = ofertaAPI
             //     }
             // })
-            
+
             oferta.estadoOfertaDeTrabajo = 1
             oferta.fechaPublicacion = new Date().toISOString().slice(0, 10)
-            
+
             //1 llamar a dominio
             const ofertaDominio = ServicioPublicarOfertaDeTrabajo.pasarADominio(oferta)
             //2 mappear a la api
@@ -44,7 +44,7 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
         return mapper.paraInfraestructura(oferta)
     }
 
-    public actualizarOfertaApi(apiPuerto: APIPuerto, ofertaDeTrabajo: OfertaParaDominio):void {
+    public actualizarOfertaApi(apiPuerto: APIPuerto, ofertaDeTrabajo: any):void {
         const ofertas = apiPuerto.actualizarOferta(ofertaDeTrabajo)
     }
 
