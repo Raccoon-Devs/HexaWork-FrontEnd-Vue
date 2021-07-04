@@ -1,5 +1,5 @@
 module.exports = {
-    'Mensaje de error al crear la oferta sin título': function (browser) {
+    'Mensaje de error al crear la oferta sin título': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "")
@@ -7,7 +7,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -20,7 +20,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -30,7 +30,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin descripción': function (browser) {
+    'Mensaje de error al crear la oferta sin descripción': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -38,7 +38,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -51,7 +51,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -61,7 +61,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin cargo': function (browser) {
+    'Mensaje de error al crear la oferta sin cargo': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -69,7 +69,7 @@ module.exports = {
         .setValue("#cargo", "")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -82,7 +82,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -92,7 +92,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin vacante': function (browser) {
+    'Mensaje de error al crear la oferta sin vacante': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -100,7 +100,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -113,7 +113,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -123,7 +123,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con vacante negativa': function (browser) {
+    'Mensaje de error al crear la oferta con vacante negativa': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -131,7 +131,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "-1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -144,7 +144,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -154,7 +154,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con duración negativa': function (browser) {
+    'Mensaje de error al crear la oferta con duración negativa': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -162,7 +162,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "-8")  
+        .setValue("#duracion", "-8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -175,7 +175,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -185,7 +185,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin frecuencia de remuneración': function (browser) {
+    'Mensaje de error al crear la oferta sin frecuencia de remuneración': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -193,7 +193,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -202,7 +202,7 @@ module.exports = {
         .setValue("#zip", "1011")
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -212,7 +212,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con monto de remuneración negativo': function (browser) {
+    'Mensaje de error al crear la oferta con monto de remuneración negativo': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -220,7 +220,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "-700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -233,7 +233,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -243,7 +243,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta sin divisa de remuneración': function (browser) {
+    'Mensaje de error al crear la oferta sin divisa de remuneración': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -251,7 +251,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -270,7 +270,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin calle 1': function (browser) {
+    'Mensaje de error al crear la oferta con dirección sin calle 1': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -278,7 +278,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "")
         .setValue("#calle2", "Oeste")
@@ -291,7 +291,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -301,7 +301,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin calle 2': function (browser) {
+    'Mensaje de error al crear la oferta con dirección sin calle 2': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -309,7 +309,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "")
@@ -322,7 +322,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -332,7 +332,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin ciudad': function (browser) {
+    'Mensaje de error al crear la oferta con dirección sin ciudad': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -340,7 +340,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -353,7 +353,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -363,7 +363,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin estado': function (browser) {
+    'Mensaje de error al crear la oferta con dirección sin estado': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -371,7 +371,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -384,7 +384,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -394,7 +394,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Mensaje de error al crear la oferta con dirección sin zip': function (browser) {
+    'Mensaje de error al crear la oferta con dirección sin zip': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -402,7 +402,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -415,16 +415,16 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
         .click("#crearOferta")
         .assert.title("hexawork-vue")
         .assert.containsText("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > div", "El zip: es inválido, no puede estar vacío")
-        .pause(4000)     
+        .pause(4000)
     },
-    'Creación de oferta': function (browser) {
+    'Creación de oferta': function (browser: any) {
         browser.url("http://localhost:8087/oferta")
         .click("#app > div > main > div > div > div > div > div > div > div > div.row.d-none.d-md-flex > div > div > button")
         .setValue("#titulo", "Desarrollador")
@@ -432,7 +432,7 @@ module.exports = {
         .setValue("#cargo", "Desarrollador Web Junior")
         .setValue("#vacantes", "1")
         .setValue("#fechaPostulacion", "2020-05-05")
-        .setValue("#duracion", "8")  
+        .setValue("#duracion", "8")
         .setValue("#monto", "700")
         .setValue("#calle1", "Principal")
         .setValue("#calle2", "Oeste")
@@ -445,7 +445,7 @@ module.exports = {
         .pause(500)
         .click("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div:nth-child(7) > div.mt-0.pt-0.col.col-3 > div > div.v-input__control > div.v-input__slot")
         .pause(500)
-        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active") 
+        .click("#app > div.v-menu__content.theme--light.v-menu__content--fixed.menuable__content__active")
         .pause(500)
         .assert.containsText("#tituloDatos", "Datos de la oferta")
         .assert.containsText("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__subtitle.title.ml-2.mt-2.pb-1", "Datos de la oferta")
@@ -455,7 +455,7 @@ module.exports = {
         .pause(4000)
     },
 
-    'Consultar Ofertas': function(browser){
+    'Consultar Ofertas': function(browser: any){
         browser.url("http://localhost:8087/oferta")
         .assert.containsText("#app > div.v-application--wrap > main > div > div > div > div > div > div > div.py-4.ma-sm-9.v-card.v-sheet.v-sheet--shaped.theme--light.elevation-4 > div.v-data-table.mt-5.mx-5.v-data-table--fixed-header.v-data-table--has-bottom.theme--light > div.v-data-table__wrapper > table > tbody > tr > td:nth-child(1)", "Desarrollador")
         .assert.containsText("#app > div.v-application--wrap > main > div > div > div > div > div > div > div.py-4.ma-sm-9.v-card.v-sheet.v-sheet--shaped.theme--light.elevation-4 > div.v-data-table.mt-5.mx-5.v-data-table--fixed-header.v-data-table--has-bottom.theme--light > div.v-data-table__wrapper > table > tbody > tr > td:nth-child(2)", "Se requiere de un desarrollador para realizar aplicaciones móviles")
@@ -465,7 +465,7 @@ module.exports = {
         .pause(2000)
     },
 
-    'Publicar Oferta': function(browser){
+    'Publicar Oferta': function(browser: any){
         browser.url("http://localhost:8087/oferta")
         .click("#app > div.v-application--wrap > main > div > div > div > div > div > div > div.py-4.ma-sm-9.v-card.v-sheet.v-sheet--shaped.theme--light.elevation-4 > div.v-data-table.mt-5.mx-5.v-data-table--fixed-header.v-data-table--has-bottom.theme--light > div.v-data-table__wrapper > table > tbody > tr > td:nth-child(6) > button")
         .assert.containsText("#app > div.v-application--wrap > main > div > div > div > div > div > div > div.v-snack.v-snack--active.v-snack--has-background.v-snack--top > div > div.v-snack__content", "Oferta publicada con éxito")
