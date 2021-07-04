@@ -242,7 +242,6 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import {Component, Prop} from "vue-property-decorator"
   import {UIPuertoCrearOferta} from '../../core/aplicacion/ui/UIPuertoCrearOferta'
   import {CrearOfertaDeTrabajo} from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
   import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
