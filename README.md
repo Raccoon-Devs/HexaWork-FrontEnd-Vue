@@ -6,8 +6,9 @@
 [Building](#build)  
 [Run](#runing)  
 [Testing](#testing)    
+[Deployment](#deployment)  
 [Referencias](#referencias)   
-[Desarrolladores](#desarrolladores)  
+[Desarrolladores](#desarrolladores)
 <a name="introduccion"></a>
 ## Introducción
 Aplicación web desarrollada utilizando <a href="https://vuejs.org/">Vue</a> y <a href="https://www.typescriptlang.org/">Typescript</a> como parte del sistema "Hexawork" para la entrega del proyecto de la asignatura "Desarrollo de Software" siguiendo una arquitectura hexagonal y orientados por el "Domain-Driven-Design".
@@ -47,7 +48,12 @@ Aplicación web desarrollada utilizando <a href="https://vuejs.org/">Vue</a> y <
   
   > npm run serve  
   
-  > npm run test:aceptacion 
+  > npm run test:aceptacion
+
+<a name="deployment"></a> 
+## Deployment
+El proyecto se encuentra desplegado en Heroku y se puede acceder mediante el siguiente link:
+ > https://hexawork-frontend-vue.herokuapp.com
 <a name="referencias"></a>  
 ## Referencias  
  - Videos:  
