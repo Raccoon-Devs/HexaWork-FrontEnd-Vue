@@ -14,7 +14,7 @@ export class FechaNacimiento extends ValueObject<FechaNacimientoPropiedades> {
         return this.propiedades.fechaNacimiento
     }
 
-    public static crear(fechaNacimiento: Date): FechaNacimientoPropiedades {
-        return new FechaNacimientoPropiedades({fechaNacimiento})
+    public static crear(fechaNacimiento: Date): FechaNacimiento {
+        return new FechaNacimiento({fechaNacimiento})
     }
 }

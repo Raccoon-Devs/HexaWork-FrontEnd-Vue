@@ -1,18 +1,13 @@
 import { Entidad } from "../ClasesBase/Entidad"
 
-// import { Cedula } from "./valueObjects/Cedula"
-// import { Direccion } from "./valueObjects/Direccion"
-// import { NombreCompleto } from "./valueObjects/NombreCompleto"
-// import { NumeroDeTelefono } from "./valueObjects/NumeroDeTelefono"
-
 import { SSN } from "./valueObjects/SSN"
-import { NombreCompleto } from "./valueObjects/NombreCompleto"
 import { FechaNacimiento } from "./valueObjects/FechaNacimiento"
 import { NivelEducativo } from "./valueObjects/NivelEducativo"
 import { EstadoEmpleado } from "./valueObjects/EstadoEmpleado"
 
 import { Telefono } from "../valueObjectsComunes/Telefono"
 import { Direccion } from "../valueObjectsComunes/Direccion"
+import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
 
 // import { ExperienciaDeTrabajo } from "../experienciaDeTrabajo/ExperienciaDeTrabajo"
 // import { Habilidad } from "../habilidad/Habilidad"
@@ -55,7 +50,7 @@ type fechaNacimientoEmpleado = {
 }
 
 type nivelEducativoEmpleado = {
-    nivelEducativo: string
+    nivelEducativo: number
 }
 
 type estadoEmpleadorEmpleado = {
@@ -77,7 +72,7 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
     }
 
     obtenerSSN(): SSN {
-        return this.propiedades.SSN
+        return this.propiedades.ssn
     }
 
     ObtenerNombreEmpleado(): NombreCompleto {
@@ -96,13 +91,23 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         ssn: ssnEmpleado,
         nombreEmpleado: nombreEmpleado,
         nroTlf: telefonoEmpleado,
+        fechaNacimiento: fechaNacimientoEmpleado,
+        nivelEducativo: nivelEducativoEmpleado,
+        estadoEmpleador: estadoEmpleadorEmpleado,
         direccion: direccionEmpleado
+        //experienciaLaboral: Array<ExperienciaDeTrabajo>,
+        //habilidades: Array<Habilidad>
+        //cursos: Array<Curso>
+        //referencias: Array<Referencia>
     ): Empleado {
         return new Empleado(
             {
                 ssn: SSN.crear(ssn.ssn),
-                nombreEmpleado: NombreCompleto.crear(nombreEmpleado.primerNombre, nombreEmpleado.segundoNombre, nombreEmpleado.primerApellido, nombreEmpleado.segundoApellido),
-                nroTlf: Telefono.crear(nroTlf.codigoPais, nroTlf.numeroTelefono),
+                nombreCompleto: NombreCompleto.crear(nombreEmpleado.primerNombre, nombreEmpleado.segundoNombre, nombreEmpleado.primerApellido, nombreEmpleado.segundoApellido),
+                numeroTelefono: Telefono.crear(nroTlf.codigoPais, nroTlf.numeroTelefono),
+                fechaNacimiento: FechaNacimiento.crear(fechaNacimiento.fechaNacimiento),
+                nivelEducativo: NivelEducativo.crear(nivelEducativo.nivelEducativo),
+                estadoEmpleador: EstadoEmpleado.crear(estadoEmpleador.estado),
                 direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.estado, direccion.codPostal)
             }
         )

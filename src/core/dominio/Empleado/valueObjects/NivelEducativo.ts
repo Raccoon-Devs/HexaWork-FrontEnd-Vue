@@ -14,7 +14,7 @@ export class NivelEducativo extends ValueObject<NivelEducativoPropiedades> {
         return this.propiedades.nivelEducativo
     }
 
-    public static crear(nivelEducativo: number): NivelEducativoPropiedades {
-        return new NivelEducativoPropiedades({nivelEducativo})
+    public static crear(nivelEducativo: number): NivelEducativo {
+        return new NivelEducativo({nivelEducativo})
     }
 }

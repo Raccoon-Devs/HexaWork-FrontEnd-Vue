@@ -1,4 +1,5 @@
-import { ValueObject } from "./ClasesBase/ValueObject"
+import { ValueObject } from "../ClasesBase/ValueObject"
+import { ExcepcionNombreCompletoInvalido } from "./excepciones/ExcepcionNombreCompleto"
 
 interface NombreCompletoPropiedades {
     primerNombre: string,
@@ -30,18 +31,18 @@ export class NombreCompleto extends ValueObject<NombreCompletoPropiedades> {
     }
 
     public static crear(primerNombre: string, segundoNombre: string, primerApellido: string, segundoApellido: string): NombreCompleto {
-        // if(primerNombre === "" || primerNombre === null || primerNombre === undefined){
-        //     throw new ExcepcionNombreCompletoInvalido<typeof primerNombre>(`El primer nombre: ${primerNombre} es inválido, no puede ser vacío`, primerNombre)
-        // }
-        // if(segundoNombre === "" || segundoNombre === null || segundoNombre === undefined){
-        //     throw new ExcepcionNombreCompletoInvalido<typeof segundoNombre>(`El segundo nombre: ${segundoNombre} es inválido, no puede ser vacío`, segundoNombre)
-        // }
-        // if(primerApellido === "" || primerApellido === null || primerApellido === undefined){
-        //     throw new ExcepcionNombreCompletoInvalido<typeof primerApellido>(`El primer apellido: ${primerApellido} es inválido, no puede ser vacío`, primerApellido)
-        // }
-        // if(segundoApellido === "" || segundoApellido === null || segundoApellido === undefined){
-        //     throw new ExcepcionNombreCompletoInvalido<typeof segundoApellido>(`El segundo apellido: ${segundoApellido} es inválido, no puede ser vacío`, segundoApellido)
-        // }
+        if(primerNombre === "" || primerNombre === null || primerNombre === undefined) {
+            throw new ExcepcionNombreCompletoInvalido<typeof primerNombre>(`El primer nombre: ${primerNombre} es inválido, no puede ser vacío`, primerNombre)
+        }
+        if(segundoNombre === "" || segundoNombre === null || segundoNombre === undefined) {
+            throw new ExcepcionNombreCompletoInvalido<typeof segundoNombre>(`El segundo nombre: ${segundoNombre} es inválido, no puede ser vacío`, segundoNombre)
+        }
+        if(primerApellido === "" || primerApellido === null || primerApellido === undefined) {
+            throw new ExcepcionNombreCompletoInvalido<typeof primerApellido>(`El primer apellido: ${primerApellido} es inválido, no puede ser vacío`, primerApellido)
+        }
+        if(segundoApellido === "" || segundoApellido === null || segundoApellido === undefined) {
+            throw new ExcepcionNombreCompletoInvalido<typeof segundoApellido>(`El segundo apellido: ${segundoApellido} es inválido, no puede ser vacío`, segundoApellido)
+        }
         return new NombreCompleto({primerNombre, segundoNombre, primerApellido, segundoApellido})
     }
 
