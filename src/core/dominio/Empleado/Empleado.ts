@@ -10,7 +10,7 @@ import { Direccion } from "../valueObjectsComunes/Direccion"
 import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
 
 import { ExperienciaDeTrabajo } from "../experienciaDeTrabajo/ExperienciaDeTrabajo"
-// import { Habilidad } from "../habilidad/Habilidad"
+import { Habilidad } from "../habilidad/Habilidad"
 // import { Curso } from "../curso/Curso"
 // import { Referencia } from "../referencia/Referencia"
 
@@ -22,7 +22,7 @@ interface EmpeladoPropiedades {
     fechaNacimiento: FechaNacimiento,
     nivelEducativo: NivelEducativo,
     experienciaLaboral: Array<ExperienciaDeTrabajo>,
-    //habilidades: Array<Habilidad>
+    habilidades: Array<Habilidad>
     //cursos: Array<Curso>
     //referencias: Array<Referencia>
     estadoEmpleador: EstadoEmpleado,
@@ -95,8 +95,8 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         nivelEducativo: nivelEducativoEmpleado,
         estadoEmpleador: estadoEmpleadorEmpleado,
         direccion: direccionEmpleado,
-        experienciaLaboral: Array<ExperienciaDeTrabajo>
-        //habilidades: Array<Habilidad>
+        experienciaLaboral: Array<ExperienciaDeTrabajo>,
+        habilidades: Array<Habilidad>
         //cursos: Array<Curso>
         //referencias: Array<Referencia>
     ): Empleado {
@@ -109,7 +109,8 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
                 nivelEducativo: NivelEducativo.crear(nivelEducativo.nivelEducativo),
                 estadoEmpleador: EstadoEmpleado.crear(estadoEmpleador.estado),
                 direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.estado, direccion.codPostal),
-                experienciaLaboral: []
+                experienciaLaboral: [],
+                habilidades: []
             }
         )
     }
