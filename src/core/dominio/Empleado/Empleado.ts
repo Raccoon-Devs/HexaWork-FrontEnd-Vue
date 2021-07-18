@@ -9,7 +9,7 @@ import { Telefono } from "../valueObjectsComunes/Telefono"
 import { Direccion } from "../valueObjectsComunes/Direccion"
 import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
 
-// import { ExperienciaDeTrabajo } from "../experienciaDeTrabajo/ExperienciaDeTrabajo"
+import { ExperienciaDeTrabajo } from "../experienciaDeTrabajo/ExperienciaDeTrabajo"
 // import { Habilidad } from "../habilidad/Habilidad"
 // import { Curso } from "../curso/Curso"
 // import { Referencia } from "../referencia/Referencia"
@@ -21,7 +21,7 @@ interface EmpeladoPropiedades {
     numeroTelefono: Telefono,
     fechaNacimiento: FechaNacimiento,
     nivelEducativo: NivelEducativo,
-    //experienciaLaboral: Array<ExperienciaDeTrabajo>,
+    experienciaLaboral: Array<ExperienciaDeTrabajo>,
     //habilidades: Array<Habilidad>
     //cursos: Array<Curso>
     //referencias: Array<Referencia>
@@ -75,7 +75,7 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         return this.propiedades.ssn
     }
 
-    ObtenerNombreEmpleado(): NombreCompleto {
+    obtenerNombreEmpleado(): NombreCompleto {
         return this.propiedades.nombreCompleto
     }
 
@@ -94,8 +94,8 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         fechaNacimiento: fechaNacimientoEmpleado,
         nivelEducativo: nivelEducativoEmpleado,
         estadoEmpleador: estadoEmpleadorEmpleado,
-        direccion: direccionEmpleado
-        //experienciaLaboral: Array<ExperienciaDeTrabajo>,
+        direccion: direccionEmpleado,
+        experienciaLaboral: Array<ExperienciaDeTrabajo>
         //habilidades: Array<Habilidad>
         //cursos: Array<Curso>
         //referencias: Array<Referencia>
@@ -108,7 +108,8 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
                 fechaNacimiento: FechaNacimiento.crear(fechaNacimiento.fechaNacimiento),
                 nivelEducativo: NivelEducativo.crear(nivelEducativo.nivelEducativo),
                 estadoEmpleador: EstadoEmpleado.crear(estadoEmpleador.estado),
-                direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.estado, direccion.codPostal)
+                direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.estado, direccion.codPostal),
+                experienciaLaboral: []
             }
         )
     }
