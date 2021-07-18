@@ -38,4 +38,3 @@ export class NumeroDeTelefono extends ValueObject<NumeroDeTelefonoPropiedades> {
     }
 
 }
-
