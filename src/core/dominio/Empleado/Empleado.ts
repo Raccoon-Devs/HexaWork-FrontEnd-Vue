@@ -12,7 +12,7 @@ import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
 import { ExperienciaDeTrabajo } from "../experienciaDeTrabajo/ExperienciaDeTrabajo"
 import { Habilidad } from "../habilidad/Habilidad"
 import { Curso } from "../curso/Curso"
-// import { Referencia } from "../referencia/Referencia"
+import { Referencia } from "../referencia/Referencia"
 
 
 interface EmpeladoPropiedades {
@@ -24,7 +24,7 @@ interface EmpeladoPropiedades {
     experienciaLaboral: Array<ExperienciaDeTrabajo>,
     habilidades: Array<Habilidad>
     cursos: Array<Curso>,
-    //referencias: Array<Referencia>
+    referencias: Array<Referencia>
     estadoEmpleador: EstadoEmpleado,
     direccion: Direccion
 }
@@ -103,6 +103,10 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         return this.propiedades.cursos
     }
 
+    obtenerReferencias(): Array<Referencia> {
+        return this.propiedades.referencias
+    }
+
     public static crear(
         ssn: ssnEmpleado,
         nombreEmpleado: nombreEmpleado,
@@ -114,7 +118,7 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         experienciaLaboral: Array<ExperienciaDeTrabajo>,
         habilidades: Array<Habilidad>,
         cursos: Array<Curso>,
-        //referencias: Array<Referencia>
+        referencias: Array<Referencia>
     ): Empleado {
         return new Empleado(
             {
@@ -127,7 +131,8 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
                 direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.estado, direccion.codPostal),
                 experienciaLaboral: [],
                 habilidades: [],
-                cursos: []
+                cursos: [],
+                referencias: []
             }
         )
     }
