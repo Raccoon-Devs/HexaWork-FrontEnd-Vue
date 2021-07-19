@@ -11,7 +11,7 @@ import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
 
 import { ExperienciaDeTrabajo } from "../experienciaDeTrabajo/ExperienciaDeTrabajo"
 import { Habilidad } from "../habilidad/Habilidad"
-// import { Curso } from "../curso/Curso"
+import { Curso } from "../curso/Curso"
 // import { Referencia } from "../referencia/Referencia"
 
 
@@ -23,7 +23,7 @@ interface EmpeladoPropiedades {
     nivelEducativo: NivelEducativo,
     experienciaLaboral: Array<ExperienciaDeTrabajo>,
     habilidades: Array<Habilidad>
-    //cursos: Array<Curso>
+    cursos: Array<Curso>,
     //referencias: Array<Referencia>
     estadoEmpleador: EstadoEmpleado,
     direccion: Direccion
@@ -79,12 +79,28 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         return this.propiedades.nombreCompleto
     }
 
-    obtenerNroTlf(): Telefono{
+    obtenerNroTlf(): Telefono {
         return this.propiedades.numeroTelefono
     }
 
-    obtenerDireccion(): Direccion{
+    obtenerDireccion(): Direccion {
         return this.propiedades.direccion
+    }
+
+    obetnerNivelEducativo(): NivelEducativo {
+        return this.propiedades.nivelEducativo
+    }
+
+    obtenerExperienciaLaboral(): Array<ExperienciaDeTrabajo> {
+        return this.propiedades.experienciaLaboral
+    }
+
+    obtenerHabilidades(): Array<Habilidad> {
+        return this.propiedades.habilidades
+    }
+
+    obtenerCursos(): Array<Curso> {
+        return this.propiedades.cursos
     }
 
     public static crear(
@@ -96,8 +112,8 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         estadoEmpleador: estadoEmpleadorEmpleado,
         direccion: direccionEmpleado,
         experienciaLaboral: Array<ExperienciaDeTrabajo>,
-        habilidades: Array<Habilidad>
-        //cursos: Array<Curso>
+        habilidades: Array<Habilidad>,
+        cursos: Array<Curso>,
         //referencias: Array<Referencia>
     ): Empleado {
         return new Empleado(
@@ -110,7 +126,8 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
                 estadoEmpleador: EstadoEmpleado.crear(estadoEmpleador.estado),
                 direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.estado, direccion.codPostal),
                 experienciaLaboral: [],
-                habilidades: []
+                habilidades: [],
+                cursos: []
             }
         )
     }
