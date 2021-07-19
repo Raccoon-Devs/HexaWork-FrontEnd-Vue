@@ -1,5 +1,5 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionNivelEducativoInvalido } from '../excepciones/ExcepcionnivelEducativoInvalido'
+import { ExcepcionNivelEducativoInvalido } from '../excepciones/ExcepcionNivelEducativoInvalido'
 
 interface NivelEducativoPropiedades {
     nivelEducativo: number
