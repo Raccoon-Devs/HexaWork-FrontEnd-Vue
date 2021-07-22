@@ -1,7 +1,7 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
 import { ExcepcionDuracionInvalida } from "../Excepciones/ExcepcionDuracionInvalida"
 
-interface DuracionPropiedades {
+export interface DuracionPropiedades {
     totalHorasRequeridas: number
 }
   
@@ -15,16 +15,16 @@ export class Duracion extends ValueObject<DuracionPropiedades> {
         return this.propiedades.totalHorasRequeridas
     }
 
-    public static crear(totalHorasRequeridas: number): Duracion{
+    public static crear(propiedades: DuracionPropiedades): Duracion{
 
-        if(totalHorasRequeridas === 0 || totalHorasRequeridas === null || totalHorasRequeridas === undefined || totalHorasRequeridas.toString() === ""){
-            throw new ExcepcionDuracionInvalida<typeof totalHorasRequeridas >(`Las horas totales son inválidas, no pueden estar vacías`, totalHorasRequeridas)
+        if(propiedades.totalHorasRequeridas === 0 || propiedades.totalHorasRequeridas === null || propiedades.totalHorasRequeridas === undefined || propiedades.totalHorasRequeridas.toString() === ""){
+            throw new ExcepcionDuracionInvalida<typeof propiedades.totalHorasRequeridas >(`Las horas totales son inválidas, no pueden estar vacías`, propiedades.totalHorasRequeridas)
         }
 
-        if(totalHorasRequeridas <0){
-            throw new ExcepcionDuracionInvalida<typeof totalHorasRequeridas >(`Las horas totales: ${totalHorasRequeridas} no pueden ser menores a 0`, totalHorasRequeridas)
+        if(propiedades.totalHorasRequeridas <0){
+            throw new ExcepcionDuracionInvalida<typeof propiedades.totalHorasRequeridas >(`Las horas totales: ${propiedades.totalHorasRequeridas} no pueden ser menores a 0`, propiedades.totalHorasRequeridas)
         }
 
-        return new Duracion({totalHorasRequeridas})
+        return new Duracion(propiedades)
     }
 }

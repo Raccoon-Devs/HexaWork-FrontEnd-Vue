@@ -2,7 +2,7 @@ import { ValueObject } from "../ClasesBase/ValueObject"
 import { ExcepcionDireccionInvalida } from "./excepciones/ExcepcionDireccionInvalida"
 
 
-interface DireccionPropiedades {
+export interface DireccionPropiedades {
     calle1: string,
     calle2: string,
     ciudad: string,
@@ -34,6 +34,10 @@ export class Direccion extends ValueObject<DireccionPropiedades> {
 
     obtenerCodPostal(): string {
         return this.propiedades.codPostal
+    }
+
+    obtenerDireccion(): DireccionPropiedades{
+        return this.propiedades
     }
 
     public static crear(calle1: string, calle2: string, ciudad: string, estado: string, codPostal: string): Direccion {
