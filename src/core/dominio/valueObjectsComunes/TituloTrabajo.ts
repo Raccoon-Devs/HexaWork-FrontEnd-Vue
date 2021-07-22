@@ -1,6 +1,6 @@
 import { ValueObject } from "../ClasesBase/ValueObject"
 
-interface TituloTrabajoPropiedades {
+export interface TituloTrabajoPropiedades {
     titulo: string
 }
 

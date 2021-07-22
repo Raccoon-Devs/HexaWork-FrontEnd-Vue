@@ -46,7 +46,7 @@ export interface OfertaDeTrabajoPropiedades{
     duracion: Duracion,
     remuneracionPorHora: Remuneracion,
     estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo,
-    vacante: Vacante
+    vacantes: Vacante
 }
 
 // type direccionOferta = {
@@ -91,7 +91,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     }
 
     obtenerVacante(): number{
-        return this.propiedades.vacante.obtenerVacante()
+        return this.propiedades.vacantes.obtenerVacante()
     }
 
     // obtenerCargo(): Cargo{
@@ -144,7 +144,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
                 duracion: propiedades.duracion,
                 remuneracionPorHora: propiedades.remuneracionPorHora,
                 estadoOfertaDeTrabajo: propiedades.estadoOfertaDeTrabajo,
-                vacante: propiedades.vacante
+                vacantes: propiedades.vacantes
             }
         )
     }

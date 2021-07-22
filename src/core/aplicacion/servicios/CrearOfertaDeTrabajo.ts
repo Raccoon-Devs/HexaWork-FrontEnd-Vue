@@ -10,11 +10,13 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
 
     public crearOfertaUI(oferta: OfertaParaDominio, apiPuerto: APIPuerto){
 
-        try{ 
+        try{
+            
             const ofertaDominio = ServicioCrearOfertaDeTrabajo.pasarADominio(oferta)
-
+            
             const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
 
+            console.log(ofertaApi)
             return this.crearOfertaApi(apiPuerto, ofertaApi)
     
         }
