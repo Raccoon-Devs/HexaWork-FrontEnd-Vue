@@ -1,23 +1,29 @@
-
-
-
 const almacenamiento = window.localStorage
 
-
 export function crearOferta(dato: any): any{
+
     let variableLocal = JSON.parse(almacenamiento.getItem("oferta")!)
     if (variableLocal == null){
         almacenamiento.setItem("idOferta", "2")
         variableLocal = []
-        dato.id.valor = "1"
+        console.log("epaaaaaaaaaaaaaaaaaaaaaa")
+        dato = {
+            ...dato,
+            id : "1"
+        }
+        //dato.id.valor = "1"
+        console.log("dDAAATO", dato)
     }
     else{
-        dato.id.valor = almacenamiento.getItem("idOferta")!
-        almacenamiento.setItem("idOferta", (+(dato.id.valor)+1).toString())
+        dato = {
+            ...dato,
+            id : almacenamiento.getItem("idOferta")!
+        }
+        almacenamiento.setItem("idOferta", (+(dato.id)+1).toString())
 
     }
     variableLocal.push(dato)
-
+    console.log("VARIABLE LOCAL", variableLocal)
     almacenamiento.setItem(
         "oferta",
         JSON.stringify(variableLocal)

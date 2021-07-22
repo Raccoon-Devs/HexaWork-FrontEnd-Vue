@@ -19,27 +19,15 @@ test('Crea una oferta de trabajo', () => {
             estado: "estado",
             codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: {
-            fechaLimite: "2020/07/18"
-        },
+        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
         //calendario: Calendario[],
         //habilidades: Habilidad[],
-        requerimientosEspeciales: {
-            requerimientos: "RequerimientosEspeciales"
-        },
+        requerimientosEspeciales: "RequerimientosEspeciales",
         //certificaciones: Certificacion[],
-        duracion: {
-            totalHorasRequeridas: 5
-        },
-        remuneracionPorHora: {
-            remuneracion: 3.44
-        },
-        estadoOfertaDeTrabajo: {
-            estado: 1,
-        },
-        vacantes: {
-            vacantes: 5
-        }
+        duracion: 5,
+        remuneracionPorHora: 3.44,
+        estadoOfertaDeTrabajo: 1,
+        vacantes: 5
         // descripcion: {
         //     propiedades: {
         //         descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
@@ -97,7 +85,7 @@ test('Crea una oferta de trabajo', () => {
         //     }
         // },
     }
-    expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTUOferta())).toEqual({statusCode: 201, mensaje: "Oferta Creada Con éxito"});
+    expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTUOferta())).toEqual("Oferta Creada Con éxito");
 });
 
 //Test Título

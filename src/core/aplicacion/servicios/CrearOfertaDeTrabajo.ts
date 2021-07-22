@@ -11,17 +11,16 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
     public crearOfertaUI(oferta: OfertaParaDominio, apiPuerto: APIPuerto){
 
         try{
-            
+
             const ofertaDominio = ServicioCrearOfertaDeTrabajo.pasarADominio(oferta)
-            
+           
             const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
 
-            console.log(ofertaApi)
             return this.crearOfertaApi(apiPuerto, ofertaApi)
     
         }
         catch(error){
-            return {statusCode:422, mensaje:error.mensaje}
+            return error.mensaje
         }
 
     }
@@ -33,7 +32,7 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
 
     public crearOfertaApi(apiPuerto: APIPuerto, ofertaDeTrabajo: OfertaParaDominio):void{
         
-        return apiPuerto.crearOferta(ofertaDeTrabajo)
+        return apiPuerto.crearOferta(ofertaDeTrabajo).mensaje
     }
     
 }

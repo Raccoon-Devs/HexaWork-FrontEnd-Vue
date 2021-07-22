@@ -48,11 +48,11 @@
             <v-row class="pt-0 mt-0 ml-1">
                     <v-col cols="12" class="pt-0 mt-0">
                         <v-textarea
-                        id="descripcion"
-                        v-model="ofertaDeTrabajo.descripcion"
-                        label="Descripción"
-                        name="descripcion"
-                        placeholder="Ingresa la descripción del cargo."
+                        id="requerimientosEspeciales"
+                        v-model="ofertaDeTrabajo.requerimientosEspeciales"
+                        label="Requerimientos Especiales"
+                        name="requerimientosEspeciales"
+                        placeholder="Ingresa los requerimientos especiales de la oferta de trabajo."
                         ></v-textarea>
                     </v-col>
             </v-row>
@@ -60,7 +60,7 @@
                 Datos principales
             </v-card-subtitle>
             <v-row class="mt-2 ml-0">
-                <v-col cols="6">
+                <!-- <v-col cols="6">
                     <v-text-field
                         v-model="ofertaDeTrabajo.cargo"
                         id= "cargo"
@@ -69,7 +69,7 @@
                         class="mt-0 pt-0" prepend-icon="mdi-briefcase"
                     >
                     </v-text-field>
-                </v-col>
+                </v-col> -->
                 <v-col cols="6">
                     <v-text-field
                         id="vacantes"
@@ -127,7 +127,7 @@
                 Remuneración
             </v-card-subtitle>
            <v-row class="mt-2 ml-0">
-            <v-col cols="6" class="mt-0 pt-0">
+            <!-- <v-col cols="6" class="mt-0 pt-0">
               <v-select
                 id="remuneracionFrecuencia"
                 v-model="ofertaDeTrabajo.remuneracion.frecuencia"
@@ -139,12 +139,12 @@
                 placeholder="Elige un método de pago"
                 prepend-icon="mdi-credit-card-outline"
               ></v-select>
-            </v-col>
-            <v-col cols="3">
+            </v-col> -->
+            <v-col cols="6">
               <v-text-field
                 id="monto"
                 type="monto"
-                v-model="ofertaDeTrabajo.remuneracion.monto"
+                v-model="ofertaDeTrabajo.remuneracionPorHora"
                 label="Monto" placeholder="Monto a pagar"
                 class="mt-0 pt-0"
                 prepend-icon="mdi-cash"
@@ -152,7 +152,7 @@
               </v-text-field>
             </v-col>
             <v-col cols="3" class="mt-0 pt-0">
-              <v-select
+              <!-- <v-select
                 id="divisa"
                 v-model="ofertaDeTrabajo.remuneracion.divisa"
                 type="divisa"
@@ -163,7 +163,7 @@
                 label="Divisa"
                 placeholder="Elige una Divisa"
                 prepend-icon="mdi-currency-usd"
-              ></v-select>
+              ></v-select> -->
             </v-col>    
           </v-row>
             <v-card-subtitle class="indigo--text subtitle-1 mt-2 pb-1">
@@ -218,8 +218,8 @@
                 <v-text-field
                     id="zip"
                     type="zip"
-                    v-model="ofertaDeTrabajo.direccion.zip"
-                    label="Zip" placeholder="Zip"
+                    v-model="ofertaDeTrabajo.direccion.codigoPostal"
+                    label="Código Postal" placeholder="Código Postal"
                     class="mt-0 pt-0" prepend-icon="mdi-barcode"
                 >
                 </v-text-field>
@@ -250,38 +250,38 @@
     name: 'FormularioOferta',
 
     data: () => ({
-      opciones: [
-            {
-                nombre: "Por Hora",
-                valor: "hora"
-            },
-            {
-                nombre: "Por Mes",
-                valor: "mes"
-            },
-            {
-                nombre: "Por semana",
-                valor: "semana" 
-            },
-            {
-                nombre: "Total",
-                valor: "total"
-            }
-        ],
-      divisas: [
-            {
-                nombre: "$ (Dólar)",
-                valor: "dolar"
-            },
-            {
-                nombre: "€ (Euro)",
-                valor: "euro"
-            },
-            {
-                nombre: "Bs. (Bolívar)",
-                valor: "bolivar"
-            }
-        ],
+      // opciones: [
+      //       {
+      //           nombre: "Por Hora",
+      //           valor: "hora"
+      //       },
+      //       {
+      //           nombre: "Por Mes",
+      //           valor: "mes"
+      //       },
+      //       {
+      //           nombre: "Por semana",
+      //           valor: "semana" 
+      //       },
+      //       {
+      //           nombre: "Total",
+      //           valor: "total"
+      //       }
+      //   ],
+      // divisas: [
+      //       {
+      //           nombre: "$ (Dólar)",
+      //           valor: "dolar"
+      //       },
+      //       {
+      //           nombre: "€ (Euro)",
+      //           valor: "euro"
+      //       },
+      //       {
+      //           nombre: "Bs. (Bolívar)",
+      //           valor: "bolivar"
+      //       }
+      //   ],
       fechaLimite: "",
       menuFechaLimite: false,
       fechaLimitePicker: "",
@@ -289,20 +289,16 @@
       ofertaDeTrabajo: {
         titulo: "",
         cargo: "",
-        descripcion: "",
+        requerimientosEspeciales: "",
         duracion: "",
         direccion: {
             calle1: "",
             calle2: "",
             ciudad: "",
             estado: "",
-            zip: ""
+            codigoPostal: ""
         },
-        remuneracion: {
-            monto: "",
-            divisa: "",
-            frecuencia: ""
-        },
+        remuneracionPorHora: "",
         vacantes: "",
         fechaLimite: ""
       },
@@ -330,19 +326,15 @@
             duracion: "",
             titulo: "",
             cargo: "",
-            descripcion: "",
+            requerimientosEspeciales: "",
             direccion: {
                 calle1: "",
                 calle2: "",
                 ciudad: "",
                 estado: "",
-                zip: ""
+                codigoPostal: ""
             },
-            remuneracion: {
-                monto: "",
-                divisa: "",
-                frecuencia: ""
-            },
+            remuneracionPorHora: "",
             vacantes: "",
             fechaLimite: ""
         }
@@ -351,54 +343,23 @@
         
         const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
         const oferta = {
-            descripcion: {
-                propiedades: {
-                    descripcion: this.ofertaDeTrabajo.descripcion
-                }
-            },
+            requerimientosEspeciales: this.ofertaDeTrabajo.requerimientosEspeciales,
             direccion: this.ofertaDeTrabajo.direccion,
             duracion: this.ofertaDeTrabajo.duracion,
-            fechaLimite: this.ofertaDeTrabajo.fechaLimite,
-            titulo: this.ofertaDeTrabajo.titulo,
-            vacante: this.ofertaDeTrabajo.vacantes,
-            remuneracion: this.ofertaDeTrabajo.remuneracion,
-            cargo: {
-                propiedades: {
-                    cargo :this.ofertaDeTrabajo.cargo
-                }
-            },
+            fechaLimitePostulacionOfertaDeTrabajo: this.ofertaDeTrabajo.fechaLimite,
+            tituloTrabajo: {titulo : this.ofertaDeTrabajo.titulo},
+            remuneracionPorHora: this.ofertaDeTrabajo.remuneracionPorHora,
             estadoOfertaDeTrabajo: 0,
-            empleador: {
-                id: "5",
-                nombreEmpresa: {
-                    nombre: "Raccoon Developer",
-                    rif: "J50584545"
-                },
-                direccion: {
-                    propiedades: {
-                        calle1: "Principal",
-                        calle2: "Oeste",
-                        ciudad: "Caracas",
-                        estado: "Distrito Capital",
-                        zip: "1011"
-                    }
-                } ,
-                infoEmpleador: {
-                    propiedades: {
-                        nombreCompleto: "Carlos Alejandro Rodríguez",
-                        cargoDeTrabajo: "Gerente",
-                        numeroDeTelefono: "+584141234578",
-                        correo: "carlosrodriguez@hexawork.com"
-                    }
-                },
-                rol:{ propiedades:{
-                    nombre: "Gerente"
-                }}
-            },
+            vacantes: this.ofertaDeTrabajo.vacantes
+            // empleador: {
+            //     id: "5",
+            // },
         }
+
         let respuesta = puertoOferta.crearOfertaUI(oferta, new AdaptadorMockOferta())
+
         this.ofertaCreada.mostrar = true
-        this.ofertaCreada.mensaje = respuesta.mensaje
+        this.ofertaCreada.mensaje = respuesta
         this.$emit('ofertaCreada');
         this.cambiarEstadoCrearOfertaDialog()
       }

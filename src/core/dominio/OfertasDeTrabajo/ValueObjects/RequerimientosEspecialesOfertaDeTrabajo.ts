@@ -14,12 +14,13 @@ export class RequerimientosEspecialesOfertaDeTrabajo extends ValueObject<Requeri
         return this.propiedades.requerimientos
     }
 
-    public static crear(propiedades: RequerimientosEspecialesPropiedades): RequerimientosEspecialesOfertaDeTrabajo{
+    public static crear(requerimientos: string): RequerimientosEspecialesOfertaDeTrabajo{
 
-        if(propiedades.requerimientos.trim() === "" || propiedades.requerimientos === null || propiedades.requerimientos === undefined){
+        if(requerimientos.trim() === "" || requerimientos === null || requerimientos === undefined){
             //throw new ExcepcionTituloInvalido<typeof titulo >(`El titulo: "${titulo}" es inválido, el título no puede estar vacío`, titulo)
+            console.log("Error en los requerimientos especiales")
         }
 
-        return new RequerimientosEspecialesOfertaDeTrabajo(propiedades)
+        return new RequerimientosEspecialesOfertaDeTrabajo({requerimientos})
     }
 }

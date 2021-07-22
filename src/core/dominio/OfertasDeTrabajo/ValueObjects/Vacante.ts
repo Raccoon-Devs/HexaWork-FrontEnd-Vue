@@ -15,16 +15,16 @@ export class Vacante extends ValueObject<VacantePropiedades> {
         return this.propiedades.vacantes
     }
 
-    public static crear(propiedades: VacantePropiedades): Vacante{
+    public static crear(vacantes: number): Vacante{
 
-        if(propiedades.vacantes === 0 || propiedades.vacantes === null || propiedades.vacantes === undefined || propiedades.vacantes.toString() === ""){
-            throw new ExcepcionVacanteInvalida<typeof propiedades.vacantes >(`La cantidad de vacantes: ${propiedades.vacantes} es inválida, no puede estar vacía`, propiedades.vacantes)
+        if(vacantes === 0 || vacantes === null || vacantes === undefined || vacantes.toString() === ""){
+            throw new ExcepcionVacanteInvalida<typeof vacantes >(`La cantidad de vacantes: ${vacantes} es inválida, no puede estar vacía`, vacantes)
         }
 
-        if(propiedades.vacantes < 0){
-            throw new ExcepcionVacanteInvalida<typeof propiedades.vacantes >(`La cantidad de vacantes: ${propiedades.vacantes} es inválida, debe ser mayor a cero`, propiedades.vacantes)
+        if(vacantes < 0){
+            throw new ExcepcionVacanteInvalida<typeof vacantes >(`La cantidad de vacantes: ${vacantes} es inválida, debe ser mayor a cero`, vacantes)
         }
 
-        return new Vacante(propiedades)
+        return new Vacante({vacantes})
     }
 }

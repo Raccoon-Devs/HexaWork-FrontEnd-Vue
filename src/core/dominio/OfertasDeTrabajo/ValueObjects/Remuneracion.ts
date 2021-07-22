@@ -16,16 +16,16 @@ export class Remuneracion extends ValueObject<RemuneracionPropiedades> {
     }
 
 
-    public static crear(propiedades: RemuneracionPropiedades): Remuneracion{
+    public static crear(remuneracion: number): Remuneracion{
 
-        if(propiedades.remuneracion === 0 || propiedades.remuneracion === null || propiedades.remuneracion === undefined || propiedades.remuneracion.toString() === ""){
-            throw new ExcepcionRemuneracionInvalida<typeof propiedades.remuneracion >(`El monto: ${propiedades.remuneracion} es inválido, no puede estar vacío`, propiedades.remuneracion)
+        if(remuneracion === 0 || remuneracion === null || remuneracion === undefined || remuneracion.toString() === ""){
+            throw new ExcepcionRemuneracionInvalida<typeof remuneracion >(`El monto: ${remuneracion} es inválido, no puede estar vacío`, remuneracion)
         }
 
-        if(propiedades.remuneracion <0){
-            throw new ExcepcionRemuneracionInvalida<typeof propiedades.remuneracion >(`El monto: ${propiedades.remuneracion} es inválido, no puede ser negativo`, propiedades.remuneracion)
+        if(remuneracion <0){
+            throw new ExcepcionRemuneracionInvalida<typeof remuneracion >(`El monto: ${remuneracion} es inválido, no puede ser negativo`, remuneracion)
         }
 
-        return new Remuneracion(propiedades)
+        return new Remuneracion({remuneracion})
     }
 }
