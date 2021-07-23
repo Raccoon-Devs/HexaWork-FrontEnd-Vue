@@ -21,69 +21,13 @@ test('Crea una oferta de trabajo', () => {
         },
         fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
         //calendario: Calendario[],
-        //habilidades: Habilidad[],
+        habilidades: ["a1", "a2", "a3"],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        //certificaciones: Certificacion[],
+        certificaciones: ["a1", "a2", "a3"],
         duracion: 5,
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
         vacantes: 5
-        // descripcion: {
-        //     propiedades: {
-        //         descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
-        //     }
-        // },
-        // direccion: {
-        //     calle1: "Principal",
-        //     calle2: "Oeste",
-        //     ciudad: "Caracas",
-        //     estado:"Distrito Capital",
-        //     zip:"1011"
-        // },
-        // duracion: "8",
-        // fechaLimite: "2020-05-05",
-        // titulo: "Se necesita desarrollador web",
-        // vacante: "1",
-        // remuneracion: {
-        //     monto: "700",
-        //     divisa:"dolar",
-        //     frecuencia:"mes"
-        // },
-        // cargo: {
-        //     propiedades: {
-        //         cargo : "Desarrollador Web Junior"
-        //     }
-        // },
-        // estadoOfertaDeTrabajo: 0,
-        // empleador: {
-        //     id: "5",
-        //     nombreEmpresa: {
-        //         nombre: "Raccoon Developers",
-        //         rif: "J500805050"
-        //     },
-        //     direccion: {
-        //         propiedades: {
-        //             calle1: "Raccoon",
-        //             calle2: "Oeste",
-        //             ciudad: "Caracas",
-        //             estado: "Distrito Capital",
-        //             zip: "1011"
-        //         }
-        //     } ,
-        //     infoEmpleador: {
-        //         propiedades: {
-        //             nombreCompleto: "Alejandro Daniel Pérez Verde",
-        //             cargoDeTrabajo: "Desarrollador Senior",
-        //             numeroDeTelefono: "+584141234567",
-        //             correo: "alejandroperez@raccoondevelopers.com"
-        //         }
-        //     },
-        //     rol:{ 
-        //         propiedades:{
-        //             nombre: "Gerente"
-        //         }
-        //     }
-        // },
     }
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTUOferta())).toEqual("Oferta Creada Con éxito");
 });

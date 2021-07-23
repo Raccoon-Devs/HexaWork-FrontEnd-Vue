@@ -6,13 +6,10 @@ export function crearOferta(dato: any): any{
     if (variableLocal == null){
         almacenamiento.setItem("idOferta", "2")
         variableLocal = []
-        console.log("epaaaaaaaaaaaaaaaaaaaaaa")
         dato = {
             ...dato,
             id : "1"
         }
-        //dato.id.valor = "1"
-        console.log("dDAAATO", dato)
     }
     else{
         dato = {
