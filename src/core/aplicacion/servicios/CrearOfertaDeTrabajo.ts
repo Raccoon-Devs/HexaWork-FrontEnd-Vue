@@ -31,7 +31,6 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
     }
 
     public crearOfertaApi(apiPuerto: APIPuerto, ofertaDeTrabajo: OfertaParaDominio):void{
-        
         return apiPuerto.crearOferta(ofertaDeTrabajo).mensaje
     }
     

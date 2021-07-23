@@ -23,6 +23,7 @@ type OfertaParaDominioMap<Type> = {
     : Type[Property] extends EstadoOfertaDeTrabajo? number
     : Type[Property] extends RequerimientosEspecialesOfertaDeTrabajo? string
     : Type[Property] extends TituloTrabajo? TituloTrabajoPropiedades
+    : Type[Property] extends string[]? string[]
     : {id: string};
 }
 

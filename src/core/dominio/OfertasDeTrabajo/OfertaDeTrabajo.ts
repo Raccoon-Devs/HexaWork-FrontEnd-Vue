@@ -40,9 +40,9 @@ export interface OfertaDeTrabajoPropiedades{
     direccion:Direccion,
     fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion,
     //calendario: Calendario[],
-    //habilidades: Habilidad[],
+    habilidades: string[],
     requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo,
-    //certificaciones: Certificacion[],
+    certificaciones: string[],
     duracion: Duracion,
     remuneracionPorHora: Remuneracion,
     estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo,
@@ -110,6 +110,14 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         return this.propiedades.duracion.obtenerDuracion()
     }
 
+    obtenerHabilidades(): string[]{
+        return this.propiedades.habilidades
+    }
+
+    obtenerCertificaciones(): string[]{
+        return this.propiedades.certificaciones
+    }
+
     obtenerRequerimientos(): string{
         return this.propiedades.requerimientosEspeciales.obtenerRequerimientos()
     }
@@ -144,7 +152,9 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
                 duracion: propiedades.duracion,
                 remuneracionPorHora: propiedades.remuneracionPorHora,
                 estadoOfertaDeTrabajo: propiedades.estadoOfertaDeTrabajo,
-                vacantes: propiedades.vacantes
+                vacantes: propiedades.vacantes,
+                certificaciones: propiedades.certificaciones,
+                habilidades: propiedades.habilidades
             }
         )
     }
