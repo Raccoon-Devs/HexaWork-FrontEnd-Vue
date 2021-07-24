@@ -23,7 +23,7 @@ test('Crea una oferta de trabajo', () => {
             codPostal: "codigoPos"
         },
         fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
-        //calendario: Calendario[],
+        calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
         habilidades: ["a1", "a2", "a3"],
         requerimientosEspeciales: "RequerimientosEspeciales",
         certificaciones: ["a1", "a2", "a3"],
