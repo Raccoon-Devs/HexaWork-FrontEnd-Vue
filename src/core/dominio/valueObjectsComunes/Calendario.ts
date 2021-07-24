@@ -1,8 +1,8 @@
 import { ValueObject } from "../ClasesBase/ValueObject"
 
 interface CalendarioPropiedades {
-    horaInicio: Date
-    horaFin: Date
+    horaInicio: string
+    horaFin: string
 }
 
 export class Calendario extends ValueObject<CalendarioPropiedades> {
@@ -11,11 +11,15 @@ export class Calendario extends ValueObject<CalendarioPropiedades> {
         super(propiedades)
     }
 
-    obtenerHoraInicio(): Date {
+    obtenerHoraInicio(): string {
         return this.propiedades.horaInicio
     }
 
-    obtenerHoraFin(): Date {
+    obtenerCalendario(): any{
+        return this.propiedades
+    }
+
+    obtenerHoraFin(): string {
         return this.propiedades.horaFin
     }
 

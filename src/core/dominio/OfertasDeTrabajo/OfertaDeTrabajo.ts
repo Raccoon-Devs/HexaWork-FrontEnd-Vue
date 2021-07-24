@@ -39,7 +39,7 @@ export interface OfertaDeTrabajoPropiedades{
     //empleador: Empleador,
     direccion:Direccion,
     fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion,
-    //calendario: Calendario[],
+    calendario: Calendario[],
     habilidades: string[],
     requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo,
     certificaciones: string[],
@@ -126,6 +126,14 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         return this.propiedades.direccion.obtenerDireccion()
     }
 
+    obtenerCalendario():any{
+        const calendario: {horaInicio:string, horaFin:string}[] = []
+        this.propiedades.calendario.forEach(fecha => {
+            calendario.push(fecha.obtenerCalendario())
+        });
+        return calendario
+    }
+
     // obtenerEmpleador(): Empleador{
     //     return this.propiedades.empleador
     // }
@@ -154,7 +162,8 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
                 estadoOfertaDeTrabajo: propiedades.estadoOfertaDeTrabajo,
                 vacantes: propiedades.vacantes,
                 certificaciones: propiedades.certificaciones,
-                habilidades: propiedades.habilidades
+                habilidades: propiedades.habilidades,
+                calendario: propiedades.calendario
             }
         )
     }
