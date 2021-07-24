@@ -7,6 +7,7 @@ import { FechaPublicacion } from "../OfertasDeTrabajo/ValueObjects/FechaPublicac
 import { Remuneracion, RemuneracionPropiedades } from "../OfertasDeTrabajo/ValueObjects/Remuneracion";
 import { TiempoLimitePostulacion } from "../OfertasDeTrabajo/ValueObjects/TiempoLimitePostulacion";
 import { Vacante, VacantePropiedades } from "../OfertasDeTrabajo/ValueObjects/Vacante";
+import { Calendario } from "../valueObjectsComunes/Calendario";
 import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion";
 import { TituloTrabajo, TituloTrabajoPropiedades } from "../valueObjectsComunes/TituloTrabajo";
 import { IDOferta } from "./ValueObjects/IDOferta";
@@ -24,6 +25,7 @@ type OfertaParaDominioMap<Type> = {
     : Type[Property] extends RequerimientosEspecialesOfertaDeTrabajo? string
     : Type[Property] extends TituloTrabajo? TituloTrabajoPropiedades
     : Type[Property] extends string[]? string[]
+    : Type[Property] extends Calendario[]? {horaInicio: string, horaFin: string}[]
     : {id: string};
 }
 

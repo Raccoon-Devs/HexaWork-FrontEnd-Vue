@@ -14,7 +14,8 @@ export class MappearOfertaDeTrabajo extends Mapper{
             estadoOfertaDeTrabajo: oferta.obtenerEstadoOfertaDeTrabajo(),
             vacantes: oferta.obtenerVacante(),
             habilidades: oferta.obtenerHabilidades(),
-            certificaciones: oferta.obtenerCertificaciones()
+            certificaciones: oferta.obtenerCertificaciones(),
+            calendario: oferta.obtenerCalendario()
             //idOfertaDeTrabajo: oferta.obtenerId(),
             //empleador: {nombre: oferta.propiedades.empleador.propiedades.nombreEmpresa, id: oferta.propiedades.empleador.obtenerId()}
             //empleador: new MappearEmpleador().paraInfraestructura(oferta.obtenerEmpleador())
