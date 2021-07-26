@@ -8,19 +8,18 @@ export function crearOferta(dato: any): any{
         variableLocal = []
         dato = {
             ...dato,
-            id : "1"
+            idOfertaDeTrabajo: "1"
         }
     }
     else{
         dato = {
             ...dato,
-            id : almacenamiento.getItem("idOferta")!
+            idOfertaDeTrabajo: almacenamiento.getItem("idOferta")!
         }
         almacenamiento.setItem("idOferta", (+(dato.id)+1).toString())
 
     }
     variableLocal.push(dato)
-    console.log("VARIABLE LOCAL", variableLocal)
     almacenamiento.setItem(
         "oferta",
         JSON.stringify(variableLocal)
@@ -31,10 +30,8 @@ export function crearOferta(dato: any): any{
 export function actualizarOferta(dato: any): any {
     const ofertasFromStorage = JSON.parse(almacenamiento.getItem('oferta')!);
     for (const oferta of ofertasFromStorage) {
-
-        if (oferta.id.valor == dato.obtenerId()) {
-            oferta.estadoOfertaDeTrabajo = dato.propiedades.estadoOfertaDeTrabajo
-            oferta.fechaPublicacion = dato.propiedades.fechaPublicacion
+        if (oferta.idOfertaDeTrabajo == dato.idOfertaDeTrabajo) {
+            oferta.estadoOfertaDeTrabajo = dato.estadoOfertaDeTrabajo
         }
     }
 

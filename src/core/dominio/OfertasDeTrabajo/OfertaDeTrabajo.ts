@@ -102,8 +102,8 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
     //     return this.propiedades.fechaPublicacion
     // }
 
-    obtenerId(): IDOferta{
-        return this.propiedades.idOfertaDeTrabajo
+    obtenerId(): string | number{
+        return this.propiedades.idOfertaDeTrabajo.obtenerId()
     }
 
     obtenerDuracion(): number{
@@ -145,7 +145,7 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         )
     }
 
-    public static crear(propiedades: OfertaDeTrabajoPropiedades): OfertaDeTrabajo {
+    public static crear(propiedades: any): OfertaDeTrabajo {
         return new OfertaDeTrabajo(
             {
                 idOfertaDeTrabajo: propiedades.idOfertaDeTrabajo,

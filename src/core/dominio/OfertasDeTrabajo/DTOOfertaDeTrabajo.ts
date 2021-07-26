@@ -23,10 +23,10 @@ type OfertaParaDominioMap<Type> = {
     //: Type[Property] extends Empleador? EmpleadorParaDominio
     : Type[Property] extends EstadoOfertaDeTrabajo? number
     : Type[Property] extends RequerimientosEspecialesOfertaDeTrabajo? string
-    : Type[Property] extends TituloTrabajo? TituloTrabajoPropiedades
+    : Type[Property] extends TituloTrabajo? string
     : Type[Property] extends string[]? string[]
     : Type[Property] extends Calendario[]? {horaInicio: string, horaFin: string}[]
-    : {id: string};
+    : string;
 }
 
 export type OfertaParaDominio= OfertaParaDominioMap<OfertaDeTrabajoPropiedades>

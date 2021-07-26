@@ -221,7 +221,7 @@
                 <v-text-field
                     id="zip"
                     type="zip"
-                    v-model="ofertaDeTrabajo.direccion.codigoPostal"
+                    v-model="ofertaDeTrabajo.direccion.codPostal"
                     label="Código Postal" placeholder="Código Postal"
                     class="mt-0 pt-0" prepend-icon="mdi-barcode"
                 >
@@ -460,7 +460,7 @@
             calle2: "",
             ciudad: "",
             estado: "",
-            codigoPostal: ""
+            codPostal: ""
         },
         remuneracionPorHora: "",
         vacantes: "",
@@ -508,7 +508,7 @@
                 calle2: "",
                 ciudad: "",
                 estado: "",
-                codigoPostal: ""
+                codPostal: ""
             },
             remuneracionPorHora: "",
             vacantes: "",
@@ -527,14 +527,14 @@
         this.fechaCalendario = ""
       },
       crearOferta(){
-        alert(this.ofertaDeTrabajo.fechasCalendario)
+        // alert(this.ofertaDeTrabajo.fechasCalendario)
         const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
         const oferta = {
             requerimientosEspeciales: this.ofertaDeTrabajo.requerimientosEspeciales,
             direccion: this.ofertaDeTrabajo.direccion,
             duracion: this.ofertaDeTrabajo.duracion,
             fechaLimitePostulacionOfertaDeTrabajo: this.ofertaDeTrabajo.fechaLimite,
-            tituloTrabajo: {titulo : this.ofertaDeTrabajo.titulo},
+            tituloTrabajo: this.ofertaDeTrabajo.titulo,
             remuneracionPorHora: this.ofertaDeTrabajo.remuneracionPorHora,
             estadoOfertaDeTrabajo: 0,
             vacantes: this.ofertaDeTrabajo.vacantes,
@@ -545,7 +545,8 @@
             //     id: "5",
             // },
         }
-
+        console.log(oferta);
+        
         let respuesta = puertoOferta.crearOfertaUI(oferta, new AdaptadorMockOferta())
 
         this.ofertaCreada.mostrar = true
