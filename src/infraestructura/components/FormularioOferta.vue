@@ -3,6 +3,7 @@
     <v-snackbar
         v-model="ofertaCreada.mostrar"
         top
+        timeout=6000
     >
         {{ ofertaCreada.mensaje }}
 
