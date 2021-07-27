@@ -73,7 +73,11 @@ export function actualizarOferta(oferta: any): any {
 
 export function crearOferta(oferta: any): any{
 
-    oferta.id.valor = (ofertas.length+1).toString()
+    oferta = {
+        ...oferta,
+        id : (ofertas.length+1).toString()
+    }
+    // oferta.id.valor = (ofertas.length+1).toString()
     ofertas.push(oferta)
     return {statusCode: 201, mensaje: "Oferta Creada Con éxito"}
 }

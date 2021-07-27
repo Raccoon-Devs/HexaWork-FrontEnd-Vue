@@ -3,21 +3,22 @@ import {Mapper} from "./Mapper"
 import { MappearEmpleador } from "./MapperEmpleador";
 export class MappearOfertaDeTrabajo extends Mapper{
 
-    public paraInfraestructura(oferta: OfertaDeTrabajo){
+    public paraInfraestructura(oferta: OfertaDeTrabajo): any{
         return {
-            titulo : oferta.obtenerTitulo(),
+            tituloTrabajo: oferta.obtenerTitulo(),
             direccion: oferta.obtenerDireccion(),
-            fechaLimite: oferta.obtenerFechaLimite(),
+            fechaLimitePostulacionOfertaDeTrabajo: oferta.obtenerFechaLimite(),
             duracion: oferta.obtenerDuracion(),
-            remuneracion: oferta.obtenerRemuneracion(),
+            remuneracionPorHora: oferta.obtenerRemuneracion(),
+            requerimientosEspeciales: oferta.obtenerRequerimientos(),
             estadoOfertaDeTrabajo: oferta.obtenerEstadoOfertaDeTrabajo(),
-            vacante: oferta.obtenerVacante(),
-            cargo: oferta.obtenerCargo(),
-            descripcion: oferta.obtenerDescripcion(),
-            fechaPublicacion: oferta.obtenerFechaPublicacion(),
-            id: oferta.obtenerId(),
+            vacantes: oferta.obtenerVacante(),
+            habilidades: oferta.obtenerHabilidades(),
+            certificaciones: oferta.obtenerCertificaciones(),
+            calendario: oferta.obtenerCalendario(),
+            idOfertaDeTrabajo: oferta.obtenerId(),
             //empleador: {nombre: oferta.propiedades.empleador.propiedades.nombreEmpresa, id: oferta.propiedades.empleador.obtenerId()}
-            empleador: new MappearEmpleador().paraInfraestructura(oferta.obtenerEmpleador())
+            //empleador: new MappearEmpleador().paraInfraestructura(oferta.obtenerEmpleador())
         }
     }
 }

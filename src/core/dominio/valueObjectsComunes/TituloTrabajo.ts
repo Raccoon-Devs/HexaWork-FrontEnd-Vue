@@ -1,6 +1,7 @@
 import { ValueObject } from "../ClasesBase/ValueObject"
+import { ExcepcionTituloTrabajoInvalido } from "./excepciones/ExcepcionTituloTrabajoInvalido"
 
-interface TituloTrabajoPropiedades {
+export interface TituloTrabajoPropiedades {
     titulo: string
 }
 
@@ -15,6 +16,11 @@ export class TituloTrabajo extends ValueObject<TituloTrabajoPropiedades> {
     }
 
     public static crear(titulo: string): TituloTrabajo {
+        
+        if(titulo.trim() === "" || titulo === null || titulo === undefined){
+            throw new ExcepcionTituloTrabajoInvalido<typeof titulo >(`El titulo: "${titulo}" es inválido, el título no puede estar vacío`, titulo)
+        }
+
         return new TituloTrabajo({titulo})
     }
 }

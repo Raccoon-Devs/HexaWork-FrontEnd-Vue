@@ -2,7 +2,7 @@ import { ValueObject } from "../ClasesBase/ValueObject"
 import { ExcepcionDireccionInvalida } from "./excepciones/ExcepcionDireccionInvalida"
 
 
-interface DireccionPropiedades {
+export interface DireccionPropiedades {
     calle1: string,
     calle2: string,
     ciudad: string,
@@ -36,6 +36,10 @@ export class Direccion extends ValueObject<DireccionPropiedades> {
         return this.propiedades.codPostal
     }
 
+    obtenerDireccion(): DireccionPropiedades{
+        return this.propiedades
+    }
+
     public static crear(calle1: string, calle2: string, ciudad: string, estado: string, codPostal: string): Direccion {
         if(calle1 === "" || calle1 === null || calle1 === undefined) {
             throw new ExcepcionDireccionInvalida<typeof calle1>(`La calle1: ${calle1} es inválida, no puede estar vacía`, calle1)
@@ -48,6 +52,9 @@ export class Direccion extends ValueObject<DireccionPropiedades> {
         }
         if(estado === "" || estado === null || estado === undefined) {
             throw new ExcepcionDireccionInvalida<typeof estado>(`El estado: ${estado} es inválido, no puede estar vacío`, estado)
+        }
+        if(codPostal === "" || codPostal === null || codPostal === undefined) {
+            throw new ExcepcionDireccionInvalida<typeof codPostal>(`El código postal: ${codPostal} es inválido, no puede estar vacío`, codPostal)
         }
         return new Direccion({calle1, calle2, ciudad, estado, codPostal})
     }
