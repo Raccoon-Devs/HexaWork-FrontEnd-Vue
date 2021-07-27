@@ -220,8 +220,8 @@
           <v-row class="mt-2 ml-0">
               <v-col cols="6">
                 <v-text-field
-                    id="zip"
-                    type="zip"
+                    id="codPostal"
+                    type="codPostal"
                     v-model="ofertaDeTrabajo.direccion.codPostal"
                     label="Código Postal" placeholder="Código Postal"
                     class="mt-0 pt-0" prepend-icon="mdi-barcode"
@@ -272,6 +272,7 @@
                   ></v-text-field>
                 </template>
                 <v-date-picker
+                  id="fechaCalendario"
                   v-model="fechaCalendario"
                   :active-picker.sync="fechaCalendarioPicker"
                   :min="new Date().toISOString().substr(0, 10)"
@@ -281,26 +282,15 @@
               </v-menu>
             </v-col>
             <v-col cols=3>
-              <v-text-field v-model="horaInicio" label="Hora de inicio" placeholder="hh:mm:ss"></v-text-field>
+              <v-text-field id="horaInicio" v-model="horaInicio" label="Hora de inicio" placeholder="hh:mm:ss"></v-text-field>
             </v-col>
             <v-col cols=3>
-              <v-text-field v-model="horaFin" label="Hora de fin" placeholder="hh:mm:ss"></v-text-field>
+              <v-text-field id="horaFin" v-model="horaFin" label="Hora de fin" placeholder="hh:mm:ss"></v-text-field>
             </v-col>
             <v-col cols=2>
-              <v-btn color="green" class="mt-4" text @click="agregarFechaCalendario">Agregar</v-btn>
+              <v-btn id="agregarCalendario" color="green" class="mt-4" text @click="agregarFechaCalendario">Agregar</v-btn>
             </v-col>
           </v-row>
-          <!-- <v-row class="mx-2" v-for="(fecha, index) in fechasCalendario" :key="index">
-            <div v-if="fecha.horaInicio.split(' ')[0]!==''">
-              <v-row>
-                <p class="ml-5 mt-2">Dia: {{fecha.horaInicio.split(" ")[0]}}
-                  Hora de inicio: {{fecha.horaInicio.split(" ")[1]}}
-                  Hora de fin: {{fecha.horaFin.split(" ")[1]}}
-                </p>
-                <v-btn color="red" text>Eliminar</v-btn>
-              </v-row>   
-            </div>
-          </v-row> -->
            <v-data-table v-if="ofertaDeTrabajo.fechasCalendario.length!==0"
                 :headers="columnas_tabla"
                 :items="ofertaDeTrabajo.fechasCalendario"
@@ -330,7 +320,7 @@
           <v-btn class="mr-2" color="indigo darken-4" text @click="dialogCalendario = false">
             Cancelar
           </v-btn>
-          <v-btn class="indigo darken-4" dark @click="dialogCalendario = false">
+          <v-btn id="aceptarCalendario" class="indigo darken-4" dark @click="dialogCalendario = false">
             Aceptar
           </v-btn>
         </v-card-actions>
