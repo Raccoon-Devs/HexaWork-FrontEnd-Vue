@@ -1,4 +1,5 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
+import { ExcepcionRequerimientosInvalidos } from "../Excepciones/ExcepcionRequerimientosInvalidos"
 
 export interface RequerimientosEspecialesPropiedades {
     requerimientos: string;
@@ -17,8 +18,7 @@ export class RequerimientosEspecialesOfertaDeTrabajo extends ValueObject<Requeri
     public static crear(requerimientos: string): RequerimientosEspecialesOfertaDeTrabajo{
 
         if(requerimientos.trim() === "" || requerimientos === null || requerimientos === undefined){
-            //throw new ExcepcionTituloInvalido<typeof titulo >(`El titulo: "${titulo}" es inválido, el título no puede estar vacío`, titulo)
-            console.log("Error en los requerimientos especiales")
+            throw new ExcepcionRequerimientosInvalidos<typeof requerimientos >("Los requerimientos especiales no pueden estar vacíos", requerimientos)
         }
 
         return new RequerimientosEspecialesOfertaDeTrabajo({requerimientos})

@@ -53,6 +53,9 @@ export class Direccion extends ValueObject<DireccionPropiedades> {
         if(estado === "" || estado === null || estado === undefined) {
             throw new ExcepcionDireccionInvalida<typeof estado>(`El estado: ${estado} es inválido, no puede estar vacío`, estado)
         }
+        if(codPostal === "" || codPostal === null || codPostal === undefined) {
+            throw new ExcepcionDireccionInvalida<typeof codPostal>(`El código postal: ${codPostal} es inválido, no puede estar vacío`, codPostal)
+        }
         return new Direccion({calle1, calle2, ciudad, estado, codPostal})
     }
 
