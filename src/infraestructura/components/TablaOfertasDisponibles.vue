@@ -72,11 +72,13 @@
 				</template>
 				<template v-slot:[`item.acciones`]="{ item }">
 					<v-icon dense color="primary" @click="mostrarDatosDeOferta(item)"> mdi-eye </v-icon>
+					<v-icon dense color="black" @click="listarPostulantes(item)" v-if="item.estadoOfertaDeTrabajo != 0"> mdi-account-multiple </v-icon>
 					<v-icon dense color="green" @click="publicarOferta(item)" v-if="item.estadoOfertaDeTrabajo == 0"> mdi-clipboard-check </v-icon>
 				</template>
 			</v-data-table>
 		</v-card>
 
+		<!-- Datos Oferta de Trabajo -->
 		<v-dialog v-model="datosOferta" class="text-center" max-width="450">
             <v-card rounded="md">
                 <v-card-title>
@@ -87,6 +89,40 @@
                 </v-card-title>
                 <v-card-subtitle class="grey--text text--darken-2 subtitle-1 d-flex justify-center justify-sm-start"> 
                     <span v-text="` ${oferta.tituloTrabajo} `"></span>
+                </v-card-subtitle>
+            </v-card>
+        </v-dialog>
+
+		<!-- Postulaciones -->
+		<v-dialog v-model="verPostulaciones" class="text-center" max-width="450">
+            <v-card rounded="md">
+                <v-card-title>
+                    <span class="d-none d-sm-flex"> Postulaciones </span>
+                    <b class="d-flex d-sm-none text-subtitle-1 font-weight-bold"> Postulaciones </b>
+                    <v-spacer> </v-spacer>
+                    <v-btn icon @click="verPostulaciones = false"><v-icon> mdi-close </v-icon></v-btn>
+                </v-card-title>
+				<div v-if="postulaciones.length > 0">
+					<v-col>
+						<v-list>
+							<template v-for="(postulacion, index) in postulaciones">
+								<v-list-item :key="postulacion.idPostulacion">
+									<v-list-item-icon class="d-none d-sm-flex">
+                                            <v-icon color="indigo"> mdi-account </v-icon>
+                                        </v-list-item-icon>
+									<v-list-item-content>
+										<v-list-item-title> {{postulacion.empleado.nombreCompleto.primerNombre}} {{postulacion.empleado.nombreCompleto.primerApellido}} </v-list-item-title>
+										<v-list-item-subtitle><b>SSN:</b> {{postulacion.empleado.ssn}}</v-list-item-subtitle>
+									</v-list-item-content>
+								</v-list-item>
+								<v-divider v-if="index < postulaciones.length -1" :key="index + 'a'"></v-divider>
+							</template>
+						</v-list>
+					</v-col>
+				</div>
+                <v-card-subtitle class="grey--text text--darken-2" v-else>
+                    <br>
+                    No se encontraron postulantes.
                 </v-card-subtitle>
             </v-card>
         </v-dialog>
@@ -111,7 +147,30 @@ export default Vue.extend({
 
 	data: () => ({
 		ofertas: [{}],
+		postulaciones: [
+			{
+				idPostulacion: '1',
+				empleado: {
+					ssn: '111111',
+					nombreCompleto: {
+						primerNombre: 'Pablo',
+						primerApellido: 'Pérez'
+					}
+				}
+			},
+			{
+				idPostulacion: '2',
+				empleado: {
+					ssn: '222222',
+					nombreCompleto: {
+						primerNombre: 'Pedro',
+						primerApellido: 'González'
+					}
+				}
+			}
+		],
 		datosOferta: false,
+		verPostulaciones: false,
 		oferta: {},
 		columnas_tabla: [
 			{
@@ -210,6 +269,9 @@ export default Vue.extend({
 			controlador.publicarOfertaUI(oferta, new AdaptadorMockOferta())
 			this.listarOfertas()
 			this.ofertaPublicacion = true
+		},
+		listarPostulantes(oferta: any) {
+			this.verPostulaciones = true
 		},
 		mostrarDatosDeOferta(oferta: any) {
 			this.oferta = oferta
