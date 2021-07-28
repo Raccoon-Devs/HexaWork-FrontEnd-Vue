@@ -1,8 +1,5 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { IDUnicoEntidad } from "../ClasesBase/IDUnicoEntidad"
-
-import { IDReferencia } from "./valueObjects/IDReferencia"
-
+import { IDReferencia } from "./ValueObjects/IDReferencia"
 import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
@@ -21,52 +18,54 @@ interface ReferenciaPropiedades {
 export class Referencia extends Entidad<ReferenciaPropiedades> {
 
     private constructor (propiedades: ReferenciaPropiedades) {
-        super(propiedades)
+        super(propiedades, propiedades.idReferencia)
     }
 
-    obtenerId(): IDReferencia {
-        return this.propiedades.idReferencia
+    obtenerId(): string | number {
+        return this.propiedades.idReferencia.obtenerId()
     }
 
     obtenerNombre(): NombreCompleto {
-        return this.propiedades.nombreCompleto
+        return this.propiedades.nombreCompleto.obtenerNombreCompleto()
     }
 
-    obtenerTitulo(): TituloTrabajo {
-        return this.propiedades.tituloTrabajo
+    obtenerTitulo(): string {
+        return this.propiedades.tituloTrabajo.obtenerTitulo()
     }
 
-    obtenerNombreCompania(): NombreCompania {
-        return this.propiedades.nombreCompania
+    obtenerNombreCompania(): string {
+        return this.propiedades.nombreCompania.obtenerNombre()
     }
 
     obtenerNroTelefono(): Telefono {
-        return this.propiedades.numeroTelefono
+        return this.propiedades.numeroTelefono.obtenerTelefono()
     }
 
-    obtenerCorreo(): Correo {
-        return this.propiedades.correo
+    obtenerCorreo(): string {
+        return this.propiedades.correo.obtenerCorreo()
     }
 
-    public static crear(
-        atributos: any
-    ): Referencia {
+    obtenerReferencia(): Referencia {
+        return this
+    }
+
+    public static crear(propiedades: any): Referencia {
         return new Referencia(
             {
-                idReferencia: IDReferencia.crear(atributos.id),
+                idReferencia: IDReferencia.crear(propiedades.id),
                 nombreCompleto: NombreCompleto.crear(
-                    atributos.primerNombre,
-                    atributos.segundoNombre,
-                    atributos.primerApellido,
-                    atributos.segundoApellido,
+                    propiedades.primerNombre,
+                    propiedades.segundoNombre,
+                    propiedades.primerApellido,
+                    propiedades.segundoApellido,
                 ),
-                tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
-                nombreCompania: NombreCompania.crear(atributos.nombreCompania),
+                tituloTrabajo: TituloTrabajo.crear(propiedades.tituloTrabajo),
+                nombreCompania: NombreCompania.crear(propiedades.nombreCompania),
                 numeroTelefono: Telefono.crear(
-                    atributos.codigoPais,
-                    atributos.numeroTelefono
+                    propiedades.codigoPais,
+                    propiedades.numeroTelefono
                 ),
-                correo: Correo.crear(atributos.correo)
+                correo: Correo.crear(propiedades.correo)
             }
         )
     }

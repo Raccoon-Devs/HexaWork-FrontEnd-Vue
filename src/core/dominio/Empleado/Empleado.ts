@@ -1,19 +1,16 @@
 import { Entidad } from "../ClasesBase/Entidad"
-
-import { SSN } from "./valueObjects/SSN"
-import { FechaNacimiento } from "./valueObjects/FechaNacimiento"
-import { NivelEducativo } from "./valueObjects/NivelEducativo"
-import { EstadoEmpleado } from "./valueObjects/EstadoEmpleado"
-
+import { SSN } from "./ValueObjects/SSN"
+import { FechaNacimiento } from "./ValueObjects/FechaNacimiento"
+import { NivelEducativo } from "./ValueObjects/NivelEducativo"
+import { EstadoEmpleado } from "./ValueObjects/EstadoEmpleado"
 import { Telefono } from "../valueObjectsComunes/Telefono"
 import { Direccion } from "../valueObjectsComunes/Direccion"
 import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
-
-import { ExperienciaDeTrabajo } from "../experienciaDeTrabajo/ExperienciaDeTrabajo"
-import { Habilidad } from "../habilidad/Habilidad"
-import { Curso } from "../curso/Curso"
-import { Referencia } from "../referencia/Referencia"
-
+import { ExperienciaDeTrabajo } from "../ExperienciaDeTrabajo/ExperienciaDeTrabajo"
+import { Habilidad } from "../Habilidad/Habilidad"
+import { Curso } from "../Curso/Curso"
+import { Referencia } from "../Referencia/Referencia"
+import { Clasificacion } from "./ValueObjects/Clasificacion"
 
 interface EmpeladoPropiedades {
     ssn: SSN,
@@ -21,48 +18,13 @@ interface EmpeladoPropiedades {
     numeroTelefono: Telefono,
     fechaNacimiento: FechaNacimiento,
     nivelEducativo: NivelEducativo,
-    experienciaLaboral: Array<ExperienciaDeTrabajo>,
-    habilidades: Array<Habilidad>
-    cursos: Array<Curso>,
-    referencias: Array<Referencia>
-    estadoEmpleador: EstadoEmpleado,
+    experienciaLaboral: ExperienciaDeTrabajo[],
+    habilidades: Habilidad[],
+    cursos: Curso[],
+    referencias: Referencia[],
+    clasificacion: Clasificacion,
+    estadoEmpleado: EstadoEmpleado,
     direccion: Direccion
-}
-
-type ssnEmpleado = {
-    ssn: string
-}
-
-type nombreEmpleado = {
-    primerNombre: string,
-    segundoNombre: string,
-    primerApellido: string
-    segundoApellido: string
-}
-
-type telefonoEmpleado = {
-    codigoPais: number,
-    numeroTelefono: number
-}
-
-type fechaNacimientoEmpleado = {
-    fechaNacimiento: Date
-}
-
-type nivelEducativoEmpleado = {
-    nivelEducativo: number
-}
-
-type estadoEmpleadorEmpleado = {
-    estado: number
-}
-
-type direccionEmpleado = {
-    calle1: string,
-    calle2: string,
-    ciudad: string,
-    estado: string,
-    codPostal: string
 }
 
 export class Empleado extends Entidad<EmpeladoPropiedades> {
@@ -71,68 +33,129 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         super(propiedades)
     }
 
-    obtenerSSN(): SSN {
-        return this.propiedades.ssn
+    obtenerSSN(): string {
+        return this.propiedades.ssn.obtenerSSN()
     }
 
     obtenerNombreEmpleado(): NombreCompleto {
-        return this.propiedades.nombreCompleto
+        return this.propiedades.nombreCompleto.obtenerNombreCompleto()
     }
 
     obtenerNroTlf(): Telefono {
-        return this.propiedades.numeroTelefono
+        return this.propiedades.numeroTelefono.obtenerTelefono()
     }
 
-    obtenerDireccion(): Direccion {
-        return this.propiedades.direccion
+    obtenerFechaNacimiento(): Date {
+        return this.propiedades.fechaNacimiento.obtenerFechaNacimiento()
     }
 
-    obetnerNivelEducativo(): NivelEducativo {
-        return this.propiedades.nivelEducativo
+    obetnerNivelEducativo(): number {
+        return this.propiedades.nivelEducativo.obtenerNivelEducativo()
     }
 
-    obtenerExperienciaLaboral(): Array<ExperienciaDeTrabajo> {
-        return this.propiedades.experienciaLaboral
+    obtenerExperienciaLaboral(): ExperienciaDeTrabajo[] {
+
+        const experiencias: ExperienciaDeTrabajo[] = []
+        this.propiedades.experienciaLaboral.forEach(experiencia => {
+            experiencias.push(experiencia.obtenerExperienciaDeTrabajo())
+        });
+
+        return experiencias
     }
 
-    obtenerHabilidades(): Array<Habilidad> {
-        return this.propiedades.habilidades
+    obtenerHabilidades(): Habilidad[] {
+
+        const habilidades: Habilidad[] = []
+        this.propiedades.habilidades.forEach(habilidad => {
+            habilidades.push(habilidad.obtenerHabilidad())
+        });
+
+        return habilidades
     }
 
-    obtenerCursos(): Array<Curso> {
-        return this.propiedades.cursos
+    obtenerCursos(): Curso[] {
+
+        const cursos: Curso[] = []
+        this.propiedades.cursos.forEach(curso => {
+            cursos.push(curso.obtenerCurso())
+        });
+        
+        return cursos
     }
 
-    obtenerReferencias(): Array<Referencia> {
-        return this.propiedades.referencias
+    obtenerReferencias(): Referencia[] {
+
+        const referencias: Referencia[] = []
+        this.propiedades.referencias.forEach(referencia => {
+            referencias.push(referencia.obtenerReferencia())
+        });
+
+        return referencias
     }
 
-    public static crear(
-        ssn: ssnEmpleado,
-        nombreEmpleado: nombreEmpleado,
-        nroTlf: telefonoEmpleado,
-        fechaNacimiento: fechaNacimientoEmpleado,
-        nivelEducativo: nivelEducativoEmpleado,
-        estadoEmpleador: estadoEmpleadorEmpleado,
-        direccion: direccionEmpleado,
-        experienciaLaboral: Array<ExperienciaDeTrabajo>,
-        habilidades: Array<Habilidad>,
-        cursos: Array<Curso>,
-        referencias: Array<Referencia>
-    ): Empleado {
+    obtenerClasifiacion(): number {
+        return this.propiedades.clasificacion.obtenerClasificacion()
+    }
+
+    obtenerEstadoEmpleado(): number {
+        return this.propiedades.estadoEmpleado.obtenerEstadoEmpleado()
+    }
+
+    // obtenerDireccion(): Direccion {
+    //     return this.propiedades.direccion.obtenerDireccion()
+    // }
+
+    obtenerEmpleado(): Empleado {
+        return this
+    }
+
+    public static crear(propiedades: any): Empleado {
+
+        const experiencias: ExperienciaDeTrabajo[] = []
+        propiedades.experienciaLaboral.forEach(experiencia => {
+            experiencias.push(ExperienciaDeTrabajo.crear(experiencia))
+        });
+
+        const habilidades: Habilidad[] = []
+        propiedades.habilidades.forEach(habilidad => {
+            habilidades.push(Habilidad.crear(habilidad))
+        });
+
+        const cursos: Curso[] = []
+        propiedades.cursos.forEach(curso => {
+            cursos.push(Curso.crear(curso))
+        });
+
+        const referencias: Referencia[] = []
+        propiedades.referencias.forEach(referencia => {
+            referencias.push(Referencia.crear(referencia))
+        });
+        
         return new Empleado(
             {
-                ssn: SSN.crear(ssn.ssn),
-                nombreCompleto: NombreCompleto.crear(nombreEmpleado.primerNombre, nombreEmpleado.segundoNombre, nombreEmpleado.primerApellido, nombreEmpleado.segundoApellido),
-                numeroTelefono: Telefono.crear(nroTlf.codigoPais, nroTlf.numeroTelefono),
-                fechaNacimiento: FechaNacimiento.crear(fechaNacimiento.fechaNacimiento),
-                nivelEducativo: NivelEducativo.crear(nivelEducativo.nivelEducativo),
-                estadoEmpleador: EstadoEmpleado.crear(estadoEmpleador.estado),
-                direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.estado, direccion.codPostal),
-                experienciaLaboral: [],
-                habilidades: [],
-                cursos: [],
-                referencias: []
+                ssn: SSN.crear(propiedades.ssn),
+                nombreCompleto: NombreCompleto.crear(
+                    propiedades.nombreCompleto.primerNombre,
+                    propiedades.nombreCompleto.segundoNombre,
+                    propiedades.nombreCompleto.primerApellido,
+                    propiedades.nombreCompleto.segundoApellido,
+                ),
+                numeroTelefono: Telefono.crear(propiedades.nroTlf.codigoPais, propiedades.nroTlf.numeroTelefono),
+                fechaNacimiento: FechaNacimiento.crear(propiedades.fechaNacimiento.fechaNacimiento),
+                nivelEducativo: NivelEducativo.crear(propiedades.nivelEducativo.nivelEducativo),
+                experienciaLaboral: experiencias,
+                habilidades: habilidades,
+                cursos: cursos,
+                referencias: referencias,
+                clasificacion: propiedades.clasificacion,
+                estadoEmpleado: EstadoEmpleado.crear(propiedades.estadoEmpleado.estado),
+                direccion: Direccion.crear(
+                    propiedades.direccion.calle1, 
+                    propiedades.direccion.calle2, 
+                    propiedades.direccion.ciudad, 
+                    propiedades.direccion.estado, 
+                    propiedades.direccion.codPostal
+                )
             }
         )
     }

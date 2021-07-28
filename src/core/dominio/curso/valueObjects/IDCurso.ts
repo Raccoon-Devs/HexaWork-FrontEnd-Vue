@@ -6,6 +6,10 @@ export class IDCurso extends IDUnicoEntidad {
         super(id)
     }
 
+    obtenerId(): string | number {
+        return this.aValor()
+    }
+
     public static crear(id?: string){
         return new IDCurso(id)
     }

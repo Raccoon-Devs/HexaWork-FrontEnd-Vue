@@ -1,5 +1,5 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionRolInvalido } from "../excepciones/ExcepcionRolInvalido"
+import { ExcepcionRolInvalido } from "../Excepciones/ExcepcionRolInvalido"
 
 export interface RolPropiedades {
     nombre: string

@@ -1,77 +1,105 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { NombreCompañia, NombreCompañiaPropiedades } from "./valueObjects/NombreCompañia"
-import { Direccion } from "./valueObjects/Direccion"
-import { InfoEmpleador } from "./valueObjects/InfoEmpleador"
-import { Rol, RolPropiedades } from "./valueObjects/Rol"
-import { IDEmpleador } from "./valueObjects/IDEmpleador"
+import { Direccion } from "../valueObjectsComunes/Direccion"
+import { IDEmpleador } from "./ValueObjects/IDEmpleador"
+import { Habilidad } from "../Habilidad/Habilidad"
+import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
+import { LogoEmpleador } from "./ValueObjects/LogoEmpleador"
+import { RequerimientosEspeciales } from "./ValueObjects/RequerimientosEspeciales"
+import { EstadoEmpleador } from "./ValueObjects/EstadoEmpleador"
+import { InformacionDeContacto } from "../InformacionDeContacto/InformacionDeContacto"
 
 export interface EmpleadorPropiedades {
-    IDEmpleador: IDEmpleador
-    nombreEmpresa: NombreCompañia,
+    idEmpleador: IDEmpleador
+    nombreCompania: NombreCompania,
     direccion: Direccion,
-    infoEmpleador: InfoEmpleador,
-    rol: Rol
-}
-
-type InfoEmpleadorType = {
-    nombreCompleto: string,
-    cargoDeTrabajo: string,
-    numeroDeTelefono: string,
-    correo: string
-}
-
-type DireccionType = {
-    calle1: string,
-    calle2: string,
-    ciudad: string,
-    estado: string,
-    zip: string
-}
-
-type NombreEmpresaType = {
-    nombre: string,
-    rif: string
+    contactos: InformacionDeContacto[],
+    logo: LogoEmpleador
+    habilidades: Habilidad[]
+    requerimientosEspeciales: RequerimientosEspeciales
+    estadoEmpleador: EstadoEmpleador
 }
 
 export class Empleador extends Entidad<EmpleadorPropiedades> {
 
     constructor (propiedades: EmpleadorPropiedades) {
-        super(propiedades, propiedades.IDEmpleador)
+        super(propiedades, propiedades.idEmpleador)
     }
 
-    obtenerId(): IDEmpleador {
-        return this.propiedades.IDEmpleador
+    obtenerId(): string | number {
+        return this.propiedades.idEmpleador.obtenerId()
     }
 
-    obtenerNombreEmpresa(): NombreCompañiaPropiedades {
-        return this.propiedades.nombreEmpresa.obtenerNombreEmpresa()
+    obtenerNombreCompania(): string {
+        return this.propiedades.nombreCompania.obtenerNombre()
     }
 
     obtenerDireccion(): Direccion {
         return this.propiedades.direccion
     }
 
-    obtenerInfoEmpleador(): InfoEmpleador {
-        return this.propiedades.infoEmpleador
+    obtenerInformacionDeContacto(): InformacionDeContacto[] {
+
+        const contactos: InformacionDeContacto[] = []
+        this.propiedades.contactos.forEach(contacto => {
+            contactos.push(contacto.obtenerInformacionDeContacto())
+        });
+
+        return contactos
     }
 
-    obtenerRol(): Rol {
-        return this.propiedades.rol
+    obtenerLogo(): string {
+        return this.propiedades.logo.obtenerUrlLogo()
     }
 
-    public static crear(
-        nombreEmpresa: NombreEmpresaType,
-        direccion: DireccionType,
-        infoEmpleador: InfoEmpleadorType,
-        rol: string,
-        id? : string,
-    ){
+    obtenerHabilidades(): Habilidad[] {
+
+        const habilidades: Habilidad[] = []
+        this.propiedades.habilidades.forEach(habilidad => {
+            habilidades.push(habilidad.obtenerHabilidad())
+        });
+
+        return habilidades
+    }
+
+    obtenerRequerimientosEspeciales(): string {
+        return this.propiedades.requerimientosEspeciales.obtenerRequerimientos()
+    }
+
+    obtenerEstadoEmpleador(): number {
+        return this.propiedades.estadoEmpleador.obtenerEstadoEmpleador()
+    }
+
+    obtenerEmpleador(): Empleador {
+        return this
+    }
+
+    public static crear(propiedades: any){
+
+        const contactos: InformacionDeContacto[] = []
+        propiedades.contactos.forEach(contacto => {
+            contactos.push(InformacionDeContacto.crear(contacto))
+        });
+
+        const habilidades: Habilidad[] = []
+        propiedades.habilidades.forEach(habilidad => {
+            habilidades.push(Habilidad.crear(habilidad))
+        });
+
         return new Empleador({
-            IDEmpleador: IDEmpleador.crear(id),
-            nombreEmpresa: NombreCompañia.crear(nombreEmpresa.nombre, nombreEmpresa.rif),
-            direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.ciudad, direccion.zip),
-            infoEmpleador: InfoEmpleador.crear(infoEmpleador.nombreCompleto, infoEmpleador.cargoDeTrabajo, infoEmpleador.numeroDeTelefono, infoEmpleador.correo),
-            rol: Rol.crear(rol)
+            idEmpleador: IDEmpleador.crear(propiedades.idEmpleador),
+            nombreCompania: NombreCompania.crear(propiedades.nombreCompania),
+            direccion: Direccion.crear(
+                propiedades.direccion.calle1, 
+                propiedades.direccion.calle2, 
+                propiedades.direccion.ciudad, 
+                propiedades.direccion.ciudad, 
+                propiedades.direccion.codPostal
+            ),
+            contactos: contactos,
+            logo: LogoEmpleador.crear(propiedades.logo),
+            habilidades: habilidades,
+            requerimientosEspeciales: RequerimientosEspeciales.crear(propiedades.requerimientosEspeciales),
+            estadoEmpleador: EstadoEmpleador.crear(propiedades.estadoEmpleador)
         })
     }
 

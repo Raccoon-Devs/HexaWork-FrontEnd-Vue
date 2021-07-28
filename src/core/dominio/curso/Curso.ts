@@ -1,14 +1,10 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { IDUnicoEntidad } from "../ClasesBase/IDUnicoEntidad"
-
-import { IDCurso } from "./valueObjects/IDCurso"
-import { CodigoCurso } from "./valueObjects/CodigoCurso"
-import { EstadoCurso } from "./valueObjects/EstadoCurso"
-import { TituloCurso } from "./valueObjects/TituloCurso"
-
+import { IDCurso } from "./ValueObjects/IDCurso"
+import { CodigoCurso } from "./ValueObjects/CodigoCurso"
+import { EstadoCurso } from "./ValueObjects/EstadoCurso"
+import { TituloCurso } from "./ValueObjects/TituloCurso"
 import { Imagen } from "../valueObjectsComunes/Imagen"
-
-import { Habilidad } from "../habilidad/Habilidad"
+import { Habilidad } from "../Habilidad/Habilidad"
 
 
 interface CursoPropiedades {
@@ -16,51 +12,65 @@ interface CursoPropiedades {
     codigo: CodigoCurso,
     titulo: TituloCurso,
     imagenPortada: Imagen,
-    estadoCurso: EstadoCurso,
-    habilidades: Array<Habilidad>
+    habilidades: Habilidad[],
+    estadoCurso: EstadoCurso
 }
 
 export class Curso extends Entidad<CursoPropiedades> {
 
     private constructor (propiedades: CursoPropiedades) {
-        super(propiedades)
+        super(propiedades, propiedades.idCurso)
     }
 
-    obtenerId(): IDCurso {
-        return this.propiedades.idCurso
+    obtenerId(): string | number {
+        return this.propiedades.idCurso.obtenerId()
     }
 
-    obtenerCodgio(): CodigoCurso {
-        return this.propiedades.codigo
+    obtenerCodigo(): string {
+        return this.propiedades.codigo.obtenerCodigo()
     }
 
-    obtenerTitulo(): TituloCurso {
-        return this.propiedades.titulo
+    obtenerTitulo(): string {
+        return this.propiedades.titulo.obtenerTitulo()
     }
 
-    obtenerImagenPortada(): Imagen {
-        return this.propiedades.imagenPortada
+    obtenerImagenPortada(): string {
+        return this.propiedades.imagenPortada.obtenerImagen()
     }
 
-    obtenerEstadoCurso(): EstadoCurso {
-        return this.propiedades.estadoCurso
+    obtenerHabilidades(): Habilidad[] {
+        const habilidades: Habilidad[] = []
+
+        this.propiedades.habilidades.forEach(habilidad => {
+            habilidades.push(habilidad.obtenerHabilidad())
+        });
+        
+        return habilidades
     }
 
-    obtenerHabilidades(): Array<Habilidad> {
-        return this.propiedades.habilidades
+    obtenerEstadoCurso(): number {
+        return this.propiedades.estadoCurso.obtenerEstadoCurso()
     }
 
-    public static crear(
-        atributos: any
-    ): Curso {
+    obtenerCurso(): Curso {
+        return this
+    }
+
+    public static crear(propiedades: any): Curso {
+        const habilidades: Habilidad[] = []
+
+        propiedades.habilidades.forEach(habilidad => {
+            habilidades.push(Habilidad.crear(habilidad))
+        });
+
         return new Curso(
             {
-                idCurso: IDCurso.crear(atributos.idCurso),
-                codigo: CodigoCurso.crear(atributos.codigoCurso),
-                titulo: TituloCurso.crear(atributos.titulo),
-                imagenPortada: Imagen.crear(atributos.urlImagen),
-                estadoCurso: EstadoCurso.crear(atributos.estadoCurso),
-                habilidades: []
+                idCurso: IDCurso.crear(propiedades.idCurso),
+                codigo: CodigoCurso.crear(propiedades.codigoCurso),
+                titulo: TituloCurso.crear(propiedades.titulo),
+                imagenPortada: Imagen.crear(propiedades.urlImagen),
+                estadoCurso: EstadoCurso.crear(propiedades.estadoCurso),
+                habilidades: habilidades
             }
         )
     }

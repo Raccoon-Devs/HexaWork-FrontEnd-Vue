@@ -30,6 +30,10 @@ export class NombreCompleto extends ValueObject<NombreCompletoPropiedades> {
         return this.propiedades.segundoApellido
     }
 
+    obtenerNombreCompleto(): NombreCompleto {
+        return this
+    }
+
     public static crear(primerNombre: string, segundoNombre: string, primerApellido: string, segundoApellido: string): NombreCompleto {
         if(primerNombre === "" || primerNombre === null || primerNombre === undefined) {
             throw new ExcepcionNombreCompletoInvalido<typeof primerNombre>(`El primer nombre: ${primerNombre} es inválido, no puede ser vacío`, primerNombre)

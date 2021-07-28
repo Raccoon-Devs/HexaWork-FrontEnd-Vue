@@ -1,5 +1,5 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionEstadoCursoInvalido } from '../excepciones/ExcepcionEstadoCursoInvalido'
+import { ExcepcionEstadoCursoInvalido } from '../Excepciones/ExcepcionEstadoCursoInvalido'
 
 interface EstadoCursoPropiedades {
     estadoCurso: number
@@ -16,12 +16,15 @@ export class EstadoCurso extends ValueObject<EstadoCursoPropiedades> {
     }
 
     public static crear(estadoCurso: number): EstadoCurso {
-        if (estadoCurso < 0 || estadoCurso > 1) {
-            throw new ExcepcionEstadoCursoInvalido<typeof estadoCurso>(
-                `El valor estadoCurso: ${estadoCurso} es invalido, debe estar entre 0 y 10`,
-                estadoCurso
-            )
+        
+        if(estadoCurso === null || estadoCurso === undefined){
+            throw new ExcepcionEstadoCursoInvalido<typeof estadoCurso >(`El estado: ${estadoCurso} no puede estar vacio`, estadoCurso)
         }
+
+        if(!(estadoCurso in [0, 1])){
+            throw new ExcepcionEstadoCursoInvalido<typeof estadoCurso >(`El estado: ${estadoCurso} de la oferta debe ser: 0 (Inactivo), 1 (Activo)`, estadoCurso)
+        }
+
         return new EstadoCurso({estadoCurso})
     }
 }

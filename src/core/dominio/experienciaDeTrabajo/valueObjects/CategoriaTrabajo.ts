@@ -1,5 +1,5 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionCategoriaDeTrabajoInvalido } from '../excepciones/ExcepcionCategoriaDeTrabajoInvalido'
+import { ExcepcionCategoriaDeTrabajoInvalido } from '../Excepciones/ExcepcionCategoriaDeTrabajoInvalido'
 
 
 interface CategoriaTrabajoPropiedades {
@@ -17,12 +17,15 @@ export class CategoriaTrabajo extends ValueObject<CategoriaTrabajoPropiedades> {
     }
 
     public static crear(categoria: number): CategoriaTrabajo {
-        if (categoria < 0 || categoria > 3) {
-            throw new ExcepcionCategoriaDeTrabajoInvalido<typeof categoria>(
-                `El valor categoria: ${categoria} es invalido, debe estar entre 0 y 3`,
-                categoria
-            )
+        
+        if(categoria === null || categoria === undefined){
+            throw new ExcepcionCategoriaDeTrabajoInvalido<typeof categoria >(`La categoría: ${categoria} no puede estar vacio`, categoria)
         }
+
+        if(!(categoria in [0, 1, 2, 3])){
+            throw new ExcepcionCategoriaDeTrabajoInvalido<typeof categoria >(`La categoría: ${categoria} de la Experiencia de Trabajo debe ser: 0 (Limpieza), 1 (Mantenimiento), 2 (Cocina), 3 (Lavandería)`, categoria)
+        }
+
         return new CategoriaTrabajo({categoria})
     }
 }
