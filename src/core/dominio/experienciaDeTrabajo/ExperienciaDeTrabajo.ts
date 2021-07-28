@@ -4,7 +4,7 @@ import { CategoriaTrabajo } from "./ValueObjects/CategoriaTrabajo"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 
-interface ExperienciaDeTrabajoPropiedades {
+export interface ExperienciaDeTrabajoPropiedades {
     idExperiencia: IDExperienciaTrabajo,
     tituloTrabajo: TituloTrabajo,
     nombreCompania: NombreCompania,
@@ -37,13 +37,13 @@ export class ExperienciaDeTrabajo extends Entidad<ExperienciaDeTrabajoPropiedade
         return this
     }
 
-    public static crear(propiedades: any): ExperienciaDeTrabajo {
+    public static crear(atributos: any): ExperienciaDeTrabajo {
         return new ExperienciaDeTrabajo(
             {
-                idExperiencia: IDExperienciaTrabajo.crear(propiedades.idExperiencia),
-                tituloTrabajo: TituloTrabajo.crear(propiedades.titulo),
-                nombreCompania: NombreCompania.crear(propiedades.nombre),
-                categoria: CategoriaTrabajo.crear(propiedades.categoria)
+                idExperiencia: IDExperienciaTrabajo.crear(atributos.idExperiencia),
+                tituloTrabajo: TituloTrabajo.crear(atributos.titulo),
+                nombreCompania: NombreCompania.crear(atributos.nombre),
+                categoria: CategoriaTrabajo.crear(atributos.categoria)
             }
         )
     }

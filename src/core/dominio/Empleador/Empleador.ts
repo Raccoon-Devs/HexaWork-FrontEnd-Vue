@@ -1,12 +1,12 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { Direccion } from "../valueObjectsComunes/Direccion"
+import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion"
 import { IDEmpleador } from "./ValueObjects/IDEmpleador"
-import { Habilidad } from "../Habilidad/Habilidad"
+import { Habilidad, HabilidadPropiedades } from "../Habilidad/Habilidad"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
 import { LogoEmpleador } from "./ValueObjects/LogoEmpleador"
 import { RequerimientosEspeciales } from "./ValueObjects/RequerimientosEspeciales"
 import { EstadoEmpleador } from "./ValueObjects/EstadoEmpleador"
-import { InformacionDeContacto } from "../InformacionDeContacto/InformacionDeContacto"
+import { InformacionDeContacto, InformacionDeContactoPropiedades } from "../InformacionDeContacto/InformacionDeContacto"
 
 export interface EmpleadorPropiedades {
     idEmpleador: IDEmpleador
@@ -33,8 +33,8 @@ export class Empleador extends Entidad<EmpleadorPropiedades> {
         return this.propiedades.nombreCompania.obtenerNombre()
     }
 
-    obtenerDireccion(): Direccion {
-        return this.propiedades.direccion
+    obtenerDireccion(): DireccionPropiedades {
+        return this.propiedades.direccion.obtenerDireccion()
     }
 
     obtenerInformacionDeContacto(): InformacionDeContacto[] {
@@ -73,33 +73,33 @@ export class Empleador extends Entidad<EmpleadorPropiedades> {
         return this
     }
 
-    public static crear(propiedades: any){
+    public static crear(atributos: any){
 
         const contactos: InformacionDeContacto[] = []
-        propiedades.contactos.forEach(contacto => {
-            contactos.push(InformacionDeContacto.crear(contacto))
+        atributos.contactos.forEach(contacto => {
+            contactos.push(InformacionDeContacto.crear(contacto.propiedades))
         });
 
         const habilidades: Habilidad[] = []
-        propiedades.habilidades.forEach(habilidad => {
-            habilidades.push(Habilidad.crear(habilidad))
+        atributos.habilidades.forEach(habilidad => {
+            habilidades.push(Habilidad.crear(habilidad.propiedades))
         });
 
         return new Empleador({
-            idEmpleador: IDEmpleador.crear(propiedades.idEmpleador),
-            nombreCompania: NombreCompania.crear(propiedades.nombreCompania),
+            idEmpleador: IDEmpleador.crear(atributos.idEmpleador),
+            nombreCompania: NombreCompania.crear(atributos.nombreCompania),
             direccion: Direccion.crear(
-                propiedades.direccion.calle1, 
-                propiedades.direccion.calle2, 
-                propiedades.direccion.ciudad, 
-                propiedades.direccion.ciudad, 
-                propiedades.direccion.codPostal
+                atributos.direccion.calle1, 
+                atributos.direccion.calle2, 
+                atributos.direccion.ciudad, 
+                atributos.direccion.ciudad, 
+                atributos.direccion.codPostal
             ),
             contactos: contactos,
-            logo: LogoEmpleador.crear(propiedades.logo),
+            logo: LogoEmpleador.crear(atributos.logo),
             habilidades: habilidades,
-            requerimientosEspeciales: RequerimientosEspeciales.crear(propiedades.requerimientosEspeciales),
-            estadoEmpleador: EstadoEmpleador.crear(propiedades.estadoEmpleador)
+            requerimientosEspeciales: RequerimientosEspeciales.crear(atributos.requerimientosEspeciales),
+            estadoEmpleador: EstadoEmpleador.crear(atributos.estadoEmpleador)
         })
     }
 

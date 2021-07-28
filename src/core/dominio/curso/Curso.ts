@@ -4,10 +4,10 @@ import { CodigoCurso } from "./ValueObjects/CodigoCurso"
 import { EstadoCurso } from "./ValueObjects/EstadoCurso"
 import { TituloCurso } from "./ValueObjects/TituloCurso"
 import { Imagen } from "../valueObjectsComunes/Imagen"
-import { Habilidad } from "../Habilidad/Habilidad"
+import { Habilidad, HabilidadPropiedades } from "../Habilidad/Habilidad"
 
 
-interface CursoPropiedades {
+export interface CursoPropiedades {
     idCurso: IDCurso,
     codigo: CodigoCurso,
     titulo: TituloCurso,
@@ -56,20 +56,20 @@ export class Curso extends Entidad<CursoPropiedades> {
         return this
     }
 
-    public static crear(propiedades: any): Curso {
+    public static crear(atributos: any): Curso {
         const habilidades: Habilidad[] = []
 
-        propiedades.habilidades.forEach(habilidad => {
-            habilidades.push(Habilidad.crear(habilidad))
+        atributos.habilidades.forEach(habilidad => {
+            habilidades.push(Habilidad.crear(habilidad.propiedades))
         });
 
         return new Curso(
             {
-                idCurso: IDCurso.crear(propiedades.idCurso),
-                codigo: CodigoCurso.crear(propiedades.codigoCurso),
-                titulo: TituloCurso.crear(propiedades.titulo),
-                imagenPortada: Imagen.crear(propiedades.urlImagen),
-                estadoCurso: EstadoCurso.crear(propiedades.estadoCurso),
+                idCurso: IDCurso.crear(atributos.idCurso),
+                codigo: CodigoCurso.crear(atributos.codigoCurso),
+                titulo: TituloCurso.crear(atributos.titulo),
+                imagenPortada: Imagen.crear(atributos.urlImagen),
+                estadoCurso: EstadoCurso.crear(atributos.estadoCurso),
                 habilidades: habilidades
             }
         )

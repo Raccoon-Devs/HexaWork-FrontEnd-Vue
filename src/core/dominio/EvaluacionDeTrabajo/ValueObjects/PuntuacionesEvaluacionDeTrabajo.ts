@@ -1,7 +1,7 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
 import { ExcepcionPuntuacionInvalida } from "../Excepciones/ExcepcionPuntuacionInvalida"
 
-interface PuntuacionEvaluacionPropiedades {
+export interface PuntuacionEvaluacionPropiedades {
     puntuacion1: number,
     puntuacion2: number,
     puntuacion3: number,
@@ -35,8 +35,8 @@ export class PuntuacionEvaluacionDeTrabajo extends ValueObject<PuntuacionEvaluac
         return this.propiedades.puntuacion5
     }
 
-    obtenerPreguntasEvaluacionDeTrabajo(): PuntuacionEvaluacionDeTrabajo {
-        return this
+    obtenerPreguntasEvaluacionDeTrabajo(): PuntuacionEvaluacionPropiedades {
+        return this.propiedades
     }
 
     public static crear(

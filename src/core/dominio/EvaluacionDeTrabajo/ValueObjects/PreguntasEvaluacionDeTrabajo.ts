@@ -1,6 +1,6 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
 
-interface PreguntasEvaluacionPropiedades {
+export interface PreguntasEvaluacionPropiedades {
     pregunta1: string,
     pregunta2: string,
     pregunta3: string,
@@ -34,8 +34,8 @@ export class PreguntasEvaluacionDeTrabajo extends ValueObject<PreguntasEvaluacio
         return this.propiedades.pregunta5
     }
 
-    obtenerPreguntasEvaluacionDeTrabajo(): PreguntasEvaluacionDeTrabajo {
-        return this
+    obtenerPreguntasEvaluacionDeTrabajo(): PreguntasEvaluacionPropiedades {
+        return this.propiedades
     }
 
     public static crear(

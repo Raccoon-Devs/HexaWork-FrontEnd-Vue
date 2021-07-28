@@ -3,16 +3,16 @@ import { SSN } from "./ValueObjects/SSN"
 import { FechaNacimiento } from "./ValueObjects/FechaNacimiento"
 import { NivelEducativo } from "./ValueObjects/NivelEducativo"
 import { EstadoEmpleado } from "./ValueObjects/EstadoEmpleado"
-import { Telefono } from "../valueObjectsComunes/Telefono"
-import { Direccion } from "../valueObjectsComunes/Direccion"
-import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
-import { ExperienciaDeTrabajo } from "../ExperienciaDeTrabajo/ExperienciaDeTrabajo"
-import { Habilidad } from "../Habilidad/Habilidad"
-import { Curso } from "../Curso/Curso"
-import { Referencia } from "../Referencia/Referencia"
+import { Telefono, TelefonoPropiedades } from "../valueObjectsComunes/Telefono"
+import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion"
+import { NombreCompleto, NombreCompletoPropiedades } from "../valueObjectsComunes/NombreCompleto"
+import { ExperienciaDeTrabajo, ExperienciaDeTrabajoPropiedades } from "../ExperienciaDeTrabajo/ExperienciaDeTrabajo"
+import { Habilidad, HabilidadPropiedades } from "../Habilidad/Habilidad"
+import { Curso, CursoPropiedades } from "../Curso/Curso"
+import { Referencia, ReferenciaPropiedades } from "../Referencia/Referencia"
 import { Clasificacion } from "./ValueObjects/Clasificacion"
 
-interface EmpeladoPropiedades {
+export interface EmpleadoPropiedades {
     ssn: SSN,
     nombreCompleto: NombreCompleto,
     numeroTelefono: Telefono,
@@ -27,9 +27,9 @@ interface EmpeladoPropiedades {
     direccion: Direccion
 }
 
-export class Empleado extends Entidad<EmpeladoPropiedades> {
+export class Empleado extends Entidad<EmpleadoPropiedades> {
 
-    private constructor (propiedades: EmpeladoPropiedades) {
+    private constructor (propiedades: EmpleadoPropiedades) {
         super(propiedades)
     }
 
@@ -37,11 +37,11 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         return this.propiedades.ssn.obtenerSSN()
     }
 
-    obtenerNombreEmpleado(): NombreCompleto {
+    obtenerNombreEmpleado(): NombreCompletoPropiedades {
         return this.propiedades.nombreCompleto.obtenerNombreCompleto()
     }
 
-    obtenerNroTlf(): Telefono {
+    obtenerNroTlf(): TelefonoPropiedades {
         return this.propiedades.numeroTelefono.obtenerTelefono()
     }
 
@@ -101,60 +101,60 @@ export class Empleado extends Entidad<EmpeladoPropiedades> {
         return this.propiedades.estadoEmpleado.obtenerEstadoEmpleado()
     }
 
-    // obtenerDireccion(): Direccion {
-    //     return this.propiedades.direccion.obtenerDireccion()
-    // }
+    obtenerDireccion(): DireccionPropiedades {
+        return this.propiedades.direccion.obtenerDireccion()
+    }
 
     obtenerEmpleado(): Empleado {
         return this
     }
 
-    public static crear(propiedades: any): Empleado {
+    public static crear(atributos: any): Empleado {
 
         const experiencias: ExperienciaDeTrabajo[] = []
-        propiedades.experienciaLaboral.forEach(experiencia => {
-            experiencias.push(ExperienciaDeTrabajo.crear(experiencia))
+        atributos.experienciaLaboral.forEach(experiencia => {
+            experiencias.push(ExperienciaDeTrabajo.crear(experiencia.propiedades))
         });
 
         const habilidades: Habilidad[] = []
-        propiedades.habilidades.forEach(habilidad => {
-            habilidades.push(Habilidad.crear(habilidad))
+        atributos.habilidades.forEach(habilidad => {
+            habilidades.push(Habilidad.crear(habilidad.propiedades))
         });
 
         const cursos: Curso[] = []
-        propiedades.cursos.forEach(curso => {
-            cursos.push(Curso.crear(curso))
+        atributos.cursos.forEach(curso => {
+            cursos.push(Curso.crear(curso.propiedades))
         });
 
         const referencias: Referencia[] = []
-        propiedades.referencias.forEach(referencia => {
-            referencias.push(Referencia.crear(referencia))
+        atributos.referencias.forEach(referencia => {
+            referencias.push(Referencia.crear(referencia.propiedades))
         });
         
         return new Empleado(
             {
-                ssn: SSN.crear(propiedades.ssn),
+                ssn: SSN.crear(atributos.ssn),
                 nombreCompleto: NombreCompleto.crear(
-                    propiedades.nombreCompleto.primerNombre,
-                    propiedades.nombreCompleto.segundoNombre,
-                    propiedades.nombreCompleto.primerApellido,
-                    propiedades.nombreCompleto.segundoApellido,
+                    atributos.nombreCompleto.primerNombre,
+                    atributos.nombreCompleto.segundoNombre,
+                    atributos.nombreCompleto.primerApellido,
+                    atributos.nombreCompleto.segundoApellido,
                 ),
-                numeroTelefono: Telefono.crear(propiedades.nroTlf.codigoPais, propiedades.nroTlf.numeroTelefono),
-                fechaNacimiento: FechaNacimiento.crear(propiedades.fechaNacimiento.fechaNacimiento),
-                nivelEducativo: NivelEducativo.crear(propiedades.nivelEducativo.nivelEducativo),
+                numeroTelefono: Telefono.crear(atributos.nroTlf.codigoPais, atributos.nroTlf.numeroTelefono),
+                fechaNacimiento: FechaNacimiento.crear(atributos.fechaNacimiento.fechaNacimiento),
+                nivelEducativo: NivelEducativo.crear(atributos.nivelEducativo.nivelEducativo),
                 experienciaLaboral: experiencias,
                 habilidades: habilidades,
                 cursos: cursos,
                 referencias: referencias,
-                clasificacion: propiedades.clasificacion,
-                estadoEmpleado: EstadoEmpleado.crear(propiedades.estadoEmpleado.estado),
+                clasificacion: atributos.clasificacion,
+                estadoEmpleado: EstadoEmpleado.crear(atributos.estadoEmpleado.estado),
                 direccion: Direccion.crear(
-                    propiedades.direccion.calle1, 
-                    propiedades.direccion.calle2, 
-                    propiedades.direccion.ciudad, 
-                    propiedades.direccion.estado, 
-                    propiedades.direccion.codPostal
+                    atributos.direccion.calle1, 
+                    atributos.direccion.calle2, 
+                    atributos.direccion.ciudad, 
+                    atributos.direccion.estado, 
+                    atributos.direccion.codPostal
                 )
             }
         )

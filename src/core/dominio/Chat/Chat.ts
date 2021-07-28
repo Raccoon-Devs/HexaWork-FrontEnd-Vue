@@ -1,5 +1,5 @@
 import { Entidad } from "../ClasesBase/Entidad";
-import { RelacionDeTrabajo } from "../RelacionDeTrabajo/RelacionDeTrabajo";
+import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../RelacionDeTrabajo/RelacionDeTrabajo";
 import { IDChat } from "./ValueObjects/IDChat";
 import { Mensaje } from "./ValueObjects/Mensaje";
 
@@ -38,19 +38,19 @@ export class Chat extends Entidad<ChatPropiedades>{
         return this
     }
 
-    public static crear(propiedades: any): Chat {
+    public static crear(atributos: any): Chat {
 
         const mensajes: Mensaje[] = []
 
-        propiedades.mensajes.forEach(mensaje => {
+        atributos.mensajes.forEach(mensaje => {
             mensajes.push(Mensaje.crear(mensaje))
         });
 
         return new Chat(
             {
-                idChat: IDChat.crear(propiedades.id),
+                idChat: IDChat.crear(atributos.id),
                 mensajes: mensajes,
-                trabajo: RelacionDeTrabajo.crear(propiedades.trabajo)
+                trabajo: RelacionDeTrabajo.crear(atributos.trabajo.propiedades)
             }
         )
     }

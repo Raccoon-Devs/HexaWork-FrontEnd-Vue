@@ -1,6 +1,6 @@
-import { Habilidad } from "../Habilidad/Habilidad"
-import { InformacionDeContacto } from "../InformacionDeContacto/InformacionDeContacto"
-import { Direccion } from "../valueObjectsComunes/Direccion"
+import { Habilidad, HabilidadPropiedades } from "../Habilidad/Habilidad"
+import { InformacionDeContacto, InformacionDeContactoPropiedades } from "../InformacionDeContacto/InformacionDeContacto"
+import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
 import { EmpleadorPropiedades } from "./Empleador"
 import { EstadoEmpleador } from "./ValueObjects/EstadoEmpleador"
@@ -9,14 +9,14 @@ import { RequerimientosEspeciales } from "./ValueObjects/RequerimientosEspeciale
 
 type EmpleadorParaDominioMap<Type> = {
     [Property in keyof Type]
-    : Type[Property] extends NombreCompania? any 
-    : Type[Property] extends Direccion? any
-    : Type[Property] extends InformacionDeContacto[]? any[]
+    : Type[Property] extends NombreCompania? string 
+    : Type[Property] extends Direccion? DireccionPropiedades
+    : Type[Property] extends InformacionDeContacto[]? InformacionDeContactoPropiedades[]
     : Type[Property] extends LogoEmpleador? string
-    : Type[Property] extends Habilidad[]? any[]
+    : Type[Property] extends Habilidad[]? HabilidadPropiedades[]
     : Type[Property] extends RequerimientosEspeciales? string
     : Type[Property] extends EstadoEmpleador? number
     : string
 }
 
-export type EmpleadorParaDominio= EmpleadorParaDominioMap<EmpleadorPropiedades>
+export type EmpleadorParaDominio = EmpleadorParaDominioMap<EmpleadorPropiedades>

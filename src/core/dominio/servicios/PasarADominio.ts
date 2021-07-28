@@ -1,3 +1,6 @@
+import { Certificacion } from "../Certificacion/Certificacion";
+import { Habilidad } from "../Habilidad/Habilidad";
+import { Empleador } from "../Empleador/Empleador";
 import { OfertaParaDominio } from "../OfertasDeTrabajo/DTOOfertaDeTrabajo";
 import { OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/OfertaDeTrabajo";
 import { Duracion } from "../OfertasDeTrabajo/ValueObjects/Duracion";
@@ -13,22 +16,43 @@ import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo";
 
 export class PasarADominio {
     public aDominio (atributos: OfertaParaDominio): OfertaDeTrabajoPropiedades {
+
         const calendario: Calendario[] = []
 
         atributos.calendario.forEach(fecha => {
             calendario.push(Calendario.crear(fecha))
         });
+
+        // const habilidades: Habilidad[] = []
+
+        // atributos.habilidades.forEach(habilidad => {
+        //     habilidades.push(Habilidad.crear(habilidad.propiedades))
+        // });
+
+        // const certificaciones: Certificacion[] = []
+
+        // atributos.certificaciones.forEach(certificacion => {
+        //     certificaciones.push(Certificacion.crear(certificacion.propiedades))
+        // });
         
         return {
-            idOfertaDeTrabajo : IDOferta.crear(atributos.idOfertaDeTrabajo),
+            idOfertaDeTrabajo: IDOferta.crear(atributos.idOfertaDeTrabajo),
             tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
-            //empleador: Empleador.crear(ofertaAtributos.empleador),
-            direccion: Direccion.crear(atributos.direccion.calle1, atributos.direccion.calle2, atributos.direccion.ciudad, atributos.direccion.estado, atributos.direccion.codPostal),
+            //empleador: Empleador.crear(atributos.empleador.propiedades),
+            direccion: Direccion.crear(
+                atributos.direccion.calle1, 
+                atributos.direccion.calle2, 
+                atributos.direccion.ciudad, 
+                atributos.direccion.estado, 
+                atributos.direccion.codPostal
+            ),
             fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion.crear(atributos.fechaLimitePostulacionOfertaDeTrabajo),
             calendario: calendario,
             habilidades: atributos.habilidades,
+            // habilidades: habilidades,
             requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo.crear(atributos.requerimientosEspeciales),
             certificaciones: atributos.certificaciones,
+            // certificaciones: certificaciones,
             duracion: Duracion.crear(atributos.duracion),
             remuneracionPorHora: Remuneracion.crear(atributos.remuneracionPorHora),
             estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo.crear(atributos.estadoOfertaDeTrabajo),

@@ -4,7 +4,7 @@ import { NombreHabilidad } from "./ValueObjects/NombreHabilidad"
 import { CategoriaHabilidad } from "./ValueObjects/CategoriaHabilidad"
 
 
-interface HabilidadPropiedades {
+export interface HabilidadPropiedades {
     idHabilidad: IDHabilidad,
     nombre: NombreHabilidad,
     categoria: CategoriaHabilidad
@@ -32,12 +32,12 @@ export class Habilidad extends Entidad<HabilidadPropiedades> {
         return this
     }
 
-    public static crear(propiedades: any): Habilidad {
+    public static crear(atributos: any): Habilidad {
         return new Habilidad(
             {
-                idHabilidad: IDHabilidad.crear(propiedades.idHabilidad),
-                nombre: NombreHabilidad.crear(propiedades.nombre),
-                categoria: CategoriaHabilidad.crear(propiedades.categoria)
+                idHabilidad: IDHabilidad.crear(atributos.idHabilidad),
+                nombre: NombreHabilidad.crear(atributos.nombre),
+                categoria: CategoriaHabilidad.crear(atributos.categoria)
             }
         )
     }

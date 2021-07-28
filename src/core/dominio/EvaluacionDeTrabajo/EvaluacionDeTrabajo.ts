@@ -1,12 +1,12 @@
 import { Entidad } from "../ClasesBase/Entidad"
 import { IDEvaluacionDeTrabajo } from "./ValueObjects/IDEvaluacionDeTrabajo"
-import { PreguntasEvaluacionDeTrabajo } from "./ValueObjects/PreguntasEvaluacionDeTrabajo"
-import { PuntuacionEvaluacionDeTrabajo } from "./ValueObjects/PuntuacionesEvaluacionDeTrabajo"
+import { PreguntasEvaluacionDeTrabajo, PreguntasEvaluacionPropiedades } from "./ValueObjects/PreguntasEvaluacionDeTrabajo"
+import { PuntuacionEvaluacionDeTrabajo, PuntuacionEvaluacionPropiedades } from "./ValueObjects/PuntuacionesEvaluacionDeTrabajo"
 import { PuntuacionPromedioEvaluacionDeTrabajo } from "./ValueObjects/PuntuacionPromedioEvaluacionDeTrabajo"
-import { RelacionDeTrabajo } from "../RelacionDeTrabajo/RelacionDeTrabajo"
+import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../RelacionDeTrabajo/RelacionDeTrabajo"
 
 
-interface EvaluacionDeTrabajoPropiedades {
+export interface EvaluacionDeTrabajoPropiedades {
     idEvaluacion: IDEvaluacionDeTrabajo,
     preguntas: PreguntasEvaluacionDeTrabajo,
     puntuaciones: PuntuacionEvaluacionDeTrabajo,
@@ -24,11 +24,11 @@ export class EvaluacionDeTrabajo extends Entidad<EvaluacionDeTrabajoPropiedades>
         return this.propiedades.idEvaluacion.obtenerId()
     }
 
-    obtenerPreguntasEvaluacion(): PreguntasEvaluacionDeTrabajo {
+    obtenerPreguntasEvaluacion(): PreguntasEvaluacionPropiedades {
         return this.propiedades.preguntas.obtenerPreguntasEvaluacionDeTrabajo()
     }
 
-    obtenerPuntuacionEvaluacion(): PuntuacionEvaluacionDeTrabajo {
+    obtenerPuntuacionEvaluacion(): PuntuacionEvaluacionPropiedades {
         return this.propiedades.puntuaciones.obtenerPreguntasEvaluacionDeTrabajo()
     }
 
@@ -44,26 +44,26 @@ export class EvaluacionDeTrabajo extends Entidad<EvaluacionDeTrabajoPropiedades>
         return this
     }
 
-    public static crear(propiedades: any): EvaluacionDeTrabajo {
+    public static crear(atributos: any): EvaluacionDeTrabajo {
         return new EvaluacionDeTrabajo(
             {
-                idEvaluacion: IDEvaluacionDeTrabajo.crear(propiedades.id),
+                idEvaluacion: IDEvaluacionDeTrabajo.crear(atributos.id),
                 preguntas: PreguntasEvaluacionDeTrabajo.crear(
-                    propiedades.preguntas.pregunta1,
-                    propiedades.preguntas.pregunta2,
-                    propiedades.preguntas.pregunta3,
-                    propiedades.preguntas.pregunta4,
-                    propiedades.preguntas.pregunta5,
+                    atributos.preguntas.pregunta1,
+                    atributos.preguntas.pregunta2,
+                    atributos.preguntas.pregunta3,
+                    atributos.preguntas.pregunta4,
+                    atributos.preguntas.pregunta5,
                 ),
                 puntuaciones: PuntuacionEvaluacionDeTrabajo.crear(
-                    propiedades.puntuaciones.puntuacion1,
-                    propiedades.puntuaciones.puntuacion2,
-                    propiedades.puntuaciones.puntuacion3,
-                    propiedades.puntuaciones.puntuacion4,
-                    propiedades.puntuaciones.puntuacion5,
+                    atributos.puntuaciones.puntuacion1,
+                    atributos.puntuaciones.puntuacion2,
+                    atributos.puntuaciones.puntuacion3,
+                    atributos.puntuaciones.puntuacion4,
+                    atributos.puntuaciones.puntuacion5,
                 ),
-                puntuacionPromedio: PuntuacionPromedioEvaluacionDeTrabajo.crear(propiedades.puntuacionPromedio),
-                trabajo: RelacionDeTrabajo.crear(propiedades.trabajo)
+                puntuacionPromedio: PuntuacionPromedioEvaluacionDeTrabajo.crear(atributos.puntuacionPromedio),
+                trabajo: RelacionDeTrabajo.crear(atributos.trabajo.propiedades)
             }
         )
     }

@@ -1,5 +1,5 @@
 import { Entidad } from "../ClasesBase/Entidad";
-import { Curso } from "../Curso/Curso";
+import { Curso, CursoPropiedades } from "../Curso/Curso";
 import { FechaCompletacionCertificacion } from "./ValueObjects/FechaCompletacionCertificacion";
 import { IDCertificacion } from "./ValueObjects/IDCertificacion";
 import { NombreCertificacion } from "./ValueObjects/NombreCertificacion";
@@ -37,13 +37,13 @@ export class Certificacion extends Entidad<CertificacionPropiedades>{
         return this
     }
 
-    public static crear(propiedades: any): Certificacion {
+    public static crear(atributos: any): Certificacion {
         return new Certificacion(
             {
-                idCertificacion: IDCertificacion.crear(propiedades.idCertificacion),
-                nombre: NombreCertificacion.crear(propiedades.nombre),
-                curso: Curso.crear(propiedades.curso),
-                fechaCompletacionCertificacion: FechaCompletacionCertificacion.crear(propiedades.fechaCompletacionCertificacion)
+                idCertificacion: IDCertificacion.crear(atributos.idCertificacion),
+                nombre: NombreCertificacion.crear(atributos.nombre),
+                curso: Curso.crear(atributos.curso.propiedades),
+                fechaCompletacionCertificacion: FechaCompletacionCertificacion.crear(atributos.fechaCompletacionCertificacion)
             }
         )
     }

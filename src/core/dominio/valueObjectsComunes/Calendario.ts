@@ -1,7 +1,7 @@
 import { ValueObject } from "../ClasesBase/ValueObject"
 import { ExcepcionCalendarioInvalido } from "./excepciones/ExcepcionCalendarioInvalido"
 
-interface CalendarioPropiedades {
+export interface CalendarioPropiedades {
     horaInicio: string
     horaFin: string
 }
@@ -16,12 +16,12 @@ export class Calendario extends ValueObject<CalendarioPropiedades> {
         return this.propiedades.horaInicio
     }
 
-    obtenerCalendario(): any{
-        return this.propiedades
-    }
-
     obtenerHoraFin(): string {
         return this.propiedades.horaFin
+    }
+
+    obtenerCalendario(): CalendarioPropiedades{
+        return this.propiedades
     }
 
     public static crear(calendario: CalendarioPropiedades): Calendario {

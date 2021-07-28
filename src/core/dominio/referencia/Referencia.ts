@@ -1,12 +1,12 @@
 import { Entidad } from "../ClasesBase/Entidad"
 import { IDReferencia } from "./ValueObjects/IDReferencia"
-import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
+import { NombreCompleto, NombreCompletoPropiedades } from "../valueObjectsComunes/NombreCompleto"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
-import { Telefono } from "../valueObjectsComunes/Telefono"
+import { Telefono, TelefonoPropiedades } from "../valueObjectsComunes/Telefono"
 import { Correo } from "../valueObjectsComunes/Correo"
 
-interface ReferenciaPropiedades {
+export interface ReferenciaPropiedades {
     idReferencia: IDReferencia,
     nombreCompleto: NombreCompleto,
     tituloTrabajo: TituloTrabajo,
@@ -25,7 +25,7 @@ export class Referencia extends Entidad<ReferenciaPropiedades> {
         return this.propiedades.idReferencia.obtenerId()
     }
 
-    obtenerNombre(): NombreCompleto {
+    obtenerNombre(): NombreCompletoPropiedades {
         return this.propiedades.nombreCompleto.obtenerNombreCompleto()
     }
 
@@ -37,7 +37,7 @@ export class Referencia extends Entidad<ReferenciaPropiedades> {
         return this.propiedades.nombreCompania.obtenerNombre()
     }
 
-    obtenerNroTelefono(): Telefono {
+    obtenerNroTelefono(): TelefonoPropiedades {
         return this.propiedades.numeroTelefono.obtenerTelefono()
     }
 
@@ -49,23 +49,23 @@ export class Referencia extends Entidad<ReferenciaPropiedades> {
         return this
     }
 
-    public static crear(propiedades: any): Referencia {
+    public static crear(atributos: any): Referencia {
         return new Referencia(
             {
-                idReferencia: IDReferencia.crear(propiedades.id),
+                idReferencia: IDReferencia.crear(atributos.id),
                 nombreCompleto: NombreCompleto.crear(
-                    propiedades.primerNombre,
-                    propiedades.segundoNombre,
-                    propiedades.primerApellido,
-                    propiedades.segundoApellido,
+                    atributos.primerNombre,
+                    atributos.segundoNombre,
+                    atributos.primerApellido,
+                    atributos.segundoApellido,
                 ),
-                tituloTrabajo: TituloTrabajo.crear(propiedades.tituloTrabajo),
-                nombreCompania: NombreCompania.crear(propiedades.nombreCompania),
+                tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
+                nombreCompania: NombreCompania.crear(atributos.nombreCompania),
                 numeroTelefono: Telefono.crear(
-                    propiedades.codigoPais,
-                    propiedades.numeroTelefono
+                    atributos.codigoPais,
+                    atributos.numeroTelefono
                 ),
-                correo: Correo.crear(propiedades.correo)
+                correo: Correo.crear(atributos.correo)
             }
         )
     }

@@ -1,11 +1,11 @@
 import { Entidad } from "../ClasesBase/Entidad"
 import { IDRelacionDeTrabajo } from "./ValueObjects/IDRelacionDeTrabajo"
-import { Postulacion } from "../Postulacion/Postulacion"
-import { Calendario } from "../valueObjectsComunes/Calendario"
+import { Postulacion, PostulacionPropiedades } from "../Postulacion/Postulacion"
+import { Calendario, CalendarioPropiedades } from "../valueObjectsComunes/Calendario"
 import { EstadoRelacionDeTrabajo } from "./ValueObjects/EstadoRelacionDeTrabajo"
 
 
-interface RelacionDeTrabajoPropiedades {
+export interface RelacionDeTrabajoPropiedades {
     idRelacion: IDRelacionDeTrabajo,
     postulacion: Postulacion,
     calendario: Calendario[],
@@ -26,8 +26,8 @@ export class RelacionDeTrabajo extends Entidad<RelacionDeTrabajoPropiedades> {
         return this.propiedades.postulacion.obtenerPostulacion()
     }
 
-    obtenerCalendario(): any{
-        const calendario: {horaInicio:string, horaFin:string}[] = []
+    obtenerCalendario(): CalendarioPropiedades[]{
+        const calendario: CalendarioPropiedades[] = []
         this.propiedades.calendario.forEach(fecha => {
             calendario.push(fecha.obtenerCalendario())
         });
@@ -42,19 +42,19 @@ export class RelacionDeTrabajo extends Entidad<RelacionDeTrabajoPropiedades> {
         return this
     }
 
-    public static crear(propiedades: any): RelacionDeTrabajo {
+    public static crear(atributos: any): RelacionDeTrabajo {
         const calendario: Calendario[] = []
 
-        propiedades.calendario.forEach(fecha => {
+        atributos.calendario.forEach(fecha => {
             calendario.push(Calendario.crear(fecha))
         });
         
         return new RelacionDeTrabajo(
             {
-                idRelacion: IDRelacionDeTrabajo.crear(propiedades.id),
-                postulacion: Postulacion.crear(propiedades.postulacion),
+                idRelacion: IDRelacionDeTrabajo.crear(atributos.id),
+                postulacion: Postulacion.crear(atributos.postulacion.propiedades),
                 calendario: calendario,
-                estadoRelacionDeTrabajo: EstadoRelacionDeTrabajo.crear(propiedades.estadoRelacionDeTrabajo)
+                estadoRelacionDeTrabajo: EstadoRelacionDeTrabajo.crear(atributos.estadoRelacionDeTrabajo)
             }
         )
     }

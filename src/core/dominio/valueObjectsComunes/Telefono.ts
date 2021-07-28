@@ -1,7 +1,7 @@
 import { ValueObject } from "../ClasesBase/ValueObject"
 import { ExcepcionNumeroDeTelefonoInvalido } from "./excepciones/ExcepcionNumeroDeTelefonoInvalido"
 
-interface TelefonoPropiedades {
+export interface TelefonoPropiedades {
     codigoPais: number,
     numeroTelefono: number
 }
@@ -20,8 +20,8 @@ export class Telefono extends ValueObject<TelefonoPropiedades> {
         return this.propiedades.numeroTelefono
     }
 
-    obtenerTelefono(): Telefono{
-        return this
+    obtenerTelefono(): TelefonoPropiedades{
+        return this.propiedades
     }
     
     public static crear(codigoPais: number, numeroTelefono: number): Telefono {

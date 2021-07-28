@@ -1,11 +1,11 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
+import { NombreCompleto, NombreCompletoPropiedades } from "../valueObjectsComunes/NombreCompleto"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
-import { Telefono } from "../valueObjectsComunes/Telefono"
+import { Telefono, TelefonoPropiedades } from "../valueObjectsComunes/Telefono"
 import { Correo } from "../valueObjectsComunes/Correo"
 import { IDInformacionContacto } from "./ValueObjects/IDInformacionContacto"
 
-interface InformacionDeContactoPropiedades {
+export interface InformacionDeContactoPropiedades {
     idInformacionContacto: IDInformacionContacto,
     nombreCompleto: NombreCompleto,
     tituloTrabajo: TituloTrabajo,
@@ -23,7 +23,7 @@ export class InformacionDeContacto extends Entidad<InformacionDeContactoPropieda
         return this.propiedades.idInformacionContacto.obtenerId()
     }
 
-    obtenerNombre(): NombreCompleto {
+    obtenerNombre(): NombreCompletoPropiedades {
         return this.propiedades.nombreCompleto.obtenerNombreCompleto()
     }
 
@@ -31,7 +31,7 @@ export class InformacionDeContacto extends Entidad<InformacionDeContactoPropieda
         return this.propiedades.tituloTrabajo.obtenerTitulo()
     }
 
-    obtenerNroTelefono(): Telefono {
+    obtenerNroTelefono(): TelefonoPropiedades {
         return this.propiedades.numeroTelefono.obtenerTelefono()
     }
 
@@ -43,22 +43,22 @@ export class InformacionDeContacto extends Entidad<InformacionDeContactoPropieda
         return this
     }
 
-    public static crear(propiedades: any): InformacionDeContacto {
+    public static crear(atributos: any): InformacionDeContacto {
         return new InformacionDeContacto(
             {
-                idInformacionContacto: IDInformacionContacto.crear(propiedades.idInformacionContacto),
+                idInformacionContacto: IDInformacionContacto.crear(atributos.idInformacionContacto),
                 nombreCompleto: NombreCompleto.crear(
-                    propiedades.nombreCompleto.primerNombre,
-                    propiedades.nombreCompleto.segundoNombre,
-                    propiedades.nombreCompleto.primerApellido,
-                    propiedades.nombreCompleto.segundoApellido,
+                    atributos.nombreCompleto.primerNombre,
+                    atributos.nombreCompleto.segundoNombre,
+                    atributos.nombreCompleto.primerApellido,
+                    atributos.nombreCompleto.segundoApellido,
                 ),
-                tituloTrabajo: TituloTrabajo.crear(propiedades.tituloTrabajo),
+                tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
                 numeroTelefono: Telefono.crear(
-                    propiedades.numeroTelefono.codigoPais,
-                    propiedades.numeroTelefono.numeroTelefono
+                    atributos.numeroTelefono.codigoPais,
+                    atributos.numeroTelefono.numeroTelefono
                 ),
-                correo: Correo.crear(propiedades.correo)
+                correo: Correo.crear(atributos.correo)
             }
         )
     }

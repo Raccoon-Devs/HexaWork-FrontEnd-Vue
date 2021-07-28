@@ -1,5 +1,5 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { Empleado } from "../Empleado/Empleado"
+import { Empleado, EmpleadoPropiedades } from "../Empleado/Empleado"
 import { OfertaDeTrabajo } from "../OfertasDeTrabajo/OfertaDeTrabajo"
 import { EstadoPostulacion } from "./ValueObjects/EstadoPostulacion"
 import { FechaPostulacion } from "./ValueObjects/Fechapostulacion"
@@ -19,6 +19,10 @@ export class Postulacion extends Entidad<PostulacionPropiedades> {
         super(propiedades, propiedades.idPostulacion)
     }
 
+    obtenerId(): string | number{
+        return this.propiedades.idPostulacion.obtenerId()
+    }
+
     obtenerFechaPostulacion(): Date | string{
         return this.propiedades.fechaPostulacion.obtenerFechaPublicacion()
     }
@@ -27,32 +31,31 @@ export class Postulacion extends Entidad<PostulacionPropiedades> {
         return this.propiedades.empleado.obtenerEmpleado()
     }
 
-    // obtenerOfertaDeTrabajo(): string | number{
-    //     return this.propiedades.ofertaDeTrabajo.obtenerOfertaDeTrabajo()
-    // }
+    obtenerOfertaDeTrabajo(): OfertaDeTrabajo{
+        return this.propiedades.ofertaDeTrabajo.obtenerOfertaDeTrabajo()
+    }
 
     obtenerEstadoPostulacion(): number{
         return this.propiedades.estadoPostulacion.obtenerEstado()
-    }
-
-    obtenerId(): string | number{
-        return this.propiedades.idPostulacion.obtenerId()
     }
 
     obtenerPostulacion(): Postulacion{
         return this
     }
 
-    public static crear(propiedades: any): Postulacion
+    public static crear(atributos: any): Postulacion
 
         {
         return new Postulacion(
             {
-                idPostulacion: IDPostulacion.crear(propiedades.idPostulacion),
-                fechaPostulacion: FechaPostulacion.crear(propiedades.fechaPostulacion, propiedades.ofertaDeTrabajo.fechaLimiteOfertaDeTrabajo),
-                empleado: Empleado.crear(propiedades.empleado),
-                ofertaDeTrabajo: OfertaDeTrabajo.crear(propiedades.ofertaDeTrabajo),
-                estadoPostulacion: EstadoPostulacion.crear(propiedades.estadoPostulacion),
+                idPostulacion: IDPostulacion.crear(atributos.idPostulacion),
+                fechaPostulacion: FechaPostulacion.crear(
+                    atributos.fechaPostulacion, 
+                    atributos.ofertaDeTrabajo.propiedades.fechaLimiteOfertaDeTrabajo
+                ),
+                empleado: Empleado.crear(atributos.empleado),
+                ofertaDeTrabajo: OfertaDeTrabajo.crear(atributos.ofertaDeTrabajo.propiedades),
+                estadoPostulacion: EstadoPostulacion.crear(atributos.estadoPostulacion),
             }
         )
     }
