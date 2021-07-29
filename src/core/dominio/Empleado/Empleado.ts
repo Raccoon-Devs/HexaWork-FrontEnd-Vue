@@ -113,22 +113,22 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
 
         const experiencias: ExperienciaDeTrabajo[] = []
         atributos.experienciaLaboral.forEach(experiencia => {
-            experiencias.push(ExperienciaDeTrabajo.crear(experiencia.propiedades))
+            experiencias.push(ExperienciaDeTrabajo.crear(experiencia))
         });
 
         const habilidades: Habilidad[] = []
         atributos.habilidades.forEach(habilidad => {
-            habilidades.push(Habilidad.crear(habilidad.propiedades))
+            habilidades.push(Habilidad.crear(habilidad))
         });
 
         const cursos: Curso[] = []
         atributos.cursos.forEach(curso => {
-            cursos.push(Curso.crear(curso.propiedades))
+            cursos.push(Curso.crear(curso))
         });
 
         const referencias: Referencia[] = []
         atributos.referencias.forEach(referencia => {
-            referencias.push(Referencia.crear(referencia.propiedades))
+            referencias.push(Referencia.crear(referencia))
         });
         
         return new Empleado(
@@ -140,15 +140,18 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
                     atributos.nombreCompleto.primerApellido,
                     atributos.nombreCompleto.segundoApellido,
                 ),
-                numeroTelefono: Telefono.crear(atributos.nroTlf.codigoPais, atributos.nroTlf.numeroTelefono),
-                fechaNacimiento: FechaNacimiento.crear(atributos.fechaNacimiento.fechaNacimiento),
-                nivelEducativo: NivelEducativo.crear(atributos.nivelEducativo.nivelEducativo),
+                numeroTelefono: Telefono.crear(
+                    atributos.numeroTelefono.codigoPais, 
+                    atributos.numeroTelefono.numeroTelefono
+                ),
+                fechaNacimiento: FechaNacimiento.crear(atributos.fechaNacimiento),
+                nivelEducativo: NivelEducativo.crear(atributos.nivelEducativo),
                 experienciaLaboral: experiencias,
                 habilidades: habilidades,
                 cursos: cursos,
                 referencias: referencias,
                 clasificacion: atributos.clasificacion,
-                estadoEmpleado: EstadoEmpleado.crear(atributos.estadoEmpleado.estado),
+                estadoEmpleado: EstadoEmpleado.crear(atributos.estadoEmpleado),
                 direccion: Direccion.crear(
                     atributos.direccion.calle1, 
                     atributos.direccion.calle2, 

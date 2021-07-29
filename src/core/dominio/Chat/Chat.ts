@@ -48,9 +48,9 @@ export class Chat extends Entidad<ChatPropiedades>{
 
         return new Chat(
             {
-                idChat: IDChat.crear(atributos.id),
+                idChat: IDChat.crear(atributos.idChat),
                 mensajes: mensajes,
-                trabajo: RelacionDeTrabajo.crear(atributos.trabajo.propiedades)
+                trabajo: RelacionDeTrabajo.crear(atributos.trabajo)
             }
         )
     }

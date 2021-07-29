@@ -47,7 +47,7 @@ export class EvaluacionDeTrabajo extends Entidad<EvaluacionDeTrabajoPropiedades>
     public static crear(atributos: any): EvaluacionDeTrabajo {
         return new EvaluacionDeTrabajo(
             {
-                idEvaluacion: IDEvaluacionDeTrabajo.crear(atributos.id),
+                idEvaluacion: IDEvaluacionDeTrabajo.crear(atributos.idEvaluacion),
                 preguntas: PreguntasEvaluacionDeTrabajo.crear(
                     atributos.preguntas.pregunta1,
                     atributos.preguntas.pregunta2,
@@ -63,7 +63,7 @@ export class EvaluacionDeTrabajo extends Entidad<EvaluacionDeTrabajoPropiedades>
                     atributos.puntuaciones.puntuacion5,
                 ),
                 puntuacionPromedio: PuntuacionPromedioEvaluacionDeTrabajo.crear(atributos.puntuacionPromedio),
-                trabajo: RelacionDeTrabajo.crear(atributos.trabajo.propiedades)
+                trabajo: RelacionDeTrabajo.crear(atributos.trabajo)
             }
         )
     }

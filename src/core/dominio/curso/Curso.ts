@@ -60,15 +60,15 @@ export class Curso extends Entidad<CursoPropiedades> {
         const habilidades: Habilidad[] = []
 
         atributos.habilidades.forEach(habilidad => {
-            habilidades.push(Habilidad.crear(habilidad.propiedades))
+            habilidades.push(Habilidad.crear(habilidad))
         });
 
         return new Curso(
             {
                 idCurso: IDCurso.crear(atributos.idCurso),
-                codigo: CodigoCurso.crear(atributos.codigoCurso),
+                codigo: CodigoCurso.crear(atributos.codigo),
                 titulo: TituloCurso.crear(atributos.titulo),
-                imagenPortada: Imagen.crear(atributos.urlImagen),
+                imagenPortada: Imagen.crear(atributos.imagenPortada),
                 estadoCurso: EstadoCurso.crear(atributos.estadoCurso),
                 habilidades: habilidades
             }

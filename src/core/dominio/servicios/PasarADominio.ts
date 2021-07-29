@@ -26,19 +26,19 @@ export class PasarADominio {
         // const habilidades: Habilidad[] = []
 
         // atributos.habilidades.forEach(habilidad => {
-        //     habilidades.push(Habilidad.crear(habilidad.propiedades))
+        //     habilidades.push(Habilidad.crear(habilidad))
         // });
 
         // const certificaciones: Certificacion[] = []
 
         // atributos.certificaciones.forEach(certificacion => {
-        //     certificaciones.push(Certificacion.crear(certificacion.propiedades))
+        //     certificaciones.push(Certificacion.crear(certificacion))
         // });
         
         return {
             idOfertaDeTrabajo: IDOferta.crear(atributos.idOfertaDeTrabajo),
             tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
-            //empleador: Empleador.crear(atributos.empleador.propiedades),
+            //empleador: Empleador.crear(atributos.empleador),
             direccion: Direccion.crear(
                 atributos.direccion.calle1, 
                 atributos.direccion.calle2, 

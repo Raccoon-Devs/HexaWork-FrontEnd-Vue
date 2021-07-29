@@ -77,12 +77,12 @@ export class Empleador extends Entidad<EmpleadorPropiedades> {
 
         const contactos: InformacionDeContacto[] = []
         atributos.contactos.forEach(contacto => {
-            contactos.push(InformacionDeContacto.crear(contacto.propiedades))
+            contactos.push(InformacionDeContacto.crear(contacto))
         });
 
         const habilidades: Habilidad[] = []
         atributos.habilidades.forEach(habilidad => {
-            habilidades.push(Habilidad.crear(habilidad.propiedades))
+            habilidades.push(Habilidad.crear(habilidad))
         });
 
         return new Empleador({
@@ -92,7 +92,7 @@ export class Empleador extends Entidad<EmpleadorPropiedades> {
                 atributos.direccion.calle1, 
                 atributos.direccion.calle2, 
                 atributos.direccion.ciudad, 
-                atributos.direccion.ciudad, 
+                atributos.direccion.estado, 
                 atributos.direccion.codPostal
             ),
             contactos: contactos,

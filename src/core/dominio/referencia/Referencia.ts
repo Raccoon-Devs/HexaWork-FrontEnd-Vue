@@ -52,18 +52,18 @@ export class Referencia extends Entidad<ReferenciaPropiedades> {
     public static crear(atributos: any): Referencia {
         return new Referencia(
             {
-                idReferencia: IDReferencia.crear(atributos.id),
+                idReferencia: IDReferencia.crear(atributos.idReferencia),
                 nombreCompleto: NombreCompleto.crear(
-                    atributos.primerNombre,
-                    atributos.segundoNombre,
-                    atributos.primerApellido,
-                    atributos.segundoApellido,
+                    atributos.nombreCompleto.primerNombre,
+                    atributos.nombreCompleto.segundoNombre,
+                    atributos.nombreCompleto.primerApellido,
+                    atributos.nombreCompleto.segundoApellido,
                 ),
                 tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
                 nombreCompania: NombreCompania.crear(atributos.nombreCompania),
                 numeroTelefono: Telefono.crear(
-                    atributos.codigoPais,
-                    atributos.numeroTelefono
+                    atributos.numeroTelefono.codigoPais,
+                    atributos.numeroTelefono.numeroTelefono
                 ),
                 correo: Correo.crear(atributos.correo)
             }

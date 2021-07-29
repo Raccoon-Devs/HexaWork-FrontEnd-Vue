@@ -42,7 +42,7 @@ export class Certificacion extends Entidad<CertificacionPropiedades>{
             {
                 idCertificacion: IDCertificacion.crear(atributos.idCertificacion),
                 nombre: NombreCertificacion.crear(atributos.nombre),
-                curso: Curso.crear(atributos.curso.propiedades),
+                curso: Curso.crear(atributos.curso),
                 fechaCompletacionCertificacion: FechaCompletacionCertificacion.crear(atributos.fechaCompletacionCertificacion)
             }
         )

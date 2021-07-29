@@ -41,8 +41,8 @@ export class ExperienciaDeTrabajo extends Entidad<ExperienciaDeTrabajoPropiedade
         return new ExperienciaDeTrabajo(
             {
                 idExperiencia: IDExperienciaTrabajo.crear(atributos.idExperiencia),
-                tituloTrabajo: TituloTrabajo.crear(atributos.titulo),
-                nombreCompania: NombreCompania.crear(atributos.nombre),
+                tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
+                nombreCompania: NombreCompania.crear(atributos.nombreCompania),
                 categoria: CategoriaTrabajo.crear(atributos.categoria)
             }
         )

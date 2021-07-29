@@ -51,10 +51,10 @@ export class Postulacion extends Entidad<PostulacionPropiedades> {
                 idPostulacion: IDPostulacion.crear(atributos.idPostulacion),
                 fechaPostulacion: FechaPostulacion.crear(
                     atributos.fechaPostulacion, 
-                    atributos.ofertaDeTrabajo.propiedades.fechaLimiteOfertaDeTrabajo
+                    atributos.ofertaDeTrabajo.fechaLimiteOfertaDeTrabajo
                 ),
                 empleado: Empleado.crear(atributos.empleado),
-                ofertaDeTrabajo: OfertaDeTrabajo.crear(atributos.ofertaDeTrabajo.propiedades),
+                ofertaDeTrabajo: OfertaDeTrabajo.crear(atributos.ofertaDeTrabajo),
                 estadoPostulacion: EstadoPostulacion.crear(atributos.estadoPostulacion),
             }
         )
