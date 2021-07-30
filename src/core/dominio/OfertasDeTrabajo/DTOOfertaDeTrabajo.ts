@@ -1,21 +1,32 @@
 import { EmpleadorParaDominio } from "../Empleador/DTOEmpleador";
 import { Empleador, EmpleadorPropiedades } from "../Empleador/Empleador";
-import { Direccion } from "../Empleador/valueObjects/Direccion";
 import { OfertaDeTrabajo, OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/OfertaDeTrabajo";
-import { Duracion } from "../OfertasDeTrabajo/ValueObjects/Duracion";
-import { EstadoOfertaDeTrabajo } from "../OfertasDeTrabajo/ValueObjects/EstadoOfertaDeTrabajo";
+import { Duracion, DuracionPropiedades } from "../OfertasDeTrabajo/ValueObjects/Duracion";
+import { EstadoOfertaDeTrabajo, EstadoOfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/ValueObjects/EstadoOfertaDeTrabajo";
 import { FechaPublicacion } from "../OfertasDeTrabajo/ValueObjects/FechaPublicacion";
-import { Remuneracion } from "../OfertasDeTrabajo/ValueObjects/Remuneracion";
+import { Remuneracion, RemuneracionPropiedades } from "../OfertasDeTrabajo/ValueObjects/Remuneracion";
 import { TiempoLimitePostulacion } from "../OfertasDeTrabajo/ValueObjects/TiempoLimitePostulacion";
-import { Vacante } from "../OfertasDeTrabajo/ValueObjects/Vacante";
+import { Vacante, VacantePropiedades } from "../OfertasDeTrabajo/ValueObjects/Vacante";
+import { Calendario } from "../valueObjectsComunes/Calendario";
+import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion";
+import { TituloTrabajo, TituloTrabajoPropiedades } from "../valueObjectsComunes/TituloTrabajo";
+import { IDOferta } from "./ValueObjects/IDOferta";
+import { RequerimientosEspecialesOfertaDeTrabajo, RequerimientosEspecialesPropiedades } from "./ValueObjects/RequerimientosEspecialesOfertaDeTrabajo";
 
 type OfertaParaDominioMap<Type> = {
     [Property in keyof Type]: 
-    Type[Property] extends Direccion? {calle1: string, calle2: string, ciudad: string, estado: string, zip:string} 
-    : Type[Property] extends Remuneracion? {monto: number, frecuencia: string, divisa: string} 
+    Type[Property] extends Direccion? any 
+    : Type[Property] extends Remuneracion? number 
     : Type[Property] extends FechaPublicacion? Date: Type[Property] extends TiempoLimitePostulacion? Date
-    : Type[Property] extends Duracion | EstadoOfertaDeTrabajo | Vacante? number
-    : Type[Property] extends Empleador? EmpleadorParaDominio: string;
+    : Type[Property] extends Duracion? number
+    : Type[Property] extends Vacante? number
+    //: Type[Property] extends Empleador? EmpleadorParaDominio
+    : Type[Property] extends EstadoOfertaDeTrabajo? number
+    : Type[Property] extends RequerimientosEspecialesOfertaDeTrabajo? string
+    : Type[Property] extends TituloTrabajo? string
+    : Type[Property] extends string[]? string[]
+    : Type[Property] extends Calendario[]? {horaInicio: string, horaFin: string}[]
+    : string;
 }
 
 export type OfertaParaDominio= OfertaParaDominioMap<OfertaDeTrabajoPropiedades>

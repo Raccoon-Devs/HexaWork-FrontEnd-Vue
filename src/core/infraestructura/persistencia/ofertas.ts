@@ -1,23 +1,25 @@
-
-
-
 const almacenamiento = window.localStorage
 
-
 export function crearOferta(dato: any): any{
+
     let variableLocal = JSON.parse(almacenamiento.getItem("oferta")!)
     if (variableLocal == null){
         almacenamiento.setItem("idOferta", "2")
         variableLocal = []
-        dato.id.valor = "1"
+        dato = {
+            ...dato,
+            idOfertaDeTrabajo: "1"
+        }
     }
     else{
-        dato.id.valor = almacenamiento.getItem("idOferta")!
-        almacenamiento.setItem("idOferta", (+(dato.id.valor)+1).toString())
+        dato = {
+            ...dato,
+            idOfertaDeTrabajo: almacenamiento.getItem("idOferta")!
+        }
+        almacenamiento.setItem("idOferta", (+(dato.id)+1).toString())
 
     }
     variableLocal.push(dato)
-
     almacenamiento.setItem(
         "oferta",
         JSON.stringify(variableLocal)
@@ -28,10 +30,8 @@ export function crearOferta(dato: any): any{
 export function actualizarOferta(dato: any): any {
     const ofertasFromStorage = JSON.parse(almacenamiento.getItem('oferta')!);
     for (const oferta of ofertasFromStorage) {
-
-        if (oferta.id.valor == dato.obtenerId()) {
-            oferta.estadoOfertaDeTrabajo = dato.propiedades.estadoOfertaDeTrabajo
-            oferta.fechaPublicacion = dato.propiedades.fechaPublicacion
+        if (oferta.idOfertaDeTrabajo == dato.idOfertaDeTrabajo) {
+            oferta.estadoOfertaDeTrabajo = dato.estadoOfertaDeTrabajo
         }
     }
 

@@ -1,8 +1,8 @@
 import {ValueObject} from "../../ClasesBase/ValueObject"
 import { ExcepcionVacanteInvalida } from "../Excepciones/ExcepcionVacanteInvalida"
 
-interface VacantePropiedades {
-    vacante: number
+export interface VacantePropiedades {
+    vacantes: number
 }
   
 export class Vacante extends ValueObject<VacantePropiedades> {
@@ -12,19 +12,19 @@ export class Vacante extends ValueObject<VacantePropiedades> {
     }
 
     obtenerVacante(): number {
-        return this.propiedades.vacante
+        return this.propiedades.vacantes
     }
 
-    public static crear(vacante: number): Vacante{
+    public static crear(vacantes: number): Vacante{
 
-        if(vacante === 0 || vacante === null || vacante === undefined || vacante.toString() === ""){
-            throw new ExcepcionVacanteInvalida<typeof vacante >(`La cantidad de vacantes: ${vacante} es inválida, no puede estar vacía`, vacante)
+        if(vacantes === 0 || vacantes === null || vacantes === undefined || vacantes.toString() === ""){
+            throw new ExcepcionVacanteInvalida<typeof vacantes >(`La cantidad de vacantes: ${vacantes} es inválida, no puede estar vacía`, vacantes)
         }
 
-        if(vacante < 0){
-            throw new ExcepcionVacanteInvalida<typeof vacante >(`La cantidad de vacantes: ${vacante} es inválida, debe ser mayor a cero`, vacante)
+        if(vacantes < 0){
+            throw new ExcepcionVacanteInvalida<typeof vacantes >(`La cantidad de vacantes: ${vacantes} es inválida, debe ser mayor a cero`, vacantes)
         }
 
-        return new Vacante({vacante})
+        return new Vacante({vacantes})
     }
 }

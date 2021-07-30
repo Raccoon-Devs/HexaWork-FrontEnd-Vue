@@ -1,0 +1,43 @@
+import { ValueObject } from "../ClasesBase/ValueObject"
+import { ExcepcionCalendarioInvalido } from "./excepciones/ExcepcionCalendarioInvalido"
+
+interface CalendarioPropiedades {
+    horaInicio: string
+    horaFin: string
+}
+
+export class Calendario extends ValueObject<CalendarioPropiedades> {
+
+    private constructor (propiedades: CalendarioPropiedades) {
+        super(propiedades)
+    }
+
+    obtenerHoraInicio(): string {
+        return this.propiedades.horaInicio
+    }
+
+    obtenerCalendario(): any{
+        return this.propiedades
+    }
+
+    obtenerHoraFin(): string {
+        return this.propiedades.horaFin
+    }
+
+    public static crear(calendario: CalendarioPropiedades): Calendario {
+        const horaInicio = calendario.horaInicio.split(" ")[1]
+        const horaFin = calendario.horaFin.split(" ")[1]
+        const horas = [horaInicio.split(":")[0], horaFin.split(":")[0]]
+        const minutos = [horaInicio.split(":")[1], horaFin.split(":")[1]]
+        const segundos = [horaInicio.split(":")[2], horaFin.split(":")[2]]
+      
+        if(
+            horas[0] > horas[1]
+            ||(horas[0] == horas[1] && minutos[0] > minutos[1])
+            || (horas[0] == horas[1] && minutos[0] == minutos[1] && segundos[0] > segundos[1])
+        ){
+            throw new ExcepcionCalendarioInvalido<typeof calendario.horaFin>(`La hora final: ${horaFin} es inválida, no puede ser antes a la hora inicial: ${horaInicio}`, calendario.horaFin)
+        }
+        return new Calendario(calendario)
+    }
+}

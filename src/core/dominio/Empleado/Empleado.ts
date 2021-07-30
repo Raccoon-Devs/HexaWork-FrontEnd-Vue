@@ -1,31 +1,60 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { Cedula } from "./valueObjects/Cedula"
-import { Direccion } from "./valueObjects/Direccion"
-import { NombreCompleto } from "./valueObjects/NombreCompleto"
-import { NumeroDeTelefono } from "./valueObjects/NumeroDeTelefono"
+
+import { SSN } from "./valueObjects/SSN"
+import { FechaNacimiento } from "./valueObjects/FechaNacimiento"
+import { NivelEducativo } from "./valueObjects/NivelEducativo"
+import { EstadoEmpleado } from "./valueObjects/EstadoEmpleado"
+
+import { Telefono } from "../valueObjectsComunes/Telefono"
+import { Direccion } from "../valueObjectsComunes/Direccion"
+import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
+
+import { ExperienciaDeTrabajo } from "../experienciaDeTrabajo/ExperienciaDeTrabajo"
+import { Habilidad } from "../habilidad/Habilidad"
+import { Curso } from "../curso/Curso"
+import { Referencia } from "../referencia/Referencia"
 
 
 interface EmpeladoPropiedades {
-    cedula: Cedula,
-    nombreEmpleado: NombreCompleto,
-    nroTlf: NumeroDeTelefono,
+    ssn: SSN,
+    nombreCompleto: NombreCompleto,
+    numeroTelefono: Telefono,
+    fechaNacimiento: FechaNacimiento,
+    nivelEducativo: NivelEducativo,
+    experienciaLaboral: Array<ExperienciaDeTrabajo>,
+    habilidades: Array<Habilidad>
+    cursos: Array<Curso>,
+    referencias: Array<Referencia>
+    estadoEmpleador: EstadoEmpleado,
     direccion: Direccion
 }
 
-type cedulaEmpleado = {
-    prefijo: string,
-    numero: number
+type ssnEmpleado = {
+    ssn: string
 }
 
 type nombreEmpleado = {
     primerNombre: string,
     segundoNombre: string,
     primerApellido: string
+    segundoApellido: string
 }
 
 type telefonoEmpleado = {
-    codigo: number,
-    numero: number
+    codigoPais: number,
+    numeroTelefono: number
+}
+
+type fechaNacimientoEmpleado = {
+    fechaNacimiento: Date
+}
+
+type nivelEducativoEmpleado = {
+    nivelEducativo: number
+}
+
+type estadoEmpleadorEmpleado = {
+    estado: number
 }
 
 type direccionEmpleado = {
@@ -33,43 +62,77 @@ type direccionEmpleado = {
     calle2: string,
     ciudad: string,
     estado: string,
-    zip: string
+    codPostal: string
 }
 
 export class Empleado extends Entidad<EmpeladoPropiedades> {
-    
+
     private constructor (propiedades: EmpeladoPropiedades) {
         super(propiedades)
     }
 
-    obtenerCedula(): Cedula{
-        return this.propiedades.cedula
-    }
-    
-    ObtenerNombreEmpleado(): NombreCompleto{
-        return this.propiedades.nombreEmpleado
+    obtenerSSN(): SSN {
+        return this.propiedades.ssn
     }
 
-    obtenerNroTlf(): NumeroDeTelefono{
-        return this.propiedades.nroTlf
+    obtenerNombreEmpleado(): NombreCompleto {
+        return this.propiedades.nombreCompleto
     }
 
-    obtenerDireccion(): Direccion{
+    obtenerNroTlf(): Telefono {
+        return this.propiedades.numeroTelefono
+    }
+
+    obtenerDireccion(): Direccion {
         return this.propiedades.direccion
     }
 
+    obetnerNivelEducativo(): NivelEducativo {
+        return this.propiedades.nivelEducativo
+    }
+
+    obtenerExperienciaLaboral(): Array<ExperienciaDeTrabajo> {
+        return this.propiedades.experienciaLaboral
+    }
+
+    obtenerHabilidades(): Array<Habilidad> {
+        return this.propiedades.habilidades
+    }
+
+    obtenerCursos(): Array<Curso> {
+        return this.propiedades.cursos
+    }
+
+    obtenerReferencias(): Array<Referencia> {
+        return this.propiedades.referencias
+    }
+
     public static crear(
-        cedula: cedulaEmpleado, 
-        nombreEmpleado: nombreEmpleado, 
-        nroTlf: telefonoEmpleado, 
-        direccion: direccionEmpleado
-    ): Empleado{
+        ssn: ssnEmpleado,
+        nombreEmpleado: nombreEmpleado,
+        nroTlf: telefonoEmpleado,
+        fechaNacimiento: fechaNacimientoEmpleado,
+        nivelEducativo: nivelEducativoEmpleado,
+        estadoEmpleador: estadoEmpleadorEmpleado,
+        direccion: direccionEmpleado,
+        experienciaLaboral: Array<ExperienciaDeTrabajo>,
+        habilidades: Array<Habilidad>,
+        cursos: Array<Curso>,
+        referencias: Array<Referencia>
+    ): Empleado {
         return new Empleado(
             {
-                cedula: Cedula.crear(cedula.prefijo, cedula.numero),
-                nombreEmpleado: NombreCompleto.crear(nombreEmpleado.primerNombre, nombreEmpleado.segundoNombre, nombreEmpleado.primerApellido),
-                nroTlf: NumeroDeTelefono.crear(nroTlf.codigo, nroTlf.numero),
-                direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.ciudad, direccion.zip)
+                ssn: SSN.crear(ssn.ssn),
+                nombreCompleto: NombreCompleto.crear(nombreEmpleado.primerNombre, nombreEmpleado.segundoNombre, nombreEmpleado.primerApellido, nombreEmpleado.segundoApellido),
+                numeroTelefono: Telefono.crear(nroTlf.codigoPais, nroTlf.numeroTelefono),
+                fechaNacimiento: FechaNacimiento.crear(fechaNacimiento.fechaNacimiento),
+                nivelEducativo: NivelEducativo.crear(nivelEducativo.nivelEducativo),
+                estadoEmpleador: EstadoEmpleado.crear(estadoEmpleador.estado),
+                direccion: Direccion.crear(direccion.calle1, direccion.calle2, direccion.ciudad, direccion.estado, direccion.codPostal),
+                experienciaLaboral: [],
+                habilidades: [],
+                cursos: [],
+                referencias: []
             }
         )
     }
