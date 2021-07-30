@@ -1,12 +1,10 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { IDUnicoEntidad } from "../ClasesBase/IDUnicoEntidad"
-
-import { IDHabilidad } from "./valueObjects/IDHabilidad"
-import { NombreHabilidad } from "./valueObjects/NombreHabilidad"
-import { CategoriaHabilidad } from "./valueObjects/CategoriaHabilidad"
+import { IDHabilidad } from "./ValueObjects/IDHabilidad"
+import { NombreHabilidad } from "./ValueObjects/NombreHabilidad"
+import { CategoriaHabilidad } from "./ValueObjects/CategoriaHabilidad"
 
 
-interface HabilidadPropiedades {
+export interface HabilidadPropiedades {
     idHabilidad: IDHabilidad,
     nombre: NombreHabilidad,
     categoria: CategoriaHabilidad
@@ -15,27 +13,29 @@ interface HabilidadPropiedades {
 export class Habilidad extends Entidad<HabilidadPropiedades> {
 
     private constructor (propiedades: HabilidadPropiedades) {
-        super(propiedades)
+        super(propiedades, propiedades.idHabilidad)
     }
 
-    obtenerId(): IDHabilidad {
-        return this.propiedades.idHabilidad
+    obtenerId(): string | number {
+        return this.propiedades.idHabilidad.obtenerId()
     }
 
-    obtenerNombre(): NombreHabilidad {
-        return this.propiedades.nombre
+    obtenerNombre(): string {
+        return this.propiedades.nombre.obtenerNombre()
     }
 
-    obtenerCategoria(): CategoriaHabilidad {
-        return this.propiedades.categoria
+    obtenerCategoria(): number {
+        return this.propiedades.categoria.obtenerCategoria()
     }
 
-    public static crear(
-        atributos: any
-    ): Habilidad {
+    obtenerHabilidad(): Habilidad {
+        return this
+    }
+
+    public static crear(atributos: any): Habilidad {
         return new Habilidad(
             {
-                idHabilidad: IDHabilidad.crear(atributos.id),
+                idHabilidad: IDHabilidad.crear(atributos.idHabilidad),
                 nombre: NombreHabilidad.crear(atributos.nombre),
                 categoria: CategoriaHabilidad.crear(atributos.categoria)
             }

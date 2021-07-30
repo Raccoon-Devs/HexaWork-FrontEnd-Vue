@@ -6,6 +6,10 @@ export class IDHabilidad extends IDUnicoEntidad {
         super(id)
     }
 
+    obtenerId(): string | number {
+        return this.aValor()
+    }
+
     public static crear(id?: string){
         return new IDHabilidad(id)
     }

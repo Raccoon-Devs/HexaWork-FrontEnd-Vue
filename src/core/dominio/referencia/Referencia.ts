@@ -1,15 +1,12 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { IDUnicoEntidad } from "../ClasesBase/IDUnicoEntidad"
-
-import { IDReferencia } from "./valueObjects/IDReferencia"
-
-import { NombreCompleto } from "../valueObjectsComunes/NombreCompleto"
+import { IDReferencia } from "./ValueObjects/IDReferencia"
+import { NombreCompleto, NombreCompletoPropiedades } from "../valueObjectsComunes/NombreCompleto"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
-import { Telefono } from "../valueObjectsComunes/Telefono"
+import { Telefono, TelefonoPropiedades } from "../valueObjectsComunes/Telefono"
 import { Correo } from "../valueObjectsComunes/Correo"
 
-interface ReferenciaPropiedades {
+export interface ReferenciaPropiedades {
     idReferencia: IDReferencia,
     nombreCompleto: NombreCompleto,
     tituloTrabajo: TituloTrabajo,
@@ -21,50 +18,52 @@ interface ReferenciaPropiedades {
 export class Referencia extends Entidad<ReferenciaPropiedades> {
 
     private constructor (propiedades: ReferenciaPropiedades) {
-        super(propiedades)
+        super(propiedades, propiedades.idReferencia)
     }
 
-    obtenerId(): IDReferencia {
-        return this.propiedades.idReferencia
+    obtenerId(): string | number {
+        return this.propiedades.idReferencia.obtenerId()
     }
 
-    obtenerNombre(): NombreCompleto {
-        return this.propiedades.nombreCompleto
+    obtenerNombre(): NombreCompletoPropiedades {
+        return this.propiedades.nombreCompleto.obtenerNombreCompleto()
     }
 
-    obtenerTitulo(): TituloTrabajo {
-        return this.propiedades.tituloTrabajo
+    obtenerTitulo(): string {
+        return this.propiedades.tituloTrabajo.obtenerTitulo()
     }
 
-    obtenerNombreCompania(): NombreCompania {
-        return this.propiedades.nombreCompania
+    obtenerNombreCompania(): string {
+        return this.propiedades.nombreCompania.obtenerNombre()
     }
 
-    obtenerNroTelefono(): Telefono {
-        return this.propiedades.numeroTelefono
+    obtenerNroTelefono(): TelefonoPropiedades {
+        return this.propiedades.numeroTelefono.obtenerTelefono()
     }
 
-    obtenerCorreo(): Correo {
-        return this.propiedades.correo
+    obtenerCorreo(): string {
+        return this.propiedades.correo.obtenerCorreo()
     }
 
-    public static crear(
-        atributos: any
-    ): Referencia {
+    obtenerReferencia(): Referencia {
+        return this
+    }
+
+    public static crear(atributos: any): Referencia {
         return new Referencia(
             {
-                idReferencia: IDReferencia.crear(atributos.id),
+                idReferencia: IDReferencia.crear(atributos.idReferencia),
                 nombreCompleto: NombreCompleto.crear(
-                    atributos.primerNombre,
-                    atributos.segundoNombre,
-                    atributos.primerApellido,
-                    atributos.segundoApellido,
+                    atributos.nombreCompleto.primerNombre,
+                    atributos.nombreCompleto.segundoNombre,
+                    atributos.nombreCompleto.primerApellido,
+                    atributos.nombreCompleto.segundoApellido,
                 ),
                 tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
                 nombreCompania: NombreCompania.crear(atributos.nombreCompania),
                 numeroTelefono: Telefono.crear(
-                    atributos.codigoPais,
-                    atributos.numeroTelefono
+                    atributos.numeroTelefono.codigoPais,
+                    atributos.numeroTelefono.numeroTelefono
                 ),
                 correo: Correo.crear(atributos.correo)
             }

@@ -1,7 +1,7 @@
 import { ValueObject } from "../ClasesBase/ValueObject"
 import { ExcepcionCalendarioInvalido } from "./excepciones/ExcepcionCalendarioInvalido"
 
-interface CalendarioPropiedades {
+export interface CalendarioPropiedades {
     horaInicio: string
     horaFin: string
 }
@@ -16,20 +16,20 @@ export class Calendario extends ValueObject<CalendarioPropiedades> {
         return this.propiedades.horaInicio
     }
 
-    obtenerCalendario(): any{
-        return this.propiedades
-    }
-
     obtenerHoraFin(): string {
         return this.propiedades.horaFin
+    }
+
+    obtenerCalendario(): CalendarioPropiedades{
+        return this.propiedades
     }
 
     public static crear(calendario: CalendarioPropiedades): Calendario {
         const horaInicio = calendario.horaInicio.split(" ")[1]
         const horaFin = calendario.horaFin.split(" ")[1]
-        const horas = [horaInicio.split(":")[0], horaFin.split(":")[0]]
-        const minutos = [horaInicio.split(":")[1], horaFin.split(":")[1]]
-        const segundos = [horaInicio.split(":")[2], horaFin.split(":")[2]]
+        const horas = [Number(horaInicio.split(":")[0]), Number(horaFin.split(":")[0])]
+        const minutos = [Number(horaInicio.split(":")[1]), Number(horaFin.split(":")[1])]
+        const segundos = [Number(horaInicio.split(":")[2]), Number(horaFin.split(":")[2])]
       
         if(
             horas[0] > horas[1]

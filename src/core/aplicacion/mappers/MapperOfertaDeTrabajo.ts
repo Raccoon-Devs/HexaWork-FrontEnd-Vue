@@ -1,24 +1,41 @@
 import { OfertaDeTrabajo } from "@/core/dominio/OfertasDeTrabajo/OfertaDeTrabajo";
 import {Mapper} from "./Mapper"
+import { MappearCertificacion } from "./MapperCertificacion";
 import { MappearEmpleador } from "./MapperEmpleador";
+import { MappearHabilidad } from "./MapperHabilidad";
+
 export class MappearOfertaDeTrabajo extends Mapper{
 
     public paraInfraestructura(oferta: OfertaDeTrabajo): any{
+
+        // const habilidades: any[] = []
+
+        // oferta.obtenerHabilidades().forEach(habilidad => {
+        //     habilidades.push(new MappearHabilidad().paraInfraestructura(habilidad))
+        // });
+
+        // const certificaciones: any[] = []
+
+        // oferta.obtenerCertificaciones().forEach(certificacion => {
+        //     certificaciones.push(new MappearCertificacion().paraInfraestructura(certificacion))
+        // });
+
         return {
+            idOfertaDeTrabajo: oferta.obtenerId(),
             tituloTrabajo: oferta.obtenerTitulo(),
+            // empleador: new MappearEmpleador().paraInfraestructura(oferta.obtenerEmpleador()),
             direccion: oferta.obtenerDireccion(),
             fechaLimitePostulacionOfertaDeTrabajo: oferta.obtenerFechaLimite(),
+            calendario: oferta.obtenerCalendario(),
+            habilidades: oferta.obtenerHabilidades(),
+            // habilidades: habilidades,
+            requerimientosEspeciales: oferta.obtenerRequerimientos(),
+            certificaciones: oferta.obtenerCertificaciones(),
+            // certificaciones: certificaciones,
             duracion: oferta.obtenerDuracion(),
             remuneracionPorHora: oferta.obtenerRemuneracion(),
-            requerimientosEspeciales: oferta.obtenerRequerimientos(),
             estadoOfertaDeTrabajo: oferta.obtenerEstadoOfertaDeTrabajo(),
-            vacantes: oferta.obtenerVacante(),
-            habilidades: oferta.obtenerHabilidades(),
-            certificaciones: oferta.obtenerCertificaciones(),
-            calendario: oferta.obtenerCalendario(),
-            idOfertaDeTrabajo: oferta.obtenerId(),
-            //empleador: {nombre: oferta.propiedades.empleador.propiedades.nombreEmpresa, id: oferta.propiedades.empleador.obtenerId()}
-            //empleador: new MappearEmpleador().paraInfraestructura(oferta.obtenerEmpleador())
+            vacantes: oferta.obtenerVacante()
         }
     }
 }

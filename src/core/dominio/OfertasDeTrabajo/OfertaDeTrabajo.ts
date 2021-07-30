@@ -6,20 +6,22 @@ import { Remuneracion } from "./ValueObjects/Remuneracion"
 import { EstadoOfertaDeTrabajo } from "./ValueObjects/EstadoOfertaDeTrabajo"
 import { Vacante } from "./ValueObjects/Vacante"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
-import { Calendario } from "../valueObjectsComunes/Calendario"
-import { Direccion } from "../valueObjectsComunes/Direccion"
+import { Calendario, CalendarioPropiedades } from "../valueObjectsComunes/Calendario"
+import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion"
 import { RequerimientosEspecialesOfertaDeTrabajo } from "./ValueObjects/RequerimientosEspecialesOfertaDeTrabajo"
 
 export interface OfertaDeTrabajoPropiedades{
     idOfertaDeTrabajo: IDOferta,
     tituloTrabajo: TituloTrabajo,
     //empleador: Empleador,
-    direccion:Direccion,
+    direccion: Direccion,
     fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion,
     calendario: Calendario[],
     habilidades: string[],
+    // habilidades: Habilidad[],
     requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo,
     certificaciones: string[],
+    // certificaciones: Certificacion[],
     duracion: Duracion,
     remuneracionPorHora: Remuneracion,
     estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo,
@@ -32,12 +34,68 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         super(propiedades, propiedades.idOfertaDeTrabajo)
     }
 
+    obtenerId(): string | number{
+        return this.propiedades.idOfertaDeTrabajo.obtenerId()
+    }
+
     obtenerTitulo(): string{
         return this.propiedades.tituloTrabajo.obtenerTitulo()
     }
 
+    // obtenerEmpleador(): Empleador{
+    //     return this.propiedades.empleador.obtenerEmpleador()
+    // }
+
+    obtenerDireccion(): DireccionPropiedades{
+        return this.propiedades.direccion.obtenerDireccion()
+    }
+
     obtenerFechaLimite(): Date{
         return this.propiedades.fechaLimitePostulacionOfertaDeTrabajo.obtenerFechaLimite()
+    }
+
+    obtenerCalendario(): CalendarioPropiedades[]{
+        const calendario: CalendarioPropiedades[] = []
+        this.propiedades.calendario.forEach(fecha => {
+            calendario.push(fecha.obtenerCalendario())
+        });
+        return calendario
+    }
+
+    obtenerHabilidades(): string[]{
+        return this.propiedades.habilidades
+    }
+
+    // obtenerHabilidades(): Habilidad[]{
+    // 
+        // const habilidades: Habilidad[] = []
+        // this.propiedades.habilidades.forEach(habilidad => {
+        //     habilidades.push(habilidad.obtenerHabilidad())
+        // });
+    // 
+    //     return habilidades
+    // }
+
+    obtenerRequerimientos(): string{
+        return this.propiedades.requerimientosEspeciales.obtenerRequerimientos()
+    }
+
+    obtenerCertificaciones(): string[]{
+        return this.propiedades.certificaciones
+    }
+
+    // obtenerCertificaciones(): Certificacion[]{
+    // 
+        // const certificaciones: Certificacion[] = []
+        // this.propiedades.certificaciones.forEach(certificacion => {
+        //     certificaciones.push(certificacion.obtenerCertificacion())
+        // });
+    // 
+    //     return certificaciones
+    // }
+
+    obtenerDuracion(): number{
+        return this.propiedades.duracion.obtenerDuracion()
     }
 
     obtenerRemuneracion(): number{
@@ -52,44 +110,8 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         return this.propiedades.vacantes.obtenerVacante()
     }
 
-    obtenerId(): string | number{
-        return this.propiedades.idOfertaDeTrabajo.obtenerId()
-    }
-
-    obtenerDuracion(): number{
-        return this.propiedades.duracion.obtenerDuracion()
-    }
-
-    obtenerHabilidades(): string[]{
-        return this.propiedades.habilidades
-    }
-
-    obtenerCertificaciones(): string[]{
-        return this.propiedades.certificaciones
-    }
-
-    obtenerRequerimientos(): string{
-        return this.propiedades.requerimientosEspeciales.obtenerRequerimientos()
-    }
-
-    obtenerDireccion(): any{
-        return this.propiedades.direccion.obtenerDireccion()
-    }
-
-    obtenerCalendario():any{
-        const calendario: {horaInicio:string, horaFin:string}[] = []
-        this.propiedades.calendario.forEach(fecha => {
-            calendario.push(fecha.obtenerCalendario())
-        });
-        return calendario
-    }
-
-    // obtenerEmpleador(): Empleador{
-    //     return this.propiedades.empleador
-    // }
-
-    obtenerOfertaDeTrabajo(): OfertaDeTrabajoPropiedades{
-        return this.propiedades
+    obtenerOfertaDeTrabajo(): OfertaDeTrabajo{
+        return this
     }
 
     public static update(ofertaDeTrabajo: any,): OfertaDeTrabajo {
@@ -99,22 +121,22 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         )
     }
 
-    public static crear(propiedades: any): OfertaDeTrabajo {
+    public static crear(atributos: any): OfertaDeTrabajo {
         return new OfertaDeTrabajo(
             {
-                idOfertaDeTrabajo: propiedades.idOfertaDeTrabajo,
-                tituloTrabajo: propiedades.tituloTrabajo,
-                //empleador: propiedades.empleador,
-                direccion:propiedades.direccion,
-                fechaLimitePostulacionOfertaDeTrabajo: propiedades.fechaLimitePostulacionOfertaDeTrabajo,
-                requerimientosEspeciales: propiedades.requerimientosEspeciales,
-                duracion: propiedades.duracion,
-                remuneracionPorHora: propiedades.remuneracionPorHora,
-                estadoOfertaDeTrabajo: propiedades.estadoOfertaDeTrabajo,
-                vacantes: propiedades.vacantes,
-                certificaciones: propiedades.certificaciones,
-                habilidades: propiedades.habilidades,
-                calendario: propiedades.calendario
+                idOfertaDeTrabajo: atributos.idOfertaDeTrabajo,
+                tituloTrabajo: atributos.tituloTrabajo,
+                //empleador: atributos.empleador,
+                direccion:atributos.direccion,
+                fechaLimitePostulacionOfertaDeTrabajo: atributos.fechaLimitePostulacionOfertaDeTrabajo,
+                requerimientosEspeciales: atributos.requerimientosEspeciales,
+                duracion: atributos.duracion,
+                remuneracionPorHora: atributos.remuneracionPorHora,
+                estadoOfertaDeTrabajo: atributos.estadoOfertaDeTrabajo,
+                vacantes: atributos.vacantes,
+                certificaciones: atributos.certificaciones,
+                habilidades: atributos.habilidades,
+                calendario: atributos.calendario
             }
         )
     }

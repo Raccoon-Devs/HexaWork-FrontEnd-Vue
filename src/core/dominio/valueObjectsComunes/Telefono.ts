@@ -1,7 +1,7 @@
 import { ValueObject } from "../ClasesBase/ValueObject"
 import { ExcepcionNumeroDeTelefonoInvalido } from "./excepciones/ExcepcionNumeroDeTelefonoInvalido"
 
-interface TelefonoPropiedades {
+export interface TelefonoPropiedades {
     codigoPais: number,
     numeroTelefono: number
 }
@@ -19,7 +19,11 @@ export class Telefono extends ValueObject<TelefonoPropiedades> {
     obtenerNumero(): number{
         return this.propiedades.numeroTelefono
     }
-    //
+
+    obtenerTelefono(): TelefonoPropiedades{
+        return this.propiedades
+    }
+    
     public static crear(codigoPais: number, numeroTelefono: number): Telefono {
         if(codigoPais === null || codigoPais === undefined) {
             throw new ExcepcionNumeroDeTelefonoInvalido<typeof codigoPais>(`El código: ${codigoPais} es inválido, no puede ser vacío`, codigoPais)
