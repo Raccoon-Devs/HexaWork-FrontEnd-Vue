@@ -29,11 +29,11 @@ export class PasarADominio {
             habilidades.push(Habilidad.crear(habilidad))
         });
 
-        // const certificaciones: Certificacion[] = []
+        const certificaciones: Certificacion[] = []
 
-        // atributos.certificaciones.forEach(certificacion => {
-        //     certificaciones.push(Certificacion.crear(certificacion))
-        // });
+        atributos.certificaciones.forEach(certificacion => {
+            certificaciones.push(Certificacion.crear(certificacion))
+        });
         
         return {
             idOfertaDeTrabajo: IDOferta.crear(atributos.idOfertaDeTrabajo),
@@ -50,8 +50,7 @@ export class PasarADominio {
             calendario: calendario,
             habilidades: habilidades,
             requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo.crear(atributos.requerimientosEspeciales),
-            certificaciones: atributos.certificaciones,
-            // certificaciones: certificaciones,
+            certificaciones: certificaciones,
             duracion: Duracion.crear(atributos.duracion),
             remuneracionPorHora: Remuneracion.crear(atributos.remuneracionPorHora),
             estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo.crear(atributos.estadoOfertaDeTrabajo),

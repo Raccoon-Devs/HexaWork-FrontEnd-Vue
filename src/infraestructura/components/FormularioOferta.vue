@@ -79,7 +79,7 @@
                   v-model="certificacionesSeleccionadas"
                   :items="certificaciones"
                   item-text="nombre"
-                  item-value="valor"
+                  item-value="idCertificacion"
                   :menu-props="{ maxHeight: '400' }"
                   label="Certificaciones"
                   multiple
@@ -333,10 +333,13 @@
   import Vue from 'vue'
   import { UIPuertoCrearOferta } from '../../core/aplicacion/ui/UIPuertoCrearOferta'
   import { UIPuertoHabilidades } from '../../core/aplicacion/ui/Habilidades/UIPuertoHabilidades'
+  import { UIPuertoCertificaciones } from '../../core/aplicacion/ui/Certificaciones/UIPuertoCertificaciones'
   import { CrearOfertaDeTrabajo } from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
+  import { MostrarHabilidades } from '@/core/aplicacion/servicios/Habilidades/MostrarHabilidades'
+  import { MostrarCertificaciones } from '../../core/aplicacion/servicios/Certificaciones/MostrarCertificaciones'
   import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
-import { MostrarHabilidades } from '@/core/aplicacion/servicios/Habilidades/MostrarHabilidades'
-import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadorMockHabilidades'
+  import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadorMockHabilidades'
+  import { AdaptadorMockCertificaciones } from '../../core/infraestructura/adaptadorMockCertificaciones'
 
   export default Vue.extend({
     name: 'FormularioOferta',
@@ -378,6 +381,7 @@ import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadorMockHa
       habilidadesSeleccionadas: [],
       certificacionesSeleccionadas: [],
       habilidades: [{}],
+      certificaciones: [{}],
       // habilidades: [
       //   {
       //     nombre: 'Habilidades Blandas',
@@ -408,36 +412,36 @@ import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadorMockHa
       //     valor: 7
       //   }
       // ],
-      certificaciones: [
-        {
-          nombre: 'Certificacion 1',
-          valor: "ab"
-        },
-        {
-          nombre: 'Certificacion 2',
-          valor: "bb"
-        },
-        {
-          nombre: 'Certificacion 3',
-          valor: "cb"
-        },
-        {
-          nombre: 'Certificacion 4',
-          valor: "db"
-        },
-        {
-          nombre: 'Certificacion 5',
-          valor: "eb"
-        },
-        {
-          nombre: 'Certificacion 6',
-          valor: "fb"
-        },
-        {
-          nombre: 'Certificacion 7',
-          valor: "gb"
-        }
-      ],
+      // certificaciones: [
+      //   {
+      //     nombre: 'Certificacion 1',
+      //     valor: "ab"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 2',
+      //     valor: "bb"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 3',
+      //     valor: "cb"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 4',
+      //     valor: "db"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 5',
+      //     valor: "eb"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 6',
+      //     valor: "fb"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 7',
+      //     valor: "gb"
+      //   }
+      // ],
       fechaLimite: "",
       menuFechaLimite: false,
       fechaLimitePicker: "",
@@ -530,6 +534,14 @@ import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadorMockHa
             }
           })
         })
+        const certificaciones: any[] = []
+        this.certificacionesSeleccionadas.forEach((seleccionada: any) => {
+          this.certificaciones.forEach((certificacion: any) => {
+            if (certificacion.idCertificacion == seleccionada) {
+              certificaciones.push(certificacion)
+            }
+          })
+        })
         const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
         const oferta = {
             requerimientosEspeciales: this.ofertaDeTrabajo.requerimientosEspeciales,
@@ -540,7 +552,7 @@ import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadorMockHa
             remuneracionPorHora: this.ofertaDeTrabajo.remuneracionPorHora,
             estadoOfertaDeTrabajo: 0,
             vacantes: this.ofertaDeTrabajo.vacantes,
-            certificaciones: this.certificacionesSeleccionadas,
+            certificaciones: certificaciones,
             habilidades: habilidades,
             calendario: this.ofertaDeTrabajo.fechasCalendario
             // empleador: {
@@ -562,10 +574,19 @@ import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadorMockHa
         habilidadesEnElRepo.forEach((habilidad: any) => {
           this.habilidades.push(habilidad)
         })
+      },
+      listarCertificaciones(){
+        let controlador: UIPuertoCertificaciones = new MostrarCertificaciones()
+        let certificacionesEnElRepo = controlador.listarCertificacionesUI(new AdaptadorMockCertificaciones())
+        this.certificaciones = []
+        certificacionesEnElRepo.forEach((certificacion: any) => {
+          this.certificaciones.push(certificacion)
+        })
       }
     },
     mounted() {
       this.listarHabilidades()
+      this.listarCertificaciones()
     }
   })
 </script>
