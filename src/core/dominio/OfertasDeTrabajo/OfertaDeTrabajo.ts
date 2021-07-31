@@ -9,6 +9,7 @@ import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 import { Calendario, CalendarioPropiedades } from "../valueObjectsComunes/Calendario"
 import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion"
 import { RequerimientosEspecialesOfertaDeTrabajo } from "./ValueObjects/RequerimientosEspecialesOfertaDeTrabajo"
+import { Habilidad } from "../Habilidad/Habilidad"
 
 export interface OfertaDeTrabajoPropiedades{
     idOfertaDeTrabajo: IDOferta,
@@ -17,8 +18,7 @@ export interface OfertaDeTrabajoPropiedades{
     direccion: Direccion,
     fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion,
     calendario: Calendario[],
-    habilidades: string[],
-    // habilidades: Habilidad[],
+    habilidades: Habilidad[],
     requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo,
     certificaciones: string[],
     // certificaciones: Certificacion[],
@@ -62,19 +62,15 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         return calendario
     }
 
-    obtenerHabilidades(): string[]{
-        return this.propiedades.habilidades
+    obtenerHabilidades(): Habilidad[]{
+    
+        const habilidades: Habilidad[] = []
+        this.propiedades.habilidades.forEach(habilidad => {
+            habilidades.push(habilidad.obtenerHabilidad())
+        });
+    
+        return habilidades
     }
-
-    // obtenerHabilidades(): Habilidad[]{
-    // 
-        // const habilidades: Habilidad[] = []
-        // this.propiedades.habilidades.forEach(habilidad => {
-        //     habilidades.push(habilidad.obtenerHabilidad())
-        // });
-    // 
-    //     return habilidades
-    // }
 
     obtenerRequerimientos(): string{
         return this.propiedades.requerimientosEspeciales.obtenerRequerimientos()

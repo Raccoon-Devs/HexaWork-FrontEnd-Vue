@@ -23,11 +23,11 @@ export class PasarADominio {
             calendario.push(Calendario.crear(fecha))
         });
 
-        // const habilidades: Habilidad[] = []
+        const habilidades: Habilidad[] = []
 
-        // atributos.habilidades.forEach(habilidad => {
-        //     habilidades.push(Habilidad.crear(habilidad))
-        // });
+        atributos.habilidades.forEach(habilidad => {
+            habilidades.push(Habilidad.crear(habilidad))
+        });
 
         // const certificaciones: Certificacion[] = []
 
@@ -48,8 +48,7 @@ export class PasarADominio {
             ),
             fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion.crear(atributos.fechaLimitePostulacionOfertaDeTrabajo),
             calendario: calendario,
-            habilidades: atributos.habilidades,
-            // habilidades: habilidades,
+            habilidades: habilidades,
             requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo.crear(atributos.requerimientosEspeciales),
             certificaciones: atributos.certificaciones,
             // certificaciones: certificaciones,

@@ -67,7 +67,7 @@
                   v-model="habilidadesSeleccionadas"
                   :items="habilidades"
                   item-text="nombre"
-                  item-value="valor"
+                  item-value="idHabilidad"
                   :menu-props="{ maxHeight: '400' }"
                   label="Habilidades"
                   multiple
@@ -331,9 +331,12 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import {UIPuertoCrearOferta} from '../../core/aplicacion/ui/UIPuertoCrearOferta'
-  import {CrearOfertaDeTrabajo} from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
+  import { UIPuertoCrearOferta } from '../../core/aplicacion/ui/UIPuertoCrearOferta'
+  import { UIPuertoHabilidades } from '../../core/aplicacion/ui/Habilidades/UIPuertoHabilidades'
+  import { CrearOfertaDeTrabajo } from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
   import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
+import { MostrarHabilidades } from '@/core/aplicacion/servicios/Habilidades/MostrarHabilidades'
+import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadorMockHabilidades'
 
   export default Vue.extend({
     name: 'FormularioOferta',
@@ -374,36 +377,37 @@
       dialogCalendario: false,
       habilidadesSeleccionadas: [],
       certificacionesSeleccionadas: [],
-      habilidades: [
-        {
-          nombre: 'Habilidades Blandas',
-          valor: 1
-        },
-        {
-          nombre: 'Habilidades Técnicas',
-          valor: 2
-        },
-        {
-          nombre: 'Habilidades Cognitivas',
-          valor: 3
-        },
-        {
-          nombre: 'Habilidades Mecánicas',
-          valor: 4
-        },
-        {
-          nombre: 'Habilidades Linguísticas',
-          valor: 5
-        },
-        {
-          nombre: 'Habilidades Manuales',
-          valor: 6
-        },
-        {
-          nombre: 'Habilidades Visuales',
-          valor: 7
-        }
-      ],
+      habilidades: [{}],
+      // habilidades: [
+      //   {
+      //     nombre: 'Habilidades Blandas',
+      //     valor: 1
+      //   },
+      //   {
+      //     nombre: 'Habilidades Técnicas',
+      //     valor: 2
+      //   },
+      //   {
+      //     nombre: 'Habilidades Cognitivas',
+      //     valor: 3
+      //   },
+      //   {
+      //     nombre: 'Habilidades Mecánicas',
+      //     valor: 4
+      //   },
+      //   {
+      //     nombre: 'Habilidades Linguísticas',
+      //     valor: 5
+      //   },
+      //   {
+      //     nombre: 'Habilidades Manuales',
+      //     valor: 6
+      //   },
+      //   {
+      //     nombre: 'Habilidades Visuales',
+      //     valor: 7
+      //   }
+      // ],
       certificaciones: [
         {
           nombre: 'Certificacion 1',
@@ -518,7 +522,14 @@
         this.fechaCalendario = ""
       },
       crearOferta(){
-        // alert(this.ofertaDeTrabajo.fechasCalendario)
+        const habilidades: any[] = []
+        this.habilidadesSeleccionadas.forEach((seleccionada: any) => {
+          this.habilidades.forEach((habilidad: any) => {
+            if (habilidad.idHabilidad == seleccionada) {
+              habilidades.push(habilidad)
+            }
+          })
+        })
         const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
         const oferta = {
             requerimientosEspeciales: this.ofertaDeTrabajo.requerimientosEspeciales,
@@ -530,13 +541,12 @@
             estadoOfertaDeTrabajo: 0,
             vacantes: this.ofertaDeTrabajo.vacantes,
             certificaciones: this.certificacionesSeleccionadas,
-            habilidades: this.habilidadesSeleccionadas,
+            habilidades: habilidades,
             calendario: this.ofertaDeTrabajo.fechasCalendario
             // empleador: {
             //     id: "5",
             // },
         }
-        console.log(oferta);
         
         let respuesta = puertoOferta.crearOfertaUI(oferta, new AdaptadorMockOferta())
 
@@ -544,7 +554,18 @@
         this.ofertaCreada.mensaje = respuesta
         this.$emit('ofertaCreada');
         this.cambiarEstadoCrearOfertaDialog()
+      },
+      listarHabilidades(){
+        let controlador: UIPuertoHabilidades = new MostrarHabilidades()
+        let habilidadesEnElRepo = controlador.listarHabilidadesUI(new AdaptadorMockHabilidades())
+        this.habilidades = []
+        habilidadesEnElRepo.forEach((habilidad: any) => {
+          this.habilidades.push(habilidad)
+        })
       }
     },
+    mounted() {
+      this.listarHabilidades()
+    }
   })
 </script>

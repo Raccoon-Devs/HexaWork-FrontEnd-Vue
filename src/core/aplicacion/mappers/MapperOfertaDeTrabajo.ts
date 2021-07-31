@@ -8,11 +8,11 @@ export class MappearOfertaDeTrabajo extends Mapper{
 
     public paraInfraestructura(oferta: OfertaDeTrabajo): any{
 
-        // const habilidades: any[] = []
+        const habilidades: any[] = []
 
-        // oferta.obtenerHabilidades().forEach(habilidad => {
-        //     habilidades.push(new MappearHabilidad().paraInfraestructura(habilidad))
-        // });
+        oferta.obtenerHabilidades().forEach(habilidad => {
+            habilidades.push(new MappearHabilidad().paraInfraestructura(habilidad))
+        });
 
         // const certificaciones: any[] = []
 
@@ -27,8 +27,7 @@ export class MappearOfertaDeTrabajo extends Mapper{
             direccion: oferta.obtenerDireccion(),
             fechaLimitePostulacionOfertaDeTrabajo: oferta.obtenerFechaLimite(),
             calendario: oferta.obtenerCalendario(),
-            habilidades: oferta.obtenerHabilidades(),
-            // habilidades: habilidades,
+            habilidades: habilidades,
             requerimientosEspeciales: oferta.obtenerRequerimientos(),
             certificaciones: oferta.obtenerCertificaciones(),
             // certificaciones: certificaciones,
