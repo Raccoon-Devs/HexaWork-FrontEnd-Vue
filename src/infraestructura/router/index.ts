@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
+
 import Home from '../views/Home.vue'
 import CrearOferta from '../views/CrearOferta.vue'
+import OfertasTerminadas from '../views/OfertasTerminadas'
 
 import NavegacionMenu from '../components/NavegacionMenu.vue'
 
@@ -21,20 +23,30 @@ const routes: Array<RouteConfig> = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
-  {
-    path: '/Oferta',
-    name: 'CrearOferta',
-    component: NavegacionMenu,
-    props: {
-        pageName:'Ofertas de trabajo',
+    {
+        path: '/Oferta',
+        name: 'CrearOferta',
+        component: NavegacionMenu,
+        props: {
+            pageName:'Ofertas de trabajo',
+        },
+        children: [{
+                path: '',
+                component: CrearOferta
+        }]
     },
-    children: [
-        {
+    {
+        path: '/ofertas-culminadas',
+        name: 'OfertasCulminadas',
+        component: NavegacionMenu,
+        props: {
+            pageName:'Ofertas culminadas',
+        },
+        children: [{
             path: '',
-            component: CrearOferta
-        }
-    ]
-  }
+            component: OfertasTerminadas
+        }]
+    }
 ]
 
 const router = new VueRouter({
