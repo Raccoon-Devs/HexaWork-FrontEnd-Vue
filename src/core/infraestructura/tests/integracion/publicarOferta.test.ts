@@ -15,77 +15,27 @@ test('Publicar una oferta de trabajo', () => {
     const puertoConsultarOferta: UIPuerto = new MostrarOfertasDeTrabajo()
 
     const oferta = {
-        descripcion: {
-            propiedades: {
-                descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
-            }
-        },
+        idOfertaDeTrabajo: "",
+        tituloTrabajo: "Título crear oferta",
+        //empleador: Empleador,
         direccion: {
-            calle1: "Principal",
-            calle2: "Oeste",
-            ciudad: "Caracas",
-            estado:"Distrito Capital",
-            zip:"1011"
+            calle1: "calle1",
+            calle2: "calle2",
+            ciudad: "ciudad",
+            estado: "estado",
+            codPostal: "codigoPos"
         },
-        duracion: "8",
-        fechaLimite: "2020-05-05",
-        titulo: "Se necesita desarrollador web",
-        vacante: "1",
-        remuneracion: {
-            monto: "700",
-            divisa:"dolar",
-            frecuencia:"mes"
-        },
-        cargo: {
-            propiedades: {
-                cargo : "Desarrollador Web Junior"
-            }
-        },
+        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
+        habilidades: ["a1", "a2", "a3"],
+        requerimientosEspeciales: "RequerimientosEspeciales",
+        certificaciones: ["a1", "a2", "a3"],
+        duracion: 5,
+        remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 0,
-        empleador: {
-            id: "5",
-            nombreEmpresa: {
-                nombre: "Raccoon Developers",
-                rif: "J500805050"
-            },
-            direccion: {
-                propiedades: {
-                    calle1: "Raccoon",
-                    calle2: "Oeste",
-                    ciudad: "Caracas",
-                    estado: "Distrito Capital",
-                    zip: "1011"
-                }
-            } ,
-            infoEmpleador: {
-                propiedades: {
-                    nombreCompleto: "Alejandro Daniel Pérez Verde",
-                    cargoDeTrabajo: "Desarrollador Senior",
-                    numeroDeTelefono: "+584141234567",
-                    correo: "alejandroperez@raccoondevelopers.com"
-                }
-            },
-            rol:{
-                propiedades:{
-                    nombre: "Gerente"
-                }
-            }
-        },
+        vacantes: 5
     }
 
-    const hoy = new Date()
-    const dd = String(hoy.getDate()).padStart(2, '0')
-    const mm = String(hoy.getMonth() + 1).padStart(2, '0')
-    const yyyy = hoy.getFullYear()
-
-    const ofertaDesdeUI = {
-        descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles",
-        estado: "Draft",
-        fechaLimite: "05/05/2020",
-        fechaPublicacion:  dd + '/' + mm + '/' + yyyy,
-        nombre:"Se necesita desarrollador web",
-        pago: "700"
-    }
-    expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual({statusCode: 201, mensaje: "Oferta Creada Con éxito"});
-    expect(puertoPublicarOferta.publicarOfertaUI(ofertaDesdeUI, new AdaptadorTIOferta())).toEqual({statusCode: 201, mensaje: "Oferta Actualizada Con éxito"});
+    expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("Oferta Creada Con éxito");
+    expect(puertoPublicarOferta.publicarOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("Oferta Actualizada Con éxito");
 });

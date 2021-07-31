@@ -13,6 +13,6 @@ export class AdaptadorTIOferta extends APIPuerto{
     }
 
     public actualizarOferta(ofertaDeTrabajo: OfertaParaDominio){
-        return actualizarOferta(ofertaDeTrabajo)
+        return actualizarOferta(ofertaDeTrabajo).mensaje
     }
 }

@@ -16,11 +16,11 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
             const ofertaDominio = ServicioPublicarOfertaDeTrabajo.pasarADominio(oferta)
 
             const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
-            
+          
             return this.actualizarOfertaApi(apiPuerto, ofertaApi)
       
         } catch (error) {
-            return {statusCode: 500, mensaje:error.mensaje}
+            return error.mensaje
         }
     }
 

@@ -10,8 +10,6 @@
     "serve": "vue-cli-service serve --port 8087 --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:temporalunitarios": "jest ./src/core/infraestructura/tests/unitarios/crearOferta.test.ts",
-    "test:temporalintegracion": "jest ./src/core/infraestructura/tests/integracion/crearOfertaLocal.test.ts",
     "test:unit": "jest ./src/core/infraestructura/tests/unitarios",
     "test:int": "jest ./src/core/infraestructura/tests/integracion",
     "test:aceptacion": "node_modules/.bin/nightwatch"

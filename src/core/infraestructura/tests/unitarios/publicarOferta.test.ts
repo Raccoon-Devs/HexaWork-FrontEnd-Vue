@@ -12,19 +12,27 @@ test('publicar una oferta de trabajo', () => {
 
     const puertoPublicarOferta: UIPuertoPublicarOferta = new PublicarOfertaDeTrabajo()
 
-    const hoy = new Date()
-    const dd = String(hoy.getDate()).padStart(2, '0')
-    const mm = String(hoy.getMonth() + 1).padStart(2, '0')
-    const yyyy = hoy.getFullYear()
-
-    const ofertaDesdeUI = {
-        descripcion: "descripcion",
-        estado: "Draft",
-        fechaLimite: "05/05/2020",
-        fechaPublicacion:  dd + '/' + mm + '/' + yyyy,
-        nombre:"a",
-        pago: "5"
+    const oferta = {
+        idOfertaDeTrabajo: "",
+        tituloTrabajo: "Título crear oferta",
+        //empleador: Empleador,
+        direccion: {
+            calle1: "calle1",
+            calle2: "calle2",
+            ciudad: "ciudad",
+            estado: "estado",
+            codPostal: "codigoPos"
+        },
+        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
+        habilidades: ["a1", "a2", "a3"],
+        requerimientosEspeciales: "RequerimientosEspeciales",
+        certificaciones: ["a1", "a2", "a3"],
+        duracion: 5,
+        remuneracionPorHora: 3.44,
+        estadoOfertaDeTrabajo: 1,
+        vacantes: 5
     }
 
-    expect(puertoPublicarOferta.publicarOfertaUI(ofertaDesdeUI, new AdaptadorTUOferta())).toEqual({statusCode: 201, mensaje: "Oferta Actualizada Con éxito"});
+    expect(puertoPublicarOferta.publicarOfertaUI(oferta, new AdaptadorTUOferta())).toEqual({statusCode: 201, mensaje: "Oferta Actualizada Con éxito"});
 });
