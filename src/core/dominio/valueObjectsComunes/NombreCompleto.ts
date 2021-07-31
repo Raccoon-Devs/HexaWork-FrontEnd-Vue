@@ -1,7 +1,7 @@
 import { ValueObject } from "../ClasesBase/ValueObject"
 import { ExcepcionNombreCompletoInvalido } from "./excepciones/ExcepcionNombreCompleto"
 
-interface NombreCompletoPropiedades {
+export interface NombreCompletoPropiedades {
     primerNombre: string,
     segundoNombre: string,
     primerApellido: string,
@@ -28,6 +28,10 @@ export class NombreCompleto extends ValueObject<NombreCompletoPropiedades> {
 
     obtenerSegundoApellido(): string {
         return this.propiedades.segundoApellido
+    }
+
+    obtenerNombreCompleto(): NombreCompletoPropiedades {
+        return this.propiedades
     }
 
     public static crear(primerNombre: string, segundoNombre: string, primerApellido: string, segundoApellido: string): NombreCompleto {

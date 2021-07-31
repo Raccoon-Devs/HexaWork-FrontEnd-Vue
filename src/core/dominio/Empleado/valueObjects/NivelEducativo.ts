@@ -16,12 +16,22 @@ export class NivelEducativo extends ValueObject<NivelEducativoPropiedades> {
     }
 
     public static crear(nivelEducativo: number): NivelEducativo {
-        if (nivelEducativo < 0 || nivelEducativo > 10) {
-            throw new ExcepcionNivelEducativoInvalido<typeof nivelEducativo>(
-                `El valor nivelEducativo: ${nivelEducativo} es invalido, debe estar entre 0 y 10`,
-                nivelEducativo
-            )
+        
+        if(nivelEducativo === null || nivelEducativo === undefined){
+            throw new ExcepcionNivelEducativoInvalido<typeof nivelEducativo >(`El nivel educativo: ${nivelEducativo} no puede estar vacio`, nivelEducativo)
         }
+
+        if(!(nivelEducativo in [0, 1, 2, 3, 4, 5 ,6, 7, 8, 9, 10])){
+            throw new ExcepcionNivelEducativoInvalido<typeof nivelEducativo >(
+                `El nivel educativo: ${nivelEducativo} del empleado debe ser: 
+                0 (Niguno), 1 (Escuela Primaria),
+                2 (Algún Instituto), 3 (Escuela Secundaria),
+                4 (Algún Estudio Universitario), 5 (Grado Asociado),
+                6 (Licenciatura), 7 (Algún Estudio de Postgrado),
+                8 (Maestría), 9 (Doctorado), 10 (título Profesional)`
+                , nivelEducativo)
+        }
+
         return new NivelEducativo({nivelEducativo})
     }
 }

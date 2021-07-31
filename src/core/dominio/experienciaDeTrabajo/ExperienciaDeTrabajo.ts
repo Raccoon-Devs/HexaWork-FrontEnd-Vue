@@ -1,14 +1,10 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { IDUnicoEntidad } from "../ClasesBase/IDUnicoEntidad"
-
-import { IDExperienciaTrabajo } from "./valueObjects/IDExperienciaTrabajo"
-import { CategoriaTrabajo } from "./valueObjects/CategoriaTrabajo"
-
+import { IDExperienciaTrabajo } from "./ValueObjects/IDExperienciaTrabajo"
+import { CategoriaTrabajo } from "./ValueObjects/CategoriaTrabajo"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 
-
-interface ExperienciaDeTrabajoPropiedades {
+export interface ExperienciaDeTrabajoPropiedades {
     idExperiencia: IDExperienciaTrabajo,
     tituloTrabajo: TituloTrabajo,
     nombreCompania: NombreCompania,
@@ -18,33 +14,35 @@ interface ExperienciaDeTrabajoPropiedades {
 export class ExperienciaDeTrabajo extends Entidad<ExperienciaDeTrabajoPropiedades> {
 
     private constructor (propiedades: ExperienciaDeTrabajoPropiedades) {
-        super(propiedades)
+        super(propiedades, propiedades.idExperiencia)
     }
 
-    obtenerId(): IDExperienciaTrabajo {
-        return this.propiedades.idExperiencia
+    obtenerId(): string | number {
+        return this.propiedades.idExperiencia.obtenerId()
     }
 
-    obtenerTituloTrabajo(): TituloTrabajo {
-        return this.propiedades.tituloTrabajo
+    obtenerTituloTrabajo(): string {
+        return this.propiedades.tituloTrabajo.obtenerTitulo()
     }
 
-    obtenerNombreCompania(): NombreCompania {
-        return this.propiedades.nombreCompania
+    obtenerNombreCompania(): string {
+        return this.propiedades.nombreCompania.obtenerNombre()
     }
 
-    obtenerCategoria(): CategoriaTrabajo {
-        return this.propiedades.categoria
+    obtenerCategoria(): number {
+        return this.propiedades.categoria.obtenerCategoria()
     }
 
-    public static crear(
-        atributos: any
-    ): ExperienciaDeTrabajo {
+    obtenerExperienciaDeTrabajo(): ExperienciaDeTrabajo {
+        return this
+    }
+
+    public static crear(atributos: any): ExperienciaDeTrabajo {
         return new ExperienciaDeTrabajo(
             {
-                idExperiencia: IDExperienciaTrabajo.crear(atributos.id),
-                tituloTrabajo: TituloTrabajo.crear(atributos.titulo),
-                nombreCompania: NombreCompania.crear(atributos.nombre),
+                idExperiencia: IDExperienciaTrabajo.crear(atributos.idExperiencia),
+                tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
+                nombreCompania: NombreCompania.crear(atributos.nombreCompania),
                 categoria: CategoriaTrabajo.crear(atributos.categoria)
             }
         )
