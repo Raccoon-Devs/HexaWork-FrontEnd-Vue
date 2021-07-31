@@ -3,7 +3,7 @@ import { UIPuertoPublicarOferta } from "../../..//aplicacion/ui/UIPuertoPublicar
 import { CrearOfertaDeTrabajo } from "../../../aplicacion/servicios/CrearOfertaDeTrabajo";
 import { UIPuertoCrearOferta } from "../../..//aplicacion/ui/UIPuertoCrearOferta";
 import { PublicarOfertaDeTrabajo } from "../../../aplicacion/servicios/PublicarOfertaDeTrabajo";
-import { AdaptadorTUOferta } from "../../adaptadorTUOferta";
+import { AdaptadorTUOferta } from "../../adaptadores/adaptadoresUnitarios/adaptadorTUOferta";
 
 //Test Publicar Oferta
 test('publicar una oferta de trabajo', () => {

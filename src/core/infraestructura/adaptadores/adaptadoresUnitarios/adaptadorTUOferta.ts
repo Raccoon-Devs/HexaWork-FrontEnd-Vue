@@ -1,5 +1,5 @@
-import { APIPuerto } from "../aplicacion/api/APIPuerto";
-import { OfertaParaDominio } from "../dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
+import { APIPuerto } from "../../../aplicacion/api/APIPuerto";
+import { OfertaParaDominio } from "../../../dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
 
 
 export class AdaptadorTUOferta extends APIPuerto{

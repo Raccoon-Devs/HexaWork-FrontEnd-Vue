@@ -333,7 +333,7 @@
   import Vue from 'vue'
   import {UIPuertoCrearOferta} from '../../core/aplicacion/ui/UIPuertoCrearOferta'
   import {CrearOfertaDeTrabajo} from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
-  import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
+  import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockOferta'
 
   export default Vue.extend({
     name: 'FormularioOferta',

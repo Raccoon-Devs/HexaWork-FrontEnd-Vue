@@ -1,6 +1,6 @@
 import { CrearOfertaDeTrabajo } from "../../../aplicacion/servicios/CrearOfertaDeTrabajo";
 import { UIPuertoCrearOferta } from "../../../aplicacion/ui/UIPuertoCrearOferta";
-import { AdaptadorTIOferta } from "../../adaptadorTIOferta";
+import { AdaptadorTIOferta } from "../../adaptadores/adaptadoresIntegracion/adaptadorTIOferta";
 import { UIPuerto } from "../../../aplicacion/ui/UIPuerto";
 import { MostrarOfertasDeTrabajo } from "../../../aplicacion/servicios/MostrarOfertasDeTrabajo";
 

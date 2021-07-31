@@ -1,6 +1,6 @@
 import { CrearOfertaDeTrabajo } from "../../../aplicacion/servicios/CrearOfertaDeTrabajo";
 import { UIPuertoCrearOferta } from "../../..//aplicacion/ui/UIPuertoCrearOferta";
-import { AdaptadorTUOferta } from "../../adaptadorTUOferta";
+import { AdaptadorTUOferta } from "../../adaptadores/adaptadoresUnitarios/adaptadorTUOferta";
 
 //Test Crear Oferta
 test('Crea una oferta de trabajo', () => {
