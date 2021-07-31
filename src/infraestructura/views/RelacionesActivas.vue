@@ -9,7 +9,7 @@
 
 <script lang="ts">
     import Vue from 'vue'
-    import TablaRelacionesDeTrabajoActivas from '../components/TablaRelacionesDeTrabajoActivas'
+    import TablaRelacionesDeTrabajoActivas from '../components/TablaRelacionesDeTrabajoActivas.vue'
 
     export default Vue.extend({
         name: 'RelacionesActivas',
