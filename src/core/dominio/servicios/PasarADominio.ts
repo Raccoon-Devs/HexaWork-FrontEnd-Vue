@@ -1,5 +1,5 @@
-import { Certificacion } from "../Certificacion/Certificacion";
-import { Habilidad } from "../Habilidad/Habilidad";
+import { Certificacion } from "../certificacion/Certificacion";
+import { Habilidad } from "../habilidad/Habilidad";
 import { Empleador } from "../Empleador/Empleador";
 import { OfertaParaDominio } from "../OfertasDeTrabajo/DTOOfertaDeTrabajo";
 import { OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/OfertaDeTrabajo";

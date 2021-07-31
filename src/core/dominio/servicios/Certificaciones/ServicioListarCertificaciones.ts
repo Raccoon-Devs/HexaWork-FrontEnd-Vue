@@ -1,5 +1,5 @@
-import { Certificacion } from "../../Certificacion/Certificacion";
-import { CertificacionParaDominio } from "../../Certificacion/DTOCertificacion";
+import { Certificacion } from "../../certificacion/Certificacion";
+import { CertificacionParaDominio } from "../../certificacion/DTOCertificacion";
 
 export class ServicioListarCertificaciones{
     

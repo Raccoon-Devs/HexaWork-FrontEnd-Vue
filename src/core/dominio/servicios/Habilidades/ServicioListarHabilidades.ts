@@ -1,5 +1,5 @@
-import { HabilidadParaDominio } from "../../Habilidad/DTOHabilidad";
-import { Habilidad } from "../../Habilidad/Habilidad";
+import { HabilidadParaDominio } from "../../habilidad/DTOHabilidad";
+import { Habilidad } from "../../habilidad/Habilidad";
 
 export class ServicioListarHabilidades{
     
