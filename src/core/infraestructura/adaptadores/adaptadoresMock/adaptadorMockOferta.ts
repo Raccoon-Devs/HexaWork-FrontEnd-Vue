@@ -1,6 +1,6 @@
-import { APIPuerto } from "../aplicacion/api/APIPuerto";
-import { OfertaParaDominio } from "../dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
-import { obtenerOfertas, crearOferta, actualizarOferta } from "./persistencia/ofertas";
+import { APIPuerto } from "../../../aplicacion/api/APIPuerto";
+import { OfertaParaDominio } from "../../../dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
+import { obtenerOfertas, crearOferta, actualizarOferta } from "./../../persistencia/ofertas";
 
 export class AdaptadorMockOferta extends APIPuerto{
 

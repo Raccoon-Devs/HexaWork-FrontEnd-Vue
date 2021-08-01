@@ -135,7 +135,7 @@ import {UIPuerto} from '../../core/aplicacion/ui/UIPuerto'
 import {UIPuertoPublicarOferta} from '../../core/aplicacion/ui/UIPuertoPublicarOferta'
 import {MostrarOfertasDeTrabajo} from '../../core/aplicacion/servicios/MostrarOfertasDeTrabajo'
 import {PublicarOfertaDeTrabajo} from '../../core/aplicacion/servicios/PublicarOfertaDeTrabajo'
-import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
+import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockOferta'
 import FormularioOferta  from '../components/FormularioOferta.vue'
 
 export default Vue.extend({
