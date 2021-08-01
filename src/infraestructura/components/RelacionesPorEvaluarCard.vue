@@ -10,15 +10,16 @@
                 :items-per-page="5"
                 class="elevation-1"
             >
-                <template v-slot:[`item.accion`]="{ item }">
+                <template v-slot:[`item.accion`]>
                     <v-btn
                         class="white--text"
                         elevation="2"
                         color="indigo"
-                        @click="(item)"
+                        @click.stop="showForm=true"
                     >
                         Evaluar
                     </v-btn>
+                    <EvaluacionEmpleadoDialog  v-model="showForm"/>
                 </template>
             </v-data-table>
         </v-card>
@@ -27,10 +28,17 @@
 
  <script lang="ts">
     import Vue from 'vue'
+    import  EvaluacionEmpleadoDialog from './EvaluacionEmpleadoDialog.vue'
 
     export default Vue.extend({
         name: 'RelacionesPorEvaluarCard',
+        components: {
+            EvaluacionEmpleadoDialog
+        },
         data: () => ({
+
+            showForm: false,
+
             columnas_tabla: [
                 {
                     text: 'Empleado',
