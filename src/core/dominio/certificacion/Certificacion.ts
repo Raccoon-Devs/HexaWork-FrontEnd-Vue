@@ -1,5 +1,5 @@
 import { Entidad } from "../ClasesBase/Entidad";
-import { Curso, CursoPropiedades } from "../Curso/Curso";
+import { Curso, CursoPropiedades } from "../curso/Curso";
 import { FechaCompletacionCertificacion } from "./ValueObjects/FechaCompletacionCertificacion";
 import { IDCertificacion } from "./ValueObjects/IDCertificacion";
 import { NombreCertificacion } from "./ValueObjects/NombreCertificacion";

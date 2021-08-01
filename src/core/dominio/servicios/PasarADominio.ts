@@ -1,5 +1,5 @@
-import { Certificacion } from "../Certificacion/Certificacion";
-import { Habilidad } from "../Habilidad/Habilidad";
+import { Certificacion } from "../certificacion/Certificacion";
+import { Habilidad } from "../habilidad/Habilidad";
 import { Empleador } from "../Empleador/Empleador";
 import { OfertaParaDominio } from "../OfertasDeTrabajo/DTOOfertaDeTrabajo";
 import { OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/OfertaDeTrabajo";
@@ -23,17 +23,17 @@ export class PasarADominio {
             calendario.push(Calendario.crear(fecha))
         });
 
-        // const habilidades: Habilidad[] = []
+        const habilidades: Habilidad[] = []
 
-        // atributos.habilidades.forEach(habilidad => {
-        //     habilidades.push(Habilidad.crear(habilidad))
-        // });
+        atributos.habilidades.forEach(habilidad => {
+            habilidades.push(Habilidad.crear(habilidad))
+        });
 
-        // const certificaciones: Certificacion[] = []
+        const certificaciones: Certificacion[] = []
 
-        // atributos.certificaciones.forEach(certificacion => {
-        //     certificaciones.push(Certificacion.crear(certificacion))
-        // });
+        atributos.certificaciones.forEach(certificacion => {
+            certificaciones.push(Certificacion.crear(certificacion))
+        });
         
         return {
             idOfertaDeTrabajo: IDOferta.crear(atributos.idOfertaDeTrabajo),
@@ -48,11 +48,9 @@ export class PasarADominio {
             ),
             fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion.crear(atributos.fechaLimitePostulacionOfertaDeTrabajo),
             calendario: calendario,
-            habilidades: atributos.habilidades,
-            // habilidades: habilidades,
+            habilidades: habilidades,
             requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo.crear(atributos.requerimientosEspeciales),
-            certificaciones: atributos.certificaciones,
-            // certificaciones: certificaciones,
+            certificaciones: certificaciones,
             duracion: Duracion.crear(atributos.duracion),
             remuneracionPorHora: Remuneracion.crear(atributos.remuneracionPorHora),
             estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo.crear(atributos.estadoOfertaDeTrabajo),

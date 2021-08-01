@@ -9,6 +9,8 @@ import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 import { Calendario, CalendarioPropiedades } from "../valueObjectsComunes/Calendario"
 import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion"
 import { RequerimientosEspecialesOfertaDeTrabajo } from "./ValueObjects/RequerimientosEspecialesOfertaDeTrabajo"
+import { Habilidad } from "../Habilidad/Habilidad"
+import { Certificacion } from "../Certificacion/Certificacion"
 
 export interface OfertaDeTrabajoPropiedades{
     idOfertaDeTrabajo: IDOferta,
@@ -17,11 +19,9 @@ export interface OfertaDeTrabajoPropiedades{
     direccion: Direccion,
     fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion,
     calendario: Calendario[],
-    habilidades: string[],
-    // habilidades: Habilidad[],
+    habilidades: Habilidad[],
     requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo,
-    certificaciones: string[],
-    // certificaciones: Certificacion[],
+    certificaciones: Certificacion[],
     duracion: Duracion,
     remuneracionPorHora: Remuneracion,
     estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo,
@@ -62,37 +62,29 @@ export class OfertaDeTrabajo extends Entidad<OfertaDeTrabajoPropiedades> {
         return calendario
     }
 
-    obtenerHabilidades(): string[]{
-        return this.propiedades.habilidades
+    obtenerHabilidades(): Habilidad[]{
+    
+        const habilidades: Habilidad[] = []
+        this.propiedades.habilidades.forEach(habilidad => {
+            habilidades.push(habilidad.obtenerHabilidad())
+        });
+    
+        return habilidades
     }
-
-    // obtenerHabilidades(): Habilidad[]{
-    // 
-        // const habilidades: Habilidad[] = []
-        // this.propiedades.habilidades.forEach(habilidad => {
-        //     habilidades.push(habilidad.obtenerHabilidad())
-        // });
-    // 
-    //     return habilidades
-    // }
 
     obtenerRequerimientos(): string{
         return this.propiedades.requerimientosEspeciales.obtenerRequerimientos()
     }
 
-    obtenerCertificaciones(): string[]{
-        return this.propiedades.certificaciones
+    obtenerCertificaciones(): Certificacion[]{
+    
+        const certificaciones: Certificacion[] = []
+        this.propiedades.certificaciones.forEach(certificacion => {
+            certificaciones.push(certificacion.obtenerCertificacion())
+        });
+    
+        return certificaciones
     }
-
-    // obtenerCertificaciones(): Certificacion[]{
-    // 
-        // const certificaciones: Certificacion[] = []
-        // this.propiedades.certificaciones.forEach(certificacion => {
-        //     certificaciones.push(certificacion.obtenerCertificacion())
-        // });
-    // 
-    //     return certificaciones
-    // }
 
     obtenerDuracion(): number{
         return this.propiedades.duracion.obtenerDuracion()

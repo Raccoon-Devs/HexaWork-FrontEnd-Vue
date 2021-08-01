@@ -1,5 +1,5 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionCodigoCursoInvalido } from "../Excepciones/ExcepcionCodigoCursoInvalido"
+import { ExcepcionCodigoCursoInvalido } from "../excepciones/ExcepcionCodigoCursoInvalido"
 
 interface CodigoCursoPropiedades {
     codigo: string

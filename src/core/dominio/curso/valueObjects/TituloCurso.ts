@@ -1,5 +1,5 @@
 import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionTituloCursoInvalido } from "../Excepciones/ExcepcionTituloCursoInvalido"
+import { ExcepcionTituloCursoInvalido } from "../excepciones/ExcepcionTituloCursoInvalido"
 
 interface TituloCursoPropiedades {
     titulo: string

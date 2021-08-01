@@ -1,7 +1,7 @@
 import { Entidad } from "../ClasesBase/Entidad"
-import { IDHabilidad } from "./ValueObjects/IDHabilidad"
-import { NombreHabilidad } from "./ValueObjects/NombreHabilidad"
-import { CategoriaHabilidad } from "./ValueObjects/CategoriaHabilidad"
+import { IDHabilidad } from "./valueObjects/IDHabilidad"
+import { NombreHabilidad } from "./valueObjects/NombreHabilidad"
+import { CategoriaHabilidad } from "./valueObjects/CategoriaHabilidad"
 
 
 export interface HabilidadPropiedades {
