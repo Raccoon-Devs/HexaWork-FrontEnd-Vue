@@ -1,6 +1,6 @@
 import { CrearOfertaDeTrabajo } from "../../../aplicacion/servicios/CrearOfertaDeTrabajo";
 import { UIPuertoCrearOferta } from "../../../aplicacion/ui/UIPuertoCrearOferta";
-import { AdaptadorTIOferta } from "../../adaptadorTIOferta";
+import { AdaptadorTIOferta } from "../../adaptadores/adaptadoresIntegracion/adaptadorTIOferta";
 import { UIPuerto } from "../../../aplicacion/ui/UIPuerto";
 import { MostrarOfertasDeTrabajo } from "../../../aplicacion/servicios/MostrarOfertasDeTrabajo";
 
@@ -19,11 +19,35 @@ test('Crea una oferta de trabajo', () => {
             estado: "estado",
             codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
@@ -32,6 +56,7 @@ test('Crea una oferta de trabajo', () => {
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("Oferta Creada Con éxito");
 });
 
+// Test Título
 // Test Título
 test('Muestra error al intentar crear una oferta de trabajo sin título', () => {
 
@@ -47,11 +72,35 @@ test('Muestra error al intentar crear una oferta de trabajo sin título', () => 
             estado: "estado",
             codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
@@ -60,14 +109,14 @@ test('Muestra error al intentar crear una oferta de trabajo sin título', () => 
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("El titulo: \"\" es inválido, el título no puede estar vacío");
 });
 
-//Dirección
-    //Calle 1
+// //Dirección
+//     //Calle 1
 test('Muestra error al intentar crear una oferta de trabajo con calle 1 de dirección vacía', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "",
@@ -76,11 +125,35 @@ test('Muestra error al intentar crear una oferta de trabajo con calle 1 de direc
             estado: "estado",
             codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
@@ -89,13 +162,13 @@ test('Muestra error al intentar crear una oferta de trabajo con calle 1 de direc
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("La calle1:  es inválida, no puede estar vacía");
 });
 
-    //Calle 2
+//     //Calle 2
 test('Muestra error al intentar crear una oferta de trabajo con calle 2 de dirección vacía', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
@@ -104,11 +177,35 @@ test('Muestra error al intentar crear una oferta de trabajo con calle 2 de direc
             estado: "estado",
             codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
@@ -117,13 +214,13 @@ test('Muestra error al intentar crear una oferta de trabajo con calle 2 de direc
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("La calle2:  es inválida, no puede estar vacía");
 });
 
-    //Ciudad
+//     //Ciudad
 test('Muestra error al intentar crear una oferta de trabajo con ciudad de dirección vacía', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
@@ -132,11 +229,35 @@ test('Muestra error al intentar crear una oferta de trabajo con ciudad de direcc
             estado: "estado",
             codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
@@ -145,13 +266,13 @@ test('Muestra error al intentar crear una oferta de trabajo con ciudad de direcc
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("La ciudad:  es inválida, no puede estar vacía");
 });
 
-    //Estado
+//     //Estado
 test('Muestra error al intentar crear una oferta de trabajo con estado de dirección vacío', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
@@ -160,11 +281,35 @@ test('Muestra error al intentar crear una oferta de trabajo con estado de direcc
             estado: "",
             codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
@@ -173,13 +318,13 @@ test('Muestra error al intentar crear una oferta de trabajo con estado de direcc
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("El estado:  es inválido, no puede estar vacío");
 });
 
-    //Codigo Postal
+//     //Codigo Postal
 test('Muestra error al intentar crear una oferta de trabajo con codigo postal de dirección vacío', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
@@ -188,11 +333,35 @@ test('Muestra error al intentar crear una oferta de trabajo con codigo postal de
             estado: "estado",
             codPostal: ""
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
@@ -201,26 +370,50 @@ test('Muestra error al intentar crear una oferta de trabajo con codigo postal de
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("El código postal:  es inválido, no puede estar vacío");
 });
 
-//Test Duración
+// //Test Duración
 test('Muestra error al intentar crear una oferta de trabajo con una duración vacía', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
             estado: "estado",
-            codPostal: "1011"
+            codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: "",
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
@@ -234,20 +427,44 @@ test('Muestra error al intentar crear una oferta de trabajo con una duración ne
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
             estado: "estado",
-            codPostal: "1011"
+            codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: -8,
         remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
@@ -256,28 +473,52 @@ test('Muestra error al intentar crear una oferta de trabajo con una duración ne
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("Las horas totales: -8 no pueden ser menores a 0");
 });
 
-//Test Remuneración
+// //Test Remuneración
 
-    //Monto
+//     //Monto
 test('Muestra error al intentar crear una oferta de trabajo con un monto de remuneración vacío', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
             estado: "estado",
-            codPostal: "1011"
+            codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
         remuneracionPorHora: 0,
         estadoOfertaDeTrabajo: 1,
@@ -291,20 +532,44 @@ test('Muestra error al intentar crear una oferta de trabajo con un monto de remu
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
             estado: "estado",
-            codPostal: "1011"
+            codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
         remuneracionPorHora: -5,
         estadoOfertaDeTrabajo: 1,
@@ -313,28 +578,52 @@ test('Muestra error al intentar crear una oferta de trabajo con un monto de remu
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("El monto: -5 es inválido, no puede ser negativo");
 });
 
-//Estado Oferta de Trabajo
+// //Estado Oferta de Trabajo
 test('Muestra error al intentar crear una oferta de trabajo con un estado de oferta de trabajo vacío', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
             estado: "estado",
-            codPostal: "1011"
+            codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
-        remuneracionPorHora: 5,
+        remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: null,
         vacantes: 5
     }
@@ -346,50 +635,98 @@ test('Muestra error al intentar crear una oferta de trabajo con un estado de ofe
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
             estado: "estado",
-            codPostal: "1011"
+            codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
-        remuneracionPorHora: 5,
+        remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 7,
         vacantes: 5
     }
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("El estado: 7 de la oferta debe ser: 0 (creado), 1 (publicado), 2 (postulaciones cerradas), 3 (empleado asignado), 4 (en progreso), 5 (finalizada), 6 (cancelada)");
 });
 
-//Vacante
+// //Vacante
 test('Muestra error al intentar crear una oferta de trabajo con vacante vacía', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
             estado: "estado",
-            codPostal: "1011"
+            codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
-        remuneracionPorHora: 5,
+        remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
         vacantes: 0
     }
@@ -401,50 +738,98 @@ test('Muestra error al intentar crear una oferta de trabajo con vacante negativa
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
             estado: "estado",
-            codPostal: "1011"
+            codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "RequerimientosEspeciales",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
-        remuneracionPorHora: 5,
+        remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
         vacantes: -1
     }
     expect(puertoOferta.crearOfertaUI(oferta, new AdaptadorTIOferta())).toEqual("La cantidad de vacantes: -1 es inválida, debe ser mayor a cero");
 });
 
-//Requerimientos especiales
+// //Requerimientos especiales
 test('Muestra error al intentar crear una oferta de trabajo con requerimientos especiales vacíos', () => {
 
     const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
     const oferta = {
         idOfertaDeTrabajo: "",
-        tituloTrabajo: "titulo oferta de trabajo",
+        tituloTrabajo: "Título crear oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
             estado: "estado",
-            codPostal: "1011"
+            codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
         calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
-        habilidades: ["a1", "a2", "a3"],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
         requerimientosEspeciales: "",
-        certificaciones: ["a1", "a2", "a3"],
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
         duracion: 5,
-        remuneracionPorHora: 5,
+        remuneracionPorHora: 3.44,
         estadoOfertaDeTrabajo: 1,
         vacantes: 5
     }
