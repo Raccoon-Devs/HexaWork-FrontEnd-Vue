@@ -1,5 +1,5 @@
-import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionSSNInvalido } from "../Excepciones/ExcepcionSSNInvalido"
+import { ValueObject } from "../../clasesBase/ValueObject"
+import { ExcepcionSSNInvalido } from "../excepciones/ExcepcionSSNInvalido"
 
 interface SSNPropiedades {
     ssn: string

@@ -1,4 +1,4 @@
-import { Entidad } from "../ClasesBase/Entidad"
+import { Entidad } from "../clasesBase/Entidad"
 import { IDCurso } from "./valueObjects/IDCurso"
 import { CodigoCurso } from "./valueObjects/CodigoCurso"
 import { EstadoCurso } from "./valueObjects/EstadoCurso"
@@ -57,6 +57,7 @@ export class Curso extends Entidad<CursoPropiedades> {
     }
 
     public static crear(atributos: any): Curso {
+
         const habilidades: Habilidad[] = []
 
         atributos.habilidades.forEach(habilidad => {

@@ -1,4 +1,4 @@
-import { Empleador } from "@/core/dominio/Empleador/Empleador";
+import { Empleador } from "@/core/dominio/empleador/Empleador";
 import {Mapper} from "./Mapper"
 import { MappearHabilidad } from "./MapperHabilidad";
 import { MappearInformacionDeContacto } from "./MapperInformacionDeContacto";

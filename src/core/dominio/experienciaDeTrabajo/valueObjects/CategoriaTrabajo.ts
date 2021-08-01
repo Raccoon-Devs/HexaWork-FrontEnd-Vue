@@ -1,5 +1,5 @@
-import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionCategoriaDeTrabajoInvalido } from '../Excepciones/ExcepcionCategoriaDeTrabajoInvalido'
+import { ValueObject } from "../../clasesBase/ValueObject"
+import { ExcepcionCategoriaDeTrabajoInvalido } from '../excepciones/ExcepcionCategoriaDeTrabajoInvalido'
 
 
 interface CategoriaTrabajoPropiedades {

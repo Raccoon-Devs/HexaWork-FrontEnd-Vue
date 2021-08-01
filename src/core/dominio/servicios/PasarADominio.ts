@@ -1,22 +1,22 @@
 import { Certificacion } from "../certificacion/Certificacion";
 import { Habilidad } from "../habilidad/Habilidad";
-import { Empleador } from "../Empleador/Empleador";
-import { OfertaParaDominio } from "../OfertasDeTrabajo/DTOOfertaDeTrabajo";
-import { OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/OfertaDeTrabajo";
-import { Duracion } from "../OfertasDeTrabajo/ValueObjects/Duracion";
-import { EstadoOfertaDeTrabajo } from "../OfertasDeTrabajo/ValueObjects/EstadoOfertaDeTrabajo";
-import { IDOferta } from "../OfertasDeTrabajo/ValueObjects/IDOferta";
-import { Remuneracion } from "../OfertasDeTrabajo/ValueObjects/Remuneracion";
-import { RequerimientosEspecialesOfertaDeTrabajo } from "../OfertasDeTrabajo/ValueObjects/RequerimientosEspecialesOfertaDeTrabajo";
-import { TiempoLimitePostulacion } from "../OfertasDeTrabajo/ValueObjects/TiempoLimitePostulacion";
-import { Vacante } from "../OfertasDeTrabajo/ValueObjects/Vacante";
+import { Empleador } from "../empleador/Empleador";
+import { OfertaParaDominio } from "../ofertasDeTrabajo/DTOOfertaDeTrabajo";
+import { OfertaDeTrabajoPropiedades } from "../ofertasDeTrabajo/OfertaDeTrabajo";
+import { Duracion } from "../ofertasDeTrabajo/valueObjects/Duracion";
+import { EstadoOfertaDeTrabajo } from "../ofertasDeTrabajo/valueObjects/EstadoOfertaDeTrabajo";
+import { IDOferta } from "../ofertasDeTrabajo/valueObjects/IDOferta";
+import { Remuneracion } from "../ofertasDeTrabajo/valueObjects/Remuneracion";
+import { RequerimientosEspecialesOfertaDeTrabajo } from "../ofertasDeTrabajo/valueObjects/RequerimientosEspecialesOfertaDeTrabajo";
+import { TiempoLimitePostulacion } from "../ofertasDeTrabajo/valueObjects/TiempoLimitePostulacion";
+import { Vacante } from "../ofertasDeTrabajo/valueObjects/Vacante";
 import { Calendario } from "../valueObjectsComunes/Calendario";
 import { Direccion } from "../valueObjectsComunes/Direccion";
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo";
 
 export class PasarADominio {
     public aDominio (atributos: OfertaParaDominio): OfertaDeTrabajoPropiedades {
-
+        
         const calendario: Calendario[] = []
 
         atributos.calendario.forEach(fecha => {

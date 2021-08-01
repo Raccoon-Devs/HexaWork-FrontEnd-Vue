@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionCargoInvalido } from "../Excepciones/ExcepcionCargoInvalido"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionCargoInvalido } from "../excepciones/ExcepcionCargoInvalido"
 
 interface CargoPropiedades {
     cargo: string

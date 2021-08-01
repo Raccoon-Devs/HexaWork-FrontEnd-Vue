@@ -1,4 +1,4 @@
-import { APIPuertoHabilidades } from "../../api/Habilidades/APIPuertoHabilidades";
+import { APIPuertoHabilidades } from "../../api/habilidades/APIPuertoHabilidades";
 
 export abstract class UIPuertoHabilidades{
     abstract listarHabilidadesUI(apiPuerto: APIPuertoHabilidades) : any;

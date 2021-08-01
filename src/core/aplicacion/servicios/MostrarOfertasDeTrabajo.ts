@@ -1,4 +1,4 @@
-import { OfertaParaDominio } from "../../dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
+import { OfertaParaDominio } from "../../dominio/ofertasDeTrabajo/DTOOfertaDeTrabajo";
 import { ServicioListarOfertasDeTrabajo } from "../../dominio/servicios/ServicioListarOfertasDeTrabajo";
 import { APIPuerto } from "../api/APIPuerto";
 import { Mapper } from "../mappers/Mapper";
@@ -36,6 +36,7 @@ export class MostrarOfertasDeTrabajo extends UIPuerto{
         ofertas.forEach((oferta : any) => {
             this.resultado.push(ServicioListarOfertasDeTrabajo.pasarADominio(oferta))
         })
+
     }
 
 }

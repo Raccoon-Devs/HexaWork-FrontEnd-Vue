@@ -1,4 +1,4 @@
-import { Certificacion, CertificacionPropiedades } from "@/core/dominio/Certificacion/Certificacion";
+import { Certificacion, CertificacionPropiedades } from "@/core/dominio/certificacion/Certificacion";
 import {Mapper} from "./Mapper"
 import { MappearCurso } from "./MapperCurso";
 

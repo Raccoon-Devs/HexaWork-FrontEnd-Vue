@@ -1,7 +1,7 @@
-import { Entidad } from "../ClasesBase/Entidad";
-import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../RelacionDeTrabajo/RelacionDeTrabajo";
-import { IDChat } from "./ValueObjects/IDChat";
-import { Mensaje } from "./ValueObjects/Mensaje";
+import { Entidad } from "../clasesBase/Entidad";
+import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../relacionDeTrabajo/RelacionDeTrabajo";
+import { IDChat } from "./valueObjects/IDChat";
+import { Mensaje } from "./valueObjects/Mensaje";
 
 export interface ChatPropiedades{
     idChat: IDChat,

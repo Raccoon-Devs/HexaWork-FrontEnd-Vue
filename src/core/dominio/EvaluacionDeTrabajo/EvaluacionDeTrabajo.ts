@@ -1,9 +1,9 @@
-import { Entidad } from "../ClasesBase/Entidad"
-import { IDEvaluacionDeTrabajo } from "./ValueObjects/IDEvaluacionDeTrabajo"
-import { PreguntasEvaluacionDeTrabajo, PreguntasEvaluacionPropiedades } from "./ValueObjects/PreguntasEvaluacionDeTrabajo"
-import { PuntuacionEvaluacionDeTrabajo, PuntuacionEvaluacionPropiedades } from "./ValueObjects/PuntuacionesEvaluacionDeTrabajo"
-import { PuntuacionPromedioEvaluacionDeTrabajo } from "./ValueObjects/PuntuacionPromedioEvaluacionDeTrabajo"
-import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../RelacionDeTrabajo/RelacionDeTrabajo"
+import { Entidad } from "../clasesBase/Entidad"
+import { IDEvaluacionDeTrabajo } from "./valueObjects/IDEvaluacionDeTrabajo"
+import { PreguntasEvaluacionDeTrabajo, PreguntasEvaluacionPropiedades } from "./valueObjects/PreguntasEvaluacionDeTrabajo"
+import { PuntuacionEvaluacionDeTrabajo, PuntuacionEvaluacionPropiedades } from "./valueObjects/PuntuacionesEvaluacionDeTrabajo"
+import { PuntuacionPromedioEvaluacionDeTrabajo } from "./valueObjects/PuntuacionPromedioEvaluacionDeTrabajo"
+import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../relacionDeTrabajo/RelacionDeTrabajo"
 
 
 export interface EvaluacionDeTrabajoPropiedades {

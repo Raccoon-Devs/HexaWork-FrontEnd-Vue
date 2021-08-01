@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionRequerimientosInvalidos } from "../Excepciones/ExcepcionRequerimientosInvalidos"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionRequerimientosInvalidos } from "../excepciones/ExcepcionRequerimientosInvalidos"
 
 export interface RequerimientosEspecialesPropiedades {
     requerimientos: string;
