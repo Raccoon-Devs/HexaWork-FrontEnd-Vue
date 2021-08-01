@@ -337,9 +337,9 @@
   import { CrearOfertaDeTrabajo } from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
   import { MostrarHabilidades } from '@/core/aplicacion/servicios/Habilidades/MostrarHabilidades'
   import { MostrarCertificaciones } from '../../core/aplicacion/servicios/Certificaciones/MostrarCertificaciones'
-  import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
-  import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadorMockHabilidades'
-  import { AdaptadorMockCertificaciones } from '../../core/infraestructura/adaptadorMockCertificaciones'
+  import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockOferta'
+  import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockHabilidades'
+  import { AdaptadorMockCertificaciones } from '../../core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockCertificaciones'
 
   export default Vue.extend({
     name: 'FormularioOferta',

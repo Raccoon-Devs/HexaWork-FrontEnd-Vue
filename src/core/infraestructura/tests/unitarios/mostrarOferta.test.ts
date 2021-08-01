@@ -1,6 +1,6 @@
 import { MostrarOfertasDeTrabajo } from "../../../aplicacion/servicios/MostrarOfertasDeTrabajo";
 import { UIPuerto } from "../../../aplicacion/ui/UIPuerto";
-import { AdaptadorTUOferta } from "../../adaptadorTUOferta";
+import { AdaptadorTUOferta } from "../../adaptadores/adaptadoresUnitarios/adaptadorTUOferta";
 
 //Test Mostrar Oferta
 test('Mostrar Oferta de Trabajo', () => {

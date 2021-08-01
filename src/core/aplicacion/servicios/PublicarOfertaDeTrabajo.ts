@@ -20,7 +20,7 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
             return this.actualizarOfertaApi(apiPuerto, ofertaApi)
       
         } catch (error) {
-            return {statusCode: 500, mensaje:error.mensaje}
+            return error.mensaje
         }
     }
 
@@ -29,7 +29,7 @@ export class PublicarOfertaDeTrabajo extends UIPuertoPublicarOferta {
     }
 
     public actualizarOfertaApi(apiPuerto: APIPuerto, ofertaDeTrabajo: OfertaParaDominio):void {
-        return apiPuerto.actualizarOferta(ofertaDeTrabajo)
+        return apiPuerto.actualizarOferta(ofertaDeTrabajo).mensaje
     }
 
 }
