@@ -1,5 +1,5 @@
-import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionPuntuacionInvalida } from "../Excepciones/ExcepcionPuntuacionInvalida"
+import { ValueObject } from "../../clasesBase/ValueObject"
+import { ExcepcionPuntuacionInvalida } from "../excepciones/ExcepcionPuntuacionInvalida"
 
 export interface PuntuacionEvaluacionPropiedades {
     puntuacion1: number,

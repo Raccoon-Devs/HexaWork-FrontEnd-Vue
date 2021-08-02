@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionDireccionInvalida } from "../Excepciones/ExcepcionDireccionInvalida"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionDireccionInvalida } from "../excepciones/ExcepcionDireccionInvalida"
 
 interface DireccionOfertaPropiedades {
     calle1: string

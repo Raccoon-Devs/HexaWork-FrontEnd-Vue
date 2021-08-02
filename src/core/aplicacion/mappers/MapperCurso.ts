@@ -1,4 +1,4 @@
-import { Curso } from "@/core/dominio/Curso/Curso"
+import { Curso } from "@/core/dominio/curso/Curso"
 import {Mapper} from "./Mapper"
 import { MappearHabilidad } from "./MapperHabilidad"
 

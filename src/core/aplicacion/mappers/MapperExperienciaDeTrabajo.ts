@@ -1,4 +1,4 @@
-import { ExperienciaDeTrabajo } from "@/core/dominio/ExperienciaDeTrabajo/ExperienciaDeTrabajo";
+import { ExperienciaDeTrabajo } from "@/core/dominio/experienciaDeTrabajo/ExperienciaDeTrabajo";
 import {Mapper} from "./Mapper"
 
 export class MappearExperienciaDeTrabajo extends Mapper{

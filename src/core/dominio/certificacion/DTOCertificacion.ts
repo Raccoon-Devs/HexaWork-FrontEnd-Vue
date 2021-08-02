@@ -1,7 +1,7 @@
-import { CertificacionPropiedades } from "../Certificacion/Certificacion";
-import { Curso, CursoPropiedades } from "../Curso/Curso";
-import { FechaCompletacionCertificacion } from "./ValueObjects/FechaCompletacionCertificacion";
-import { NombreCertificacion } from "./ValueObjects/NombreCertificacion";
+import { CertificacionPropiedades } from "./Certificacion";
+import { Curso, CursoPropiedades } from "../curso/Curso";
+import { FechaCompletacionCertificacion } from "./valueObjects/FechaCompletacionCertificacion";
+import { NombreCertificacion } from "./valueObjects/NombreCertificacion";
 
 type CertificacionParaDominioMap<Type> = {
     [Property in keyof Type]

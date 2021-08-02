@@ -1,4 +1,4 @@
-import { RelacionDeTrabajo } from "@/core/dominio/RelacionDeTrabajo/RelacionDeTrabajo";
+import { RelacionDeTrabajo } from "@/core/dominio/relacionDeTrabajo/RelacionDeTrabajo";
 import {Mapper} from "./Mapper"
 import { MappearPostulacion } from "./MapperPostulacion";
 

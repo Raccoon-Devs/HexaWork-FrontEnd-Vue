@@ -1,6 +1,6 @@
-import { Entidad } from "../ClasesBase/Entidad"
-import { IDExperienciaTrabajo } from "./ValueObjects/IDExperienciaTrabajo"
-import { CategoriaTrabajo } from "./ValueObjects/CategoriaTrabajo"
+import { Entidad } from "../clasesBase/Entidad"
+import { IDExperienciaTrabajo } from "./valueObjects/IDExperienciaTrabajo"
+import { CategoriaTrabajo } from "./valueObjects/CategoriaTrabajo"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 

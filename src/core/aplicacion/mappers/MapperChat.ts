@@ -1,4 +1,4 @@
-import { Chat } from "@/core/dominio/Chat/Chat";
+import { Chat } from "@/core/dominio/chat/Chat";
 import {Mapper} from "./Mapper"
 import { MappearRelacionDeTrabajo } from "./MapperRelacionDeTrabajo";
 

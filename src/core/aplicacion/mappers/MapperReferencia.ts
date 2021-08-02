@@ -1,4 +1,4 @@
-import { Referencia } from "@/core/dominio/Referencia/Referencia";
+import { Referencia } from "@/core/dominio/referencia/Referencia";
 import {Mapper} from "./Mapper"
 
 export class MappearReferencia extends Mapper{

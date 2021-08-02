@@ -1,9 +1,9 @@
-import { Habilidad, HabilidadPropiedades } from "../Habilidad/Habilidad";
+import { Habilidad, HabilidadPropiedades } from "../habilidad/Habilidad";
 import { Imagen } from "../valueObjectsComunes/Imagen";
 import { CursoPropiedades } from "./Curso";
-import { CodigoCurso } from "./ValueObjects/CodigoCurso";
-import { EstadoCurso } from "./ValueObjects/EstadoCurso";
-import { TituloCurso } from "./ValueObjects/TituloCurso";
+import { CodigoCurso } from "./valueObjects/CodigoCurso";
+import { EstadoCurso } from "./valueObjects/EstadoCurso";
+import { TituloCurso } from "./valueObjects/TituloCurso";
 
 type CursoParaDominioMap<Type> = {
     [Property in keyof Type]

@@ -1,9 +1,9 @@
-import { Entidad } from "../ClasesBase/Entidad"
+import { Entidad } from "../clasesBase/Entidad"
 import { NombreCompleto, NombreCompletoPropiedades } from "../valueObjectsComunes/NombreCompleto"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 import { Telefono, TelefonoPropiedades } from "../valueObjectsComunes/Telefono"
 import { Correo } from "../valueObjectsComunes/Correo"
-import { IDInformacionContacto } from "./ValueObjects/IDInformacionContacto"
+import { IDInformacionContacto } from "./valueObjects/IDInformacionContacto"
 
 export interface InformacionDeContactoPropiedades {
     idInformacionContacto: IDInformacionContacto,
