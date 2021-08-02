@@ -4,7 +4,7 @@ import { PasarADominio } from "./PasarADominio";
 
 export class ServicioListarRelacionesDeTrabajo {
 
-    static pasarADominio(relacionAtributos: RelacionDeTrabajoParaDominio): RelacionDeTrabajoParaDominio {
+    static pasarADominio(relacionAtributos: RelacionDeTrabajoParaDominio): RelacionDeTrabajo {
         const datosRelacionTrabajo: RelacionDeTrabajoPropiedades = new PasarADominio().relacionDeTrabajoADominio(relacionAtributos)
         const relacionDeTrabajo = RelacionDeTrabajo.crear(datosRelacionTrabajo)
         return relacionDeTrabajo

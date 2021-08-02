@@ -15,8 +15,7 @@ export class MostrarRelacionesDeTrabajoActivas extends UIPuertoRelacionesDeTraba
             const mapper: Mapper = new MappearRelacionDeTrabajo()
             const relaciones: RelacionDeTrabajoParaDominio[] = []
             this.resultado.forEach((relacion : any) => {
-                //relaciones.push(mapper.paraInfraestructura(relacion))
-                relaciones.push(relacion)
+                relaciones.push(mapper.paraInfraestructura(relacion))
             })
             return relaciones
         }
@@ -31,7 +30,6 @@ export class MostrarRelacionesDeTrabajoActivas extends UIPuertoRelacionesDeTraba
         relaciones.forEach((relacion : any) => {
             this.resultado.push(ServicioListarRelacionesDeTrabajo.pasarADominio(relacion))
         })
-
     }
 
 }

@@ -43,14 +43,13 @@ export class RelacionDeTrabajo extends Entidad<RelacionDeTrabajoPropiedades> {
     }
 
     public static crear(atributos: any): RelacionDeTrabajo {
-        const calendario: Calendario[] = []
-
-        atributos.calendario.forEach(fecha => {
-            calendario.push(Calendario.crear(fecha))
-        });
-
         return new RelacionDeTrabajo(
-            atributos
+            {
+                idRelacion: atributos.idRelacion,
+                postulacion: atributos.postulacion,
+                calendario: atributos.calendario,
+                estadoRelacionDeTrabajo: atributos.estadoRelacionDeTrabajo
+            }
         )
     }
 }

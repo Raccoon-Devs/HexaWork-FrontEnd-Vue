@@ -33,7 +33,7 @@
                                 no-gutters
                             >
                                 <v-col>
-                                    {{empleado.nombreCompleto.propiedades.primerNombre}} {{empleado.nombreCompleto.propiedades.primerApellido}}
+                                    {{empleado.nombreCompleto.primerNombre}} {{empleado.nombreCompleto.primerApellido}}
                                 </v-col>
                                 <v-spacer></v-spacer>
                                 <v-col cols="auto">
@@ -70,48 +70,11 @@
     export default Vue.extend({
         name: 'TablaRelacionesDeTrabajoActivas',
         data: () => ({
-            ofertas: [{}],
+            ofertas: [{
+                empleados: [{}]
+            }],
             oferta: {},
-            relaciones: [{}],
-            datosOferta: false,
-            // ofertas: [
-            //     {
-            //         idOfertaDeTrabajo: 1,
-            //         tituloTrabajo: 'Titulo de trabajo',
-            //         duracion: {
-            //             totalHorasRequeridas: 20
-            //         },
-            //         //empleador: Empleador,
-            //         empleados: [{
-            //             ssn: '123',
-            //             nombreCompleto: 'Nombre empleado'
-            //         }, {
-            //             ssn: '456',
-            //             nombreCompleto: 'Nombre empleado'
-            //         }, {
-            //             ssn: '789',
-            //             nombreCompleto: 'Nombre empleado'
-            //         }]
-            //     },
-            //     {
-            //         idOfertaDeTrabajo: 1,
-            //         tituloTrabajo: 'Titulo de trabajo',
-            //         duracion: {
-            //             totalHorasRequeridas: 20
-            //         },
-            //         //empleador: Empleador,
-            //         empleados: [{
-            //             ssn: '123',
-            //             nombreCompleto: 'Nombre empleado'
-            //         }, {
-            //             ssn: '456',
-            //             nombreCompleto: 'Nombre empleado'
-            //         }, {
-            //             ssn: '789',
-            //             nombreCompleto: 'Nombre empleado'
-            //         }]
-            //     },
-            // ]
+            relaciones: [{}]
         }),
         methods: {
             listarOfertasActivas(){
@@ -128,25 +91,16 @@
                 this.relaciones = []
                 relacionesEnElRepo.forEach((relacion: any) => {
                     this.relaciones.push(relacion)
-                    //this.empleado
                 })
-                this.relaciones.map(r => {
-                    this.ofertas.map(o => {
-                        console.log('o');
-                        console.log(o);
-
-                        o.empleados = []
-
-                        if (r.propiedades.postulacion.propiedades.ofertaDeTrabajo.propiedades.idOfertaDeTrabajo.valor == o.idOfertaDeTrabajo) {
-                            o.empleados.push(r.propiedades.postulacion.propiedades.empleado.propiedades)
+                this.relaciones.map((relacion: any) => {
+                    this.ofertas.map((oferta: any) => {
+                        oferta.empleados = []
+                        if (relacion.postulacion.ofertaDeTrabajo.idOfertaDeTrabajo == oferta.idOfertaDeTrabajo) {
+                            oferta.empleados.push(relacion.postulacion.empleado)
                         }
                     })
                 })
-            },
-            mostrarDatosDeOferta(oferta: any) {
-                this.oferta = oferta
-                this.datosOferta = true
-            },
+            }
         },
         mounted() {
             this.listarOfertasActivas()
