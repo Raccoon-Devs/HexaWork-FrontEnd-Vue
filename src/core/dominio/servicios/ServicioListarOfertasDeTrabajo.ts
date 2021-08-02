@@ -3,11 +3,10 @@ import { OfertaDeTrabajo, OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo
 import { PasarADominio } from "./PasarADominio";
 
 export class ServicioListarOfertasDeTrabajo{
-    
+
     static pasarADominio(ofertaAtributos: OfertaParaDominio): OfertaDeTrabajo{
-
         const datosOferta: OfertaDeTrabajoPropiedades = new PasarADominio().aDominio(ofertaAtributos)
-
+        const oferta = OfertaDeTrabajo.crear(datosOferta)
         return OfertaDeTrabajo.crear(datosOferta)
     }
 }

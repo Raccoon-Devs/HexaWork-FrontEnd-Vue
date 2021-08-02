@@ -43,14 +43,12 @@ export class Postulacion extends Entidad<PostulacionPropiedades> {
         return this
     }
 
-    public static crear(atributos: any): Postulacion
-
-        {
+    public static crear(atributos: any): Postulacion {
         return new Postulacion(
             {
                 idPostulacion: IDPostulacion.crear(atributos.idPostulacion),
                 fechaPostulacion: FechaPostulacion.crear(
-                    atributos.fechaPostulacion, 
+                    atributos.fechaPostulacion,
                     atributos.ofertaDeTrabajo.fechaLimiteOfertaDeTrabajo
                 ),
                 empleado: Empleado.crear(atributos.empleado),

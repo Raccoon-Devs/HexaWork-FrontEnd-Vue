@@ -1,5 +1,5 @@
 import { RelacionDeTrabajo } from "@/core/dominio/RelacionDeTrabajo/RelacionDeTrabajo";
-import {Mapper} from "./Mapper"
+import { Mapper } from "./Mapper"
 import { MappearPostulacion } from "./MapperPostulacion";
 
 export class MappearRelacionDeTrabajo extends Mapper{
@@ -10,6 +10,6 @@ export class MappearRelacionDeTrabajo extends Mapper{
             postulacion: new MappearPostulacion().paraInfraestructura(trabajo.obtenerPostulacion()),
             calendario: trabajo.obtenerCalendario(),
             estadoRelacionDeTrabajo: trabajo.obtenerEstadoRelacionDeTrabajo()
-        } 
+        }
     }
 }

@@ -17,7 +17,6 @@
                             </v-col>
                             <v-col class="mt-1">
                                 <h4>
-                                    {{oferta.duracion.totalHorasRequeridas}}h. requeridas
                                 </h4>
                             </v-col>
                         </v-row>
@@ -34,7 +33,7 @@
                                 no-gutters
                             >
                                 <v-col>
-                                    {{empleado.nombreCompleto}}
+                                    {{empleado.nombreCompleto.propiedades.primerNombre}} {{empleado.nombreCompleto.propiedades.primerApellido}}
                                 </v-col>
                                 <v-spacer></v-spacer>
                                 <v-col cols="auto">
@@ -61,48 +60,93 @@
 
 <script lang="ts">
     import Vue from 'vue'
+    import { UIPuerto } from '../../core/aplicacion/ui/UIPuerto'
+    import { MostrarOfertasDeTrabajo } from '../../core/aplicacion/servicios/MostrarOfertasDeTrabajo'
+    import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockOferta'
+    import { UIPuertoRelacionesDeTrabajo } from '../../core/aplicacion/ui/relacionesDeTrabajo/UIPuertoRelacionesDeTrabajo'
+    import { MostrarRelacionesDeTrabajoActivas } from '../../core/aplicacion/servicios/MostrarRelacionesDeTrabajoActivas'
+    import { AdaptadorMockRelacionDeTrabajo } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockRelacionDeTrabajo'
 
     export default Vue.extend({
         name: 'TablaRelacionesDeTrabajoActivas',
         data: () => ({
-            ofertas: [
-                {
-                    idOfertaDeTrabajo: 1,
-                    tituloTrabajo: 'Titulo de trabajo',
-                    duracion: {
-                        totalHorasRequeridas: 20
-                    },
-                    //empleador: Empleador,
-                    empleados: [{
-                        ssn: '123',
-                        nombreCompleto: 'Nombre empleado'
-                    }, {
-                        ssn: '456',
-                        nombreCompleto: 'Nombre empleado'
-                    }, {
-                        ssn: '789',
-                        nombreCompleto: 'Nombre empleado'
-                    }]
-                },
-                {
-                    idOfertaDeTrabajo: 1,
-                    tituloTrabajo: 'Titulo de trabajo',
-                    duracion: {
-                        totalHorasRequeridas: 20
-                    },
-                    //empleador: Empleador,
-                    empleados: [{
-                        ssn: '123',
-                        nombreCompleto: 'Nombre empleado'
-                    }, {
-                        ssn: '456',
-                        nombreCompleto: 'Nombre empleado'
-                    }, {
-                        ssn: '789',
-                        nombreCompleto: 'Nombre empleado'
-                    }]
-                },
-            ]
-        })
+            ofertas: [{}],
+            oferta: {},
+            relaciones: [{}],
+            datosOferta: false,
+            // ofertas: [
+            //     {
+            //         idOfertaDeTrabajo: 1,
+            //         tituloTrabajo: 'Titulo de trabajo',
+            //         duracion: {
+            //             totalHorasRequeridas: 20
+            //         },
+            //         //empleador: Empleador,
+            //         empleados: [{
+            //             ssn: '123',
+            //             nombreCompleto: 'Nombre empleado'
+            //         }, {
+            //             ssn: '456',
+            //             nombreCompleto: 'Nombre empleado'
+            //         }, {
+            //             ssn: '789',
+            //             nombreCompleto: 'Nombre empleado'
+            //         }]
+            //     },
+            //     {
+            //         idOfertaDeTrabajo: 1,
+            //         tituloTrabajo: 'Titulo de trabajo',
+            //         duracion: {
+            //             totalHorasRequeridas: 20
+            //         },
+            //         //empleador: Empleador,
+            //         empleados: [{
+            //             ssn: '123',
+            //             nombreCompleto: 'Nombre empleado'
+            //         }, {
+            //             ssn: '456',
+            //             nombreCompleto: 'Nombre empleado'
+            //         }, {
+            //             ssn: '789',
+            //             nombreCompleto: 'Nombre empleado'
+            //         }]
+            //     },
+            // ]
+        }),
+        methods: {
+            listarOfertasActivas(){
+                let controlador: UIPuerto = new MostrarOfertasDeTrabajo()
+                let ofertasEnElRepo = controlador.listarOfertasActivasUI(new AdaptadorMockOferta())
+                this.ofertas = []
+                ofertasEnElRepo.forEach((oferta: any) => {
+                    this.ofertas.push(oferta)
+                })
+            },
+            listarRelacionesDeTrabajoActivas() {
+                let controlador: UIPuertoRelacionesDeTrabajo = new MostrarRelacionesDeTrabajoActivas()
+                let relacionesEnElRepo = controlador.listarRelacionesDeTrabajoUI(new AdaptadorMockRelacionDeTrabajo())
+                this.relaciones = []
+                relacionesEnElRepo.forEach((relacion: any) => {
+                    this.relaciones.push(relacion)
+                    this.empleado
+                })
+                this.relaciones.map(r => {
+                    this.ofertas.map(o => {
+                        o.empleados = []
+                        if (r.propiedades.postulacion.propiedades.ofertaDeTrabajo.propiedades.idOfertaDeTrabajo == o.idOfertaDeTrabajo) {
+                            o.empleados.push(r.propiedades.postulacion.propiedades.empleado.propiedades)
+                        }
+                    })
+                })
+            },
+            mostrarDatosDeOferta(oferta: any) {
+                this.oferta = oferta
+                this.datosOferta = true
+            },
+        },
+        mounted() {
+            this.listarOfertasActivas()
+            this.listarRelacionesDeTrabajoActivas()
+        }
     })
 </script>

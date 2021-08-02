@@ -14,9 +14,15 @@ import { Calendario } from "../valueObjectsComunes/Calendario";
 import { Direccion } from "../valueObjectsComunes/Direccion";
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo";
 
+import { RelacionDeTrabajoParaDominio } from "../RelacionDeTrabajo/DTORelacionDeTrabajo";
+import { RelacionDeTrabajoPropiedades } from "../RelacionDeTrabajo/RelacionDeTrabajo";
+import { IDRelacionDeTrabajo } from "../RelacionDeTrabajo/ValueObjects/IDRelacionDeTrabajo";
+import { IDPostulacion } from "../Postulacion/ValueObjects/IDPostulacion";
+import { Postulacion } from "../Postulacion/Postulacion";
+import { EstadoRelacionDeTrabajo } from "../RelacionDeTrabajo/ValueObjects/EstadoRelacionDeTrabajo"
+
 export class PasarADominio {
     public aDominio (atributos: OfertaParaDominio): OfertaDeTrabajoPropiedades {
-
         const calendario: Calendario[] = []
 
         atributos.calendario.forEach(fecha => {
@@ -34,16 +40,16 @@ export class PasarADominio {
         atributos.certificaciones.forEach(certificacion => {
             certificaciones.push(Certificacion.crear(certificacion))
         });
-        
+
         return {
             idOfertaDeTrabajo: IDOferta.crear(atributos.idOfertaDeTrabajo),
             tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
             //empleador: Empleador.crear(atributos.empleador),
             direccion: Direccion.crear(
-                atributos.direccion.calle1, 
-                atributos.direccion.calle2, 
-                atributos.direccion.ciudad, 
-                atributos.direccion.estado, 
+                atributos.direccion.calle1,
+                atributos.direccion.calle2,
+                atributos.direccion.ciudad,
+                atributos.direccion.estado,
                 atributos.direccion.codPostal
             ),
             fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion.crear(atributos.fechaLimitePostulacionOfertaDeTrabajo),
@@ -55,6 +61,21 @@ export class PasarADominio {
             remuneracionPorHora: Remuneracion.crear(atributos.remuneracionPorHora),
             estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo.crear(atributos.estadoOfertaDeTrabajo),
             vacantes: Vacante.crear(atributos.vacantes)
+        }
+    }
+    public relacionDeTrabajoADominio(atributos: RelacionDeTrabajoParaDominio): RelacionDeTrabajoPropiedades {
+        const calendario: Calendario[] = []
+
+        atributos.calendario.forEach(fecha => {
+            calendario.push(Calendario.crear(fecha))
+        });
+
+        const postulacion = Postulacion.crear(atributos.postulacion)
+        return {
+            idRelacion:  IDRelacionDeTrabajo.crear(atributos.idRelacion),
+            postulacion: postulacion,
+            calendario: calendario,
+            estadoRelacionDeTrabajo: EstadoRelacionDeTrabajo.crear(atributos.estadoRelacionDeTrabajo)
         }
     }
 }

@@ -48,14 +48,9 @@ export class RelacionDeTrabajo extends Entidad<RelacionDeTrabajoPropiedades> {
         atributos.calendario.forEach(fecha => {
             calendario.push(Calendario.crear(fecha))
         });
-        
+
         return new RelacionDeTrabajo(
-            {
-                idRelacion: IDRelacionDeTrabajo.crear(atributos.idRelacion),
-                postulacion: Postulacion.crear(atributos.postulacion),
-                calendario: calendario,
-                estadoRelacionDeTrabajo: EstadoRelacionDeTrabajo.crear(atributos.estadoRelacionDeTrabajo)
-            }
+            atributos
         )
     }
 }
