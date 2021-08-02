@@ -1,4 +1,4 @@
-import { ValueObject } from "../../ClasesBase/ValueObject"
+import { ValueObject } from "../../clasesBase/ValueObject"
 
 export interface PreguntasEvaluacionPropiedades {
     pregunta1: string,

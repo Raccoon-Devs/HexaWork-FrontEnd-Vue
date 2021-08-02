@@ -1,4 +1,4 @@
-import { ValueObject } from "../ClasesBase/ValueObject"
+import { ValueObject } from "../clasesBase/ValueObject"
 import { ExcepcionCalendarioInvalido } from "./excepciones/ExcepcionCalendarioInvalido"
 
 export interface CalendarioPropiedades {

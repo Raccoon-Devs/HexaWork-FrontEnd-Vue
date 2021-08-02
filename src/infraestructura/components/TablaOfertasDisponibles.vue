@@ -72,7 +72,7 @@
 				</template>
 				<template v-slot:[`item.acciones`]="{ item }">
 					<v-icon dense color="primary" @click="mostrarDatosDeOferta(item)"> mdi-eye </v-icon>
-					<v-icon dense color="black" @click="listarPostulantes(item)" v-if="item.estadoOfertaDeTrabajo != 0"> mdi-account-multiple </v-icon>
+					<v-icon dense color="black" @click="listarPostulantesDeOferta(item)" v-if="item.estadoOfertaDeTrabajo != 0"> mdi-account-multiple </v-icon>
 					<v-icon dense color="green" @click="publicarOferta(item)" v-if="item.estadoOfertaDeTrabajo == 0"> mdi-clipboard-check </v-icon>
 				</template>
 			</v-data-table>
@@ -111,8 +111,8 @@
                                             <v-icon color="indigo"> mdi-account </v-icon>
                                         </v-list-item-icon>
 									<v-list-item-content>
-										<v-list-item-title> {{postulacion.empleado.nombreCompleto.primerNombre}} {{postulacion.empleado.nombreCompleto.primerApellido}} </v-list-item-title>
-										<v-list-item-subtitle><b>SSN:</b> {{postulacion.empleado.ssn}}</v-list-item-subtitle>
+										<v-list-item-title> {{postulacion.apellido}}, {{postulacion.nombre}} </v-list-item-title>
+										<v-list-item-subtitle><b>SSN:</b> {{postulacion.ssn}} </v-list-item-subtitle>
 									</v-list-item-content>
 								</v-list-item>
 								<v-divider v-if="index < postulaciones.length -1" :key="index + 'a'"></v-divider>
@@ -133,9 +133,12 @@
 import Vue from 'vue'
 import {UIPuerto} from '../../core/aplicacion/ui/UIPuerto'
 import {UIPuertoPublicarOferta} from '../../core/aplicacion/ui/UIPuertoPublicarOferta'
+import {UIPuertoPostulaciones} from '../../core/aplicacion/ui/postulaciones/UIPuertoPostulaciones'
 import {MostrarOfertasDeTrabajo} from '../../core/aplicacion/servicios/MostrarOfertasDeTrabajo'
+import {MostrarPostuladosDeOferta} from '../../core/aplicacion/servicios/postulaciones/MostrarPostuladosDeOferta'
 import {PublicarOfertaDeTrabajo} from '../../core/aplicacion/servicios/PublicarOfertaDeTrabajo'
-import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockOferta'
+import { AdaptadorMockOferta } from '../../core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockOferta'
+import { AdaptadorMockPostulaciones } from '../../core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockPostulaciones'
 import FormularioOferta  from '../components/FormularioOferta.vue'
 
 export default Vue.extend({
@@ -147,28 +150,11 @@ export default Vue.extend({
 
 	data: () => ({
 		ofertas: [{}],
-		postulaciones: [
-			{
-				idPostulacion: '1',
-				empleado: {
-					ssn: '111111',
-					nombreCompleto: {
-						primerNombre: 'Pablo',
-						primerApellido: 'Pérez'
-					}
-				}
-			},
-			{
-				idPostulacion: '2',
-				empleado: {
-					ssn: '222222',
-					nombreCompleto: {
-						primerNombre: 'Pedro',
-						primerApellido: 'González'
-					}
-				}
-			}
-		],
+		postulaciones: [{
+			nombre: null,
+			apellido: null,
+			ssn: null
+		}],
 		datosOferta: false,
 		verPostulaciones: false,
 		oferta: {},
@@ -270,7 +256,17 @@ export default Vue.extend({
 			this.listarOfertas()
 			this.ofertaPublicacion = true
 		},
-		listarPostulantes(oferta: any) {
+		listarPostulantesDeOferta(oferta: any) {
+			let controlador: UIPuertoPostulaciones = new MostrarPostuladosDeOferta()
+			let postulacionesEnElRepo = controlador.listarPostulacionesUI(new AdaptadorMockPostulaciones(), oferta)
+			this.postulaciones = []
+			postulacionesEnElRepo.forEach((postulacion: any) => {
+				this.postulaciones.push({
+					nombre: postulacion.empleado.nombreCompleto.primerNombre,
+					apellido: postulacion.empleado.nombreCompleto.primerApellido,
+					ssn: postulacion.empleado.ssn
+				})
+			})
 			this.verPostulaciones = true
 		},
 		mostrarDatosDeOferta(oferta: any) {

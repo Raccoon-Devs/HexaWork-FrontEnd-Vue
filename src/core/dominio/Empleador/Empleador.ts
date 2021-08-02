@@ -1,12 +1,12 @@
-import { Entidad } from "../ClasesBase/Entidad"
+import { Entidad } from "../clasesBase/Entidad"
 import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion"
-import { IDEmpleador } from "./ValueObjects/IDEmpleador"
-import { Habilidad, HabilidadPropiedades } from "../Habilidad/Habilidad"
+import { IDEmpleador } from "./valueObjects/IDEmpleador"
+import { Habilidad, HabilidadPropiedades } from "../habilidad/Habilidad"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
-import { LogoEmpleador } from "./ValueObjects/LogoEmpleador"
-import { RequerimientosEspeciales } from "./ValueObjects/RequerimientosEspeciales"
-import { EstadoEmpleador } from "./ValueObjects/EstadoEmpleador"
-import { InformacionDeContacto, InformacionDeContactoPropiedades } from "../InformacionDeContacto/InformacionDeContacto"
+import { LogoEmpleador } from "./valueObjects/LogoEmpleador"
+import { RequerimientosEspeciales } from "./valueObjects/RequerimientosEspeciales"
+import { EstadoEmpleador } from "./valueObjects/EstadoEmpleador"
+import { InformacionDeContacto, InformacionDeContactoPropiedades } from "../informacionDeContacto/InformacionDeContacto"
 
 export interface EmpleadorPropiedades {
     idEmpleador: IDEmpleador

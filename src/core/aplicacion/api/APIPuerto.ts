@@ -1,4 +1,4 @@
-import { OfertaParaDominio } from "@/core/dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
+import { OfertaParaDominio } from "@/core/dominio/ofertasDeTrabajo/DTOOfertaDeTrabajo";
 
 export abstract class APIPuerto{
     abstract listarOfertas() : any;

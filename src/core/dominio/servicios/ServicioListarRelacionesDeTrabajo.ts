@@ -1,5 +1,5 @@
-import { RelacionDeTrabajoParaDominio } from "../RelacionDeTrabajo/DTORelacionDeTrabajo";
-import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../RelacionDeTrabajo/RelacionDeTrabajo";
+import { RelacionDeTrabajoParaDominio } from "../relacionDeTrabajo/DTORelacionDeTrabajo";
+import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../relacionDeTrabajo/RelacionDeTrabajo";
 import { PasarADominio } from "./PasarADominio";
 
 export class ServicioListarRelacionesDeTrabajo {

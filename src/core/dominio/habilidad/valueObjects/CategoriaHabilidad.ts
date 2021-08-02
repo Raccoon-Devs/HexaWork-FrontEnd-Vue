@@ -1,5 +1,5 @@
-import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionCategoriaHabilidadInvalida } from "../Excepciones/ExcepcionCategoriaHabilidadInvalida"
+import { ValueObject } from "../../clasesBase/ValueObject"
+import { ExcepcionCategoriaHabilidadInvalida } from "../excepciones/ExcepcionCategoriaHabilidadInvalida"
 
 interface CategoriaHabilidadPropiedades {
     categoria: number

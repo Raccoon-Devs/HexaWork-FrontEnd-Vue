@@ -268,7 +268,7 @@ const ofertasDeTrabajo = [{
         estado: "estado",
         codPostal: "codigoPos"
     },
-    fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+    fechaLimitePostulacionOfertaDeTrabajo: "2020-07-18",
     calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
     habilidades: [
         {
@@ -310,7 +310,7 @@ const relacionesDeTrabajo = [
         calendario: [],
         postulacion: {
             idPostulacion: '1',
-            fechaPostulacion: '2021-08-02',
+            fechaPostulacion: '2020-07-02',
             empleado: empleados[0],
             ofertaDeTrabajo: ofertasDeTrabajo[0],
             estadoPostulacion: 0,

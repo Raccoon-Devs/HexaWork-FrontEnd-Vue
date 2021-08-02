@@ -1,4 +1,4 @@
-import { OfertaDeTrabajo } from "@/core/dominio/OfertasDeTrabajo/OfertaDeTrabajo";
+import { OfertaDeTrabajo } from "@/core/dominio/ofertasDeTrabajo/OfertaDeTrabajo";
 import {Mapper} from "./Mapper"
 import { MappearCertificacion } from "./MapperCertificacion";
 import { MappearEmpleador } from "./MapperEmpleador";
@@ -7,7 +7,7 @@ import { MappearHabilidad } from "./MapperHabilidad";
 export class MappearOfertaDeTrabajo extends Mapper{
 
     public paraInfraestructura(oferta: OfertaDeTrabajo): any{
-
+        
         const habilidades: any[] = []
 
         oferta.obtenerHabilidades().forEach(habilidad => {

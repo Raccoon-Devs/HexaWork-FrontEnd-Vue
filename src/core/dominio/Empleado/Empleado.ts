@@ -1,4 +1,4 @@
-import { Entidad } from "../ClasesBase/Entidad"
+import { Entidad } from "../clasesBase/Entidad"
 import { SSN } from "./valueObjects/SSN"
 import { FechaNacimiento } from "./valueObjects/FechaNacimiento"
 import { NivelEducativo } from "./valueObjects/NivelEducativo"
@@ -150,7 +150,7 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
                 habilidades: habilidades,
                 cursos: cursos,
                 referencias: referencias,
-                clasificacion: atributos.clasificacion,
+                clasificacion: Clasificacion.crear(atributos.clasificacion),
                 estadoEmpleado: EstadoEmpleado.crear(atributos.estadoEmpleado),
                 direccion: Direccion.crear(
                     atributos.direccion.calle1,

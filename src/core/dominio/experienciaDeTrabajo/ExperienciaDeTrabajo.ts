@@ -1,4 +1,4 @@
-import { Entidad } from "../ClasesBase/Entidad"
+import { Entidad } from "../clasesBase/Entidad"
 import { IDExperienciaTrabajo } from "./valueObjects/IDExperienciaTrabajo"
 import { CategoriaTrabajo } from "./valueObjects/CategoriaTrabajo"
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"

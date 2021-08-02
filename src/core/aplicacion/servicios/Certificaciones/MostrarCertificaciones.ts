@@ -1,10 +1,10 @@
 import { Mapper } from "../../mappers/Mapper";
-import { UIPuertoCertificaciones } from "../../ui/Certificaciones/UIPuertoCertificaciones";
-import { APIPuertoCertificaciones } from "../../api/Certificaciones/APIPuertoCertificaciones";
-import { Certificacion } from "@/core/dominio/Certificacion/Certificacion";
-import { CertificacionParaDominio } from "@/core/dominio/Certificacion/DTOCertificacion";
+import { UIPuertoCertificaciones } from "../../ui/certificaciones/UIPuertoCertificaciones";
+import { APIPuertoCertificaciones } from "../../api/certificaciones/APIPuertoCertificaciones";
+import { Certificacion } from "@/core/dominio/certificacion/Certificacion";
+import { CertificacionParaDominio } from "@/core/dominio/certificacion/DTOCertificacion";
 import { MappearCertificacion } from "../../mappers/MapperCertificacion";
-import { ServicioListarCertificaciones } from "@/core/dominio/servicios/Certificaciones/ServicioListarCertificaciones";
+import { ServicioListarCertificaciones } from "@/core/dominio/servicios/certificaciones/ServicioListarCertificaciones";
 
 export class MostrarCertificaciones extends UIPuertoCertificaciones{
 

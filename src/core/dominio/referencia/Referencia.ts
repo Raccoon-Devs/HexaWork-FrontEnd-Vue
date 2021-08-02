@@ -1,4 +1,4 @@
-import { Entidad } from "../ClasesBase/Entidad"
+import { Entidad } from "../clasesBase/Entidad"
 import { IDReferencia } from "./valueObjects/IDReferencia"
 import { NombreCompleto, NombreCompletoPropiedades } from "../valueObjectsComunes/NombreCompleto"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"

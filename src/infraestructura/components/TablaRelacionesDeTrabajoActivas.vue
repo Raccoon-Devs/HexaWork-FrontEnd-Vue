@@ -128,12 +128,16 @@
                 this.relaciones = []
                 relacionesEnElRepo.forEach((relacion: any) => {
                     this.relaciones.push(relacion)
-                    this.empleado
+                    //this.empleado
                 })
                 this.relaciones.map(r => {
                     this.ofertas.map(o => {
+                        console.log('o');
+                        console.log(o);
+
                         o.empleados = []
-                        if (r.propiedades.postulacion.propiedades.ofertaDeTrabajo.propiedades.idOfertaDeTrabajo == o.idOfertaDeTrabajo) {
+
+                        if (r.propiedades.postulacion.propiedades.ofertaDeTrabajo.propiedades.idOfertaDeTrabajo.valor == o.idOfertaDeTrabajo) {
                             o.empleados.push(r.propiedades.postulacion.propiedades.empleado.propiedades)
                         }
                     })

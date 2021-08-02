@@ -1,5 +1,5 @@
-import { RelacionDeTrabajo } from "@/core/dominio/RelacionDeTrabajo/RelacionDeTrabajo";
-import { Mapper } from "./Mapper"
+import { RelacionDeTrabajo } from "@/core/dominio/relacionDeTrabajo/RelacionDeTrabajo";
+import {Mapper} from "./Mapper"
 import { MappearPostulacion } from "./MapperPostulacion";
 
 export class MappearRelacionDeTrabajo extends Mapper{

@@ -1,8 +1,8 @@
-import { Entidad } from "../ClasesBase/Entidad"
-import { IDRelacionDeTrabajo } from "./ValueObjects/IDRelacionDeTrabajo"
-import { Postulacion, PostulacionPropiedades } from "../Postulacion/Postulacion"
+import { Entidad } from "../clasesBase/Entidad"
+import { IDRelacionDeTrabajo } from "./valueObjects/IDRelacionDeTrabajo"
+import { Postulacion, PostulacionPropiedades } from "../postulacion/Postulacion"
 import { Calendario, CalendarioPropiedades } from "../valueObjectsComunes/Calendario"
-import { EstadoRelacionDeTrabajo } from "./ValueObjects/EstadoRelacionDeTrabajo"
+import { EstadoRelacionDeTrabajo } from "./valueObjects/EstadoRelacionDeTrabajo"
 
 
 export interface RelacionDeTrabajoPropiedades {
