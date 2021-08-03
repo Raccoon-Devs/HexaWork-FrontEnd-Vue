@@ -86,6 +86,11 @@
                 icon: 'mdi-account-supervisor-outline',
                 route: '/relaciones-activas'
             },
+            // {
+            //     label: 'Relaciones por Evaluar',
+            //     icon:'mdi-clipboard-text',
+            //     route: '/relaciones-evaluar'
+            // },
             {
                 label: 'Ofertas culminadas',
                 icon: ' mdi-contacts-outline',
