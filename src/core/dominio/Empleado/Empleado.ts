@@ -79,7 +79,7 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
         this.propiedades.cursos.forEach(curso => {
             cursos.push(curso.obtenerCurso())
         });
-        
+
         return cursos
     }
 
@@ -110,7 +110,7 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
     }
 
     public static crear(atributos: any): Empleado {
-        
+
         const experiencias: ExperienciaDeTrabajo[] = []
         atributos.experienciaLaboral.forEach(experiencia => {
             experiencias.push(ExperienciaDeTrabajo.crear(experiencia))
@@ -130,7 +130,7 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
         atributos.referencias.forEach(referencia => {
             referencias.push(Referencia.crear(referencia))
         });
-        
+
         return new Empleado(
             {
                 ssn: SSN.crear(atributos.ssn),
@@ -141,7 +141,7 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
                     atributos.nombreCompleto.segundoApellido,
                 ),
                 numeroTelefono: Telefono.crear(
-                    atributos.numeroTelefono.codigoPais, 
+                    atributos.numeroTelefono.codigoPais,
                     atributos.numeroTelefono.numeroTelefono
                 ),
                 fechaNacimiento: FechaNacimiento.crear(atributos.fechaNacimiento),
@@ -153,10 +153,10 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
                 clasificacion: Clasificacion.crear(atributos.clasificacion),
                 estadoEmpleado: EstadoEmpleado.crear(atributos.estadoEmpleado),
                 direccion: Direccion.crear(
-                    atributos.direccion.calle1, 
-                    atributos.direccion.calle2, 
-                    atributos.direccion.ciudad, 
-                    atributos.direccion.estado, 
+                    atributos.direccion.calle1,
+                    atributos.direccion.calle2,
+                    atributos.direccion.ciudad,
+                    atributos.direccion.estado,
                     atributos.direccion.codPostal
                 )
             }

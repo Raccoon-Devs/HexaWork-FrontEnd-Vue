@@ -17,7 +17,7 @@ export class CategoriaTrabajo extends ValueObject<CategoriaTrabajoPropiedades> {
     }
 
     public static crear(categoria: number): CategoriaTrabajo {
-        
+
         if(categoria === null || categoria === undefined){
             throw new ExcepcionCategoriaDeTrabajoInvalido<typeof categoria >(`La categoría: ${categoria} no puede estar vacio`, categoria)
         }

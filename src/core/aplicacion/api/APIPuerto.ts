@@ -2,6 +2,7 @@ import { OfertaParaDominio } from "@/core/dominio/ofertasDeTrabajo/DTOOfertaDeTr
 
 export abstract class APIPuerto{
     abstract listarOfertas() : any;
+    abstract listarOfertasMock() : any;
     abstract crearOferta(dato: OfertaParaDominio) : any
     abstract actualizarOferta(dato: OfertaParaDominio) : any
 

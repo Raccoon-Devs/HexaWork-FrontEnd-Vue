@@ -10,6 +10,6 @@ export class MappearRelacionDeTrabajo extends Mapper{
             postulacion: new MappearPostulacion().paraInfraestructura(trabajo.obtenerPostulacion()),
             calendario: trabajo.obtenerCalendario(),
             estadoRelacionDeTrabajo: trabajo.obtenerEstadoRelacionDeTrabajo()
-        } 
+        }
     }
 }
