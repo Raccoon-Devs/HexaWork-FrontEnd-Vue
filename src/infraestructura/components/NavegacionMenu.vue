@@ -92,6 +92,11 @@
                 route: '/relaciones-evaluar'
             },
             {
+                label: 'Ofertas culminadas',
+                icon: ' mdi-contacts-outline',
+                route: '/Ofertas-culminadas'
+            },
+            {
                 label: 'Cerrar Sesión',
                 icon:'mdi-logout',
                 route: '/'

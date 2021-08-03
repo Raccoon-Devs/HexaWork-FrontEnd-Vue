@@ -13,15 +13,17 @@ import { Vacante } from "../ofertasDeTrabajo/valueObjects/Vacante";
 import { Calendario } from "../valueObjectsComunes/Calendario";
 import { Direccion } from "../valueObjectsComunes/Direccion";
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo";
-import { Postulacion } from "../postulacion/Postulacion";
+
 import { RelacionDeTrabajoParaDominio } from "../relacionDeTrabajo/DTORelacionDeTrabajo";
 import { RelacionDeTrabajoPropiedades } from "../relacionDeTrabajo/RelacionDeTrabajo";
-import { EstadoRelacionDeTrabajo } from "../relacionDeTrabajo/valueObjects/EstadoRelacionDeTrabajo";
 import { IDRelacionDeTrabajo } from "../relacionDeTrabajo/valueObjects/IDRelacionDeTrabajo";
+import { IDPostulacion } from "../postulacion/valueObjects/IDPostulacion";
+import { Postulacion } from "../postulacion/Postulacion";
+import { EstadoRelacionDeTrabajo } from "../relacionDeTrabajo/valueObjects/EstadoRelacionDeTrabajo"
 
 export class PasarADominio {
     public aDominio (atributos: OfertaParaDominio): OfertaDeTrabajoPropiedades {
-        
+
         const calendario: Calendario[] = []
 
         atributos.calendario.forEach(fecha => {
@@ -39,16 +41,16 @@ export class PasarADominio {
         atributos.certificaciones.forEach(certificacion => {
             certificaciones.push(Certificacion.crear(certificacion))
         });
-        
+
         return {
             idOfertaDeTrabajo: IDOferta.crear(atributos.idOfertaDeTrabajo),
             tituloTrabajo: TituloTrabajo.crear(atributos.tituloTrabajo),
             //empleador: Empleador.crear(atributos.empleador),
             direccion: Direccion.crear(
-                atributos.direccion.calle1, 
-                atributos.direccion.calle2, 
-                atributos.direccion.ciudad, 
-                atributos.direccion.estado, 
+                atributos.direccion.calle1,
+                atributos.direccion.calle2,
+                atributos.direccion.ciudad,
+                atributos.direccion.estado,
                 atributos.direccion.codPostal
             ),
             fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion.crear(atributos.fechaLimitePostulacionOfertaDeTrabajo),

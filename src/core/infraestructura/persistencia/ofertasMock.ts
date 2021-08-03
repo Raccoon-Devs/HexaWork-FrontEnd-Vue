@@ -1,7 +1,7 @@
-let ofertas: any[] = [
+const ofertas = [
     {
-        idOfertaDeTrabajo: "",
-        tituloTrabajo: "Título crear oferta",
+        idOfertaDeTrabajo: "IdPorDefecto",
+        tituloTrabajo: "Título oferta",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
@@ -10,8 +10,8 @@ let ofertas: any[] = [
             estado: "estado",
             codPostal: "codigoPos"
         },
-        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
-        calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
+        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        calendario: [{horaInicio: "2020-08-07 05:05:55", horaFin: "2020-08-08 06:05:55"}],
         habilidades: [
             {
                 idHabilidad: "1",
@@ -24,7 +24,7 @@ let ofertas: any[] = [
             {
                 idCertificacion: "3",
                 nombre: "Certificacion 3",
-                fechaCompletacionCertificacion: "2021-03-03",
+                fechaCompletacionCertificacion: "2021-03-20",
                 curso: {
                     idCurso: "3",
                     codigo: "Curso 3",
@@ -41,35 +41,11 @@ let ofertas: any[] = [
         ],
         duracion: 5,
         remuneracionPorHora: 3.44,
-        estadoOfertaDeTrabajo: 1,
+        estadoOfertaDeTrabajo: 4,
         vacantes: 5
     }
 ]
 
-export function actualizarOferta(oferta: any): any {
-    ofertas.map(o => {
-        if (oferta._idOfertaTrabajo == o.idOfertaTrabajo) {
-            o.estadoOfertaDeTrabajo = 1
-        }
-    })
-    return {statusCode: 201, mensaje: "Oferta Actualizada Con éxito"}
-}
-
-export function crearOferta(oferta: any): any{
-
-    oferta = {
-        ...oferta,
-        idOfertaTrabajo : (ofertas.length+1).toString()
-    }
-    // oferta.id.valor = (ofertas.length+1).toString()
-    ofertas.push(oferta)
-    return {statusCode: 201, mensaje: "Oferta Creada Con éxito"}
-}
-
-export function obtenerOfertas():any{
-    return ofertas
-}
-
-export function obtenerOfertasMock():any{
+export function obtenerOfertasMock() {
     return ofertas
 }
