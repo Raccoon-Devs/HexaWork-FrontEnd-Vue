@@ -4,7 +4,7 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 
 import CrearOferta from '../views/CrearOferta.vue'
-import OfertasTerminadas from '../views/OfertasTerminadas'
+import OfertasTerminadas from '../views/OfertasTerminadas.vue'
 import RelacionesActivas from '../views/RelacionesActivas.vue'
 
 import NavegacionMenu from '../components/NavegacionMenu.vue'

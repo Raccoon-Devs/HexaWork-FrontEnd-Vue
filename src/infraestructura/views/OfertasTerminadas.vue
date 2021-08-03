@@ -13,8 +13,8 @@
 
  <script lang="ts">
     import Vue from 'vue'
-    import RelacionesPorEvaluarCard from '../components/RelacionesPorEvaluarCard'
-    import TrabajosFinalizadosCard from '../components/TrabajosFinalizadosCard'
+    import RelacionesPorEvaluarCard from '../components/RelacionesPorEvaluarCard.vue'
+    import TrabajosFinalizadosCard from '../components/TrabajosFinalizadosCard.vue'
 
     export default Vue.extend({
         name: 'OfertasTerminadas',
