@@ -8,13 +8,13 @@ import { Mapper } from "../../mappers/Mapper";
 
 export class RealizarEvaluacion extends UIPuertoEvaluacionDeTrabajo{
 
-    public realizarEvaluacionUI(evaluacion: EvaluacionDeTrabajoParaDominio, apiPuerto: APIPuertoEvaluacionDeTrabajo): EvaluacionDeTrabajoParaDominio[] | string{
+    public realizarEvaluacionUI(evaluacion: any, apiPuerto: APIPuertoEvaluacionDeTrabajo): EvaluacionDeTrabajoParaDominio[] | string{
         try{
 
             const evaluacionDominio = ServicioRealizarEvaluacionDeTrabajo.pasarADominio(evaluacion)
-            console.log("eeeeeeeeeeeeeeeeeeeeer")
+          
             const evaluacionAPI = this.mappearAInfraestructura(new MappearEvaluacionDeTrabajo(), evaluacionDominio)
-            console.log("uuuuuuuuuuuuuur")
+            
             return this.realizarEvaluacionAPI(apiPuerto, evaluacionAPI)
         }
         catch(error){

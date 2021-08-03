@@ -6,12 +6,12 @@ import { RelacionDeTrabajoParaDominio } from "../../relacionDeTrabajo/DTORelacio
 
 export class ServicioRealizarEvaluacionDeTrabajo{
     
-    static pasarADominio(evaluacionAtributos: EvaluacionDeTrabajoParaDominio): EvaluacionDeTrabajo{
+    static pasarADominio(evaluacionAtributos: any): EvaluacionDeTrabajo{
 
         //const relacionDeTrabajo = new PasarADominio().relacionDeTrabajoADominio(evaluacionAtributos.trabajo)
    
-        const datosEvaluacion: EvaluacionDeTrabajoPropiedades = new PasarADominioEvaluacion().aDominio(evaluacionAtributos)
+        const datosEvaluacion: any = new PasarADominioEvaluacion().aDominio(evaluacionAtributos)
         
-        return EvaluacionDeTrabajo.crear(evaluacionAtributos)
+        return EvaluacionDeTrabajo.crear(datosEvaluacion)
     }
 }
