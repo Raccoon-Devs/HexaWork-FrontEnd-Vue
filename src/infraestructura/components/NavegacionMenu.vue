@@ -87,6 +87,11 @@
                 route: '/relaciones-activas'
             },
             {
+                label: 'Relaciones por Evaluar',
+                icon:'mdi-clipboard-text',
+                route: '/relaciones-evaluar'
+            },
+            {
                 label: 'Cerrar Sesión',
                 icon:'mdi-logout',
                 route: '/'

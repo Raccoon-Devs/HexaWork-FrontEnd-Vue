@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 
 import CrearOferta from '../views/CrearOferta.vue'
 import RelacionesActivas from '../views/RelacionesActivas.vue'
+import RelacionesPorEvaluar from '../views/RelacionesPorEvaluar.vue'
 
 import NavegacionMenu from '../components/NavegacionMenu.vue'
 
@@ -33,6 +34,18 @@ const routes: Array<RouteConfig> = [
         children: [{
             path: '',
             component: CrearOferta
+        }]
+    },
+    {
+        path: '/relaciones-evaluar',
+        name: 'RelacionesPorEvaluar',
+        component: NavegacionMenu,
+        props: {
+            pageName:'Relaciones de Trabajo por Evaluar',
+        },
+        children: [{
+            path: '',
+            component: RelacionesPorEvaluar
         }]
     },
     {
