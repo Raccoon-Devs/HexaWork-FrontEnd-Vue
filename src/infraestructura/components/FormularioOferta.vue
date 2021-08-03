@@ -85,7 +85,7 @@
                   multiple
               ></v-select>
             </v-col>
-            
+
           </v-row>
             <v-card-subtitle class="indigo--text subtitle-1 mt-2 pb-1">
                 Duración y días de trabajo
@@ -168,7 +168,7 @@
               </v-text-field>
             </v-col>
             <v-col cols="3" class="mt-0 pt-0">
-            </v-col>    
+            </v-col>
           </v-row>
             <v-card-subtitle class="indigo--text subtitle-1 mt-2 pb-1">
                 Dirección
@@ -248,7 +248,7 @@
         </v-card-title>
         <v-card-text>
           Aqui podrás modificar el calendario de trabajo.
-        </v-card-text>   
+        </v-card-text>
           <v-row class="justify-center mx-2 pl-2">
             <v-col cols=4>
               <v-menu
@@ -314,7 +314,7 @@
                     mdi-delete
                   </v-icon>
                 </template>
-              </v-data-table>  
+              </v-data-table>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn class="mr-2" color="indigo darken-4" text @click="dialogCalendario = false">
@@ -335,8 +335,8 @@
   import { UIPuertoHabilidades } from '../../core/aplicacion/ui/Habilidades/UIPuertoHabilidades'
   import { UIPuertoCertificaciones } from '../../core/aplicacion/ui/Certificaciones/UIPuertoCertificaciones'
   import { CrearOfertaDeTrabajo } from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
-  import { MostrarHabilidades } from '@/core/aplicacion/servicios/Habilidades/MostrarHabilidades'
-  import { MostrarCertificaciones } from '../../core/aplicacion/servicios/Certificaciones/MostrarCertificaciones'
+  import { MostrarHabilidades } from '@/core/aplicacion/servicios/habilidades/MostrarHabilidades'
+  import { MostrarCertificaciones } from '../../core/aplicacion/servicios/certificaciones/MostrarCertificaciones'
   import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockOferta'
   import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockHabilidades'
   import { AdaptadorMockCertificaciones } from '../../core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockCertificaciones'
@@ -559,7 +559,7 @@
             //     id: "5",
             // },
         }
-        
+
         let respuesta = puertoOferta.crearOfertaUI(oferta, new AdaptadorMockOferta())
 
         this.ofertaCreada.mostrar = true

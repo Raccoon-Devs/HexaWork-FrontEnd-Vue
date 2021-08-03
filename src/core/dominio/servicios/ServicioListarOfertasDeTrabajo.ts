@@ -1,9 +1,9 @@
-import { OfertaParaDominio } from "../OfertasDeTrabajo/DTOOfertaDeTrabajo";
-import { OfertaDeTrabajo, OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/OfertaDeTrabajo";
-import { PasarADominio } from "./PasarADominio";
+import { OfertaParaDominio } from "../ofertasDeTrabajo/DTOOfertaDeTrabajo";
+import { OfertaDeTrabajo, OfertaDeTrabajoPropiedades } from "../ofertasDeTrabajo/OfertaDeTrabajo";
+import { PasarADominio } from "./pasarADominio";
 
 export class ServicioListarOfertasDeTrabajo{
-    
+
     static pasarADominio(ofertaAtributos: OfertaParaDominio): OfertaDeTrabajo{
 
         const datosOferta: OfertaDeTrabajoPropiedades = new PasarADominio().aDominio(ofertaAtributos)
