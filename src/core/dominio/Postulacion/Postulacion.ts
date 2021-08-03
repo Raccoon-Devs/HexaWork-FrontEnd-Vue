@@ -46,13 +46,14 @@ export class Postulacion extends Entidad<PostulacionPropiedades> {
 
     public static crear(atributos: any): Postulacion {
 
-        const datosOferta: OfertaDeTrabajoPropiedades = new PasarADominio().aDominio(atributos.ofertaDeTrabajo) 
+        const datosOferta: OfertaDeTrabajoPropiedades = new PasarADominio().aDominio(atributos.ofertaDeTrabajo)
 
         return new Postulacion(
             {
                 idPostulacion: IDPostulacion.crear(atributos.idPostulacion),
                 fechaPostulacion: FechaPostulacion.crear(
-                    atributos.fechaPostulacion, 
+                    atributos.fechaPostulacion,
+                    //    atributos.ofertaDeTrabajo.fechaLimiteOfertaDeTrabajo
                     atributos.ofertaDeTrabajo.fechaLimitePostulacionOfertaDeTrabajo
                 ),
                 empleado: Empleado.crear(atributos.empleado),

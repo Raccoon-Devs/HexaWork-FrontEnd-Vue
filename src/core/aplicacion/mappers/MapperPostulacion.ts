@@ -12,7 +12,8 @@ export class MappearPostulacion extends Mapper{
             fechaPostulacion: postulacion.obtenerFechaPostulacion(),
             empleado: new MappearEmpleado().paraInfraestructura(postulacion.obtenerEmpleado()),
             ofertaDeTrabajo: new MappearOfertaDeTrabajo().paraInfraestructura(postulacion.obtenerOfertaDeTrabajo()),
+            //estadoPostulacion: postulacion.obtenerPostulacion(),
             estadoPostulacion: postulacion.obtenerEstadoPostulacion()
-        } 
+        }
     }
 }
