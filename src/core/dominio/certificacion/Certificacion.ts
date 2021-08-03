@@ -1,8 +1,8 @@
-import { Entidad } from "../clasesBase/Entidad";
+import { Entidad } from "../ClasesBase/Entidad";
 import { Curso, CursoPropiedades } from "../curso/Curso";
-import { FechaCompletacionCertificacion } from "./valueObjects/FechaCompletacionCertificacion";
-import { IDCertificacion } from "./valueObjects/IDCertificacion";
-import { NombreCertificacion } from "./valueObjects/NombreCertificacion";
+import { FechaCompletacionCertificacion } from "./ValueObjects/FechaCompletacionCertificacion";
+import { IDCertificacion } from "./ValueObjects/IDCertificacion";
+import { NombreCertificacion } from "./ValueObjects/NombreCertificacion";
 
 export interface CertificacionPropiedades{
     idCertificacion: IDCertificacion,

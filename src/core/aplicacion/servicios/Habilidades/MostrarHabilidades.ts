@@ -1,9 +1,9 @@
 import { HabilidadParaDominio } from "@/core/dominio/Habilidad/DTOHabilidad";
-import { Habilidad } from "@/core/dominio/habilidad/Habilidad";
-import { ServicioListarHabilidades } from "@/core/dominio/servicios/habilidades/ServicioListarHabilidades";
-import { APIPuertoHabilidades } from "../../api/habilidades/APIPuertoHabilidades";
+import { Habilidad } from "@/core/dominio/Habilidad/Habilidad";
+import { ServicioListarHabilidades } from "@/core/dominio/servicios/Habilidades/ServicioListarHabilidades";
+import { APIPuertoHabilidades } from "../../api/Habilidades/APIPuertoHabilidades";
 import { MappearHabilidad } from "../../mappers/MapperHabilidad";
-import { UIPuertoHabilidades } from "../../ui/habilidades/UIPuertoHabilidades";
+import { UIPuertoHabilidades } from "../../ui/Habilidades/UIPuertoHabilidades";
 import { Mapper } from "../../mappers/Mapper";
 
 export class MostrarHabilidades extends UIPuertoHabilidades{

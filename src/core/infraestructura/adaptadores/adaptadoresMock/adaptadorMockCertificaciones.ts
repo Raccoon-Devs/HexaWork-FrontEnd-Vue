@@ -1,4 +1,4 @@
-import { APIPuertoCertificaciones } from "../../../aplicacion/api/certificaciones/APIPuertoCertificaciones";
+import { APIPuertoCertificaciones } from "../../../aplicacion/api/Certificaciones/APIPuertoCertificaciones";
 import { obtenerCertificaciones } from "./../../persistencia/certificaciones";
 
 export class AdaptadorMockCertificaciones extends APIPuertoCertificaciones{

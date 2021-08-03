@@ -1,4 +1,4 @@
-import { ValueObject } from "../clasesBase/ValueObject"
+import { ValueObject } from "../ClasesBase/ValueObject"
 import { ExcepcionCalendarioInvalido } from "./excepciones/ExcepcionCalendarioInvalido"
 
 export interface CalendarioPropiedades {
@@ -30,7 +30,7 @@ export class Calendario extends ValueObject<CalendarioPropiedades> {
         const horas = [Number(horaInicio.split(":")[0]), Number(horaFin.split(":")[0])]
         const minutos = [Number(horaInicio.split(":")[1]), Number(horaFin.split(":")[1])]
         const segundos = [Number(horaInicio.split(":")[2]), Number(horaFin.split(":")[2])]
-
+      
         if(
             horas[0] > horas[1]
             ||(horas[0] == horas[1] && minutos[0] > minutos[1])

@@ -1,4 +1,4 @@
-import {IDUnicoEntidad} from "../../clasesBase/IDUnicoEntidad"
+import {IDUnicoEntidad} from "../../ClasesBase/IDUnicoEntidad"
 
 export class IDCertificacion extends IDUnicoEntidad{
 
