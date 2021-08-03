@@ -1,39 +1,39 @@
-import { Certificacion } from "../Certificacion/Certificacion";
-import { Habilidad } from "../Habilidad/Habilidad";
-import { Empleador } from "../Empleador/Empleador";
-import { OfertaParaDominio } from "../OfertasDeTrabajo/DTOOfertaDeTrabajo";
-import { OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/OfertaDeTrabajo";
-import { Duracion } from "../OfertasDeTrabajo/ValueObjects/Duracion";
-import { EstadoOfertaDeTrabajo } from "../OfertasDeTrabajo/ValueObjects/EstadoOfertaDeTrabajo";
-import { IDOferta } from "../OfertasDeTrabajo/ValueObjects/IDOferta";
-import { Remuneracion } from "../OfertasDeTrabajo/ValueObjects/Remuneracion";
-import { RequerimientosEspecialesOfertaDeTrabajo } from "../OfertasDeTrabajo/ValueObjects/RequerimientosEspecialesOfertaDeTrabajo";
-import { TiempoLimitePostulacion } from "../OfertasDeTrabajo/ValueObjects/TiempoLimitePostulacion";
-import { Vacante } from "../OfertasDeTrabajo/ValueObjects/Vacante";
+import { Certificacion } from "../certificacion/Certificacion";
+import { Habilidad } from "../habilidad/Habilidad";
+import { Empleador } from "../empleador/Empleador";
+import { OfertaParaDominio } from "../ofertasDeTrabajo/DTOOfertaDeTrabajo";
+import { OfertaDeTrabajoPropiedades } from "../ofertasDeTrabajo/OfertaDeTrabajo";
+import { Duracion } from "../ofertasDeTrabajo/valueObjects/Duracion";
+import { EstadoOfertaDeTrabajo } from "../ofertasDeTrabajo/valueObjects/EstadoOfertaDeTrabajo";
+import { IDOferta } from "../ofertasDeTrabajo/valueObjects/IDOferta";
+import { Remuneracion } from "../ofertasDeTrabajo/valueObjects/Remuneracion";
+import { RequerimientosEspecialesOfertaDeTrabajo } from "../ofertasDeTrabajo/valueObjects/RequerimientosEspecialesOfertaDeTrabajo";
+import { TiempoLimitePostulacion } from "../ofertasDeTrabajo/valueObjects/TiempoLimitePostulacion";
+import { Vacante } from "../ofertasDeTrabajo/valueObjects/Vacante";
 import { Calendario } from "../valueObjectsComunes/Calendario";
 import { Direccion } from "../valueObjectsComunes/Direccion";
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo";
 
 export class PasarADominio {
     public aDominio (atributos: OfertaParaDominio): OfertaDeTrabajoPropiedades {
-
+        
         const calendario: Calendario[] = []
 
         atributos.calendario.forEach(fecha => {
             calendario.push(Calendario.crear(fecha))
         });
 
-        // const habilidades: Habilidad[] = []
+        const habilidades: Habilidad[] = []
 
-        // atributos.habilidades.forEach(habilidad => {
-        //     habilidades.push(Habilidad.crear(habilidad))
-        // });
+        atributos.habilidades.forEach(habilidad => {
+            habilidades.push(Habilidad.crear(habilidad))
+        });
 
-        // const certificaciones: Certificacion[] = []
+        const certificaciones: Certificacion[] = []
 
-        // atributos.certificaciones.forEach(certificacion => {
-        //     certificaciones.push(Certificacion.crear(certificacion))
-        // });
+        atributos.certificaciones.forEach(certificacion => {
+            certificaciones.push(Certificacion.crear(certificacion))
+        });
         
         return {
             idOfertaDeTrabajo: IDOferta.crear(atributos.idOfertaDeTrabajo),
@@ -48,11 +48,9 @@ export class PasarADominio {
             ),
             fechaLimitePostulacionOfertaDeTrabajo: TiempoLimitePostulacion.crear(atributos.fechaLimitePostulacionOfertaDeTrabajo),
             calendario: calendario,
-            habilidades: atributos.habilidades,
-            // habilidades: habilidades,
+            habilidades: habilidades,
             requerimientosEspeciales: RequerimientosEspecialesOfertaDeTrabajo.crear(atributos.requerimientosEspeciales),
-            certificaciones: atributos.certificaciones,
-            // certificaciones: certificaciones,
+            certificaciones: certificaciones,
             duracion: Duracion.crear(atributos.duracion),
             remuneracionPorHora: Remuneracion.crear(atributos.remuneracionPorHora),
             estadoOfertaDeTrabajo: EstadoOfertaDeTrabajo.crear(atributos.estadoOfertaDeTrabajo),

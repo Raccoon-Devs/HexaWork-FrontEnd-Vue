@@ -1,6 +1,6 @@
 import { HabilidadPropiedades } from "./Habilidad"
-import { CategoriaHabilidad } from "./ValueObjects/CategoriaHabilidad"
-import { NombreHabilidad } from "./ValueObjects/NombreHabilidad"
+import { CategoriaHabilidad } from "./valueObjects/CategoriaHabilidad"
+import { NombreHabilidad } from "./valueObjects/NombreHabilidad"
 
 type HabilidadParaDominioMap<Type> = {
     [Property in keyof Type]

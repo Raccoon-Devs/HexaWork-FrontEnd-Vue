@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionFechaPostulacionInvalido } from "../Excepciones/ExcepcionFechaPostulacionInvalida"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionFechaPostulacionInvalido } from "../excepciones/ExcepcionFechaPostulacionInvalida"
 
 interface FechaPostulacionPropiedades {
     fecha: Date
@@ -17,7 +17,7 @@ export class FechaPostulacion extends ValueObject<FechaPostulacionPropiedades> {
 
     public static crear(fecha: Date, limite: Date): FechaPostulacion{
 
-        if(fecha < limite){
+        if(fecha > limite){
             throw new ExcepcionFechaPostulacionInvalido<typeof fecha >(`La fecha no puede ser menor que la fecha límite de postulación`, fecha)
         }
 

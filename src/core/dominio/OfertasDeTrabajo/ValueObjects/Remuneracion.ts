@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionRemuneracionInvalida } from "../Excepciones/ExcepcionRemuneracionInvalida"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionRemuneracionInvalida } from "../excepciones/ExcepcionRemuneracionInvalida"
 
 export interface RemuneracionPropiedades {
     remuneracion: number

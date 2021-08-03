@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionVacanteInvalida } from "../Excepciones/ExcepcionVacanteInvalida"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionVacanteInvalida } from "../excepciones/ExcepcionVacanteInvalida"
 
 export interface VacantePropiedades {
     vacantes: number

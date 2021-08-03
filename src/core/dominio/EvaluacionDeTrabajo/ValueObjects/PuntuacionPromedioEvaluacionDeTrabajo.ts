@@ -1,4 +1,4 @@
-import { ValueObject } from "../../ClasesBase/ValueObject"
+import { ValueObject } from "../../clasesBase/ValueObject"
 
 interface PuntuacionPromedioPropiedades {
     promedio: number

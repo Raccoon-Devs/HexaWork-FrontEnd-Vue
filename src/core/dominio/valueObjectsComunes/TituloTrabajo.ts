@@ -1,4 +1,4 @@
-import { ValueObject } from "../ClasesBase/ValueObject"
+import { ValueObject } from "../clasesBase/ValueObject"
 import { ExcepcionTituloTrabajoInvalido } from "./excepciones/ExcepcionTituloTrabajoInvalido"
 
 export interface TituloTrabajoPropiedades {

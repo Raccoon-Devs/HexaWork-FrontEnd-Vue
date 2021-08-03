@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionEstadoInvalido } from "../Excepciones/ExcepcionEstadoInvalido"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionEstadoInvalido } from "../excepciones/ExcepcionEstadoInvalido"
 
 interface EstadoPostulacionPropiedades {
     estado: number,

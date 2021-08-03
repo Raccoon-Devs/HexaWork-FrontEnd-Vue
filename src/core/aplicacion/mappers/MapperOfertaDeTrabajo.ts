@@ -1,4 +1,4 @@
-import { OfertaDeTrabajo } from "@/core/dominio/OfertasDeTrabajo/OfertaDeTrabajo";
+import { OfertaDeTrabajo } from "@/core/dominio/ofertasDeTrabajo/OfertaDeTrabajo";
 import {Mapper} from "./Mapper"
 import { MappearCertificacion } from "./MapperCertificacion";
 import { MappearEmpleador } from "./MapperEmpleador";
@@ -7,18 +7,18 @@ import { MappearHabilidad } from "./MapperHabilidad";
 export class MappearOfertaDeTrabajo extends Mapper{
 
     public paraInfraestructura(oferta: OfertaDeTrabajo): any{
+        
+        const habilidades: any[] = []
 
-        // const habilidades: any[] = []
+        oferta.obtenerHabilidades().forEach(habilidad => {
+            habilidades.push(new MappearHabilidad().paraInfraestructura(habilidad))
+        });
 
-        // oferta.obtenerHabilidades().forEach(habilidad => {
-        //     habilidades.push(new MappearHabilidad().paraInfraestructura(habilidad))
-        // });
+        const certificaciones: any[] = []
 
-        // const certificaciones: any[] = []
-
-        // oferta.obtenerCertificaciones().forEach(certificacion => {
-        //     certificaciones.push(new MappearCertificacion().paraInfraestructura(certificacion))
-        // });
+        oferta.obtenerCertificaciones().forEach(certificacion => {
+            certificaciones.push(new MappearCertificacion().paraInfraestructura(certificacion))
+        });
 
         return {
             idOfertaDeTrabajo: oferta.obtenerId(),
@@ -27,11 +27,9 @@ export class MappearOfertaDeTrabajo extends Mapper{
             direccion: oferta.obtenerDireccion(),
             fechaLimitePostulacionOfertaDeTrabajo: oferta.obtenerFechaLimite(),
             calendario: oferta.obtenerCalendario(),
-            habilidades: oferta.obtenerHabilidades(),
-            // habilidades: habilidades,
+            habilidades: habilidades,
             requerimientosEspeciales: oferta.obtenerRequerimientos(),
-            certificaciones: oferta.obtenerCertificaciones(),
-            // certificaciones: certificaciones,
+            certificaciones: certificaciones,
             duracion: oferta.obtenerDuracion(),
             remuneracionPorHora: oferta.obtenerRemuneracion(),
             estadoOfertaDeTrabajo: oferta.obtenerEstadoOfertaDeTrabajo(),

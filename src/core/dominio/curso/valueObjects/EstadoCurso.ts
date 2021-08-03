@@ -1,5 +1,5 @@
-import { ValueObject } from "../../ClasesBase/ValueObject"
-import { ExcepcionEstadoCursoInvalido } from '../Excepciones/ExcepcionEstadoCursoInvalido'
+import { ValueObject } from "../../clasesBase/ValueObject"
+import { ExcepcionEstadoCursoInvalido } from '../excepciones/ExcepcionEstadoCursoInvalido'
 
 interface EstadoCursoPropiedades {
     estadoCurso: number

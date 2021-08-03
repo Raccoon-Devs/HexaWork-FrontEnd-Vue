@@ -1,4 +1,4 @@
-import {Excepcion} from "../../ClasesBase/Excepcion"
+import {Excepcion} from "../../clasesBase/Excepcion"
 
 export class ExcepcionCargoInvalido<T> extends Excepcion<T> {
     public readonly mensaje: string

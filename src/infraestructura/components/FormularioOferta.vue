@@ -67,7 +67,7 @@
                   v-model="habilidadesSeleccionadas"
                   :items="habilidades"
                   item-text="nombre"
-                  item-value="valor"
+                  item-value="idHabilidad"
                   :menu-props="{ maxHeight: '400' }"
                   label="Habilidades"
                   multiple
@@ -79,7 +79,7 @@
                   v-model="certificacionesSeleccionadas"
                   :items="certificaciones"
                   item-text="nombre"
-                  item-value="valor"
+                  item-value="idCertificacion"
                   :menu-props="{ maxHeight: '400' }"
                   label="Certificaciones"
                   multiple
@@ -331,9 +331,15 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import {UIPuertoCrearOferta} from '../../core/aplicacion/ui/UIPuertoCrearOferta'
-  import {CrearOfertaDeTrabajo} from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
-  import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
+  import { UIPuertoCrearOferta } from '../../core/aplicacion/ui/UIPuertoCrearOferta'
+  import { UIPuertoHabilidades } from '../../core/aplicacion/ui/habilidades/UIPuertoHabilidades'
+  import { UIPuertoCertificaciones } from '../../core/aplicacion/ui/certificaciones/UIPuertoCertificaciones'
+  import { CrearOfertaDeTrabajo } from '../../core/aplicacion/servicios/CrearOfertaDeTrabajo'
+  import { MostrarHabilidades } from '@/core/aplicacion/servicios/habilidades/MostrarHabilidades'
+  import { MostrarCertificaciones } from '../../core/aplicacion/servicios/certificaciones/MostrarCertificaciones'
+  import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockOferta'
+  import { AdaptadorMockHabilidades } from '@/core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockHabilidades'
+  import { AdaptadorMockCertificaciones } from '../../core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockCertificaciones'
 
   export default Vue.extend({
     name: 'FormularioOferta',
@@ -374,66 +380,68 @@
       dialogCalendario: false,
       habilidadesSeleccionadas: [],
       certificacionesSeleccionadas: [],
-      habilidades: [
-        {
-          nombre: 'Habilidades Blandas',
-          valor: 1
-        },
-        {
-          nombre: 'Habilidades Técnicas',
-          valor: 2
-        },
-        {
-          nombre: 'Habilidades Cognitivas',
-          valor: 3
-        },
-        {
-          nombre: 'Habilidades Mecánicas',
-          valor: 4
-        },
-        {
-          nombre: 'Habilidades Linguísticas',
-          valor: 5
-        },
-        {
-          nombre: 'Habilidades Manuales',
-          valor: 6
-        },
-        {
-          nombre: 'Habilidades Visuales',
-          valor: 7
-        }
-      ],
-      certificaciones: [
-        {
-          nombre: 'Certificacion 1',
-          valor: "ab"
-        },
-        {
-          nombre: 'Certificacion 2',
-          valor: "bb"
-        },
-        {
-          nombre: 'Certificacion 3',
-          valor: "cb"
-        },
-        {
-          nombre: 'Certificacion 4',
-          valor: "db"
-        },
-        {
-          nombre: 'Certificacion 5',
-          valor: "eb"
-        },
-        {
-          nombre: 'Certificacion 6',
-          valor: "fb"
-        },
-        {
-          nombre: 'Certificacion 7',
-          valor: "gb"
-        }
-      ],
+      habilidades: [{}],
+      certificaciones: [{}],
+      // habilidades: [
+      //   {
+      //     nombre: 'Habilidades Blandas',
+      //     valor: 1
+      //   },
+      //   {
+      //     nombre: 'Habilidades Técnicas',
+      //     valor: 2
+      //   },
+      //   {
+      //     nombre: 'Habilidades Cognitivas',
+      //     valor: 3
+      //   },
+      //   {
+      //     nombre: 'Habilidades Mecánicas',
+      //     valor: 4
+      //   },
+      //   {
+      //     nombre: 'Habilidades Linguísticas',
+      //     valor: 5
+      //   },
+      //   {
+      //     nombre: 'Habilidades Manuales',
+      //     valor: 6
+      //   },
+      //   {
+      //     nombre: 'Habilidades Visuales',
+      //     valor: 7
+      //   }
+      // ],
+      // certificaciones: [
+      //   {
+      //     nombre: 'Certificacion 1',
+      //     valor: "ab"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 2',
+      //     valor: "bb"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 3',
+      //     valor: "cb"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 4',
+      //     valor: "db"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 5',
+      //     valor: "eb"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 6',
+      //     valor: "fb"
+      //   },
+      //   {
+      //     nombre: 'Certificacion 7',
+      //     valor: "gb"
+      //   }
+      // ],
       fechaLimite: "",
       menuFechaLimite: false,
       fechaLimitePicker: "",
@@ -518,7 +526,22 @@
         this.fechaCalendario = ""
       },
       crearOferta(){
-        // alert(this.ofertaDeTrabajo.fechasCalendario)
+        const habilidades: any[] = []
+        this.habilidadesSeleccionadas.forEach((seleccionada: any) => {
+          this.habilidades.forEach((habilidad: any) => {
+            if (habilidad.idHabilidad == seleccionada) {
+              habilidades.push(habilidad)
+            }
+          })
+        })
+        const certificaciones: any[] = []
+        this.certificacionesSeleccionadas.forEach((seleccionada: any) => {
+          this.certificaciones.forEach((certificacion: any) => {
+            if (certificacion.idCertificacion == seleccionada) {
+              certificaciones.push(certificacion)
+            }
+          })
+        })
         const puertoOferta: UIPuertoCrearOferta = new CrearOfertaDeTrabajo()
         const oferta = {
             requerimientosEspeciales: this.ofertaDeTrabajo.requerimientosEspeciales,
@@ -529,14 +552,13 @@
             remuneracionPorHora: this.ofertaDeTrabajo.remuneracionPorHora,
             estadoOfertaDeTrabajo: 0,
             vacantes: this.ofertaDeTrabajo.vacantes,
-            certificaciones: this.certificacionesSeleccionadas,
-            habilidades: this.habilidadesSeleccionadas,
+            certificaciones: certificaciones,
+            habilidades: habilidades,
             calendario: this.ofertaDeTrabajo.fechasCalendario
             // empleador: {
             //     id: "5",
             // },
         }
-        console.log(oferta);
         
         let respuesta = puertoOferta.crearOfertaUI(oferta, new AdaptadorMockOferta())
 
@@ -544,7 +566,27 @@
         this.ofertaCreada.mensaje = respuesta
         this.$emit('ofertaCreada');
         this.cambiarEstadoCrearOfertaDialog()
+      },
+      listarHabilidades(){
+        let controlador: UIPuertoHabilidades = new MostrarHabilidades()
+        let habilidadesEnElRepo = controlador.listarHabilidadesUI(new AdaptadorMockHabilidades())
+        this.habilidades = []
+        habilidadesEnElRepo.forEach((habilidad: any) => {
+          this.habilidades.push(habilidad)
+        })
+      },
+      listarCertificaciones(){
+        let controlador: UIPuertoCertificaciones = new MostrarCertificaciones()
+        let certificacionesEnElRepo = controlador.listarCertificacionesUI(new AdaptadorMockCertificaciones())
+        this.certificaciones = []
+        certificacionesEnElRepo.forEach((certificacion: any) => {
+          this.certificaciones.push(certificacion)
+        })
       }
     },
+    mounted() {
+      this.listarHabilidades()
+      this.listarCertificaciones()
+    }
   })
 </script>

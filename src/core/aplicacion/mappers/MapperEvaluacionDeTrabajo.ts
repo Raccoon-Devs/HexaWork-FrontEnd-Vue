@@ -1,4 +1,4 @@
-import { EvaluacionDeTrabajo } from "@/core/dominio/EvaluacionDeTrabajo/EvaluacionDeTrabajo";
+import { EvaluacionDeTrabajo } from "@/core/dominio/evaluacionDeTrabajo/EvaluacionDeTrabajo";
 import {Mapper} from "./Mapper"
 import { MappearRelacionDeTrabajo } from "./MapperRelacionDeTrabajo";
 

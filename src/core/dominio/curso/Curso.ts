@@ -1,10 +1,10 @@
-import { Entidad } from "../ClasesBase/Entidad"
-import { IDCurso } from "./ValueObjects/IDCurso"
-import { CodigoCurso } from "./ValueObjects/CodigoCurso"
-import { EstadoCurso } from "./ValueObjects/EstadoCurso"
-import { TituloCurso } from "./ValueObjects/TituloCurso"
+import { Entidad } from "../clasesBase/Entidad"
+import { IDCurso } from "./valueObjects/IDCurso"
+import { CodigoCurso } from "./valueObjects/CodigoCurso"
+import { EstadoCurso } from "./valueObjects/EstadoCurso"
+import { TituloCurso } from "./valueObjects/TituloCurso"
 import { Imagen } from "../valueObjectsComunes/Imagen"
-import { Habilidad, HabilidadPropiedades } from "../Habilidad/Habilidad"
+import { Habilidad, HabilidadPropiedades } from "../habilidad/Habilidad"
 
 
 export interface CursoPropiedades {
@@ -57,6 +57,7 @@ export class Curso extends Entidad<CursoPropiedades> {
     }
 
     public static crear(atributos: any): Curso {
+
         const habilidades: Habilidad[] = []
 
         atributos.habilidades.forEach(habilidad => {

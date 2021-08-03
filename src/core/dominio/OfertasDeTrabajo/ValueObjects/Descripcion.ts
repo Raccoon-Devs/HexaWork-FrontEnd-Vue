@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionDescripcionInvalida } from "../Excepciones/ExcepcionDescripcionInvalida"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionDescripcionInvalida } from "../excepciones/ExcepcionDescripcionInvalida"
 
 interface DescripcionPropiedades {
     descripcion: string
