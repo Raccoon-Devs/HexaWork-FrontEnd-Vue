@@ -1,4 +1,4 @@
-import { InformacionDeContacto } from "@/core/dominio/InformacionDeContacto/InformacionDeContacto";
+import { InformacionDeContacto } from "@/core/dominio/informacionDeContacto/InformacionDeContacto";
 import {Mapper} from "./Mapper"
 
 export class MappearInformacionDeContacto extends Mapper{

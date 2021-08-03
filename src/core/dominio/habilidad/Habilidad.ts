@@ -1,4 +1,4 @@
-import { Entidad } from "../ClasesBase/Entidad"
+import { Entidad } from "../clasesBase/Entidad"
 import { IDHabilidad } from "./valueObjects/IDHabilidad"
 import { NombreHabilidad } from "./valueObjects/NombreHabilidad"
 import { CategoriaHabilidad } from "./valueObjects/CategoriaHabilidad"

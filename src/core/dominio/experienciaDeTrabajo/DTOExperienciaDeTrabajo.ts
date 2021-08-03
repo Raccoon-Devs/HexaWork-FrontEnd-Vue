@@ -1,7 +1,7 @@
 import { NombreCompania } from "../valueObjectsComunes/NombreCompania"
 import { TituloTrabajo } from "../valueObjectsComunes/TituloTrabajo"
 import { ExperienciaDeTrabajoPropiedades } from "./ExperienciaDeTrabajo"
-import { CategoriaTrabajo } from "./ValueObjects/CategoriaTrabajo"
+import { CategoriaTrabajo } from "./valueObjects/CategoriaTrabajo"
 
 type ExperienciaDeTrabajoParaDominioMap<Type> = {
     [Property in keyof Type]

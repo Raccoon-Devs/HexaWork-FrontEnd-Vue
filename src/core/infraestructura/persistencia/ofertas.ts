@@ -16,7 +16,7 @@ export function crearOferta(dato: any): any{
             ...dato,
             idOfertaDeTrabajo: almacenamiento.getItem("idOferta")!
         }
-        
+
         almacenamiento.setItem("idOferta", (+(dato.idOfertaDeTrabajo)+1).toString())
 
     }

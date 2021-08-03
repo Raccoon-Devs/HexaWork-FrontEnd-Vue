@@ -1,15 +1,15 @@
-import { Curso, CursoPropiedades } from "../Curso/Curso";
-import { ExperienciaDeTrabajo, ExperienciaDeTrabajoPropiedades } from "../ExperienciaDeTrabajo/ExperienciaDeTrabajo";
-import { Habilidad, HabilidadPropiedades } from "../Habilidad/Habilidad";
-import { Referencia, ReferenciaPropiedades } from "../Referencia/Referencia";
+import { Curso, CursoPropiedades } from "../curso/Curso";
+import { ExperienciaDeTrabajo, ExperienciaDeTrabajoPropiedades } from "../experienciaDeTrabajo/ExperienciaDeTrabajo";
+import { Habilidad, HabilidadPropiedades } from "../habilidad/Habilidad";
+import { Referencia, ReferenciaPropiedades } from "../referencia/Referencia";
 import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion";
 import { NombreCompleto, NombreCompletoPropiedades } from "../valueObjectsComunes/NombreCompleto";
 import { Telefono, TelefonoPropiedades } from "../valueObjectsComunes/Telefono";
 import { EmpleadoPropiedades } from "./Empleado";
-import { Clasificacion } from "./ValueObjects/Clasificacion";
-import { EstadoEmpleado } from "./ValueObjects/EstadoEmpleado";
-import { FechaNacimiento } from "./ValueObjects/FechaNacimiento";
-import { NivelEducativo } from "./ValueObjects/NivelEducativo";
+import { Clasificacion } from "./valueObjects/Clasificacion";
+import { EstadoEmpleado } from "./valueObjects/EstadoEmpleado";
+import { FechaNacimiento } from "./valueObjects/FechaNacimiento";
+import { NivelEducativo } from "./valueObjects/NivelEducativo";
 
 type EmpleadoParaDominioMap<Type> = {
     [Property in keyof Type]

@@ -1,16 +1,16 @@
-import { Entidad } from "../ClasesBase/Entidad"
-import { SSN } from "./ValueObjects/SSN"
-import { FechaNacimiento } from "./ValueObjects/FechaNacimiento"
-import { NivelEducativo } from "./ValueObjects/NivelEducativo"
-import { EstadoEmpleado } from "./ValueObjects/EstadoEmpleado"
+import { Entidad } from "../clasesBase/Entidad"
+import { SSN } from "./valueObjects/SSN"
+import { FechaNacimiento } from "./valueObjects/FechaNacimiento"
+import { NivelEducativo } from "./valueObjects/NivelEducativo"
+import { EstadoEmpleado } from "./valueObjects/EstadoEmpleado"
 import { Telefono, TelefonoPropiedades } from "../valueObjectsComunes/Telefono"
 import { Direccion, DireccionPropiedades } from "../valueObjectsComunes/Direccion"
 import { NombreCompleto, NombreCompletoPropiedades } from "../valueObjectsComunes/NombreCompleto"
-import { ExperienciaDeTrabajo, ExperienciaDeTrabajoPropiedades } from "../ExperienciaDeTrabajo/ExperienciaDeTrabajo"
-import { Habilidad, HabilidadPropiedades } from "../Habilidad/Habilidad"
-import { Curso, CursoPropiedades } from "../Curso/Curso"
-import { Referencia, ReferenciaPropiedades } from "../Referencia/Referencia"
-import { Clasificacion } from "./ValueObjects/Clasificacion"
+import { ExperienciaDeTrabajo, ExperienciaDeTrabajoPropiedades } from "../experienciaDeTrabajo/ExperienciaDeTrabajo"
+import { Habilidad, HabilidadPropiedades } from "../habilidad/Habilidad"
+import { Curso, CursoPropiedades } from "../curso/Curso"
+import { Referencia, ReferenciaPropiedades } from "../referencia/Referencia"
+import { Clasificacion } from "./valueObjects/Clasificacion"
 
 export interface EmpleadoPropiedades {
     ssn: SSN,
@@ -79,7 +79,7 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
         this.propiedades.cursos.forEach(curso => {
             cursos.push(curso.obtenerCurso())
         });
-        
+
         return cursos
     }
 
@@ -130,7 +130,7 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
         atributos.referencias.forEach(referencia => {
             referencias.push(Referencia.crear(referencia))
         });
-        
+
         return new Empleado(
             {
                 ssn: SSN.crear(atributos.ssn),
@@ -141,7 +141,7 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
                     atributos.nombreCompleto.segundoApellido,
                 ),
                 numeroTelefono: Telefono.crear(
-                    atributos.numeroTelefono.codigoPais, 
+                    atributos.numeroTelefono.codigoPais,
                     atributos.numeroTelefono.numeroTelefono
                 ),
                 fechaNacimiento: FechaNacimiento.crear(atributos.fechaNacimiento),
@@ -150,13 +150,13 @@ export class Empleado extends Entidad<EmpleadoPropiedades> {
                 habilidades: habilidades,
                 cursos: cursos,
                 referencias: referencias,
-                clasificacion: atributos.clasificacion,
+                clasificacion: Clasificacion.crear(atributos.clasificacion),
                 estadoEmpleado: EstadoEmpleado.crear(atributos.estadoEmpleado),
                 direccion: Direccion.crear(
-                    atributos.direccion.calle1, 
-                    atributos.direccion.calle2, 
-                    atributos.direccion.ciudad, 
-                    atributos.direccion.estado, 
+                    atributos.direccion.calle1,
+                    atributos.direccion.calle2,
+                    atributos.direccion.ciudad,
+                    atributos.direccion.estado,
                     atributos.direccion.codPostal
                 )
             }

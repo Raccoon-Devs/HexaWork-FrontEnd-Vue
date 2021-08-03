@@ -69,3 +69,7 @@ export function crearOferta(oferta: any): any{
 export function obtenerOfertas():any{
     return ofertas
 }
+
+export function obtenerOfertasMock():any{
+    return ofertas
+}

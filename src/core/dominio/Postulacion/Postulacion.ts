@@ -1,9 +1,10 @@
-import { Entidad } from "../ClasesBase/Entidad"
-import { Empleado, EmpleadoPropiedades } from "../Empleado/Empleado"
-import { OfertaDeTrabajo } from "../OfertasDeTrabajo/OfertaDeTrabajo"
-import { EstadoPostulacion } from "./ValueObjects/EstadoPostulacion"
-import { FechaPostulacion } from "./ValueObjects/Fechapostulacion"
-import { IDPostulacion } from "./ValueObjects/IDPostulacion"
+import { Entidad } from "../clasesBase/Entidad"
+import { Empleado, EmpleadoPropiedades } from "../empleado/Empleado"
+import { OfertaDeTrabajo, OfertaDeTrabajoPropiedades } from "../ofertasDeTrabajo/OfertaDeTrabajo"
+import { PasarADominio } from "../servicios/PasarADominio"
+import { EstadoPostulacion } from "./valueObjects/EstadoPostulacion"
+import { FechaPostulacion } from "./valueObjects/Fechapostulacion"
+import { IDPostulacion } from "./valueObjects/IDPostulacion"
 
 export interface PostulacionPropiedades {
     idPostulacion: IDPostulacion
@@ -43,18 +44,20 @@ export class Postulacion extends Entidad<PostulacionPropiedades> {
         return this
     }
 
-    public static crear(atributos: any): Postulacion
+    public static crear(atributos: any): Postulacion {
 
-        {
+        const datosOferta: OfertaDeTrabajoPropiedades = new PasarADominio().aDominio(atributos.ofertaDeTrabajo)
+
         return new Postulacion(
             {
                 idPostulacion: IDPostulacion.crear(atributos.idPostulacion),
                 fechaPostulacion: FechaPostulacion.crear(
-                    atributos.fechaPostulacion, 
-                    atributos.ofertaDeTrabajo.fechaLimiteOfertaDeTrabajo
+                    atributos.fechaPostulacion,
+                    //    atributos.ofertaDeTrabajo.fechaLimiteOfertaDeTrabajo
+                    atributos.ofertaDeTrabajo.fechaLimitePostulacionOfertaDeTrabajo
                 ),
                 empleado: Empleado.crear(atributos.empleado),
-                ofertaDeTrabajo: OfertaDeTrabajo.crear(atributos.ofertaDeTrabajo),
+                ofertaDeTrabajo: OfertaDeTrabajo.crear(datosOferta),
                 estadoPostulacion: EstadoPostulacion.crear(atributos.estadoPostulacion),
             }
         )

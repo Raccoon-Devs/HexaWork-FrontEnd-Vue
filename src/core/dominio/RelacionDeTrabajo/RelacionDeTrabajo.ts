@@ -1,8 +1,8 @@
-import { Entidad } from "../ClasesBase/Entidad"
-import { IDRelacionDeTrabajo } from "./ValueObjects/IDRelacionDeTrabajo"
-import { Postulacion, PostulacionPropiedades } from "../Postulacion/Postulacion"
+import { Entidad } from "../clasesBase/Entidad"
+import { IDRelacionDeTrabajo } from "./valueObjects/IDRelacionDeTrabajo"
+import { Postulacion, PostulacionPropiedades } from "../postulacion/Postulacion"
 import { Calendario, CalendarioPropiedades } from "../valueObjectsComunes/Calendario"
-import { EstadoRelacionDeTrabajo } from "./ValueObjects/EstadoRelacionDeTrabajo"
+import { EstadoRelacionDeTrabajo } from "./valueObjects/EstadoRelacionDeTrabajo"
 
 
 export interface RelacionDeTrabajoPropiedades {
@@ -43,18 +43,12 @@ export class RelacionDeTrabajo extends Entidad<RelacionDeTrabajoPropiedades> {
     }
 
     public static crear(atributos: any): RelacionDeTrabajo {
-        const calendario: Calendario[] = []
-
-        atributos.calendario.forEach(fecha => {
-            calendario.push(Calendario.crear(fecha))
-        });
-        
         return new RelacionDeTrabajo(
             {
-                idRelacion: IDRelacionDeTrabajo.crear(atributos.idRelacion),
-                postulacion: Postulacion.crear(atributos.postulacion),
-                calendario: calendario,
-                estadoRelacionDeTrabajo: EstadoRelacionDeTrabajo.crear(atributos.estadoRelacionDeTrabajo)
+                idRelacion: atributos.idRelacion,
+                postulacion: atributos.postulacion,
+                calendario: atributos.calendario,
+                estadoRelacionDeTrabajo: atributos.estadoRelacionDeTrabajo
             }
         )
     }

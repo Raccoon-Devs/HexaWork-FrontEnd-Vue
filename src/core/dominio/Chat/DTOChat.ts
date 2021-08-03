@@ -1,6 +1,6 @@
-import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../RelacionDeTrabajo/RelacionDeTrabajo";
+import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../relacionDeTrabajo/RelacionDeTrabajo";
 import { ChatPropiedades } from "./Chat";
-import { Mensaje } from "./ValueObjects/Mensaje";
+import { Mensaje } from "./valueObjects/Mensaje";
 
 type ChatParaDominioMap<Type> = {
     [Property in keyof Type]

@@ -1,8 +1,8 @@
-import { Empleado, EmpleadoPropiedades } from "../Empleado/Empleado"
-import { OfertaDeTrabajo, OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/OfertaDeTrabajo"
+import { Empleado, EmpleadoPropiedades } from "../empleado/Empleado"
+import { OfertaDeTrabajo, OfertaDeTrabajoPropiedades } from "../ofertasDeTrabajo/OfertaDeTrabajo"
 import { PostulacionPropiedades } from "./Postulacion"
-import { EstadoPostulacion } from "./ValueObjects/EstadoPostulacion"
-import { FechaPostulacion } from "./ValueObjects/Fechapostulacion"
+import { EstadoPostulacion } from "./valueObjects/EstadoPostulacion"
+import { FechaPostulacion } from "./valueObjects/Fechapostulacion"
 
 type PostulacionParaDominioMap<Type> = {
     [Property in keyof Type]

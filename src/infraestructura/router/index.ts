@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
+
 import Home from '../views/Home.vue'
 
 import CrearOferta from '../views/CrearOferta.vue'
+import OfertasTerminadas from '../views/OfertasTerminadas.vue'
 import RelacionesActivas from '../views/RelacionesActivas.vue'
+import RelacionesPorEvaluar from '../views/RelacionesPorEvaluar.vue'
 
 import NavegacionMenu from '../components/NavegacionMenu.vue'
 
@@ -36,6 +39,18 @@ const routes: Array<RouteConfig> = [
         }]
     },
     {
+        path: '/relaciones-evaluar',
+        name: 'RelacionesPorEvaluar',
+        component: NavegacionMenu,
+        props: {
+            pageName:'Relaciones de Trabajo por Evaluar',
+        },
+        children: [{
+            path: '',
+            component: RelacionesPorEvaluar
+        }]
+    },
+    {
         path: '/relaciones-activas',
         name: 'RelacionesActivas',
         component: NavegacionMenu,
@@ -45,6 +60,18 @@ const routes: Array<RouteConfig> = [
         children: [{
             path: '',
             component: RelacionesActivas
+        }]
+    },
+    {
+        path: '/ofertas-culminadas',
+        name: 'OfertasCulminadas',
+        component: NavegacionMenu,
+        props: {
+            pageName:'Ofertas culminadas',
+        },
+        children: [{
+            path: '',
+            component: OfertasTerminadas
         }]
     }
 ]

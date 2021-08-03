@@ -1,5 +1,5 @@
-import { OfertaParaDominio } from "../OfertasDeTrabajo/DTOOfertaDeTrabajo";
-import { OfertaDeTrabajo, OfertaDeTrabajoPropiedades } from "../OfertasDeTrabajo/OfertaDeTrabajo";
+import { OfertaParaDominio } from "../ofertasDeTrabajo/DTOOfertaDeTrabajo";
+import { OfertaDeTrabajo, OfertaDeTrabajoPropiedades } from "../ofertasDeTrabajo/OfertaDeTrabajo";
 import { PasarADominio } from "./PasarADominio";
 
 export class ServicioPublicarOfertaDeTrabajo {

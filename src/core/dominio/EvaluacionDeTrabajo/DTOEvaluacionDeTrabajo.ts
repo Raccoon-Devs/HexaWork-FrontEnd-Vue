@@ -1,8 +1,8 @@
-import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../RelacionDeTrabajo/RelacionDeTrabajo"
+import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../relacionDeTrabajo/RelacionDeTrabajo"
 import { EvaluacionDeTrabajoPropiedades } from "./EvaluacionDeTrabajo"
-import { PreguntasEvaluacionDeTrabajo, PreguntasEvaluacionPropiedades } from "./ValueObjects/PreguntasEvaluacionDeTrabajo"
-import { PuntuacionEvaluacionDeTrabajo, PuntuacionEvaluacionPropiedades } from "./ValueObjects/PuntuacionesEvaluacionDeTrabajo"
-import { PuntuacionPromedioEvaluacionDeTrabajo } from "./ValueObjects/PuntuacionPromedioEvaluacionDeTrabajo"
+import { PreguntasEvaluacionDeTrabajo, PreguntasEvaluacionPropiedades } from "./valueObjects/PreguntasEvaluacionDeTrabajo"
+import { PuntuacionEvaluacionDeTrabajo, PuntuacionEvaluacionPropiedades } from "./valueObjects/PuntuacionesEvaluacionDeTrabajo"
+import { PuntuacionPromedioEvaluacionDeTrabajo } from "./valueObjects/PuntuacionPromedioEvaluacionDeTrabajo"
 
 type EvaluacionDeTrabajoParaDominioMap<Type> = {
     [Property in keyof Type]

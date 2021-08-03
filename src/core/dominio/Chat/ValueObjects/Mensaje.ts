@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionMensajeInvalido } from "../Excepciones/ExcepcionMensajeInvalido"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionMensajeInvalido } from "../excepciones/ExcepcionMensajeInvalido"
 
 interface MensajePropiedades {
     mensaje: string;

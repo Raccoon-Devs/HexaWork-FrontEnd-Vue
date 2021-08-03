@@ -1,4 +1,4 @@
-import { ValueObject } from "../ClasesBase/ValueObject"
+import { ValueObject } from "../clasesBase/ValueObject"
 import { ExcepcionNombreCompletoInvalido } from "./excepciones/ExcepcionNombreCompleto"
 
 export interface NombreCompletoPropiedades {
