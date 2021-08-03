@@ -3,6 +3,7 @@ import { EvaluacionDeTrabajo } from "@/core/dominio/evaluacionDeTrabajo/Evaluaci
 import { APIPuertoEvaluacionDeTrabajo } from "../../api/evaluacionesDeTrabajo/APIPuertoEvaluacionDeTrabajo";
 import { MappearEvaluacionDeTrabajo } from "../../mappers/MapperEvaluacionDeTrabajo";
 import { UIPuertoEvaluacionDeTrabajo } from "../../ui/evaluacionesDeTrabajo/UIPuertoEvaluacionDeTrabajo";
+import { ServicioRealizarEvaluacionDeTrabajo } from "../../../dominio/servicios/evaluacionesDeTrabajo/ServicioRealizarEvaluacionDeTrabajo"
 import { Mapper } from "../../mappers/Mapper";
 
 export class RealizarEvaluacion extends UIPuertoEvaluacionDeTrabajo{
@@ -11,9 +12,9 @@ export class RealizarEvaluacion extends UIPuertoEvaluacionDeTrabajo{
         try{
 
             const evaluacionDominio = ServicioRealizarEvaluacionDeTrabajo.pasarADominio(evaluacion)
-            
+            console.log("eeeeeeeeeeeeeeeeeeeeer")
             const evaluacionAPI = this.mappearAInfraestructura(new MappearEvaluacionDeTrabajo(), evaluacionDominio)
-
+            console.log("uuuuuuuuuuuuuur")
             return this.realizarEvaluacionAPI(apiPuerto, evaluacionAPI)
         }
         catch(error){

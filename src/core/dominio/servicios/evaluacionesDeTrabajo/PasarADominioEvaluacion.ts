@@ -4,12 +4,13 @@ import { IDEvaluacionDeTrabajo } from "../../evaluacionDeTrabajo/valueObjects/ID
 import { PreguntasEvaluacionDeTrabajo } from "../../evaluacionDeTrabajo/valueObjects/PreguntasEvaluacionDeTrabajo";
 import { PuntuacionEvaluacionDeTrabajo } from "../../evaluacionDeTrabajo/valueObjects/PuntuacionesEvaluacionDeTrabajo";
 import { PuntuacionPromedioEvaluacionDeTrabajo } from "../../evaluacionDeTrabajo/valueObjects/PuntuacionPromedioEvaluacionDeTrabajo";
-import { RelacionDeTrabajo } from "../../relacionDeTrabajo/RelacionDeTrabajo";
-
+import { RelacionDeTrabajo } from "../../RelacionDeTrabajo/RelacionDeTrabajo";
+import { EstadoRelacionDeTrabajo } from "../../relacionDeTrabajo/valueObjects/EstadoRelacionDeTrabajo";
+import { IDRelacionDeTrabajo } from "../../relacionDeTrabajo/valueObjects/IDRelacionDeTrabajo";
 
 export class PasarADominioEvaluacion {
-    public aDominio (atributos: EvaluacionDeTrabajoParaDominio, relacionDeTrabajo: RelacionDeTrabajo): EvaluacionDeTrabajoPropiedades {
-
+    public aDominio (atributos: EvaluacionDeTrabajoParaDominio): EvaluacionDeTrabajoPropiedades {
+        
         return {
             idEvaluacion: IDEvaluacionDeTrabajo.crear(atributos.idEvaluacion),
             preguntas: PreguntasEvaluacionDeTrabajo.crear(
@@ -20,14 +21,21 @@ export class PasarADominioEvaluacion {
                 atributos.preguntas.pregunta5
             ),
             puntuaciones: PuntuacionEvaluacionDeTrabajo.crear(
-                atributos.puntuaciones.puntuacion1,
-                atributos.puntuaciones.puntuacion2,
-                atributos.puntuaciones.puntuacion3,
-                atributos.puntuaciones.puntuacion4,
-                atributos.puntuaciones.puntuacion5
+                4,
+                2,
+                2,
+                2,
+                2
             ),
             puntuacionPromedio: PuntuacionPromedioEvaluacionDeTrabajo.crear(1),
-            trabajo: relacionDeTrabajo,
+            trabajo: RelacionDeTrabajo.crear(
+                {
+                    idRelacion: atributos.trabajo.idRelacion,
+                    postulacion: atributos.trabajo.postulacion,
+                    calendario: atributos.trabajo.calendario,
+                    estadoRelacionDeTrabajo: atributos.trabajo.estadoRelacionDeTrabajo
+                }
+            ),
         }
     }
 }
