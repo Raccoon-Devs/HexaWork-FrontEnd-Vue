@@ -1,6 +1,6 @@
 import { MostrarRelacionesDeTrabajoActivas } from "../../../aplicacion/servicios/MostrarRelacionesDeTrabajoActivas";
 import { UIPuertoRelacionesDeTrabajo } from "../../../aplicacion/ui/relacionesDeTrabajo/UIPuertoRelacionesDeTrabajo";
-import { AdaptadorTIRelacionesDeTrabajo } from "../../adaptadores/adaptadoresIntegracion/adaptadorTIRelacionesDeTrabajoActivas";
+import { AdaptadorTIRelacionesDeTrabajo } from "../../adaptadores/adaptadoresIntegracion/adaptadorTIRelacionesDeTrabajo";
 
 //Test Mostrar Relaciones de Trabajo Activas
 test('Mostrar Relaciones de Trabajo Activas', () => {

@@ -1,10 +1,10 @@
-import { RelacionDeTrabajoParaDominio } from "@/core/dominio/relacionDeTrabajo/DTORelacionDeTrabajo";
-import { RelacionDeTrabajo } from "@/core/dominio/relacionDeTrabajo/RelacionDeTrabajo";
+import { RelacionDeTrabajoParaDominio } from "../../../dominio/relacionDeTrabajo/DTORelacionDeTrabajo";
+import { RelacionDeTrabajo } from "../../../dominio/relacionDeTrabajo/RelacionDeTrabajo";
 import { APIPuertoRelacionesDeTrabajo } from "../../api/relacionesDeTrabajo/APIPuertoRelacionesDeTrabajo";
 import { MappearRelacionDeTrabajo } from "../../mappers/MapperRelacionDeTrabajo";
 import { UIPuertoRelacionesPorEvaluar } from "../../ui/relacionesDeTrabajo/UIPuertoRelacionesPorEvaluar";
 import { Mapper } from "../../mappers/Mapper";
-import { ServicioListarRelacionesPorEvaluar } from "@/core/dominio/servicios/relacionesDeTrabajo/ServicioListarRelacionesPorEvaluar";
+import { ServicioListarRelacionesPorEvaluar } from "../../../dominio/servicios/relacionesDeTrabajo/ServicioListarRelacionesPorEvaluar";
 
 export class MostrarRelacionesDeTrabajoPorEvaluar extends UIPuertoRelacionesPorEvaluar{
 

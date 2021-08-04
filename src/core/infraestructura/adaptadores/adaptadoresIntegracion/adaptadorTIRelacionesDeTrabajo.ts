@@ -1,4 +1,5 @@
 import { APIPuertoRelacionesDeTrabajo } from "../../../aplicacion/api/relacionesDeTrabajo/APIPuertoRelacionesDeTrabajo";
+import { obtenerRelacionesPorEvaluarTI } from "../../persistencia/relacionDeTrabajoPorEvaluarTI";
 import { obtenerRelacionesDeTrabajoTI } from "../../persistencia/relacionesDeTrabajoTI";
 
 export class AdaptadorTIRelacionesDeTrabajo extends APIPuertoRelacionesDeTrabajo{
@@ -10,5 +11,6 @@ export class AdaptadorTIRelacionesDeTrabajo extends APIPuertoRelacionesDeTrabajo
 
     public listarRelacionesPorEvaluar(): any {
 
+        return obtenerRelacionesPorEvaluarTI()
     }
 }
