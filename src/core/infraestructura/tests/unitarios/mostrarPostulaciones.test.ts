@@ -1,6 +1,5 @@
 import { MostrarPostuladosDeOferta } from "../../../aplicacion/servicios/postulaciones/MostrarPostuladosDeOferta";
 import { UIPuertoPostulaciones } from "../../../aplicacion/ui/postulaciones/UIPuertoPostulaciones";
-import { AdaptadorMockPostulaciones } from "../../adaptadores/adaptadoresMock/adaptadorMockPostulaciones";
 import { AdaptadorTUPostulaciones } from "../../adaptadores/adaptadoresUnitarios/adaptadorTUPostulaciones";
 
 //Test Mostrar Postulados de Oferta
