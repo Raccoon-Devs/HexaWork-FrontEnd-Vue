@@ -9,6 +9,6 @@ export class AdaptadorTIEvaluacion extends APIPuertoEvaluacionDeTrabajo{
         return []
     };
     realizarEvaluacionDeTrabajo(dato: EvaluacionDeTrabajoParaDominio) : any {
-        
+       return realizarEvaluacion(dato).mensaje
     }
 }
