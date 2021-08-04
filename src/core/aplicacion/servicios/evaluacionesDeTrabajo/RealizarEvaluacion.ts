@@ -10,9 +10,8 @@ export class RealizarEvaluacion extends UIPuertoEvaluacionDeTrabajo{
 
     public realizarEvaluacionUI(evaluacion: any, apiPuerto: APIPuertoEvaluacionDeTrabajo): EvaluacionDeTrabajoParaDominio[] | string{
         try{
-            //console.log(evaluacion)
             const evaluacionDominio = ServicioRealizarEvaluacionDeTrabajo.pasarADominio(evaluacion)
-            
+
             const evaluacionAPI = this.mappearAInfraestructura(new MappearEvaluacionDeTrabajo(), evaluacionDominio)
             
             return this.realizarEvaluacionAPI(apiPuerto, evaluacionAPI)
