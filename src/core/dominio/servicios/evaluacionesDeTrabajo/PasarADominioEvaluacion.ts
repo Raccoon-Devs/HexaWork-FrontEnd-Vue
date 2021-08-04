@@ -9,7 +9,7 @@ import { EstadoRelacionDeTrabajo } from "../../relacionDeTrabajo/valueObjects/Es
 import { IDRelacionDeTrabajo } from "../../relacionDeTrabajo/valueObjects/IDRelacionDeTrabajo";
 
 export class PasarADominioEvaluacion {
-    public aDominio (atributos: EvaluacionDeTrabajoParaDominio): EvaluacionDeTrabajoPropiedades {
+    public aDominio (atributos: any): EvaluacionDeTrabajoPropiedades {
         
         return {
             idEvaluacion: IDEvaluacionDeTrabajo.crear(atributos.idEvaluacion),
@@ -21,11 +21,7 @@ export class PasarADominioEvaluacion {
                 atributos.preguntas.pregunta5
             ),
             puntuaciones: PuntuacionEvaluacionDeTrabajo.crear(
-                4,
-                2,
-                2,
-                2,
-                2
+                1,1,1,1,1
             ),
             puntuacionPromedio: PuntuacionPromedioEvaluacionDeTrabajo.crear(1),
             trabajo: RelacionDeTrabajo.crear(

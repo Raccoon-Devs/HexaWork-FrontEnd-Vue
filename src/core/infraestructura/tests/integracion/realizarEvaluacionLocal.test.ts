@@ -37,7 +37,7 @@ import { Empleado } from "../../../dominio/empleado/Empleado";
 test('Realizar evaluación de trabajo', () => {
 
     const puertoEvaluacion: UIPuertoEvaluacionDeTrabajo = new RealizarEvaluacion()
-    const oferta = OfertaDeTrabajo.crear(
+    const oferta = 
         {
             idOfertaDeTrabajo: 1,
             tituloTrabajo: "Titulo",
@@ -51,25 +51,21 @@ test('Realizar evaluación de trabajo', () => {
             }   ,
             fechaLimitePostulacionOfertaDeTrabajo: new Date("2020-07-05"),
             calendario: [
-                //Calendario.crear(
-                    {
-                        horaInicio: "2020-08-08 05:05:55",
-                        horaFin: "2020-08-08 06:05:55"
-                    }
-                //)
+                {
+                    horaInicio: "2020-08-08 05:05:55",
+                    horaFin: "2020-08-08 06:05:55"
+                }
             ],
             habilidades: [
-                //Habilidad.crear(
-                    {
-                        idHabilidad: 2,
-                        nombre: "Habilidad 1",
-                        categoria: 2
-                    }
-                //)
+                {
+                    idHabilidad: 2,
+                    nombre: "Habilidad 1",
+                    categoria: 2
+                }
             ],
             requerimientosEspeciales: "Requerimientos especiales",
             certificaciones: [
-                Certificacion.crear({
+                {
                     idCertificacion: "3",
                     nombre: "Certificacion 3",
                     fechaCompletacionCertificacion: "2021-03-03",
@@ -85,14 +81,14 @@ test('Realizar evaluación de trabajo', () => {
                             categoria: 0
                         }],
                     }
-                })
+                }
             ],
             duracion: 5,
             remuneracionPorHora: 3.44,
             estadoOfertaDeTrabajo: 1,
             vacantes: 5
         }
-    )
+    
     
     const evaluacion:EvaluacionDeTrabajoParaDominio  = {
         idEvaluacion: "",
@@ -154,7 +150,8 @@ test('Realizar evaluación de trabajo', () => {
                             codPostal: "1010"
                         }    
                     }),
-                    ofertaDeTrabajo: oferta
+                    ofertaDeTrabajo: oferta,
+                    estadoPostulacion: 1
                 }
             ),
             calendario: [Calendario.crear({horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"})],
