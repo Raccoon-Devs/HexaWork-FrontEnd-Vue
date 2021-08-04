@@ -26,13 +26,30 @@ export class MostrarOfertasDeTrabajo extends UIPuerto {
         }
     }
 
-    public listarOfertasActivasUI(apiPuerto:APIPuerto):OfertaParaDominio[] | {statusCode: number, mensaje: string}{
+    public listarOfertasActivasUI(apiPuerto:APIPuerto): OfertaParaDominio[] | {statusCode: number, mensaje: string}{
         try{
             this.listarOfertasActivasApi(apiPuerto)
             const mapper: Mapper = new MappearOfertaDeTrabajo()
             const ofertas: OfertaParaDominio[] = []
             this.resultado.forEach((oferta : any) => {
                 if (oferta.propiedades.estadoOfertaDeTrabajo.propiedades.estado == 4) {
+                    ofertas.push(mapper.paraInfraestructura(oferta))
+                }
+            })
+            return ofertas
+        }
+        catch(error){
+            return {statusCode: 500, mensaje:error.mensaje}
+        }
+    }
+
+    public listarOfertasCulminadasUI(apiPuerto: APIPuerto): OfertaParaDominio[] | {statusCode: number, mensaje: string}{
+        try{
+            this.listarOfertasCulminadasApi(apiPuerto)
+            const mapper: Mapper = new MappearOfertaDeTrabajo()
+            const ofertas: OfertaParaDominio[] = []
+            this.resultado.forEach((oferta : any) => {
+                if (oferta.propiedades.estadoOfertaDeTrabajo.propiedades.estado == 5) {
                     ofertas.push(mapper.paraInfraestructura(oferta))
                 }
             })
@@ -58,6 +75,16 @@ export class MostrarOfertasDeTrabajo extends UIPuerto {
         this.resultado=[]
         ofertas.forEach((oferta : any) => {
             if (oferta.estadoOfertaDeTrabajo == 4) {
+                this.resultado.push(ServicioListarOfertasDeTrabajo.pasarADominio(oferta))
+            }
+        })
+    }
+
+    public listarOfertasCulminadasApi(apiPuerto: APIPuerto): void {
+        const ofertas = apiPuerto.listarOfertasMock()
+        this.resultado=[]
+        ofertas.forEach((oferta : any) => {
+            if (oferta.estadoOfertaDeTrabajo == 5) {
                 this.resultado.push(ServicioListarOfertasDeTrabajo.pasarADominio(oferta))
             }
         })
