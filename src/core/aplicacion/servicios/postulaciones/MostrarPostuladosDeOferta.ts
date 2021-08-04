@@ -1,11 +1,11 @@
 import { Mapper } from "../../mappers/Mapper";
 import { UIPuertoPostulaciones } from "../../ui/postulaciones/UIPuertoPostulaciones";
 import { APIPuertoPostulaciones } from "../../api/postulaciones/APIPuertoPostulaciones";
-import { PostulacionParaDominio } from "@/core/dominio/postulacion/DTOPostulacion";
-import { Postulacion } from "@/core/dominio/postulacion/Postulacion";
-import { ServicioListarPostulaciones } from "@/core/dominio/servicios/postulaciones/ServicioListarPostulaciones";
+import { PostulacionParaDominio } from "../../../dominio/postulacion/DTOPostulacion";
+import { Postulacion } from "../../../dominio/postulacion/Postulacion";
+import { ServicioListarPostulaciones } from "../../../dominio/servicios/postulaciones/ServicioListarPostulaciones";
 import { MappearPostulacion } from "../../mappers/MapperPostulacion";
-import { OfertaParaDominio } from "@/core/dominio/ofertasDeTrabajo/DTOOfertaDeTrabajo";
+import { OfertaParaDominio } from "../../../dominio/ofertasDeTrabajo/DTOOfertaDeTrabajo";
 
 export class MostrarPostuladosDeOferta extends UIPuertoPostulaciones{
 
