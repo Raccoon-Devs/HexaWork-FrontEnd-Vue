@@ -1,10 +1,11 @@
-import { EvaluacionDeTrabajo } from "@/core/dominio/evaluacionDeTrabajo/EvaluacionDeTrabajo";
+import { EvaluacionDeTrabajo } from "../../../core/dominio/evaluacionDeTrabajo/EvaluacionDeTrabajo";
 import {Mapper} from "./Mapper"
 import { MappearRelacionDeTrabajo } from "./MapperRelacionDeTrabajo";
 
 export class MappearEvaluacionDeTrabajo extends Mapper{
 
     public paraInfraestructura(evaluacion: EvaluacionDeTrabajo){
+ 
         return {
             idEvaluacion: evaluacion.obtenerId(),
             preguntas: evaluacion.obtenerPreguntasEvaluacion(),

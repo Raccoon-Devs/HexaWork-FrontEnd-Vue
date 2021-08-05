@@ -4,6 +4,7 @@ import { PreguntasEvaluacionDeTrabajo, PreguntasEvaluacionPropiedades } from "./
 import { PuntuacionEvaluacionDeTrabajo, PuntuacionEvaluacionPropiedades } from "./valueObjects/PuntuacionesEvaluacionDeTrabajo"
 import { PuntuacionPromedioEvaluacionDeTrabajo } from "./valueObjects/PuntuacionPromedioEvaluacionDeTrabajo"
 import { RelacionDeTrabajo, RelacionDeTrabajoPropiedades } from "../relacionDeTrabajo/RelacionDeTrabajo"
+import { PasarADominio } from "../servicios/PasarADominio"
 
 
 export interface EvaluacionDeTrabajoPropiedades {
@@ -45,6 +46,9 @@ export class EvaluacionDeTrabajo extends Entidad<EvaluacionDeTrabajoPropiedades>
     }
 
     public static crear(atributos: any): EvaluacionDeTrabajo {
+
+        const trabajo = new PasarADominio().relacionDeTrabajoADominio(atributos.trabajo) 
+
         return new EvaluacionDeTrabajo(
             {
                 idEvaluacion: IDEvaluacionDeTrabajo.crear(atributos.idEvaluacion),
@@ -63,7 +67,7 @@ export class EvaluacionDeTrabajo extends Entidad<EvaluacionDeTrabajoPropiedades>
                     atributos.puntuaciones.puntuacion5,
                 ),
                 puntuacionPromedio: PuntuacionPromedioEvaluacionDeTrabajo.crear(atributos.puntuacionPromedio),
-                trabajo: RelacionDeTrabajo.crear(atributos.trabajo)
+                trabajo: RelacionDeTrabajo.crear(trabajo)
             }
         )
     }
