@@ -5,6 +5,6 @@ import { AdaptadorTUCertificaciones } from "../../adaptadores/adaptadoresUnitari
 //Test Mostrar Certificaciones
 test('Mostrar Certificaciones', () => {
 
-    const puertoOferta: UIPuertoCertificaciones = new MostrarCertificaciones()
-    expect(puertoOferta.listarCertificacionesUI(new AdaptadorTUCertificaciones()).length).toBe(7);
+    const puertoCertificaciones: UIPuertoCertificaciones = new MostrarCertificaciones()
+    expect(puertoCertificaciones.listarCertificacionesUI(new AdaptadorTUCertificaciones()).length).toBe(7);
 });
