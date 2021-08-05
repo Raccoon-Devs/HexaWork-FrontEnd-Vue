@@ -2,5 +2,5 @@ import { EvaluacionDeTrabajoParaDominio } from "@/core/dominio/evaluacionDeTraba
 import { APIPuertoEvaluacionDeTrabajo } from "../../api/evaluacionesDeTrabajo/APIPuertoEvaluacionDeTrabajo";
 
 export abstract class UIPuertoEvaluacionDeTrabajo{
-    abstract realizarEvaluacionUI(evaluacion: EvaluacionDeTrabajoParaDominio, apiPuerto: APIPuertoEvaluacionDeTrabajo) : any;
+    abstract realizarEvaluacionUI(evaluacion: any, apiPuerto: APIPuertoEvaluacionDeTrabajo) : any;
 }

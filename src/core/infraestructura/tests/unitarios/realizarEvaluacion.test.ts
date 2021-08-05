@@ -1,4 +1,4 @@
-import { AdaptadorTIEvaluacion } from "../../adaptadores/adaptadoresIntegracion/adaptadorTIEvaluacion";
+import { AdaptadorTUEvaluacion } from "../../adaptadores/adaptadoresUnitarios/adaptadorTUEvaluacion";
 import { UIPuertoEvaluacionDeTrabajo } from "../../../aplicacion/ui/evaluacionesDeTrabajo/UIPuertoEvaluacionDeTrabajo";
 import { RealizarEvaluacion } from "../../../aplicacion/servicios/evaluacionesDeTrabajo/RealizarEvaluacion";
 
@@ -202,7 +202,7 @@ test('Realizar evaluación de trabajo', () => {
         trabajo: relacionesDeTrabajo,
     }
     
-    expect(puertoEvaluacion.realizarEvaluacionUI(evaluacion, new AdaptadorTIEvaluacion())).toEqual("Evaluación realizada con éxito");
+    expect(puertoEvaluacion.realizarEvaluacionUI(evaluacion, new AdaptadorTUEvaluacion())).toEqual("Evaluación realizada con éxito");
 });
 
 //Realizar evaluación de trabajo
@@ -405,5 +405,5 @@ test('Evaluacion de trabajo titulo de la oferta', () => {
         trabajo: relacionesDeTrabajo,
     }
     
-    expect(puertoEvaluacion.realizarEvaluacionUI(evaluacion, new AdaptadorTIEvaluacion())).toEqual("El titulo: \"\" es inválido, el título no puede estar vacío");
+    expect(puertoEvaluacion.realizarEvaluacionUI(evaluacion, new AdaptadorTUEvaluacion())).toEqual("El titulo: \"\" es inválido, el título no puede estar vacío");
 });

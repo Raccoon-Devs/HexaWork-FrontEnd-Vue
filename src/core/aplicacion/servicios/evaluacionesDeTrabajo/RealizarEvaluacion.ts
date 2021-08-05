@@ -8,7 +8,7 @@ import { Mapper } from "../../mappers/Mapper";
 
 export class RealizarEvaluacion extends UIPuertoEvaluacionDeTrabajo{
 
-    public realizarEvaluacionUI(evaluacion: EvaluacionDeTrabajoParaDominio, apiPuerto: APIPuertoEvaluacionDeTrabajo): EvaluacionDeTrabajoParaDominio[] | string{
+    public realizarEvaluacionUI(evaluacion: any, apiPuerto: APIPuertoEvaluacionDeTrabajo): EvaluacionDeTrabajoParaDominio[] | string{
         try{
 
             const evaluacionDominio = ServicioRealizarEvaluacionDeTrabajo.pasarADominio(evaluacion)
