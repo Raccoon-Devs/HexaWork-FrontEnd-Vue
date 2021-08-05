@@ -88,6 +88,7 @@
   import { UIPuertoLogin } from '../../core/aplicacion/ui/login/UIPuertoLogin'
   import { Autenticar } from '../../core/aplicacion/servicios/login/AutenticarUsuario'
   import { AdaptadorTILogin } from '@/core/infraestructura/adaptadores/adaptadoresIntegracion/adaptadorTILogin'
+  import { AdaptadorSpringLogin } from '../../core/infraestructura/adaptadores/adaptadoresSpring/adaptadorSpringLogin'
 import router from '../router'
 
   export default Vue.extend({
@@ -112,15 +113,15 @@ import router from '../router'
             iniciarSesion(){
                 
                 const puertoLogin: UIPuertoLogin = new Autenticar()
-                let respuesta = puertoLogin.autenticarUsuarioUI(this.datosLogin, new AdaptadorTILogin())
+                let respuesta = puertoLogin.autenticarUsuarioUI(this.datosLogin, new AdaptadorSpringLogin())
 
-                if (respuesta != "Login Exitoso"){
-                    this.snackbarLogin.mensaje = respuesta
-                    this.snackbarLogin.mostrar = true
-                }
-                else{
-                    router.push("/oferta")
-                }
+                // if (respuesta != "Login Exitoso"){
+                //     this.snackbarLogin.mensaje = respuesta
+                //     this.snackbarLogin.mostrar = true
+                // }
+                // else{
+                //     router.push("/oferta")
+                // }
 
             }
         }

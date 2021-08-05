@@ -19,6 +19,7 @@
   "dependencies": {
     "@babel/preset-typescript": "^7.14.5",
     "@types/jest": "^26.0.23",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "serve-static": "^1.14.1",
