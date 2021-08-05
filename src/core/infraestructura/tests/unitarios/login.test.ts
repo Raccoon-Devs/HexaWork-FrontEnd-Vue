@@ -10,5 +10,5 @@ test('Login de usuario exitoso', () => {
         correo: "correo@gmail.com",
         password: "12345678"
     }
-    expect(puertoLogin.autenticarUsuarioUI(datosLogin.correo, new AdaptadorTULogin())).toEqual("Correo o contraseña inválido")
+    expect(puertoLogin.autenticarUsuarioUI(datosLogin.correo, new AdaptadorTULogin())).toEqual("Login Exitoso")
 });
