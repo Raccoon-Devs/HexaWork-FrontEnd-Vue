@@ -26,12 +26,12 @@
        },
        computed: {
            show: {
-               get () {
-                   return this['value']
-               },
-               set (value) {
-                   this.$emit('input', value)
-               }
+               // get () {
+               //     return this['value']
+               // },
+               // set (value) {
+               //     this.$emit('input', value)
+               // }
            }
        }
    })

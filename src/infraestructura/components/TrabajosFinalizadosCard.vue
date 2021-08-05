@@ -84,7 +84,7 @@
     export default Vue.extend({
         name: 'TrabajosFinalizadosCard',
         data: () => ({
-            ofertas: [],
+            ofertas: [{}],
             columnas_tabla: [
                 {
                     text: 'Oferta',
