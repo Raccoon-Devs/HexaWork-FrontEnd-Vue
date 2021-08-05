@@ -7,7 +7,7 @@
             <v-data-table
                 :headers="columnas_tabla"
                 :items="relaciones"
-                :items-per-page="5"
+                :items-per-page="2"
                 class="elevation-1"
             >
                 <template v-slot:[`item.accion`]>
@@ -78,7 +78,7 @@
                 this.relaciones = []
                 relacionesEnElRepo.forEach((relacion: any) => {
                     this.relaciones.push(relacion)
-                })    
+                })
                 this.relaciones.forEach((relacion: any) => {
                     relacion.empleado = `${relacion.postulacion.empleado.nombreCompleto.primerNombre}
                                         ${relacion.postulacion.empleado.nombreCompleto.primerApellido}`
