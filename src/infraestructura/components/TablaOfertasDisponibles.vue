@@ -39,20 +39,93 @@
 				locale="es-VE"
 				fixed-header
 			>
-				<template v-slot:[`item.fechaPublicacion`]="{ item }">
-					<span class="grey--text" v-if="!item.fechaPublicacion">Sin Definir</span>
-					<span v-else v-text="item.fechaPublicacion.propiedades.fechaPublicacion"></span>
+				<!-- <template v-slot:[`item.direccion`]="{ item }">
+					<v-icon dense color="primary" @click="item"> mdi-eye </v-icon>
 				</template>
-				<template v-slot:[`item.remuneracion`]="{ item }">
-					<span v-if="item.remuneracion.divisa == 'dolar'" v-text="`$ ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`"></span>
-					<span v-else-if="item.remuneracion.divisa == 'euro'" v-text="`€ ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`"></span>
-					<span v-else v-text="`Bs. ${item.remuneracion.monto} por ${item.remuneracion.frecuencia}`"></span>
+				<template v-slot:[`item.calendario`]="{ item }">
+					<v-icon dense color="primary" @click="item"> mdi-eye </v-icon>
+				</template>
+				<template v-slot:[`item.habilidades`]="{ item }">
+					<v-icon dense color="primary" @click="item"> mdi-eye </v-icon>
+				</template>
+				<template v-slot:[`item.requerimientosEspeciales`]="{ item }">
+					<v-icon dense color="primary" @click="item"> mdi-eye </v-icon>
+				</template>
+				<template v-slot:[`item.certificaciones`]="{ item }">
+					<v-icon dense color="primary" @click="item"> mdi-eye </v-icon>
+				</template> -->
+				<template v-slot:[`item.estadoOfertaDeTrabajo`]="{ item }">
+					<span v-if="item.estadoOfertaDeTrabajo == 0">Creada</span>
+					<span v-else-if="item.estadoOfertaDeTrabajo == 1">Abierta a Postulación</span>
+					<span v-else-if="item.estadoOfertaDeTrabajo == 2">Postulaciones Cerradas</span>
+					<span v-else-if="item.estadoOfertaDeTrabajo == 3">Asignada</span>
+					<span v-else-if="item.estadoOfertaDeTrabajo == 4">En progreso</span>
+					<span v-else-if="item.estadoOfertaDeTrabajo == 5">Finalizada</span>
+					<span v-else>Cancelada</span>
+				</template>
+				<template v-slot:[`item.duracion`]="{ item }">
+					<span v-text="`${item.duracion} hora`" v-if="item.duracion == 1"></span>
+					<span v-text="`${item.duracion} horas`" v-else></span>
+				</template>
+				<template v-slot:[`item.remuneracionPorHora`]="{ item }">
+					<span v-text="`$ ${item.remuneracionPorHora} por hora`"></span>
 				</template>
 				<template v-slot:[`item.acciones`]="{ item }">
-					<v-icon dense color="green" @click="publicarOferta(item)" v-if="!item.fechaPublicacion"> mdi-clipboard-check </v-icon>
+					<v-icon dense color="primary" @click="mostrarDatosDeOferta(item)"> mdi-eye </v-icon>
+					<v-icon dense color="black" @click="listarPostulantesDeOferta(item)" v-if="item.estadoOfertaDeTrabajo != 0"> mdi-account-multiple </v-icon>
+					<v-icon dense color="green" @click="publicarOferta(item)" v-if="item.estadoOfertaDeTrabajo == 0"> mdi-clipboard-check </v-icon>
 				</template>
 			</v-data-table>
 		</v-card>
+
+		<!-- Datos Oferta de Trabajo -->
+		<v-dialog v-model="datosOferta" class="text-center" max-width="450">
+            <v-card rounded="md">
+                <v-card-title>
+                    <span class="d-none d-sm-flex"> Datos de la Oferta de Trabajo </span>
+                    <b class="d-flex d-sm-none text-subtitle-1 font-weight-bold"> Datos de la Oferta de Trabajo </b>
+                    <v-spacer> </v-spacer>
+                    <v-btn icon @click="datosOferta = false"><v-icon> mdi-close </v-icon></v-btn>
+                </v-card-title>
+                <v-card-subtitle class="grey--text text--darken-2 subtitle-1 d-flex justify-center justify-sm-start"> 
+                    <span v-text="` ${oferta.tituloTrabajo} `"></span>
+                </v-card-subtitle>
+            </v-card>
+        </v-dialog>
+
+		<!-- Postulaciones -->
+		<v-dialog v-model="verPostulaciones" class="text-center" max-width="450">
+            <v-card rounded="md">
+                <v-card-title>
+                    <span class="d-none d-sm-flex"> Postulaciones </span>
+                    <b class="d-flex d-sm-none text-subtitle-1 font-weight-bold"> Postulaciones </b>
+                    <v-spacer> </v-spacer>
+                    <v-btn icon @click="verPostulaciones = false"><v-icon> mdi-close </v-icon></v-btn>
+                </v-card-title>
+				<div v-if="postulaciones.length > 0">
+					<v-col>
+						<v-list>
+							<template v-for="(postulacion, index) in postulaciones">
+								<v-list-item :key="postulacion.idPostulacion">
+									<v-list-item-icon class="d-none d-sm-flex">
+                                            <v-icon color="indigo"> mdi-account </v-icon>
+                                        </v-list-item-icon>
+									<v-list-item-content>
+										<v-list-item-title> {{postulacion.apellido}}, {{postulacion.nombre}} </v-list-item-title>
+										<v-list-item-subtitle><b>SSN:</b> {{postulacion.ssn}} </v-list-item-subtitle>
+									</v-list-item-content>
+								</v-list-item>
+								<v-divider v-if="index < postulaciones.length -1" :key="index + 'a'"></v-divider>
+							</template>
+						</v-list>
+					</v-col>
+				</div>
+                <v-card-subtitle class="grey--text text--darken-2" v-else>
+                    <br>
+                    No se encontraron postulantes.
+                </v-card-subtitle>
+            </v-card>
+        </v-dialog>
   </v-container>
 </template>
 
@@ -60,10 +133,12 @@
 import Vue from 'vue'
 import {UIPuerto} from '../../core/aplicacion/ui/UIPuerto'
 import {UIPuertoPublicarOferta} from '../../core/aplicacion/ui/UIPuertoPublicarOferta'
+import {UIPuertoPostulaciones} from '../../core/aplicacion/ui/postulaciones/UIPuertoPostulaciones'
 import {MostrarOfertasDeTrabajo} from '../../core/aplicacion/servicios/MostrarOfertasDeTrabajo'
+import {MostrarPostuladosDeOferta} from '../../core/aplicacion/servicios/postulaciones/MostrarPostuladosDeOferta'
 import {PublicarOfertaDeTrabajo} from '../../core/aplicacion/servicios/PublicarOfertaDeTrabajo'
-import { AdaptadorMockOferta } from '@/core/infraestructura/adaptadorMockOferta'
-import { IDOferta } from '@/core/dominio/OfertasDeTrabajo/ValueObjects/IDOferta'
+import { AdaptadorMockOferta } from '../../core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockOferta'
+import { AdaptadorMockPostulaciones } from '../../core/infraestructura/adaptadores/adaptadoresMock/adaptadorMockPostulaciones'
 import FormularioOferta  from '../components/FormularioOferta.vue'
 
 export default Vue.extend({
@@ -74,65 +149,89 @@ export default Vue.extend({
 	}, 
 
 	data: () => ({
-		ofertas : [{
-			titulo: "",
-			cargo: "",
-			descripcion: "",
-			duracion: "",
-			direccion: {
-				calle1: "",
-				calle2: "",
-				ciudad: "",
-				estado: "",
-				zip: ""
-			},
-			remuneracion: {
-				monto: "",
-				divisa: "",
-				frecuencia: ""
-			},
-			vacantes: "",
-			fechaLimite: ""
+		ofertas: [{}],
+		postulaciones: [{
+			nombre: null,
+			apellido: null,
+			ssn: null
 		}],
+		datosOferta: false,
+		verPostulaciones: false,
+		oferta: {},
 		columnas_tabla: [
 			{
 				text: 'Título',
 				align: 'center',
 				sortable: true,
 				filterable: true,
-				value: 'titulo',
+				value: 'tituloTrabajo',
 				class: 'primary--text font-weight-bold',
 			},
+			// {
+			// 	text: 'Dirección',
+			// 	align: 'center',
+			// 	sortable: false,
+			// 	value: 'direccion',
+			// 	class: 'primary--text font-weight-bold'
+			// },
 			{
-				text: 'Descripción',
+				text: 'Fecha Límite de Postulación',
+				align: 'center',
+				sortable: true,
+				value: 'fechaLimitePostulacionOfertaDeTrabajo',
+				class: 'primary--text font-weight-bold'
+			},
+			// {
+			// 	text: 'Calendario',
+			// 	align: 'center',
+			// 	sortable: false,
+			// 	value: 'calendario',
+			// 	class: 'primary--text font-weight-bold'
+			// },
+			// {
+			// 	text: 'Habilidad(es)',
+			// 	align: 'center',
+			// 	sortable: false,
+			// 	value: 'habilidades',
+			// 	class: 'primary--text font-weight-bold'
+			// },
+			// {
+			// 	text: 'Requerimiento(s) Especial(es)',
+			// 	align: 'center',
+			// 	sortable: false,
+			// 	value: 'requerimientosEspeciales',
+			// 	class: 'primary--text font-weight-bold'
+			// },
+			// {
+			// 	text: 'Certificación(es)',
+			// 	align: 'center',
+			// 	sortable: false,
+			// 	value: 'certificaciones',
+			// 	class: 'primary--text font-weight-bold'
+			// },
+			{
+				text: 'Estado de la Oferta',
 				align: 'center',
 				sortable: false,
-				value: 'descripcion.propiedades.descripcion',
+				value: 'estadoOfertaDeTrabajo',
 				class: 'primary--text font-weight-bold'
 			},
 			{
-				text: 'Fecha de Publicación',
+				text: 'Duración',
 				align: 'center',
 				sortable: true,
-				value: 'fechaPublicacion',
-				class: 'primary--text font-weight-bold',
-			},
-			{
-				text: 'Fecha Limite de Postulación',
-				align: 'center',
-				sortable: true,
-				value: 'fechaLimite',
+				value: 'duracion',
 				class: 'primary--text font-weight-bold'
 			},
 			{
-				text: 'Pago',
+				text: 'Pago x Hora',
 				align: 'center',
 				sortable: true,
-				value: 'remuneracion',
+				value: 'remuneracionPorHora',
 				class: 'primary--text font-weight-bold'
 			},
 			{
-				text: 'Publicar',
+				text: 'Acciones',
 				align: 'center',
 				sortable: false,
 				value: 'acciones',
@@ -143,17 +242,12 @@ export default Vue.extend({
 		ofertaPublicacion: false
 	}),
 	methods: {
-		eliminarOferta(id: IDOferta) {
-			const index = this.ofertas.findIndex((o: any) => o.id == id)
-			this.ofertas.splice(index,1)
-		},
 		listarOfertas(){
 			let controlador: UIPuerto = new MostrarOfertasDeTrabajo()
 			let ofertasEnElRepo = controlador.listarOfertasUI(new AdaptadorMockOferta())
 			this.ofertas = []
-			
 			ofertasEnElRepo.forEach((oferta: any) => {
-				this.ofertas.push({...oferta, id:Object.values(oferta.id.valor)})
+				this.ofertas.push(oferta)
 			})
 		},
 		publicarOferta(oferta: any) {
@@ -161,6 +255,23 @@ export default Vue.extend({
 			controlador.publicarOfertaUI(oferta, new AdaptadorMockOferta())
 			this.listarOfertas()
 			this.ofertaPublicacion = true
+		},
+		listarPostulantesDeOferta(oferta: any) {
+			let controlador: UIPuertoPostulaciones = new MostrarPostuladosDeOferta()
+			let postulacionesEnElRepo = controlador.listarPostulacionesUI(new AdaptadorMockPostulaciones(), oferta)
+			this.postulaciones = []
+			postulacionesEnElRepo.forEach((postulacion: any) => {
+				this.postulaciones.push({
+					nombre: postulacion.empleado.nombreCompleto.primerNombre,
+					apellido: postulacion.empleado.nombreCompleto.primerApellido,
+					ssn: postulacion.empleado.ssn
+				})
+			})
+			this.verPostulaciones = true
+		},
+		mostrarDatosDeOferta(oferta: any) {
+			this.oferta = oferta
+			this.datosOferta = true
 		}
 	},
 	mounted() {

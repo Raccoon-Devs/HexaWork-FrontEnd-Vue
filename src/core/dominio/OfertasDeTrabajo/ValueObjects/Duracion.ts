@@ -1,7 +1,7 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionDuracionInvalida } from "../Excepciones/ExcepcionDuracionInvalida"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionDuracionInvalida } from "../excepciones/ExcepcionDuracionInvalida"
 
-interface DuracionPropiedades {
+export interface DuracionPropiedades {
     totalHorasRequeridas: number
 }
   

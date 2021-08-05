@@ -1,70 +1,144 @@
 let ofertas: any[] = [
     {
-        descripcion: {
-            propiedades: {
-                descripcion: "Se requiere de un desarrollador para realizar aplicaciones móviles"
-            }
-        },
+        idOfertaDeTrabajo: "",
+        tituloTrabajo: "Título crear oferta",
+        //empleador: Empleador,
         direccion: {
-            calle1: "Principal",
-            calle2: "Oeste",
-            ciudad: "Caracas",
-            estado:"Distrito Capital",
-            zip:"1011"
+            calle1: "calle1",
+            calle2: "calle2",
+            ciudad: "ciudad",
+            estado: "estado",
+            codPostal: "codigoPos"
         },
-        duracion: "8",
-        fechaLimite: "2020-05-05",
-        titulo: "Se necesita desarrollador web",
-        vacante: "1",
-        remuneracion: {
-            monto: "700",
-            divisa:"dolar",
-            frecuencia:"mes"
-        },
-        cargo: {
-            propiedades: {
-                cargo : "Desarrollador Web Junior"
+        fechaLimitePostulacionOfertaDeTrabajo: "2020-07-05",
+        calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
             }
-        },
-        estadoOfertaDeTrabajo: 0,
-        empleador: {
-            id: "5",
-            nombreEmpresa: {
-                nombre: "Raccoon Developers",
-                rif: "J500805050"
-            },
-            direccion: {
-                propiedades: {
-                    calle1: "Raccoon",
-                    calle2: "Oeste",
-                    ciudad: "Caracas",
-                    estado: "Distrito Capital",
-                    zip: "1011"
-                }
-            } ,
-            infoEmpleador: {
-                propiedades: {
-                    nombreCompleto: "Alejandro Daniel Pérez Verde",
-                    cargoDeTrabajo: "Desarrollador Senior",
-                    numeroDeTelefono: "+584141234567",
-                    correo: "alejandroperez@raccoondevelopers.com"
-                }
-            },
-            rol:{
-                propiedades:{
-                    nombre: "Gerente"
+        ],
+        requerimientosEspeciales: "RequerimientosEspeciales",
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-03",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
                 }
             }
+        ],
+        duracion: 5,
+        remuneracionPorHora: 3.44,
+        estadoOfertaDeTrabajo: 1,
+        vacantes: 5
+    },
+    {
+        idOfertaDeTrabajo: "2",
+        tituloTrabajo: "Título oferta",
+        //empleador: Empleador,
+        direccion: {
+            calle1: "calle1",
+            calle2: "calle2",
+            ciudad: "ciudad",
+            estado: "estado",
+            codPostal: "codigoPos"
         },
-        id: {
-            valor: "1"
-        }
+        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
+        requerimientosEspeciales: "RequerimientosEspeciales",
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-20",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
+        duracion: 5,
+        remuneracionPorHora: 3.44,
+        estadoOfertaDeTrabajo: 5,
+        vacantes: 5
+    },
+    {
+        idOfertaDeTrabajo: "3",
+        tituloTrabajo: "Título oferta",
+        //empleador: Empleador,
+        direccion: {
+            calle1: "calle1",
+            calle2: "calle2",
+            ciudad: "ciudad",
+            estado: "estado",
+            codPostal: "codigoPos"
+        },
+        fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
+        calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
+        habilidades: [
+            {
+                idHabilidad: "1",
+                categoria: 1,
+                nombre: "HabilidadesBlandas"
+            }
+        ],
+        requerimientosEspeciales: "RequerimientosEspeciales",
+        certificaciones: [
+            {
+                idCertificacion: "3",
+                nombre: "Certificacion 3",
+                fechaCompletacionCertificacion: "2021-03-20",
+                curso: {
+                    idCurso: "3",
+                    codigo: "Curso 3",
+                    titulo: "Titulo curso 3",
+                    imagenPortada: "Imagen",
+                    estadoCurso: 0,
+                    habilidades: [{
+                        idHabilidad: '1',
+                        nombre: 'Habilidades blandas',
+                        categoria: 0
+                    }],
+                }
+            }
+        ],
+        duracion: 5,
+        remuneracionPorHora: 3.44,
+        estadoOfertaDeTrabajo: 5,
+        vacantes: 5
     }
 ]
 
 export function actualizarOferta(oferta: any): any {
     ofertas.map(o => {
-        if (oferta._id.valor == o.id.valor) {
+        if (oferta._idOfertaTrabajo == o.idOfertaTrabajo) {
             o.estadoOfertaDeTrabajo = 1
         }
     })
@@ -73,11 +147,19 @@ export function actualizarOferta(oferta: any): any {
 
 export function crearOferta(oferta: any): any{
 
-    oferta.id.valor = (ofertas.length+1).toString()
+    oferta = {
+        ...oferta,
+        idOfertaTrabajo : (ofertas.length+1).toString()
+    }
+    // oferta.id.valor = (ofertas.length+1).toString()
     ofertas.push(oferta)
     return {statusCode: 201, mensaje: "Oferta Creada Con éxito"}
 }
 
 export function obtenerOfertas():any{
+    return ofertas
+}
+
+export function obtenerOfertasMock():any{
     return ofertas
 }

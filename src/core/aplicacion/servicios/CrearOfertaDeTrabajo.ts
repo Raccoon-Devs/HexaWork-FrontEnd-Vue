@@ -1,5 +1,5 @@
-import { OfertaParaDominio } from "@/core/dominio/OfertasDeTrabajo/DTOOfertaDeTrabajo";
-import { OfertaDeTrabajo } from "@/core/dominio/OfertasDeTrabajo/OfertaDeTrabajo";
+import { OfertaParaDominio } from "@/core/dominio/ofertasDeTrabajo/DTOOfertaDeTrabajo";
+import { OfertaDeTrabajo } from "@/core/dominio/ofertasDeTrabajo/OfertaDeTrabajo";
 import { ServicioCrearOfertaDeTrabajo } from "../../dominio/servicios/ServicioCrearOfertaDeTrabajo";
 import { APIPuerto } from "../api/APIPuerto";
 import { Mapper } from "../mappers/Mapper";
@@ -10,16 +10,16 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
 
     public crearOfertaUI(oferta: OfertaParaDominio, apiPuerto: APIPuerto){
 
-        try{ 
+        try{
             const ofertaDominio = ServicioCrearOfertaDeTrabajo.pasarADominio(oferta)
-
+            
             const ofertaApi = this.mappearAInfraestructura(new MappearOfertaDeTrabajo(), ofertaDominio)
 
             return this.crearOfertaApi(apiPuerto, ofertaApi)
     
         }
         catch(error){
-            return {statusCode:422, mensaje:error.mensaje}
+            return error.mensaje
         }
 
     }
@@ -30,8 +30,7 @@ export class CrearOfertaDeTrabajo extends UIPuertoCrearOferta{
     }
 
     public crearOfertaApi(apiPuerto: APIPuerto, ofertaDeTrabajo: OfertaParaDominio):void{
-        
-        return apiPuerto.crearOferta(ofertaDeTrabajo)
+        return apiPuerto.crearOferta(ofertaDeTrabajo).mensaje
     }
     
 }

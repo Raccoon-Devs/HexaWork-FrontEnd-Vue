@@ -1,10 +1,8 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionRemuneracionInvalida } from "../Excepciones/ExcepcionRemuneracionInvalida"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionRemuneracionInvalida } from "../excepciones/ExcepcionRemuneracionInvalida"
 
 export interface RemuneracionPropiedades {
-    monto: number,
-    frecuencia: string,
-    divisa: string
+    remuneracion: number
 }
   
 export class Remuneracion extends ValueObject<RemuneracionPropiedades> {
@@ -13,48 +11,21 @@ export class Remuneracion extends ValueObject<RemuneracionPropiedades> {
         super(propiedades)
     }
 
-    obtenerMonto(): number{
-        return this.propiedades.monto
+    obtenerRemuneracion(): number{
+        return this.propiedades.remuneracion
     }
 
-    obtenerFrecuencia(): string{
-        return this.propiedades.frecuencia
-    }
 
-    obtenerDivisa(): string{
-        return this.propiedades.divisa
-    }
+    public static crear(remuneracion: number): Remuneracion{
 
-    obtenerRemuneracion(): RemuneracionPropiedades{
-        return this.propiedades
-    }
-
-    public static crear(monto: number, frecuencia: string, divisa:string): Remuneracion{
-
-        if(monto === 0 || monto === null || monto === undefined || monto.toString() === ""){
-            throw new ExcepcionRemuneracionInvalida<typeof monto >(`El monto: ${monto} es inválido, no puede estar vacío`, monto)
+        if(remuneracion === 0 || remuneracion === null || remuneracion === undefined || remuneracion.toString() === ""){
+            throw new ExcepcionRemuneracionInvalida<typeof remuneracion >(`El monto: ${remuneracion} es inválido, no puede estar vacío`, remuneracion)
         }
 
-        if(monto <0){
-            throw new ExcepcionRemuneracionInvalida<typeof monto >(`El monto: ${monto} es inválido, no puede ser negativo`, monto)
+        if(remuneracion <0){
+            throw new ExcepcionRemuneracionInvalida<typeof remuneracion >(`El monto: ${remuneracion} es inválido, no puede ser negativo`, remuneracion)
         }
 
-        if(frecuencia.trim() === "" || frecuencia.trim() === null || frecuencia.trim() === undefined){
-            throw new ExcepcionRemuneracionInvalida<typeof frecuencia >(`La frecuencia de pago: ${frecuencia} es inválida, no puede estar vacía`, frecuencia)
-        }
-
-        if(frecuencia.trim() !== "hora" && frecuencia.trim() !== "mes" && frecuencia.trim() !== "semana" && frecuencia.trim() !== "total"){
-            throw new ExcepcionRemuneracionInvalida<typeof frecuencia >(`La frecuencia de pago: ${frecuencia} es inválida, debe ser por hora, mes o semana`, frecuencia)
-        }
-
-        if(divisa === "" || divisa === null || divisa === undefined){
-            throw new ExcepcionRemuneracionInvalida<typeof divisa >(`La divisa del pago: ${divisa} es inválida, no puede estar vacía`, divisa)
-        }
-
-        if(divisa !== "euro" && divisa !== "dolar" && divisa !== "bolivar"){
-            throw new ExcepcionRemuneracionInvalida<typeof divisa >(`La divisa del pago: ${divisa} es inválida, debe ser euro, dolar o bolivares`, divisa)
-        }
-
-        return new Remuneracion({monto, frecuencia, divisa})
+        return new Remuneracion({remuneracion})
     }
 }

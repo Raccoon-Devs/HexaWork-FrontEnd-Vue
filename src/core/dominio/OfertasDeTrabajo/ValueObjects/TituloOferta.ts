@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionTituloInvalido } from "../Excepciones/ExcepcionTituloInvalido"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionTituloInvalido } from "../excepciones/ExcepcionTituloInvalido"
 
 interface TituloOfertaPropiedades {
     titulo: string;

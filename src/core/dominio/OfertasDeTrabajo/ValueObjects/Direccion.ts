@@ -1,5 +1,5 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
-import { ExcepcionDireccionInvalida } from "../Excepciones/ExcepcionDireccionInvalida"
+import {ValueObject} from "../../clasesBase/ValueObject"
+import { ExcepcionDireccionInvalida } from "../excepciones/ExcepcionDireccionInvalida"
 
 interface DireccionOfertaPropiedades {
     calle1: string
@@ -54,7 +54,7 @@ export class Direccion extends ValueObject<DireccionOfertaPropiedades> {
         }
 
         if(estado === "" || estado === null || estado === undefined){
-            throw new ExcepcionDireccionInvalida<typeof estado >(`El estado: ${estado} es inválido, no puede estar vacío`, estado)
+            throw new ExcepcionDireccionInvalida<typeof estado >(`El estadoooooooooop: ${estado} es inválido, no puede estar vacío`, estado)
         }
 
         if(zip === "" || zip === null || zip === undefined){

@@ -1,4 +1,4 @@
-import {ValueObject} from "../../ClasesBase/ValueObject"
+import {ValueObject} from "../../clasesBase/ValueObject"
 
 export interface TiempoLimitePostulacionPropiedades {
     fechaLimite: Date
@@ -15,7 +15,6 @@ export class TiempoLimitePostulacion extends ValueObject<TiempoLimitePostulacion
     }
 
     public static crear(fechaLimite: Date): TiempoLimitePostulacion{
-
         return new TiempoLimitePostulacion({fechaLimite})
     }
 }

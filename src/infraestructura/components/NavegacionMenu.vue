@@ -77,9 +77,24 @@
                 route: '/Empresa'
             },
             {
-                label: 'Gestionar Ofertas de Trabajo',
+                label: 'Gestionar Ofertas',
                 icon: 'mdi-briefcase-outline',
-                route: '/Ofertas'
+                route: '/oferta'
+            },
+            {
+                label: 'Relaciones Activas',
+                icon: 'mdi-account-supervisor-outline',
+                route: '/relaciones-activas'
+            },
+            // {
+            //     label: 'Relaciones por Evaluar',
+            //     icon:'mdi-clipboard-text',
+            //     route: '/relaciones-evaluar'
+            // },
+            {
+                label: 'Ofertas culminadas',
+                icon: ' mdi-contacts-outline',
+                route: '/Ofertas-culminadas'
             },
             {
                 label: 'Cerrar Sesión',
