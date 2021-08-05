@@ -2,8 +2,9 @@ import { MostrarOfertasDeTrabajo } from "../../../aplicacion/servicios/MostrarOf
 import { UIPuerto } from "../../../aplicacion/ui/UIPuerto";
 import { AdaptadorTIOferta } from "../../adaptadores/adaptadoresIntegracion/adaptadorTIOferta";
 
-test('Mostrar ofertas de trabajo', () => {
+//Test Mostrar Oferta Culminadas
+test('Mostrar Oferta de Trabajo Culminadas', () => {
 
-    const puertoConsultarOferta: UIPuerto = new MostrarOfertasDeTrabajo()
-    expect(puertoConsultarOferta.listarOfertasUI(new AdaptadorTIOferta()).length).toBe(3)
+    const puertoOferta: UIPuerto = new MostrarOfertasDeTrabajo()
+    expect(puertoOferta.listarOfertasCulminadasUI(new AdaptadorTIOferta()).length).toBe(2);
 });
