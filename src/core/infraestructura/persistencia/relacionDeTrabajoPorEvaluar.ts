@@ -1,13 +1,13 @@
 const experiencias: any = [
     {
         idExperiencia: '1',
-        tituloTrabajo: 'Titulo Trabajo 1',
+        tituloTrabajo: 'Traductor',
         nombreCompania: 'Compañia 1',
         categoria: 0
     },
     {
         idExperiencia: '2',
-        tituloTrabajo: 'Titulo Trabajo 2',
+        tituloTrabajo: 'Diseñador Web',
         nombreCompania: 'Compañia 2',
         categoria: 1
     },
@@ -33,7 +33,7 @@ const cursos: any = [
         titulo: 'Título Curso 1',
         imagenPortada: 'Imagen 1',
         habilidades: [
-            habilidades[0], 
+            habilidades[0],
             habilidades[1]
         ],
         estadoCurso: 0
@@ -44,7 +44,7 @@ const cursos: any = [
         titulo: 'Título Curso 2',
         imagenPortada: 'Imagen 2',
         habilidades: [
-            habilidades[0], 
+            habilidades[0],
             habilidades[1]
         ],
         estadoCurso: 0
@@ -60,7 +60,7 @@ const referencias: any = [
             primerApellido: 'Primer Apellido Ref 1',
             segundoApellido: 'Segundo Apellido Ref 1'
         },
-        tituloTrabajo: 'Titulo Trabajo 1',
+        tituloTrabajo: 'Corrector de estilo',
         nombreCompania: 'Compañia 1',
         numeroTelefono: {
             codigoPais: 111,
@@ -76,7 +76,7 @@ const referencias: any = [
             primerApellido: 'Primer Apellido Ref 2',
             segundoApellido: 'Segundo Apellido Ref 2'
         },
-        tituloTrabajo: 'Titulo Trabajo 2',
+        tituloTrabajo: 'Agente de call center',
         nombreCompania: 'Compañia 2',
         numeroTelefono: {
             codigoPais: 222,
@@ -105,9 +105,9 @@ const empleados: any = [
     {
         ssn: '1111',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 1',
+            primerNombre: ' Antonio',
             segundoNombre: 'Segundo Nombre 1',
-            primerApellido: 'Primer Apellido 1',
+            primerApellido: 'Ruiz',
             segundoApellido: 'Segundo Apellido 1'
         },
         numeroTelefono: {
@@ -133,9 +133,9 @@ const empleados: any = [
     {
         ssn: '2222',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 2',
+            primerNombre: 'Victor',
             segundoNombre: 'Segundo Nombre 2',
-            primerApellido: 'Primer Apellido 2',
+            primerApellido: 'Gutierrez',
             segundoApellido: 'Segundo Apellido 2'
         },
         numeroTelefono: {
@@ -161,9 +161,9 @@ const empleados: any = [
     {
         ssn: '3333',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 3',
+            primerNombre: 'Isabel',
             segundoNombre: 'Segundo Nombre 3',
-            primerApellido: 'Primer Apellido 3',
+            primerApellido: 'Rangel',
             segundoApellido: 'Segundo Apellido 3'
         },
         numeroTelefono: {
@@ -189,9 +189,9 @@ const empleados: any = [
     {
         ssn: '4444',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 4',
+            primerNombre: 'Andrea',
             segundoNombre: 'Segundo Nombre 4',
-            primerApellido: 'Primer Apellido 4',
+            primerApellido: 'Ferreiro',
             segundoApellido: 'Segundo Apellido 4'
         },
         numeroTelefono: {
@@ -217,9 +217,9 @@ const empleados: any = [
     {
         ssn: '5555',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 5',
+            primerNombre: 'Renato',
             segundoNombre: 'Segundo Nombre 5',
-            primerApellido: 'Primer Apellido 5',
+            primerApellido: 'Lorelli',
             segundoApellido: 'Segundo Apellido 5'
         },
         numeroTelefono: {
@@ -245,9 +245,9 @@ const empleados: any = [
     {
         ssn: '6666',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 6',
+            primerNombre: 'Pedro',
             segundoNombre: 'Segundo Nombre 6',
-            primerApellido: 'Primer Apellido 6',
+            primerApellido: 'Contreras',
             segundoApellido: 'Segundo Apellido 6'
         },
         numeroTelefono: {
@@ -275,7 +275,7 @@ const empleados: any = [
 const ofertas: any = [
     {
         idOfertaDeTrabajo: '10',
-        tituloTrabajo: 'TituloTrabajo 1',
+        tituloTrabajo: 'Transcriptor de audios',
         //empleador: Empleador,
         direccion: {
             calle1: 'calle1',
@@ -296,7 +296,7 @@ const ofertas: any = [
     },
     {
         idOfertaDeTrabajo: '11',
-        tituloTrabajo: 'TituloTrabajo 2',
+        tituloTrabajo: 'Asistente virtual',
         //empleador: Empleador,
         direccion: {
             calle1: 'calle1',

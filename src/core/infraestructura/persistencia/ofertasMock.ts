@@ -1,7 +1,7 @@
 const ofertas = [
     {
         idOfertaDeTrabajo: "IdPorDefecto",
-        tituloTrabajo: "Título oferta",
+        tituloTrabajo: "Programador Web",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
@@ -46,13 +46,13 @@ const ofertas = [
     },
     {
         idOfertaDeTrabajo: "IdPorDefecto",
-        tituloTrabajo: "Título oferta",
+        tituloTrabajo: "ASL Translator",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
-            estado: "estado",
+            estado: "Caracas",
             codPostal: "codigoPos"
         },
         fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
@@ -91,13 +91,13 @@ const ofertas = [
     },
     {
         idOfertaDeTrabajo: "IdPorDefecto",
-        tituloTrabajo: "Título oferta",
+        tituloTrabajo: "Community Manager",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
             ciudad: "ciudad",
-            estado: "estado",
+            estado: "Caracas",
             codPostal: "codigoPos"
         },
         fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
@@ -136,13 +136,13 @@ const ofertas = [
     },
     {
         idOfertaDeTrabajo: "IdPorDefecto",
-        tituloTrabajo: "Título oferta",
+        tituloTrabajo: "Programador .NET",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",
             calle2: "calle2",
-            ciudad: "ciudad",
-            estado: "estado",
+            ciudad: "Valencia",
+            estado: "Valencia",
             codPostal: "codigoPos"
         },
         fechaLimitePostulacionOfertaDeTrabajo: "2020/07/18",
@@ -181,7 +181,7 @@ const ofertas = [
     },
     {
         idOfertaDeTrabajo: "IdPorDefecto",
-        tituloTrabajo: "Título oferta",
+        tituloTrabajo: "Copywriter",
         //empleador: Empleador,
         direccion: {
             calle1: "calle1",

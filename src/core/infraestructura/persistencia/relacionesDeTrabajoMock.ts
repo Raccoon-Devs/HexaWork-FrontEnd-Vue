@@ -1,13 +1,13 @@
 const experiencias: any = [
     {
         idExperiencia: '1',
-        tituloTrabajo: 'Titulo Trabajo 1',
+        tituloTrabajo: 'Consultor de marketing',
         nombreCompania: 'Compañia 1',
         categoria: 0
     },
     {
         idExperiencia: '2',
-        tituloTrabajo: 'Titulo Trabajo 2',
+        tituloTrabajo: 'Asistente',
         nombreCompania: 'Compañia 2',
         categoria: 1
     },
@@ -60,7 +60,7 @@ const referencias: any = [
             primerApellido: 'Primer Apellido Ref 1',
             segundoApellido: 'Segundo Apellido Ref 1'
         },
-        tituloTrabajo: 'Titulo Trabajo 1',
+        tituloTrabajo: 'Chef',
         nombreCompania: 'Compañia 1',
         numeroTelefono: {
             codigoPais: 111,
@@ -76,7 +76,7 @@ const referencias: any = [
             primerApellido: 'Primer Apellido Ref 2',
             segundoApellido: 'Segundo Apellido Ref 2'
         },
-        tituloTrabajo: 'Titulo Trabajo 2',
+        tituloTrabajo: 'Vendedor freelance',
         nombreCompania: 'Compañia 2',
         numeroTelefono: {
             codigoPais: 222,
@@ -90,9 +90,9 @@ const empleados: any = [
     {
         ssn: '1111',
         nombreCompleto: {
-            primerNombre: 'Nombre1',
+            primerNombre: 'José',
             segundoNombre: 'Segundo Nombre 1',
-            primerApellido: 'Apellido1',
+            primerApellido: 'Ramirez',
             segundoApellido: 'Segundo Apellido 1'
         },
         numeroTelefono: {
@@ -118,9 +118,9 @@ const empleados: any = [
     {
         ssn: '2222',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 2',
+            primerNombre: 'David',
             segundoNombre: 'Segundo Nombre 2',
-            primerApellido: 'Primer Apellido 2',
+            primerApellido: 'Zacarias',
             segundoApellido: 'Segundo Apellido 2'
         },
         numeroTelefono: {
@@ -146,9 +146,9 @@ const empleados: any = [
     {
         ssn: '3333',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 3',
+            primerNombre: 'Sofía',
             segundoNombre: 'Segundo Nombre 3',
-            primerApellido: 'Primer Apellido 3',
+            primerApellido: 'Rodríguez',
             segundoApellido: 'Segundo Apellido 3'
         },
         numeroTelefono: {
@@ -174,9 +174,9 @@ const empleados: any = [
     {
         ssn: '4444',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 4',
+            primerNombre: 'Victoria',
             segundoNombre: 'Segundo Nombre 4',
-            primerApellido: 'Primer Apellido 4',
+            primerApellido: 'Pacciello',
             segundoApellido: 'Segundo Apellido 4'
         },
         numeroTelefono: {
@@ -202,9 +202,9 @@ const empleados: any = [
     {
         ssn: '5555',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 5',
+            primerNombre: 'Diego',
             segundoNombre: 'Segundo Nombre 5',
-            primerApellido: 'Primer Apellido 5',
+            primerApellido: 'Hernandez',
             segundoApellido: 'Segundo Apellido 5'
         },
         numeroTelefono: {
@@ -230,9 +230,9 @@ const empleados: any = [
     {
         ssn: '6666',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 6',
+            primerNombre: 'Cristina',
             segundoNombre: 'Segundo Nombre 6',
-            primerApellido: 'Primer Apellido 6',
+            primerApellido: 'Morales',
             segundoApellido: 'Segundo Apellido 6'
         },
         numeroTelefono: {
@@ -259,7 +259,51 @@ const empleados: any = [
 
 const ofertasDeTrabajo = [{
     idOfertaDeTrabajo: "IdPorDefecto",
-    tituloTrabajo: "Título oferta",
+    tituloTrabajo: "Community Manager",
+    //empleador: Empleador,
+    direccion: {
+        calle1: "calle1",
+        calle2: "calle2",
+        ciudad: "ciudad",
+        estado: "estado",
+        codPostal: "codigoPos"
+    },
+    fechaLimitePostulacionOfertaDeTrabajo: "2020-07-18",
+    calendario: [{horaInicio: "2020-08-08 05:05:55", horaFin: "2020-08-08 06:05:55"}],
+    habilidades: [
+        {
+            idHabilidad: "1",
+            categoria: 1,
+            nombre: "HabilidadesBlandas"
+        }
+    ],
+    requerimientosEspeciales: "RequerimientosEspeciales",
+    certificaciones: [
+        {
+            idCertificacion: "3",
+            nombre: "Certificacion 3",
+            fechaCompletacionCertificacion: "2021-03-20",
+            curso: {
+                idCurso: "3",
+                codigo: "Curso 3",
+                titulo: "Titulo curso 3",
+                imagenPortada: "Imagen",
+                estadoCurso: 0,
+                habilidades: [{
+                    idHabilidad: '1',
+                    nombre: 'Habilidades blandas',
+                    categoria: 0
+                }],
+            }
+        }
+    ],
+    duracion: 5,
+    remuneracionPorHora: 3.44,
+    estadoOfertaDeTrabajo: 4,
+    vacantes: 5
+}, {
+    idOfertaDeTrabajo: "IdPorDefecto",
+    tituloTrabajo: "Editor de Videos",
     //empleador: Empleador,
     direccion: {
         calle1: "calle1",
@@ -313,6 +357,18 @@ const relacionesDeTrabajo = [
             fechaPostulacion: '2020-07-02',
             empleado: empleados[0],
             ofertaDeTrabajo: ofertasDeTrabajo[0],
+            estadoPostulacion: 0,
+        }
+    },
+    {
+        idRelacion: "",
+        estadoRelacionDeTrabajo: 1,
+        calendario: [],
+        postulacion: {
+            idPostulacion: '1',
+            fechaPostulacion: '2020-07-02',
+            empleado: empleados[1],
+            ofertaDeTrabajo: ofertasDeTrabajo[1],
             estadoPostulacion: 0,
         }
     }

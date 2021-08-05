@@ -35,7 +35,7 @@ const cursos: any = [
         titulo: 'Título Curso 1',
         imagenPortada: 'Imagen 1',
         habilidades: [
-            habilidades[0], 
+            habilidades[0],
             habilidades[1]
         ],
         estadoCurso: 0
@@ -46,7 +46,7 @@ const cursos: any = [
         titulo: 'Título Curso 2',
         imagenPortada: 'Imagen 2',
         habilidades: [
-            habilidades[0], 
+            habilidades[0],
             habilidades[1]
         ],
         estadoCurso: 0
@@ -92,9 +92,9 @@ const empleados: any = [
     {
         ssn: '1111',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 1',
+            primerNombre: 'Gabriela',
             segundoNombre: 'Segundo Nombre 1',
-            primerApellido: 'Primer Apellido 1',
+            primerApellido: 'Rodriguez',
             segundoApellido: 'Segundo Apellido 1'
         },
         numeroTelefono: {
@@ -120,9 +120,9 @@ const empleados: any = [
     {
         ssn: '2222',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 2',
+            primerNombre: 'Carlos',
             segundoNombre: 'Segundo Nombre 2',
-            primerApellido: 'Primer Apellido 2',
+            primerApellido: 'Contreras',
             segundoApellido: 'Segundo Apellido 2'
         },
         numeroTelefono: {
@@ -148,9 +148,9 @@ const empleados: any = [
     {
         ssn: '3333',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 3',
+            primerNombre: 'Sebastián',
             segundoNombre: 'Segundo Nombre 3',
-            primerApellido: 'Primer Apellido 3',
+            primerApellido: 'Battistel',
             segundoApellido: 'Segundo Apellido 3'
         },
         numeroTelefono: {
@@ -176,9 +176,9 @@ const empleados: any = [
     {
         ssn: '4444',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 4',
+            primerNombre: 'Maria',
             segundoNombre: 'Segundo Nombre 4',
-            primerApellido: 'Primer Apellido 4',
+            primerApellido: 'Ortiz',
             segundoApellido: 'Segundo Apellido 4'
         },
         numeroTelefono: {
@@ -204,9 +204,9 @@ const empleados: any = [
     {
         ssn: '5555',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 5',
+            primerNombre: 'Gustavo',
             segundoNombre: 'Segundo Nombre 5',
-            primerApellido: 'Primer Apellido 5',
+            primerApellido: 'Quintana',
             segundoApellido: 'Segundo Apellido 5'
         },
         numeroTelefono: {
@@ -232,9 +232,9 @@ const empleados: any = [
     {
         ssn: '6666',
         nombreCompleto: {
-            primerNombre: 'Primer Nombre 6',
+            primerNombre: 'Tomás',
             segundoNombre: 'Segundo Nombre 6',
-            primerApellido: 'Primer Apellido 6',
+            primerApellido: 'Fakih',
             segundoApellido: 'Segundo Apellido 6'
         },
         numeroTelefono: {
